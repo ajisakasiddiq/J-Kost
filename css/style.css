@@ -1,6 +1,11 @@
 /*******************************/
+
+
 /********* General CSS *********/
+
+
 /*******************************/
+
 body {
     color: #444444;
     font-weight: 400;
@@ -9,10 +14,10 @@ body {
 }
 
 h1,
-h2, 
-h3, 
+h2,
+h3,
 h4,
-h5, 
+h5,
 h6 {
     color: #202C45;
 }
@@ -32,7 +37,7 @@ a:focus {
 
 .btn.btn-custom {
     padding: 10px 30px 12px 30px;
-    text-align: center; 
+    text-align: center;
     font-size: 16px;
     font-weight: 500;
     color: #ffffff;
@@ -43,6 +48,11 @@ a:focus {
     transition: ease-out 0.5s;
     -webkit-transition: ease-out 0.5s;
     -moz-transition: ease-out 0.5s;
+}
+
+.btn-regis {
+    color: white;
+    margin-right: 20px;
 }
 
 .btn.btn-custom:hover {
@@ -60,16 +70,23 @@ a:focus {
     max-width: 1366px;
 }
 
-[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
-[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before,
+[class^="flaticon-"]:after,
+[class*=" flaticon-"]:after {
     font-size: inherit;
     margin-left: 0;
 }
 
 
 /**********************************/
+
+
 /****** Loader & Back to Top ******/
+
+
 /**********************************/
+
 #loader {
     position: fixed;
     top: 0;
@@ -108,13 +125,21 @@ a:focus {
 }
 
 @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .back-to-top {
@@ -144,8 +169,13 @@ a:focus {
 
 
 /**********************************/
+
+
 /********** Top Bar CSS ***********/
+
+
 /**********************************/
+
 .top-bar {
     position: relative;
     height: 75px;
@@ -224,8 +254,13 @@ a:focus {
 
 
 /**********************************/
+
+
 /*********** Nav Bar CSS **********/
+
+
 /**********************************/
+
 .nav-bar {
     position: relative;
     background: #202C45;
@@ -297,11 +332,9 @@ a:focus {
     .navbar-dark .navbar-nav .nav-link.active {
         padding: 5px 0;
     }
-    
     .nav-bar .dropdown-menu {
         box-shadow: none;
     }
-    
     .nav-bar .btn {
         display: none;
     }
@@ -309,8 +342,13 @@ a:focus {
 
 
 /*******************************/
+
+
 /********** Hero CSS ***********/
+
+
 /*******************************/
+
 .carousel {
     position: relative;
     width: 100%;
@@ -452,15 +490,12 @@ a:focus {
     .carousel .carousel-text h3 {
         margin-bottom: 5px;
     }
-    
     .carousel .carousel-text h1 {
         font-size: 60px;
     }
-    
     .carousel .carousel-text p {
         font-size: 16px;
     }
-    
     .carousel .carousel-text .btn {
         padding: 12px 30px;
         font-size: 15px;
@@ -474,11 +509,9 @@ a:focus {
         letter-spacing: 2px;
         margin-bottom: 15px;
     }
-    
     .carousel .carousel-text h1 {
         font-size: 45px;
     }
-    
     .carousel .carousel-text .btn {
         padding: 10px 25px;
         font-size: 15px;
@@ -492,16 +525,13 @@ a:focus {
         letter-spacing: 1px;
         margin-bottom: 10px;
     }
-    
     .carousel .carousel-text h1 {
         font-size: 30px;
         margin-bottom: 15px;
     }
-    
     .carousel .carousel-text p {
         margin-bottom: 25px;
     }
-    
     .carousel .carousel-text .btn {
         padding: 8px 20px;
         font-size: 14px;
@@ -511,8 +541,13 @@ a:focus {
 
 
 /*******************************/
+
+
 /******* Page Header CSS *******/
+
+
 /*******************************/
+
 .page-header {
     position: relative;
     margin-bottom: 45px;
@@ -571,11 +606,9 @@ a:focus {
     .page-header {
         padding: 60px 0;
     }
-    
     .page-header h2 {
         font-size: 45px;
     }
-    
     .page-header a {
         font-size: 20px;
     }
@@ -585,11 +618,9 @@ a:focus {
     .page-header {
         padding: 45px 0;
     }
-    
     .page-header h2 {
         font-size: 35px;
     }
-    
     .page-header a {
         font-size: 18px;
     }
@@ -597,8 +628,13 @@ a:focus {
 
 
 /*******************************/
+
+
 /******* Section Header ********/
+
+
 /*******************************/
+
 .section-header {
     position: relative;
     width: 100%;
@@ -663,8 +699,13 @@ a:focus {
 
 
 /*******************************/
+
+
 /********** About CSS **********/
+
+
 /*******************************/
+
 .about {
     position: relative;
     width: 100%;
@@ -704,8 +745,13 @@ a:focus {
 
 
 /*******************************/
+
+
 /********* Service CSS *********/
+
+
 /*******************************/
+
 .service {
     position: relative;
     width: 100%;
@@ -750,8 +796,13 @@ a:focus {
 
 
 /*******************************/
+
+
 /********** Facts CSS **********/
+
+
 /*******************************/
+
 .facts {
     position: relative;
     width: 100%;
@@ -806,8 +857,13 @@ a:focus {
 
 
 /*******************************/
+
+
 /********* Pricing CSS *********/
+
+
 /*******************************/
+
 .price {
     position: relative;
     width: 100%;
@@ -921,8 +977,13 @@ a:focus {
 
 
 /*******************************/
+
+
 /******** Location CSS *********/
+
+
 /*******************************/
+
 .location {
     position: relative;
     width: 100%;
@@ -1020,8 +1081,13 @@ a:focus {
 
 
 /*******************************/
+
+
 /*********** Team CSS **********/
+
+
 /*******************************/
+
 .team {
     position: relative;
     width: 100%;
@@ -1109,8 +1175,13 @@ a:focus {
 
 
 /*******************************/
+
+
 /******* Testimonial CSS *******/
+
+
 /*******************************/
+
 .testimonial {
     position: relative;
     width: 100%;
@@ -1195,8 +1266,13 @@ a:focus {
 
 
 /*******************************/
+
+
 /*********** Blog CSS **********/
+
+
 /*******************************/
+
 .blog {
     position: relative;
     width: 100%;
@@ -1330,8 +1406,13 @@ a:focus {
 
 
 /*******************************/
+
+
 /********* Contact CSS *********/
+
+
 /*******************************/
+
 .contact {
     position: relative;
     width: 100%;
@@ -1344,7 +1425,6 @@ a:focus {
     padding: 35px 30px 10px 30px;
     border-radius: 5px;
     background: #202C45;
-    
 }
 
 .contact .contact-info h2 {
@@ -1429,8 +1509,13 @@ a:focus {
 
 
 /*******************************/
+
+
 /******* Single Post CSS *******/
+
+
 /*******************************/
+
 .single {
     position: relative;
     padding: 45px 0;
@@ -1740,8 +1825,13 @@ a:focus {
 
 
 /**********************************/
+
+
 /*********** Sidebar CSS **********/
+
+
 /**********************************/
+
 .sidebar {
     position: relative;
     width: 100%;
@@ -1854,11 +1944,11 @@ a:focus {
 }
 
 .sidebar .category-widget ul li {
-    margin: 0 0 12px 22px; 
+    margin: 0 0 12px 22px;
 }
 
 .sidebar .category-widget ul li:last-child {
-    margin-bottom: 0; 
+    margin-bottom: 0;
 }
 
 .sidebar .category-widget ul li a {
@@ -1922,8 +2012,13 @@ a:focus {
 
 
 /*******************************/
+
+
 /********* Footer CSS **********/
+
+
 /*******************************/
+
 .footer {
     position: relative;
     margin-top: 45px;
