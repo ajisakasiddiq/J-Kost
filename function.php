@@ -11,6 +11,7 @@ function query($query){
     }
 
     return $rows;
+    
 }
-
+var_dump($rows);
 ?>
