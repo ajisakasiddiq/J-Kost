@@ -2149,3 +2149,26 @@ a:focus {
 .footer .copyright p a:hover {
     color: #ffffff;
 }
+
+
+/* style details */
+
+.thumbnail-image {
+    border-radius: 10px;
+}
+
+.thumbnail-image:hover {
+    transform: scale(1.1);
+}
+
+.kost-price {
+    margin: 0;
+    padding: 0;
+    color: #E81C2E;
+}
+
+.kost-owner {
+    margin: 0;
+    padding: 0;
+    size: 60px;
+}

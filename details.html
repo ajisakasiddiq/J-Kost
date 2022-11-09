@@ -32,14 +32,14 @@
     <div class="top-bar">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-4 col-md-12">
+                <div class="col-lg-4 col-md-3">
                     <div class="logo">
                         <a href="index.html">
                             <h1>J<span>KOS</span></h1>
                         </a>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-4 col-md-4">
                     <div class="top-bar-item">
                         <div class="top-bar-icon">
                             <i class="fa fa-phone-alt"></i>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-4 col-md-4">
                     <div class="top-bar-item">
                         <div class="top-bar-icon">
                             <i class="far fa-envelope"></i>
@@ -82,7 +82,7 @@
                         <a href="index.html" class="nav-item nav-link">Home</a>
                         <a href="about.html" class="nav-item nav-link">Tentang Kami</a>
                         <a href="service.html" class="nav-item nav-link">Pelayanan</a>
-                        <a href="price.html" class="nav-item nav-link active">Pemesanan</a>
+                        <a href="order.html" class="nav-item nav-link active">Pemesanan</a>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="ml-auto">
@@ -105,7 +105,7 @@
                     </div>
                     <div class="col-lg-2">
                         <div class="row">
-                            <div class="col-3 col-lg-12 mt-lg-2 mt-lg-0" v-for="(photo, index) in photos" :key="photo.id" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="col-3 col-lg-12 mt-lg-2 mt-lg-2 mt-md-3" v-for="(photo, index) in photos" :key="photo.id" data-aos="zoom-in" data-aos-delay="100">
                                 <a href="#" @click="changeActive(index)">
                                     <img :src="photo.url" class="w-100 thumbnail-image" :class="{ active: index == activePhoto }" alt="" />
                                 </a>
@@ -120,9 +120,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8">
-                            <h1>Bara Kost</h1>
-                            <p>By Dayat</p>
-                            <p>Rp.350.000</p>
+                            <h1 class="kost-name">Bara Kost</h1>
+                            <p class="kost-owner">By Dayat</p>
+                            <p class="kost-price">Rp.350.000</p>
 
                             <!-- <div class="owner">By Dayat</div>
                             <div class="price">Rp.350.000</div> -->
