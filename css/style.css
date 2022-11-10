@@ -335,9 +335,7 @@ a:focus {
     .nav-bar .dropdown-menu {
         box-shadow: none;
     }
-    .nav-bar .btn {
-        display: none;
-    }
+    .nav-bar .btn {}
 }
 
 
