@@ -26,18 +26,18 @@
 </head>
 
 <body>
-       <!-- Top Bar Start -->
-       <div class="top-bar">
+    <!-- Top Bar Start -->
+    <div class="top-bar">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-4 col-md-12">
+                <div class="col-lg-4 col-md-3">
                     <div class="logo">
                         <a href="index.html">
                             <h1>J<span>KOS</span></h1>
                         </a>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-4 col-md-4">
                     <div class="top-bar-item">
                         <div class="top-bar-icon">
                             <i class="fa fa-phone-alt"></i>
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-4 col-md-4">
                     <div class="top-bar-item">
                         <div class="top-bar-icon">
                             <i class="far fa-envelope"></i>
@@ -65,6 +65,7 @@
     </div>
     </div>
     <!-- Top Bar End -->
+
     <!-- Nav Bar Start -->
     <div class="nav-bar">
         <div class="container">
@@ -76,16 +77,17 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="about.html" class="nav-item nav-link">Tentang Kami</a>
-                        <a href="service.html" class="nav-item nav-link">Pelayanan</a>
-                        <a href="price.html" class="nav-item nav-link">Pemesanan</a>
-                        <a href="contact.html" class="nav-item nav-link active">Contact</a>
+                        <a href="index.php" class="nav-item nav-link ">Home</a>
+                        <a href="about.php" class="nav-item nav-link">Tentang Kami</a>
+                        <a href="service.php" class="nav-item nav-link">Pelayanan</a>
+                        <a href="order.php" class="nav-item nav-link active">Pemesanan</a>
+                        <a href="contact.php" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="ml-auto">
-                        <a href="login.html" class="btn-regis ">Register</a>
-                        <a href="login.html" class="btn btn-custom">Login</a>
+                        <a href="register.php" class="btn-regis ">Register</a>
+                        <a href="login.php" class="btn btn-custom">Login</a>
                     </div>
+
                 </div>
             </nav>
         </div>

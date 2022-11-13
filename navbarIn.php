@@ -83,8 +83,11 @@
                         <a href="contact.html" class="nav-item nav-link active">Contact</a>
                     </div>
                     <div class="ml-auto">
-                        <a href="login.html" class="btn-regis ">Register</a>
-                        <a href="login.html" class="btn btn-custom">Login</a>
+                        <!-- <a href="login.html" class="btn-regis ">Register</a>
+                        <a href="login.html" class="btn btn-custom">Login</a> -->
+
+                        <a class="btn btn-custom" href="">Sudah Login</a>
+                        <a class="btn btn-custom" href="">Logout</a>
                     </div>
                 </div>
             </nav>
