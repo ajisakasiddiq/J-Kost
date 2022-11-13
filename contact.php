@@ -77,16 +77,17 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="about.html" class="nav-item nav-link">Tentang Kami</a>
-                        <a href="service.html" class="nav-item nav-link">Pelayanan</a>
-                        <a href="order.html" class="nav-item nav-link">Pemesanan</a>
-                        <a href="contact.html" class="nav-item nav-link active">Contact</a>
+                        <a href="index.php" class="nav-item nav-link ">Home</a>
+                        <a href="about.php" class="nav-item nav-link">Tentang Kami</a>
+                        <a href="service.php" class="nav-item nav-link">Pelayanan</a>
+                        <a href="order.php" class="nav-item nav-link">Pemesanan</a>
+                        <a href="contact.php" class="nav-item nav-link active">Contact</a>
                     </div>
                     <div class="ml-auto">
-                        <a href="login.html" class="btn-regis ">Register</a>
-                        <a href="login.html" class="btn btn-custom">Login</a>
+                        <a href="register.php" class="btn-regis ">Register</a>
+                        <a href="login.php" class="btn btn-custom">Login</a>
                     </div>
+
                 </div>
             </nav>
         </div>

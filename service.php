@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>J-KOS</title>
+    <title>J KOST</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free Website Template" name="keywords">
     <meta content="Free Website Template" name="description">
@@ -22,9 +22,7 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -79,86 +77,138 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="about.html" class="nav-item nav-link">Tentang Kami</a>
-                        <a href="service.html" class="nav-item nav-link">Pelayanan</a>
-                        <a href="order.html" class="nav-item nav-link active">Pemesanan</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="index.php" class="nav-item nav-link ">Home</a>
+                        <a href="about.php" class="nav-item nav-link">Tentang Kami</a>
+                        <a href="service.php" class="nav-item nav-link active">Pelayanan</a>
+                        <a href="order.php" class="nav-item nav-link">Pemesanan</a>
+                        <a href="contact.php" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="ml-auto">
-                        <a href="login.html" class="btn-regis ">Register</a>
-                        <a class="btn btn-custom" href="#">Login</a>
+                        <a href="register.php" class="btn-regis ">Register</a>
+                        <a href="login.php" class="btn btn-custom">Login</a>
                     </div>
+
                 </div>
             </nav>
         </div>
     </div>
     <!-- Nav Bar End -->
-    <div class="page-content page-details">
-        <section class="store-gallery mt-5" id="gallery">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8" data-aos="zoom-in">
-                        <transition name="slide-fade" mode="out-in">
-                            <img :key="photos[activePhoto].id" :src="photos[activePhoto].url" class="w-100 main-image" alt="" />
-                        </transition>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="row">
-                            <div class="col-3 col-lg-12 mt-lg-2 mt-lg-2 mt-md-3" v-for="(photo, index) in photos" :key="photo.id" data-aos="zoom-in" data-aos-delay="100">
-                                <a href="#" @click="changeActive(index)">
-                                    <img :src="photo.url" class="w-100 thumbnail-image" :class="{ active: index == activePhoto }" alt="" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="store-details-container" data-aos="fade-up">
-            <section class="store-heading">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <h1 class="kost-name">Bara Kost</h1>
-                            <p class="kost-owner">By Dayat</p>
-                            <p class="kost-price">Rp.350.000</p>
 
-                            <!-- <div class="owner">By Dayat</div>
-                            <div class="price">Rp.350.000</div> -->
-                        </div>
-                        <div class="col-lg-2" data-aos="zoom-in">
-                            <a class="btn btn-custom px-4 btn-block mb-3" href="/cart.html">Sewa</a
-                  >
+
+    <!-- Page Header Start -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Pelayanan</h2>
                 </div>
-              </div>
-            </div>
-          </section>
-          <section class="store-description">
-            <div class="container">
-              <div class="row">
-                <div class="col-12 col-lg-8">
-                  <p>
-                    The Nike Air Max 720 SE goes bigger than ever before with
-                    Nike's tallest Air unit yet for unimaginable, all-day comfort.
-                    There's super breathable fabrics on the upper, while colours
-                    add a modern edge.
-                  </p>
-                  <p>
-                    Bring the past into the future with the Nike Air Max 2090, a
-                    bold look inspired by the DNA of the iconic Air Max 90.
-                    Brand-new Nike Air cushioning underfoot adds unparalleled
-                    comfort while transparent mesh and vibrantly coloured details
-                    on the upper are blended with timeless OG features for an
-                    edgy, modernised look.
-                  </p>
+                <div class="col-12">
+                    <a href="">Home</a>
+                    <a href="">Pelayanan</a>
                 </div>
-              </div>
             </div>
-          </section>
         </div>
-      </div>
-  
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Service Start -->
+    <div class="service">
+        <div class="container">
+            <div class="section-header text-center">
+
+                <h2>Pelayanan kami</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-item">
+
+                        <h3>Konsultasi Tentang Kost</h3>
+                        <p>Anda bisa menanyakan hal tentang seputar kost </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-item">
+
+                        <h3>Pemesanan Kamar Kost Melalui Online</h3>
+                        <p>Anda bisa memesan kamar kos secara online sehingga anda tidak perlu mendatanginya</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-item">
+
+                        <h3>Pembayaran E-WALLET</h3>
+                        <p>Nah untuk pembayaran anda bisa melalui E-wallet (ovo, gopay,dll).</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-item">
+
+                        <h3>Membuka Jasa Promosi Kost</h3>
+                        <p>Untuk bapak/ibu yang mempuyai usaha kos kosan anda bisa mendaftarkan usaha bapak ibu di website kami, karna itu bisa memudahkan pekerjaan bapak/ibu.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+    <!-- Testimonial Start -->
+    <div class="testimonial">
+        <div class="container">
+            <div class="section-header text-center">
+                <p>Testimonial</p>
+                <h2>What our clients say</h2>
+            </div>
+            <div class="owl-carousel testimonials-carousel">
+                <div class="testimonial-item">
+                    <img src="img/testimonial-1.jpg" alt="Image">
+                    <div class="testimonial-text">
+                        <h3>Client Name</h3>
+                        <h4>Profession</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor auctor gravid
+                        </p>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <img src="img/testimonial-2.jpg" alt="Image">
+                    <div class="testimonial-text">
+                        <h3>Client Name</h3>
+                        <h4>Profession</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor auctor gravid
+                        </p>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <img src="img/testimonial-3.jpg" alt="Image">
+                    <div class="testimonial-text">
+                        <h3>Client Name</h3>
+                        <h4>Profession</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor auctor gravid
+                        </p>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <img src="img/testimonial-4.jpg" alt="Image">
+                    <div class="testimonial-text">
+                        <h3>Client Name</h3>
+                        <h4>Profession</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor auctor gravid
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+
     <!-- Footer Start -->
     <div class="footer">
         <div class="container">
@@ -207,11 +257,11 @@
                         </form>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
-    <div class="container copyright">
-        <p>&copy; <a href="index.html">J'Kost</a>, All Right Reserved.</p>
-    </div>
+        <div class="container copyright">
+            <p>&copy; <a href="index.html">J'Kost</a>, All Right Reserved.</p>
+        </div>
     </div>
     <!-- Footer End -->
 
@@ -237,40 +287,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script src="js/vue/vue.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
-    <script>
-        var gallery = new Vue({
-            el: "#gallery",
-            mounted() {
-                AOS.init();
-            },
-            data: {
-                activePhoto: 3,
-                photos: [{
-                    id: 1,
-                    url: "/img/product-details-1.jpg",
-                }, {
-                    id: 2,
-                    url: "/img/product-details-2.jpg",
-                }, {
-                    id: 3,
-                    url: "/img/product-details-3.jpg",
-                }, {
-                    id: 4,
-                    url: "/img/product-details-4.jpg",
-                }, ],
-            },
-            methods: {
-                changeActive(id) {
-                    this.activePhoto = id;
-                },
-            },
-        });
-    </script>
 </body>
 
 </html>

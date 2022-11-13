@@ -77,16 +77,17 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="about.html" class="nav-item nav-link active">Tentang Kami</a>
-                        <a href="service.html" class="nav-item nav-link">Pelayanan</a>
-                        <a href="order.html" class="nav-item nav-link">Pemesanan</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="index.php" class="nav-item nav-link ">Home</a>
+                        <a href="about.php" class="nav-item nav-link">Tentang Kami</a>
+                        <a href="service.php" class="nav-item nav-link">Pelayanan</a>
+                        <a href="order.php" class="nav-item nav-link active">Pemesanan</a>
+                        <a href="contact.php" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="ml-auto">
-                        <a href="login.html" class="btn-regis ">Register</a>
-                        <a class="btn btn-custom" href="login.php">Login</a>
+                        <a href="register.php" class="btn-regis ">Register</a>
+                        <a href="login.php" class="btn btn-custom">Login</a>
                     </div>
+
                 </div>
             </nav>
         </div>
@@ -99,11 +100,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2>Tentang Kami</h2>
+                    <h2>Pemesanan</h2>
                 </div>
                 <div class="col-12">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">Tentang kami</a>
+                    <a href="">Harga dan Keterangan</a>
                 </div>
             </div>
         </div>
@@ -111,123 +111,59 @@
     <!-- Page Header End -->
 
 
-    <!-- About Start -->
-    <div class="about">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="about-img">
-                        <img src="img/about3.jpeg" alt="Image">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="section-header text-left">
-                        <p>About Us</p>
-                        <h2>J-KOS</h2>
-                    </div>
-                    <div class="about-content">
-                        <p>
-                            Website J-KOS memudahkan pengguna khususnya daerah jember dalam mencari sementara dengan mudah dan efektif anpa harus datang ke tempatnya langsung.
-                        </p>
-                        <ul>
-                            <li><i class="far fa-check-circle"></i>Pembayaran mudah</li>
-                            <li><i class="far fa-check-circle"></i>Kos kosan yang nyaman</li>
-                            <li><i class="far fa-check-circle"></i>Jangkauan yang luas</li>
-                        </ul>
-                        <a class="btn btn-custom" href="">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- About End -->
-
-
-    <!-- Facts Start -->
-
-    <!-- Facts End -->
-
-
-    <!-- Team Start -->
-    <div class="team">
+    <!-- Price Start -->
+    <div class="price">
         <div class="container">
             <div class="section-header text-center">
-                <p>Meet Our Team</p>
-                <h2>Para Admin</h2>
+                <p>Kos Kosan</p>
+                <h2>Pilih Kos Sesuai Keinginan Anda</h2>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-1.jpg" alt="Team Image">
+                <div class="col-md-4">
+                    <div class="price-item">
+                        <div class="price-header">
+                            <h3>Bara Kost</h3>
+                            <h2><span>$</span><strong>25</strong><span>.99</span></h2>
                         </div>
-                        <div class="team-text">
-                            <h2>Kirana Ramadhanti</h2>
-                            <p>Admin</p>
-                            <div class="team-social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                            </div>
+                        <div class="price-body">
+                            <ul>
+                                <li><i class="far fa-check-circle"></i>Seats Washing</li>
+                                <li><i class="far fa-check-circle"></i>Vacuum Cleaning</li>
+                                <li><i class="far fa-check-circle"></i>Exterior Cleaning</li>
+                                <li><i class="far fa-times-circle"></i>Interior Wet Cleaning</li>
+                                <li><i class="far fa-times-circle"></i>Window Wiping</li>
+                            </ul>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-2.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>Ajisaka Siddiq</h2>
-                            <p>Admin</p>
-                            <div class="team-social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                            </div>
+                        <div class="price-footer">
+                            <a class="btn btn-custom" href="details.html">Pesan Disini</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-3.jpg" alt="Team Image">
+                <div class="col-md-4">
+                    <div class="price-item featured-item">
+                        <div class="price-header">
+                            <h3>Kost Sakinah</h3>
+                            <h2><span>$</span><strong>35</strong><span>.99</span></h2>
                         </div>
-                        <div class="team-text">
-                            <h2>Elli Roffiah</h2>
-                            <p>Admin</p>
-                            <div class="team-social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                            </div>
+                        <div class="price-body">
+                            <ul>
+                                <li><i class="far fa-check-circle"></i>Seats Washing</li>
+                                <li><i class="far fa-check-circle"></i>Vacuum Cleaning</li>
+                                <li><i class="far fa-check-circle"></i>Exterior Cleaning</li>
+                                <li><i class="far fa-check-circle"></i>Interior Wet Cleaning</li>
+                                <li><i class="far fa-times-circle"></i>Window Wiping</li>
+                            </ul>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-4.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>M Zidan Prasetyo</h2>
-                            <p>Admin</p>
-                            <div class="team-social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                            </div>
+                        <div class="price-footer">
+                            <a class="btn btn-custom" href="details.html">Pesan Disini</a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
-    <!-- Team End -->
+    <!-- Price End -->
 
 
     <!-- Footer Start -->
@@ -285,7 +221,6 @@
         </div>
     </div>
     <!-- Footer End -->
-
     <!-- Back to top button -->
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 

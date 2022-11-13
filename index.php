@@ -1,9 +1,25 @@
+<?php
+require("koneksi.php");
+
+session_start();
+
+if (isset($_SESSION['id_user'])) {
+$navbar = require_once("navbarIn.php");
+}
+//$navbar = require_once("navbarLogin.php");
+$sesID = $_SESSION['id_user'];
+$sesName = $_SESSION['username'];
+$sesLvl = $_SESSION['level'];
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>AutoWash - Car Wash Website Template</title>
+    <title>J-KOS</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free Website Template" name="keywords">
     <meta content="Free Website Template" name="description">
@@ -23,118 +39,151 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Top Bar Start -->
-    <div class="top-bar">
+
+
+    <!-- Carousel Start -->
+    <div class="carousel">
+        <div class="container-fluid">
+            <div class="owl-carousel">
+                <div class="carousel-item mt-lg-3">
+                    <div class="carousel-img">
+                        <img src="img/kos4.jpg" alt="Image">
+                    </div>
+                    <div class="carousel-text">
+                        <h1>Kos Kosan murah dan berkualitas</h1>
+                        <p>
+                            Menyajikan kos kosan mulai dari harga Rp 300.000 ke atas
+                        </p>
+                        <a class="btn btn-custom" href="order.html">Pesan Sekarang!</a>
+                    </div>
+                </div>
+                <div class="carousel-item mt-lg-3">
+                    <div class="carousel-img">
+                        <img src="img/kos3.jpeg" alt="Image">
+                    </div>
+                    <div class="carousel-text">
+                        <h1>Memudahkan penggunanya</h1>
+                        <p>
+                            pembayaran bisa melalui E-WALLET (Ovo, Gopay, Shoppepay, Dll)
+                        </p>
+                        <a class="btn btn-custom" href="">Explore More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+
+    <!-- About Start -->
+    <div class="about">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-4 col-md-12">
-                    <div class="logo">
-                        <a href="index.html">
-                            <h1>J<span>KOS</span></h1>
-                        </a>
+                <div class="col-lg-6">
+                    <div class="about-img">
+                        <img src="img/about3.jpeg" alt="Image">
                     </div>
                 </div>
-                <div class="col-4">
-                    <div class="top-bar-item">
-                        <div class="top-bar-icon">
-                            <i class="fa fa-phone-alt"></i>
-                        </div>
-                        <div class="top-bar-text">
-                            <h3>Call Us</h3>
-                            <p>0891 3687 7252</p>
-                        </div>
+                <div class="col-lg-6">
+                    <div class="section-header text-left">
+                        <p>About Us</p>
+                        <h2>J KOS</h2>
                     </div>
-                </div>
-                <div class="col-4">
-                    <div class="top-bar-item">
-                        <div class="top-bar-icon">
-                            <i class="far fa-envelope"></i>
-                        </div>
-                        <div class="top-bar-text">
-                            <h3>Email Us</h3>
-                            <p>zidanprasetyo@gmail.com</p>
-                        </div>
+                    <div class="about-content">
+                        <p>
+                            Website J-KOS memudahkan pengguna khususnya daerah jember dalam mencari sementara dengan mudah dan efektif anpa harus datang ke tempatnya langsung.
+                            <ul>
+                                <li><i class="far fa-check-circle"></i>Pembayaran mudah</li>
+                                <li><i class="far fa-check-circle"></i>Kos kosan yang nyaman</li>
+                                <li><i class="far fa-check-circle"></i>Jangkauan yang luas</li>
+                            </ul>
+                            <a class="btn btn-custom" href="">Learn More</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    <!-- Top Bar End -->
+    <!-- About End -->
 
-    <!-- Nav Bar Start -->
-    <div class="nav-bar">
+
+    <!-- Service Start -->
+    <div class="service">
         <div class="container">
-            <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-                <a href="#" class="navbar-brand">MENU</a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+            <div class="section-header text-center">
 
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav mr-auto">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">Tentang Kami</a>
-                        <a href="service.html" class="nav-item nav-link">Pelayanan</a>
-                        <a href="price.html" class="nav-item nav-link">Pemesanan</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu">
-                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                                <a href="single.html" class="dropdown-item">Detail Page</a>
-                                <a href="team.html" class="dropdown-item">Team Member</a>
-                                <a href="booking.html" class="dropdown-item">Schedule Booking</a>
-                            </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                    </div>
-                    <div class="ml-auto">
-                        <a href="login.html" class="btn-regis ">Register</a>
-                        <a class="btn btn-custom" href="#">Login</a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <!-- Nav Bar End -->
-
-    <!-- Page Header Start -->
-    <div class="page-header">
-        <div class="container">
+                <h2>Pelayanan kami</h2>
+            </div>
             <div class="row">
-                <div class="col-12">
-                    <h2>Team Developer</h2>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-item">
+
+                        <h3>Konsultasi Tentang Kost</h3>
+                        <p>Anda bisa menanyakan hal tentang seputar kost </p>
+                    </div>
                 </div>
-                <div class="col-12">
-                    <a href="">Home</a>
-                    <a href="">Team</a>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-item">
+
+                        <h3>Pemesanan Kamar Kost Melalui Online</h3>
+                        <p>Anda bisa memesan kamar kos secara online sehingga anda tidak perlu mendatanginya</p>
+                    </div>
                 </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-item">
+
+                        <h3>Pembayaran E-WALLET</h3>
+                        <p>Nah untuk pembayaran anda bisa melalui E-wallet (ovo, gopay,dll).</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-item">
+
+                        <h3>Membuka Jasa Promosi Kost</h3>
+                        <p>Untuk bapak/ibu yang mempuyai usaha kos kosan anda bisa mendaftarkan usaha bapak ibu di website kami, karna itu bisa memudahkan pekerjaan bapak/ibu.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-    <!-- Page Header End -->
+    <!-- Service End -->
+
+
+    <!-- Facts Start -->
+
+    <!-- Facts End -->
+
+
+    <!-- Price Start -->
+
+    <!-- Price End -->
+
+
+    <!-- Location Start -->
+
+    <!-- Location End -->
 
 
     <!-- Team Start -->
     <div class="team">
         <div class="container">
             <div class="section-header text-center">
-                <p>Meet Our Team</p>
-                <h2>Our Engineers & Workers</h2>
+                <p>Team</p>
+                <h2>Developer</h2>
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6">
-                    <div class="team-item">
+                    <div class="team-item" s>
                         <div class="team-img">
                             <img src="img/team-1.jpg" alt="Team Image">
                         </div>
                         <div class="team-text">
-                            <h2>Donald John</h2>
-                            <p>Engineer</p>
+                            <h2>Kirana Ramadhanti</h2>
+                            <p>Admin</p>
                             <div class="team-social">
                                 <a href=""><i class="fab fa-twitter"></i></a>
                                 <a href=""><i class="fab fa-facebook-f"></i></a>
@@ -150,8 +199,8 @@
                             <img src="img/team-2.jpg" alt="Team Image">
                         </div>
                         <div class="team-text">
-                            <h2>Adam Phillips</h2>
-                            <p>Engineer</p>
+                            <h2>Ajisaka Siddiq</h2>
+                            <p>Admin</p>
                             <div class="team-social">
                                 <a href=""><i class="fab fa-twitter"></i></a>
                                 <a href=""><i class="fab fa-facebook-f"></i></a>
@@ -167,8 +216,8 @@
                             <img src="img/team-3.jpg" alt="Team Image">
                         </div>
                         <div class="team-text">
-                            <h2>Thomas Olsen</h2>
-                            <p>Worker</p>
+                            <h2>Elli Roffiah</h2>
+                            <p>Admin</p>
                             <div class="team-social">
                                 <a href=""><i class="fab fa-twitter"></i></a>
                                 <a href=""><i class="fab fa-facebook-f"></i></a>
@@ -184,76 +233,8 @@
                             <img src="img/team-4.jpg" alt="Team Image">
                         </div>
                         <div class="team-text">
-                            <h2>James Alien</h2>
-                            <p>Worker</p>
-                            <div class="team-social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-1.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>Donald John</h2>
-                            <p>Engineer</p>
-                            <div class="team-social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-2.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>Adam Phillips</h2>
-                            <p>Engineer</p>
-                            <div class="team-social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-3.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>Thomas Olsen</h2>
-                            <p>Worker</p>
-                            <div class="team-social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/team-4.jpg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>James Alien</h2>
-                            <p>Worker</p>
+                            <h2>M Zidan Prasetyo</h2>
+                            <p>Admin</p>
                             <div class="team-social">
                                 <a href=""><i class="fab fa-twitter"></i></a>
                                 <a href=""><i class="fab fa-facebook-f"></i></a>
@@ -267,6 +248,65 @@
         </div>
     </div>
     <!-- Team End -->
+
+
+    <!-- Testimonial Start -->
+    <div class="testimonial">
+        <div class="container">
+            <div class="section-header text-center">
+                <p>Testimonial</p>
+                <h2>What our clients say</h2>
+            </div>
+            <div class="owl-carousel testimonials-carousel">
+                <div class="testimonial-item">
+                    <img src="img/testimonial-1.jpg" alt="Image">
+                    <div class="testimonial-text">
+                        <h3>Client Name</h3>
+                        <h4>Profession</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor auctor gravid
+                        </p>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <img src="img/testimonial-2.jpg" alt="Image">
+                    <div class="testimonial-text">
+                        <h3>Client Name</h3>
+                        <h4>Profession</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor auctor gravid
+                        </p>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <img src="img/testimonial-3.jpg" alt="Image">
+                    <div class="testimonial-text">
+                        <h3>Client Name</h3>
+                        <h4>Profession</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor auctor gravid
+                        </p>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <img src="img/testimonial-4.jpg" alt="Image">
+                    <div class="testimonial-text">
+                        <h3>Client Name</h3>
+                        <h4>Profession</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor auctor gravid
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+
+    <!-- Blog Start -->
+
+    <!-- Blog End -->
 
 
     <!-- Footer Start -->
@@ -334,12 +374,16 @@
     </div>
 
     <!-- JavaScript Libraries -->
+    <script>
+        AOS.init();
+    </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/counterup/counterup.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- Contact Javascript File -->
     <script src="mail/jqBootstrapValidation.min.js"></script>

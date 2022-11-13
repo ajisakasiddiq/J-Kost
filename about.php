@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>J KOST</title>
+    <title>J-KOS</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free Website Template" name="keywords">
     <meta content="Free Website Template" name="description">
@@ -77,16 +77,17 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                        <a href="index.html" class="nav-item nav-link ">Home</a>
-                        <a href="about.html" class="nav-item nav-link">Tentang Kami</a>
-                        <a href="service.html" class="nav-item nav-link active">Pelayanan</a>
-                        <a href="order.html" class="nav-item nav-link">Pemesanan</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="index.php" class="nav-item nav-link ">Home</a>
+                        <a href="about.php" class="nav-item nav-link active">Tentang Kami</a>
+                        <a href="service.php" class="nav-item nav-link">Pelayanan</a>
+                        <a href="order.php" class="nav-item nav-link">Pemesanan</a>
+                        <a href="contact.php" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="ml-auto">
-                        <a href="login.html" class="btn-regis ">Register</a>
-                        <a href="#login.html" class="btn btn-custom">Login</a>
+                        <a href="register.php" class="btn-regis ">Register</a>
+                        <a href="login.php" class="btn btn-custom">Login</a>
                     </div>
+
                 </div>
             </nav>
         </div>
@@ -99,11 +100,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2>Pelayanan</h2>
+                    <h2>Tentang Kami</h2>
                 </div>
                 <div class="col-12">
-                    <a href="">Home</a>
-                    <a href="">Pelayanan</a>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">Tentang kami</a>
                 </div>
             </div>
         </div>
@@ -111,101 +112,123 @@
     <!-- Page Header End -->
 
 
-    <!-- Service Start -->
-    <div class="service">
+    <!-- About Start -->
+    <div class="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="about-img">
+                        <img src="img/about3.jpeg" alt="Image">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="section-header text-left">
+                        <p>About Us</p>
+                        <h2>J-KOS</h2>
+                    </div>
+                    <div class="about-content">
+                        <p>
+                            Website J-KOS memudahkan pengguna khususnya daerah jember dalam mencari sementara dengan mudah dan efektif anpa harus datang ke tempatnya langsung.
+                        </p>
+                        <ul>
+                            <li><i class="far fa-check-circle"></i>Pembayaran mudah</li>
+                            <li><i class="far fa-check-circle"></i>Kos kosan yang nyaman</li>
+                            <li><i class="far fa-check-circle"></i>Jangkauan yang luas</li>
+                        </ul>
+                        <a class="btn btn-custom" href="">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Facts Start -->
+
+    <!-- Facts End -->
+
+
+    <!-- Team Start -->
+    <div class="team">
         <div class="container">
             <div class="section-header text-center">
-
-                <h2>Pelayanan kami</h2>
+                <p>Meet Our Team</p>
+                <h2>Para Admin</h2>
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6">
-                    <div class="service-item">
-
-                        <h3>Konsultasi Tentang Kost</h3>
-                        <p>Anda bisa menanyakan hal tentang seputar kost </p>
+                    <div class="team-item">
+                        <div class="team-img">
+                            <img src="img/team-1.jpg" alt="Team Image">
+                        </div>
+                        <div class="team-text">
+                            <h2>Kirana Ramadhanti</h2>
+                            <p>Admin</p>
+                            <div class="team-social">
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                                <a href=""><i class="fab fa-facebook-f"></i></a>
+                                <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="service-item">
-
-                        <h3>Pemesanan Kamar Kost Melalui Online</h3>
-                        <p>Anda bisa memesan kamar kos secara online sehingga anda tidak perlu mendatanginya</p>
+                    <div class="team-item">
+                        <div class="team-img">
+                            <img src="img/team-2.jpg" alt="Team Image">
+                        </div>
+                        <div class="team-text">
+                            <h2>Ajisaka Siddiq</h2>
+                            <p>Admin</p>
+                            <div class="team-social">
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                                <a href=""><i class="fab fa-facebook-f"></i></a>
+                                <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="service-item">
-
-                        <h3>Pembayaran E-WALLET</h3>
-                        <p>Nah untuk pembayaran anda bisa melalui E-wallet (ovo, gopay,dll).</p>
+                    <div class="team-item">
+                        <div class="team-img">
+                            <img src="img/team-3.jpg" alt="Team Image">
+                        </div>
+                        <div class="team-text">
+                            <h2>Elli Roffiah</h2>
+                            <p>Admin</p>
+                            <div class="team-social">
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                                <a href=""><i class="fab fa-facebook-f"></i></a>
+                                <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="service-item">
-
-                        <h3>Membuka Jasa Promosi Kost</h3>
-                        <p>Untuk bapak/ibu yang mempuyai usaha kos kosan anda bisa mendaftarkan usaha bapak ibu di website kami, karna itu bisa memudahkan pekerjaan bapak/ibu.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- Service End -->
-
-
-    <!-- Testimonial Start -->
-    <div class="testimonial">
-        <div class="container">
-            <div class="section-header text-center">
-                <p>Testimonial</p>
-                <h2>What our clients say</h2>
-            </div>
-            <div class="owl-carousel testimonials-carousel">
-                <div class="testimonial-item">
-                    <img src="img/testimonial-1.jpg" alt="Image">
-                    <div class="testimonial-text">
-                        <h3>Client Name</h3>
-                        <h4>Profession</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor auctor gravid
-                        </p>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <img src="img/testimonial-2.jpg" alt="Image">
-                    <div class="testimonial-text">
-                        <h3>Client Name</h3>
-                        <h4>Profession</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor auctor gravid
-                        </p>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <img src="img/testimonial-3.jpg" alt="Image">
-                    <div class="testimonial-text">
-                        <h3>Client Name</h3>
-                        <h4>Profession</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor auctor gravid
-                        </p>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <img src="img/testimonial-4.jpg" alt="Image">
-                    <div class="testimonial-text">
-                        <h3>Client Name</h3>
-                        <h4>Profession</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor auctor gravid
-                        </p>
+                    <div class="team-item">
+                        <div class="team-img">
+                            <img src="img/team-4.jpg" alt="Team Image">
+                        </div>
+                        <div class="team-text">
+                            <h2>M Zidan Prasetyo</h2>
+                            <p>Admin</p>
+                            <div class="team-social">
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                                <a href=""><i class="fab fa-facebook-f"></i></a>
+                                <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Testimonial End -->
+    <!-- Team End -->
 
 
     <!-- Footer Start -->

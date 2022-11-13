@@ -22,7 +22,9 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -77,16 +79,17 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="about.html" class="nav-item nav-link">Tentang Kami</a>
-                        <a href="service.html" class="nav-item nav-link">Pelayanan</a>
-                        <a href="price.html" class="nav-item nav-link active">Pemesanan</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="index.php" class="nav-item nav-link ">Home</a>
+                        <a href="about.php" class="nav-item nav-link">Tentang Kami</a>
+                        <a href="service.php" class="nav-item nav-link">Pelayanan</a>
+                        <a href="order.php" class="nav-item nav-link active">Pemesanan</a>
+                        <a href="contact.php" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="ml-auto">
-                        <a href="login.html" class="btn-regis ">Register</a>
-                        <a class="btn btn-custom" href="login.html">Login</a>
+                        <a href="register.php" class="btn-regis ">Register</a>
+                        <a href="login.php" class="btn btn-custom">Login</a>
                     </div>
+
                 </div>
             </nav>
         </div>
@@ -94,77 +97,71 @@
     <!-- Nav Bar End -->
 
 
-    <!-- Page Header Start -->
-    <div class="page-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h2>Pemesanan</h2>
-                </div>
-                <div class="col-12">
-                    <a href="">Harga dan Keterangan</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Page Header End -->
-
-
-    <!-- Price Start -->
-    <div class="price">
-        <div class="container">
-            <div class="section-header text-center">
-                <p>Kos Kosan</p>
-                <h2>Pilih Kos Sesuai Keinginan Anda</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="price-item">
-                        <div class="price-header">
-                            <h3>Bara Kost</h3>
-                            <h2><span>$</span><strong>25</strong><span>.99</span></h2>
-                        </div>
-                        <div class="price-body">
-                            <ul>
-                                <li><i class="far fa-check-circle"></i>Seats Washing</li>
-                                <li><i class="far fa-check-circle"></i>Vacuum Cleaning</li>
-                                <li><i class="far fa-check-circle"></i>Exterior Cleaning</li>
-                                <li><i class="far fa-times-circle"></i>Interior Wet Cleaning</li>
-                                <li><i class="far fa-times-circle"></i>Window Wiping</li>
-                            </ul>
-                        </div>
-                        <div class="price-footer">
-                            <a class="btn btn-custom" href="details.html">Pesan Disini</a>
+    <div class="page-content page-details">
+        <section class="store-gallery mt-5" id="gallery">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8" data-aos="zoom-in">
+                        <transition name="slide-fade" mode="out-in">
+                            <img :key="photos[activePhoto].id" :src="photos[activePhoto].url" class="w-100 main-image" alt="" />
+                        </transition>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="row">
+                            <div class="col-3 col-lg-12 mt-lg-2 mt-lg-2 mt-md-3" v-for="(photo, index) in photos" :key="photo.id" data-aos="zoom-in" data-aos-delay="100">
+                                <a href="#" @click="changeActive(index)">
+                                    <img :src="photo.url" class="w-100 thumbnail-image" :class="{ active: index == activePhoto }" alt="" />
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="price-item featured-item">
-                        <div class="price-header">
-                            <h3>Kost Sakinah</h3>
-                            <h2><span>$</span><strong>35</strong><span>.99</span></h2>
-                        </div>
-                        <div class="price-body">
-                            <ul>
-                                <li><i class="far fa-check-circle"></i>Seats Washing</li>
-                                <li><i class="far fa-check-circle"></i>Vacuum Cleaning</li>
-                                <li><i class="far fa-check-circle"></i>Exterior Cleaning</li>
-                                <li><i class="far fa-check-circle"></i>Interior Wet Cleaning</li>
-                                <li><i class="far fa-times-circle"></i>Window Wiping</li>
-                            </ul>
-                        </div>
-                        <div class="price-footer">
-                            <a class="btn btn-custom" href="details.html">Pesan Disini</a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+        </section>
+        <div class="store-details-container" data-aos="fade-up">
+            <section class="store-heading">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h1 class="kost-name">Bara Kost</h1>
+                            <p class="kost-owner">By Dayat</p>
+                            <p class="kost-price">Rp.350.000</p>
+
+                            <!-- <div class="owner">By Dayat</div>
+                            <div class="price">Rp.350.000</div> -->
+                        </div>
+                        <div class="col-lg-2" data-aos="zoom-in">
+                            <a class="btn btn-custom px-4 btn-block mb-3" href="/cart.html">Sewa</a
+                  >
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="store-description">
+            <div class="container">
+              <div class="row">
+                <div class="col-12 col-lg-8">
+                  <p>
+                    The Nike Air Max 720 SE goes bigger than ever before with
+                    Nike's tallest Air unit yet for unimaginable, all-day comfort.
+                    There's super breathable fabrics on the upper, while colours
+                    add a modern edge.
+                  </p>
+                  <p>
+                    Bring the past into the future with the Nike Air Max 2090, a
+                    bold look inspired by the DNA of the iconic Air Max 90.
+                    Brand-new Nike Air cushioning underfoot adds unparalleled
+                    comfort while transparent mesh and vibrantly coloured details
+                    on the upper are blended with timeless OG features for an
+                    edgy, modernised look.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
-    </div>
-    <!-- Price End -->
-
-
+      </div>
+  
     <!-- Footer Start -->
     <div class="footer">
         <div class="container">
@@ -213,13 +210,14 @@
                         </form>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container copyright">
-            <p>&copy; <a href="index.html">J'Kost</a>, All Right Reserved.</p>
         </div>
     </div>
+    <div class="container copyright">
+        <p>&copy; <a href="index.html">J'Kost</a>, All Right Reserved.</p>
+    </div>
+    </div>
     <!-- Footer End -->
+
     <!-- Back to top button -->
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
@@ -242,6 +240,40 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/vue/vue.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+        var gallery = new Vue({
+            el: "#gallery",
+            mounted() {
+                AOS.init();
+            },
+            data: {
+                activePhoto: 3,
+                photos: [{
+                    id: 1,
+                    url: "/img/product-details-1.jpg",
+                }, {
+                    id: 2,
+                    url: "/img/product-details-2.jpg",
+                }, {
+                    id: 3,
+                    url: "/img/product-details-3.jpg",
+                }, {
+                    id: 4,
+                    url: "/img/product-details-4.jpg",
+                }, ],
+            },
+            methods: {
+                changeActive(id) {
+                    this.activePhoto = id;
+                },
+            },
+        });
+    </script>
 </body>
 
 </html>
