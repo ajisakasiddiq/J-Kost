@@ -1,3 +1,11 @@
+<?php 
+
+require("koneksi.php");
+session_start();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,9 +92,27 @@
                         <a href="contact.php" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="ml-auto">
+                        <?php if(isset($_SESSION['id_user']) ){ ?>
+                            <ul class="navbar-nav d-lg-flex">
+                            <li class="nav-item dropdown">
+                                <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
+                                    Hi, Ajisaka
+                                    <img src="img/team-2.jpg" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
+                                </a>
+                                <div class="dropdown-menu bg-dark">
+                                    <a href="index.html" class="dropdown-item text-danger">Dashboard</a>
+                                    <a href="index.html" class="dropdown-item text-danger">Setting</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="logout.php" class="dropdown-item text-danger">Logout</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <?php }elseif(!isset($_SESSION['id_user'])) {?>
                         <a href="register.php" class="btn-regis ">Register</a>
                         <a href="login.php" class="btn btn-custom">Login</a>
+                        <?php } ?>
                     </div>
+
 
                 </div>
             </nav>

@@ -2,7 +2,9 @@
 require('koneksi.php');
 
 session_start();
-
+if(isset($_SESSION['id_user'])){
+    header('Location: index.php');
+}
 if (isset($_POST['submit'])) {
     $email = $_POST['txt_email'];
     $pass = $_POST['txt_pass'];
@@ -14,6 +16,7 @@ if (isset($_POST['submit'])) {
 
         while ($row = mysqli_fetch_array($result)) {
             $id = $row['id_user'];
+            $name = $row['nama'];
             $userVal = $row['email'];
             $passVal = $row['password'];
             $userName = $row['username'];

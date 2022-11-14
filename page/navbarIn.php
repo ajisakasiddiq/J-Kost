@@ -89,13 +89,11 @@
                         <a href="contact.html" class="nav-item nav-link active">Contact</a>
                     </div>
                     <div class="ml-auto">
-                        <!-- <a href="login.html" class="btn-regis ">Register</a>
-                        <a href="login.html" class="btn btn-custom">Login</a> -->
-                        <ul class="navbar-nav d-none d-lg-flex">
+                        <ul class="navbar-nav d-lg-flex">
                             <li class="nav-item dropdown">
                                 <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
-                                    <img src="../img/team-2.jpg" alt="" class="rounded-circle m-lg-0 profile-picture " height="50px">
                                     Hi, Ajisaka
+                                    <img src="../img/team-2.jpg" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
                                 </a>
                                 <div class="dropdown-menu bg-dark">
                                     <a href="../index.html" class="dropdown-item text-danger">Dashboard</a>
