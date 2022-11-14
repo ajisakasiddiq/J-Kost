@@ -23,6 +23,12 @@
 
     <!-- Template Stylesheet -->
     <link href="../css/style.css" rel="stylesheet">
+    <style>
+        .profile-picture{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -85,8 +91,20 @@
                     <div class="ml-auto">
                         <!-- <a href="login.html" class="btn-regis ">Register</a>
                         <a href="login.html" class="btn btn-custom">Login</a> -->
-                        <a class="btn btn-custom" href="">Sudah Login</a>
-                        <a class="btn btn-custom" href="">Logout</a>
+                        <ul class="navbar-nav d-none d-lg-flex">
+                            <li class="nav-item dropdown">
+                                <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
+                                    <img src="../img/team-2.jpg" alt="" class="rounded-circle m-lg-0 profile-picture " height="50px">
+                                    Hi, Ajisaka
+                                </a>
+                                <div class="dropdown-menu bg-dark">
+                                    <a href="../index.html" class="dropdown-item text-danger">Dashboard</a>
+                                    <a href="../index.html" class="dropdown-item text-danger">Setting</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="../logout.php" class="dropdown-item text-danger">Logout</a>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>

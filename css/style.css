@@ -2170,3 +2170,7 @@ a:focus {
     padding: 0;
     size: 60px;
 }
+
+.profile-picture {
+    max-height: 40px;
+}
