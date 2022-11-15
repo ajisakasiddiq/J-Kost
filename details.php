@@ -279,16 +279,16 @@ session_start();
                 activePhoto: 3,
                 photos: [{
                     id: 1,
-                    url: "/img/product-details-1.jpg",
+                    url: "img/product-details-1.jpg",
                 }, {
                     id: 2,
-                    url: "/img/product-details-2.jpg",
+                    url: "img/product-details-2.jpg",
                 }, {
                     id: 3,
-                    url: "/img/product-details-3.jpg",
+                    url: "img/product-details-3.jpg",
                 }, {
                     id: 4,
-                    url: "/img/product-details-4.jpg",
+                    url: "img/product-details-4.jpg",
                 }, ],
             },
             methods: {
