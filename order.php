@@ -143,7 +143,7 @@ session_start();
                 <p>Kos Kosan</p>
                 <h2>Pilih Kos Sesuai Keinginan Anda</h2>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-4">
                     <div class="price-item">
                         <div class="price-header">
@@ -185,6 +185,90 @@ session_start();
                     </div>
                 </div>
 
+            </div> -->
+
+
+            <div class="row">
+                <div class="col-lg-3 mb-3">
+                    <div class="card">
+                        <img src="img/product-details-1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Bara Kost</p>
+                            <p>By Bara kost</p>
+                            <p><span class="Price-kost">Rp. 500.000</span>/ Bulan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <div class="card">
+                        <img src="img/product-details-1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Bara Kost</p>
+                            <p>By Bara kost</p>
+                            <p><span class="Price-kost">Rp. 500.000</span>/ Bulan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <div class="card">
+                        <img src="img/product-details-1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Bara Kost</p>
+                            <p>By Bara kost</p>
+                            <p><span class="Price-kost">Rp. 500.000</span>/ Bulan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <div class="card">
+                        <img src="img/product-details-1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Bara Kost</p>
+                            <p>By Bara kost</p>
+                            <p><span class="Price-kost">Rp. 500.000</span>/ Bulan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <div class="card">
+                        <img src="img/product-details-1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Bara Kost</p>
+                            <p>By Bara kost</p>
+                            <p><span class="Price-kost">Rp. 500.000</span>/ Bulan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <div class="card">
+                        <img src="img/product-details-2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <p class="card-text">Bara Kost</p>
+                            <p>By Bara kost</p>
+                            <p><span class="Price-kost">Rp. 500.000</span>/ Bulan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <div class="card">
+                        <img src="img/product-details-3.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <p class="card-text">Bara Kost</p>
+                            <p>By Bara kost</p>
+                            <p><span class="Price-kost">Rp. 500.000</span>/ Bulan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <div class="card">
+                        <img src="img/product-details-3.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <p class="card-text">Bara Kost</p>
+                            <p>By Bara kost</p>
+                            <p><span class="Price-kost">Rp. 500.000</span>/ Bulan</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
