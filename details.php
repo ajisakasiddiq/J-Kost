@@ -149,7 +149,7 @@ session_start();
                         <div class="col-lg-8">
                             <h1 class="kost-name">Bara Kost</h1>
                             <p class="kost-owner">By Dayat</p>
-                            <p class="kost-price">Rp.350.000</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
 
                             <!-- <div class="owner">By Dayat</div>
                             <div class="price">Rp.350.000</div> -->
@@ -179,6 +179,7 @@ session_start();
                     on the upper are blended with timeless OG features for an
                     edgy, modernised look.
                   </p>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.42355736385!2d113.72099831436081!3d-8.160010184012863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695b617d8f623%3A0xf6c4437632474338!2sPoliteknik%20Negeri%20Jember!5e0!3m2!1sid!2sid!4v1668518560066!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
               </div>
             </div>
@@ -279,16 +280,16 @@ session_start();
                 activePhoto: 3,
                 photos: [{
                     id: 1,
-                    url: "/img/product-details-1.jpg",
+                    url: "img/product-details-1.jpg",
                 }, {
                     id: 2,
-                    url: "/img/product-details-2.jpg",
+                    url: "img/product-details-2.jpg",
                 }, {
                     id: 3,
-                    url: "/img/product-details-3.jpg",
+                    url: "img/product-details-3.jpg",
                 }, {
                     id: 4,
-                    url: "/img/product-details-4.jpg",
+                    url: "img/product-details-4.jpg",
                 }, ],
             },
             methods: {

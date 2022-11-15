@@ -3,7 +3,7 @@ require("koneksi.php");
 
 session_start();
 
-if (isset($_SESSION['id_user'])) {
+if (!isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
    // header('Location: login.php');
 }
@@ -112,8 +112,8 @@ $sesLvl = $_SESSION['level'];
                                     <img src="img/team-2.jpg" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
                                 </a>
                                 <div class="dropdown-menu bg-dark">
-                                    <a href="index.html" class="dropdown-item text-danger">Dashboard</a>
-                                    <a href="index.html" class="dropdown-item text-danger">Setting</a>
+                                    <a href="dashboard.html" class="dropdown-item text-danger">Dashboard</a>
+                                    <a href="dashboard.html" class="dropdown-item text-danger">Setting</a>
                                     <div class="dropdown-divider"></div>
                                     <a href="logout.php" class="dropdown-item text-danger">Logout</a>
                                 </div>

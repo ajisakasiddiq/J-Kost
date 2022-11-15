@@ -143,7 +143,7 @@ session_start();
                 <p>Kos Kosan</p>
                 <h2>Pilih Kos Sesuai Keinginan Anda</h2>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-4">
                     <div class="price-item">
                         <div class="price-header">
@@ -183,6 +183,107 @@ session_start();
                             <a class="btn btn-custom" href="details.html">Pesan Disini</a>
                         </div>
                     </div>
+                </div>
+
+            </div> -->
+
+
+            <div class="row">
+                <div class="col-lg-3 mb-3">
+                    <a href="details.php">
+                    <div class="card">
+                        <img src="img/product-details-1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-text">Bara Kost</h3>
+                            <p>By Bara kost</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <a href="details.php">
+                    <div class="card">
+                        <img src="img/product-details-2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-text">Bara Kost</h3>
+                            <p>By Bara kost</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <a href="details.php">
+                    <div class="card">
+                        <img src="img/product-details-3.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-text">Bara Kost</h3>
+                            <p>By Bara kost</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <a href="details.php">
+                    <div class="card">
+                        <img src="img/product-details-4.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-text">Bara Kost</h3>
+                            <p>By Bara kost</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <a href="details.php">
+                    <div class="card">
+                        <img src="img/product-details-1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-text">Bara Kost</h3>
+                            <p>By Bara kost</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <a href="details.php">
+                    <div class="card">
+                        <img src="img/product-details-2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-text">Bara Kost</h3>
+                            <p>By Bara kost</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <a href="details.php">
+                    <div class="card">
+                        <img src="img/product-details-3.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-text">Bara Kost</h3>
+                            <p>By Bara kost</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <a href="details.php">
+                    <div class="card">
+                        <img src="img/product-details-4.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-text">Bara Kost</h3>
+                            <p>By Bara kost</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                        </div>
+                    </div>
+                    </a>
                 </div>
 
             </div>
