@@ -21,7 +21,7 @@
       <!-- responsive css -->
       <link rel="stylesheet" href="css/responsive.css" />
       <!-- color css -->
-      <link rel="stylesheet" href="css/color_2.css" />
+      <link rel="stylesheet" href="css/colors.css" />
       <!-- select bootstrap -->
       <link rel="stylesheet" href="css/bootstrap-select.css" />
       <!-- scrollbar css -->
@@ -33,7 +33,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
    </head>
-   <body class="dashboard dashboard_2">
+   <body class="dashboard dashboard_1">
       <div class="full_container">
          <div class="inner_container">
             <!-- Sidebar  -->
@@ -125,7 +125,7 @@
                      <div class="full">
                         <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
                         <div class="logo_section">
-                           <a href="index.html"><img class="img-responsive" src="images/logo/logo_black.png" alt="#" /></a>
+                           <a href="index.html"><img class="img-responsive" src="images/logo/logo.png" alt="#" /></a>
                         </div>
                         <div class="right_topbar">
                            <div class="icon_info">
@@ -163,10 +163,10 @@
                      </div>
                      <div class="row column1">
                         <div class="col-md-6 col-lg-3">
-                           <div class="full counter_section margin_bottom_30 yellow_bg">
+                           <div class="full counter_section margin_bottom_30">
                               <div class="couter_icon">
                                  <div> 
-                                    <i class="fa fa-user"></i>
+                                    <i class="fa fa-user yellow_color"></i>
                                  </div>
                               </div>
                               <div class="counter_no">
@@ -178,10 +178,10 @@
                            </div>
                         </div>
                         <div class="col-md-6 col-lg-3">
-                           <div class="full counter_section margin_bottom_30 blue1_bg">
+                           <div class="full counter_section margin_bottom_30">
                               <div class="couter_icon">
                                  <div> 
-                                    <i class="fa fa-clock-o"></i>
+                                    <i class="fa fa-clock-o blue1_color"></i>
                                  </div>
                               </div>
                               <div class="counter_no">
@@ -193,10 +193,10 @@
                            </div>
                         </div>
                         <div class="col-md-6 col-lg-3">
-                           <div class="full counter_section margin_bottom_30 green_bg">
+                           <div class="full counter_section margin_bottom_30">
                               <div class="couter_icon">
                                  <div> 
-                                    <i class="fa fa-cloud-download"></i>
+                                    <i class="fa fa-cloud-download green_color"></i>
                                  </div>
                               </div>
                               <div class="counter_no">
@@ -208,10 +208,10 @@
                            </div>
                         </div>
                         <div class="col-md-6 col-lg-3">
-                           <div class="full counter_section margin_bottom_30 red_bg">
+                           <div class="full counter_section margin_bottom_30">
                               <div class="couter_icon">
                                  <div> 
-                                    <i class="fa fa-comments-o"></i>
+                                    <i class="fa fa-comments-o red_color"></i>
                                  </div>
                               </div>
                               <div class="counter_no">
@@ -315,14 +315,7 @@
                                     <div class="col-md-12">
                                        <div class="content">
                                           <div class="area_chart">
-                                             <div class="row">
-                                                <div class="col-md-6">
-                                                   <canvas id="chart-2"></canvas>
-                                                </div>
-                                                <div class="col-md-6">
-                                                   <canvas id="chart-1"></canvas>
-                                                </div>
-                                             </div>
+                                             <canvas height="120" id="canvas"></canvas>
                                           </div>
                                        </div>
                                     </div>
@@ -426,7 +419,7 @@
                         <!-- end progress bar -->
                      </div>
                      <div class="row column4 graph">
-                        <div class="col-md-6">
+                        <div class="col-md-6 margin_bottom_30">
                            <div class="dash_blog">
                               <div class="dash_blog_inner">
                                  <div class="dash_head">
@@ -464,7 +457,7 @@
                                        <li>
                                           <span><img src="images/layout_img/msg2.png" class="img-responsive" alt="#" /></span>
                                           <span>
-                                          <span class="name_user">John Smith</span>
+                                          <span class="name_user">Herman Beck</span>
                                           <span class="msg_user">Sed ut perspiciatis unde omnis.</span>
                                           <span class="time_ago">12 min ago</span>
                                           </span>
@@ -538,6 +531,6 @@
       </script>
       <!-- custom js -->
       <script src="js/custom.js"></script>
-      <script src="js/chart_custom_style2.js"></script>
+      <script src="js/chart_custom_style1.js"></script>
    </body>
 </html>
