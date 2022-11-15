@@ -195,7 +195,7 @@ session_start();
                         <div class="card-body">
                             <p class="card-text">Bara Kost</p>
                             <p>By Bara kost</p>
-                            <p><span class="Price-kost">Rp. 500.000</span>/ Bulan</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
                         </div>
                     </div>
                 </div>
@@ -205,7 +205,7 @@ session_start();
                         <div class="card-body">
                             <p class="card-text">Bara Kost</p>
                             <p>By Bara kost</p>
-                            <p><span class="Price-kost">Rp. 500.000</span>/ Bulan</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
                         </div>
                     </div>
                 </div>
@@ -215,7 +215,7 @@ session_start();
                         <div class="card-body">
                             <p class="card-text">Bara Kost</p>
                             <p>By Bara kost</p>
-                            <p><span class="Price-kost">Rp. 500.000</span>/ Bulan</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
                         </div>
                     </div>
                 </div>
@@ -225,7 +225,7 @@ session_start();
                         <div class="card-body">
                             <p class="card-text">Bara Kost</p>
                             <p>By Bara kost</p>
-                            <p><span class="Price-kost">Rp. 500.000</span>/ Bulan</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
                         </div>
                     </div>
                 </div>
@@ -245,7 +245,7 @@ session_start();
                         <div class="card-body">
                         <p class="card-text">Bara Kost</p>
                             <p>By Bara kost</p>
-                            <p><span class="Price-kost">Rp. 500.000</span>/ Bulan</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
                         </div>
                     </div>
                 </div>
@@ -255,7 +255,7 @@ session_start();
                         <div class="card-body">
                         <p class="card-text">Bara Kost</p>
                             <p>By Bara kost</p>
-                            <p><span class="Price-kost">Rp. 500.000</span>/ Bulan</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
                         </div>
                     </div>
                 </div>
@@ -265,7 +265,7 @@ session_start();
                         <div class="card-body">
                         <p class="card-text">Bara Kost</p>
                             <p>By Bara kost</p>
-                            <p><span class="Price-kost">Rp. 500.000</span>/ Bulan</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
                         </div>
                     </div>
                 </div>
