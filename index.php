@@ -3,16 +3,16 @@ require("koneksi.php");
 
 session_start();
 
-if (!isset($_SESSION['id_user'])) {
-    $_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
+if (isset($_SESSION['id_user'])) {
+    //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
    // header('Location: login.php');
 }
 
 // error undifine index
-
 $sesID = $_SESSION['id_user'];
 $sesName = $_SESSION['username'];
 $sesLvl = $_SESSION['level'];
+
 ?>
 
 
@@ -108,7 +108,7 @@ $sesLvl = $_SESSION['level'];
                             <ul class="navbar-nav d-lg-flex">
                             <li class="nav-item dropdown">
                                 <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
-                                    Hi, Ajisaka
+                                    Hi, <?php echo $sesName; ?>
                                     <img src="img/team-2.jpg" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
                                 </a>
                                 <div class="dropdown-menu bg-dark">
@@ -119,9 +119,11 @@ $sesLvl = $_SESSION['level'];
                                 </div>
                             </li>
                         </ul>
-                        <?php }elseif(!isset($_SESSION['id_user'])) {?>
+                        <?php 
+                    }elseif(!isset($_SESSION['id_user'])) {?>
                         <a href="register.php" class="btn-regis ">Register</a>
                         <a href="login.php" class="btn btn-custom">Login</a>
+                       
                         <?php } ?>
                     </div>
 
