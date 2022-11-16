@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>J-KOST</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -31,6 +30,8 @@
     <link rel="stylesheet" href="css/custom.css" />
     <!-- calendar file css -->
     <link rel="stylesheet" href="js/semantic.min.css" />
+    <!-- fancy box js -->
+    <link rel="stylesheet" href="css/jquery.fancybox.css" />
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
     <!--[if lt IE 9]>
@@ -39,7 +40,7 @@
       <![endif]-->
 </head>
 
-<body class="inner_page widgets">
+<body class="inner_page tables_page">
     <div class="full_container">
         <div class="inner_container">
             <!-- Sidebar  -->
@@ -62,16 +63,16 @@
                     </div>
                 </div>
                 <div class="sidebar_blog_2">
-                                      <h4>General</h4>
-                  <ul class="list-unstyled components">
-                     <li class="active">
-                        <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-dashboard yellow_color"></i> <span>Home</span></a>
-                        <ul class="collapse list-unstyled" id="dashboard">
-                           <li>
-                              <a href="dashboard.html">> <span>Default Dashboard</span></a>
-                           </li>
+                    <h4>General</h4>
+                    <ul class="list-unstyled components">
+                        <li class="active">
+                            <a href="#dashboard" data-toggle="collapse" aria-expanded="false"><i class="fa fa-dashboard yellow_color"></i> <span>Home</span></a>
+                            <ul class="collapse list-unstyled" id="dashboard">
+                                <li>
+                                    <a href="dashboard.html">> <span>Default Dashboard</span></a>
 
-                </ul>
+                                </li>
+                            </ul>
                         </li>
                         <li><a href="widgets.html"><i class="fa fa-clock-o orange_color"></i> <span>Profile Admin</span></a></li>
                         <li><a href="Transaksi.html"><i class="fa fa-table purple_color2"></i> <span>Transaksi</span></a></li>
@@ -79,10 +80,9 @@
                             <a href="contact.html">
                                 <i class="fa fa-paper-plane red_color"></i> <span>Data Rumah Kost</span></a>
                         </li>
+                            </ul>
+                        </li>
 
-                    </ul>
-                    </li>
-                    </ul>
                 </div>
             </nav>
             <!-- end sidebar -->
@@ -98,19 +98,18 @@
                             </div>
                             <div class="right_topbar">
                                 <div class="icon_info">
-                                    <ul>
 
-                                        <ul class="user_profile_dd">
-                                            <li>
-                                                <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/kirana.jpeg" alt="#" /><span class="name_user">Kirana Ramadhanti</span></a>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="profile.html">My Profile</a>
-                                                    <a class="dropdown-item" href="settings.html">Settings</a>
-                                                    <a class="dropdown-item" href="help.html">Help</a>
-                                                    <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                    <ul class="user_profile_dd">
+                                        <li>
+                                            <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/kirana.jpeg" alt="#" /><span class="name_user">Kirana Ramadhanti</span></a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="profile.html">My Profile</a>
+                                                <a class="dropdown-item" href="settings.html">Settings</a>
+                                                <a class="dropdown-item" href="help.html">Help</a>
+                                                <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -123,90 +122,61 @@
                         <div class="row column_title">
                             <div class="col-md-12">
                                 <div class="page_title">
-                                    <h2>Profile Admin</h2>
+                                    <h2>Tambahkan Kost</h2>
                                 </div>
                             </div>
                         </div>
                         <!-- row -->
-                        <div class="row column1">
-                            <div class="col-md-6 col-lg-4">
-                                <div class="full white_shd margin_bottom_30">
-                                    <div class="info_people">
-                                        <div class="p_info_img">
-                                            <img src="img/msg3.png" alt="#" />
+                        <div class="row">
+                            <!-- table section -->
+                            <div class="col-md-6">
+                                <div class="white_shd full margin_bottom_30">
+                                    <div class="full graph_head">
+                                        <div class="heading1 margin_0">
+                                            <h2>Kost baru</h2>
                                         </div>
-                                        <div class="user_info_cont">
-                                            <h4>Ajisaka Siddiq</h4>
-                                            <p>ajisaka@gmail.com</p>
-                                            <p class="p_status">Programmer</p>
+                                    </div>
+                                    <div class="table_section padding_infor_info">
+                                        <div class="table-responsive-sm">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nama Kost</th>
+                                                        <th>Jenis Kost</th>
+                                                        <th>Nama Pemilik</th>
+                                                        <th>Lokasi</th>
+                                                        <th>Jumlah kamar</th>
+                                                        <th>Foto</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>John</td>
+                                                        <td>Doe</td>
+                                                        <td>john@example.com</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Mary</td>
+                                                        <td>Moe</td>
+                                                        <td>mary@example.com</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>July</td>
+                                                        <td>Dooley</td>
+                                                        <td>july@example.com</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Mary</td>
+                                                        <td>Moe</td>
+                                                        <td>mary@example.com</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="full white_shd margin_bottom_30">
-                                    <div class="info_people">
-                                        <div class="p_info_img">
-                                            <img src="img/msg2.png" alt="#" />
-                                        </div>
-                                        <div class="user_info_cont">
-                                            <h4>M.Zidan Prasetyo</h4>
-                                            <p>zidan@gmail.com</p>
-                                            <p class="p_status">UI & UX</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="full white_shd margin_bottom_30">
-                                    <div class="info_people">
-                                        <div class="p_info_img">
-                                            <img src="img/kirana.jpeg" alt="#" />
-                                        </div>
-                                        <div class="user_info_cont">
-                                            <h4>Kirana Ramadhanti</h4>
-                                            <p>kirana@gmail.com</p>
-                                            <p class="p_status">UI & UX</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="full white_shd margin_bottom_30">
-                                <div class="info_people">
-                                    <div class="p_info_img">
-                                        <img src="img/msg1.png" alt="#" />
-                                    </div>
-                                    <div class="user_info_cont">
-                                        <h4>Elli Roffiah</h4>
-                                        <p>elliroffiah@gmail.com</p>
-                                        <p class="p_status">Data Analys</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- end row -->
-                          </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <!-- footer -->
-    <div class="container-fluid">
-        <div class="footer">
-            <p>Copyright © 2022 <br><br>
-                Distributed By: <a href="https://themewagon.com/">Team Ruwett</a>
-        </div>
-    </div>
-    </div>
-    <!-- end dashboard inner -->
-    </div>
-    </div>
-    </div>
-    <!-- jQuery -->
+                          <!-- jQuery -->
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -226,11 +196,13 @@
     <script>
         var ps = new PerfectScrollbar('#sidebar');
     </script>
+    <!-- fancy box js -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
     <!-- calendar file css -->
     <script src="js/semantic.min.js"></script>
-    <script></script>
 </body>
 
 </html>
