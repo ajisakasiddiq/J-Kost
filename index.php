@@ -39,6 +39,7 @@ $sesLvl = $_SESSION['level'];
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
@@ -209,28 +210,28 @@ $sesLvl = $_SESSION['level'];
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="service-item">
-
+                    <i class="fa-solid fa-people-roof text-center"></i>
                         <h3>Konsultasi Tentang Kost</h3>
                         <p>Anda bisa menanyakan hal tentang seputar kost </p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="service-item">
-
+                    <i class="fa-solid fa-hotel text-center"></i>
                         <h3>Pemesanan Kamar Kost Melalui Online</h3>
                         <p>Anda bisa memesan kamar kos secara online sehingga anda tidak perlu mendatanginya</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="service-item">
-
+                    <i class="fa-solid fa-money-bill-1-wave text-center"></i>
                         <h3>Pembayaran E-WALLET</h3>
                         <p>Nah untuk pembayaran anda bisa melalui E-wallet (ovo, gopay,dll).</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="service-item">
-
+                    <i class="fa-solid fa-shop text-center"></i>
                         <h3>Membuka Jasa Promosi Kost</h3>
                         <p>Untuk bapak/ibu yang mempuyai usaha kos kosan anda bisa mendaftarkan usaha bapak ibu di website kami, karna itu bisa memudahkan pekerjaan bapak/ibu.</p>
                     </div>
