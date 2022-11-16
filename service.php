@@ -1,6 +1,17 @@
-<?php 
+<?php
 require("koneksi.php");
+
 session_start();
+
+if (isset($_SESSION['id_user'])) {
+    //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
+   // header('Location: login.php');
+   $sesID = $_SESSION['id_user'];
+$sesName = $_SESSION['username'];
+$sesLvl = $_SESSION['level'];
+
+}
+
 
 ?>
 
@@ -26,6 +37,7 @@ session_start();
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
@@ -94,20 +106,22 @@ session_start();
                             <ul class="navbar-nav d-lg-flex">
                             <li class="nav-item dropdown">
                                 <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
-                                    Hi, Ajisaka
+                                    Hi, <?php echo $sesName; ?>
                                     <img src="img/team-2.jpg" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
                                 </a>
                                 <div class="dropdown-menu bg-dark">
-                                    <a href="index.html" class="dropdown-item text-danger">Dashboard</a>
-                                    <a href="index.html" class="dropdown-item text-danger">Setting</a>
+                                    <a href="dashboard.html" class="dropdown-item text-danger">Dashboard</a>
+                                    <a href="dashboard.html" class="dropdown-item text-danger">Setting</a>
                                     <div class="dropdown-divider"></div>
                                     <a href="logout.php" class="dropdown-item text-danger">Logout</a>
                                 </div>
                             </li>
                         </ul>
-                        <?php }elseif(!isset($_SESSION['id_user'])) {?>
+                        <?php 
+                    }elseif(!isset($_SESSION['id_user'])) {?>
                         <a href="register.php" class="btn-regis ">Register</a>
                         <a href="login.php" class="btn btn-custom">Login</a>
+                       
                         <?php } ?>
                     </div>
 
@@ -147,28 +161,28 @@ session_start();
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="service-item">
-
+                    <i class="fa-solid fa-people-roof text-center"></i>
                         <h3>Konsultasi Tentang Kost</h3>
                         <p>Anda bisa menanyakan hal tentang seputar kost </p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="service-item">
-
+                    <i class="fa-solid fa-hotel text-center"></i>
                         <h3>Pemesanan Kamar Kost Melalui Online</h3>
                         <p>Anda bisa memesan kamar kos secara online sehingga anda tidak perlu mendatanginya</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="service-item">
-
+                    <i class="fa-solid fa-money-bill-1-wave text-center"></i>
                         <h3>Pembayaran E-WALLET</h3>
                         <p>Nah untuk pembayaran anda bisa melalui E-wallet (ovo, gopay,dll).</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="service-item">
-
+                    <i class="fa-solid fa-shop text-center"></i>
                         <h3>Membuka Jasa Promosi Kost</h3>
                         <p>Untuk bapak/ibu yang mempuyai usaha kos kosan anda bisa mendaftarkan usaha bapak ibu di website kami, karna itu bisa memudahkan pekerjaan bapak/ibu.</p>
                     </div>
