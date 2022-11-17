@@ -2178,3 +2178,7 @@ a:focus {
 .card .card-body .card-text {
     font-size: 15px;
 }
+
+.status {
+    background-color: #39B972;
+}

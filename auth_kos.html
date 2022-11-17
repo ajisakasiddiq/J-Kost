@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
+    <title>J-KOST</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -30,17 +31,20 @@
     <link rel="stylesheet" href="css/custom.css" />
     <!-- calendar file css -->
     <link rel="stylesheet" href="js/semantic.min.css" />
-    <!-- fancy box js -->
-    <link rel="stylesheet" href="css/jquery.fancybox.css" />
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
 </head>
 
-<body class="inner_page tables_page">
+<body class="inner_page map">
     <div class="full_container">
         <div class="inner_container">
             <!-- Sidebar  -->
@@ -83,8 +87,8 @@
                         <li class="active">
                             <a href="#user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-user yellow_color"></i> <span>User</span></a>
                             <ul class="collapse list-unstyled" id="user">
-                                <li><a href="table_penyewa.html">> <span>Penyewa</span></a></li>
-                                <li><a href="table_pemilik.html">> <span>Pemilik</span></a></li>
+                                <li><a href="">> <span>Penyewa</span></a></li>
+                                <li><a href="dashboard.html">> <span>Pemilik</span></a></li>
                             </ul>
                     </ul>
                     </li>
@@ -100,17 +104,17 @@
                         <div class="full">
                             <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
                             <div class="logo_section">
-                                <!-- <a href="index.html"><img class="img-responsive" src="images/logo/logo.png" alt="#" /></a> -->
+                                <a href="index.html"><img class="img-responsive" src="img/logo.png" alt="#" /></a>
                             </div>
                             <div class="right_topbar">
                                 <div class="icon_info">
-
                                     <ul class="user_profile_dd">
                                         <li>
-                                            <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/kirana.jpeg" alt="#" /><span class="name_user">Kirana Ramadhanti</span></a>
+                                            <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/team-2.jpg" alt="#" /><span class="name_user">John David</span></a>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="profile.html">My Profile</a>
                                                 <a class="dropdown-item" href="settings.html">Settings</a>
+                                                <a class="dropdown-item" href="help.html">Help</a>
                                                 <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                                             </div>
                                         </li>
@@ -127,7 +131,7 @@
                         <div class="row column_title">
                             <div class="col-md-12">
                                 <div class="page_title">
-                                    <h2>Transaksi</h2>
+                                    <h2>Validate Kost</h2>
                                 </div>
                             </div>
                         </div>
@@ -135,116 +139,69 @@
                         <div class="row column1">
                             <div class="col-lg-12">
                                 <div class="white_shd full margin_bottom_30">
-                                    <div class="full graph_head">
-                                        <div class="table_section padding_infor_info">
-                                            <!-- table section -->
-                                            <div class="card-body">
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Nama</th>
-                                                                <th>Nama Kost</th>
-                                                                <th>No.kamar</th>
-                                                                <th>Alamat</th>
-                                                                <th>No.Handphone</th>
-                                                                <th>Nominal</th>
-                                                                <th>Bukti Pembayaran</th>
-                                                                <th>Status</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Muhammad Ikbal Mubarok</td>
-                                                                <td>Bara Kost</td>
-                                                                <td>2A</td>
-                                                                <td>Ngawi</td>
-                                                                <td>089765567655</td>
-                                                                <td>Rp 350.000</td>
-                                                                <td>Terupload</td>
-                                                                <td>
-                                                                    <a href="edit.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
-
-                                                                    <a href="#" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                    <div class="col-lg-6 ">
+                                        <div class="p-5">
+                                            <div class="text-center">
+                                                <h1 class="h4 text-gray-900 mb-4">DATA KOST</h1>
                                             </div>
+                                            <form class="user" action="" method="POST">
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="txt_email">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                </div>
+                                                <button type="submit" name="submit" class="btn btn-primary btn-custom btn-block">Simpan</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- end row -->
                         </div>
+                        <!-- footer -->
+                        <div class="container-fluid">
+                            <div class="footer">
+                                <p>Copyright © 2018 Designed by html.design. All rights reserved.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <!-- table section -->
-                <!-- dashboard inner -->
-                <!-- footer -->
-                <div class="container-fluid">
-                    <div class="footer">
-                        <p>Copyright © 2022 Designed by A2.<br><br> Distributed By: Team ruweet</a>
-                        </p>
-                        >>>>>>> 14454d70c24f7399398d75943b9a1e7dfc49505d
-                    </div>
-                </div>
-            </div>
-            <!-- end dashboard inner -->
-        </div>
-    </div>
-    <!-- model popup -->
-    <!-- The Modal -->
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Modal body..
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <!-- end dashboard inner -->
                 </div>
             </div>
         </div>
-    </div>
-    <!-- end model popup -->
-    </div>
-    <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- wow animation -->
-    <script src="js/animate.js"></script>
-    <!-- select country -->
-    <script src="js/bootstrap-select.js"></script>
-    <!-- owl carousel -->
-    <script src="js/owl.carousel.js"></script>
-    <!-- chart js -->
-    <script src="js/Chart.min.js"></script>
-    <script src="js/Chart.bundle.min.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/analyser.js"></script>
-    <!-- nice scrollbar -->
-    <script src="js/perfect-scrollbar.min.js"></script>
-    <script>
-        var ps = new PerfectScrollbar('#sidebar');
-    </script>
-    <!-- fancy box js -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
-    <!-- calendar file css -->
-    <script src="js/semantic.min.js"></script>
+        <!-- jQuery -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <!-- chart js -->
+        <script src="js/Chart.min.js"></script>
+        <script src="js/Chart.bundle.min.js"></script>
+        <script src="js/utils.js"></script>
+        <script src="js/analyser.js"></script>
+        <!-- wow animation -->
+        <script src="js/animate.js"></script>
+        <!-- select country -->
+        <script src="js/bootstrap-select.js"></script>
+        <!-- owl carousel -->
+        <script src="js/owl.carousel.js"></script>
+        <!-- nice scrollbar -->
+        <script src="js/perfect-scrollbar.min.js"></script>
+        <!-- sidebar -->
+        <script>
+            var ps = new PerfectScrollbar('#sidebar');
+        </script>
+        <!-- custom js -->
+        <script src="js/custom.js"></script>
 </body>
 
 </html>
