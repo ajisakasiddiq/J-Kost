@@ -6,9 +6,11 @@ session_start();
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
    // header('Location: login.php');
-   $sesID = $_SESSION['id_user'];
+$sesID = $_SESSION['id_user'];
 $sesName = $_SESSION['username'];
+$name = $_SESSION['nama'];
 $sesLvl = $_SESSION['level'];
+$sesEmail = $_SESSION['email'];
 
 }
 
@@ -106,7 +108,7 @@ $sesLvl = $_SESSION['level'];
                             <ul class="navbar-nav d-lg-flex">
                             <li class="nav-item dropdown">
                                 <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
-                                    Hi, <?php echo $sesName; ?>
+                                    Hi, <?php echo $name; ?>
                                     <img src="img/team-2.jpg" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
                                 </a>
                                 <div class="dropdown-menu bg-dark">
