@@ -182,7 +182,7 @@ $sesEmail = $_SESSION['email'];
                 </div>
                 <div class="col-lg-6">
                     <div class="section-header text-left">
-                        <p>About Us</p>
+                        <p>Tentang Kami</p>
                         <h2>J KOS</h2>
                     </div>
                     <div class="about-content">
@@ -192,8 +192,8 @@ $sesEmail = $_SESSION['email'];
                                 <li><i class="far fa-check-circle"></i>Pembayaran mudah</li>
                                 <li><i class="far fa-check-circle"></i>Kos kosan yang nyaman</li>
                                 <li><i class="far fa-check-circle"></i>Jangkauan yang luas</li>
+                                <li><i class="far fa-check-circle"></i>Harga Terjangkau</li>
                             </ul>
-                            <a class="btn btn-custom" href="">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -353,40 +353,40 @@ $sesEmail = $_SESSION['email'];
                 <div class="testimonial-item">
                     <img src="img/testimonial-1.jpg" alt="Image">
                     <div class="testimonial-text">
-                        <h3>Client Name</h3>
-                        <h4>Profession</h4>
+                        <h3>Antoni Susanto</h3>
+                        <h4>Karyawan Kantor</h4>
                         <p>
-                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor auctor gravid
+                            Pelayanannya sangat baik, dan kos yang disediakan juga terjamin kualitasnya.
                         </p>
                     </div>
                 </div>
                 <div class="testimonial-item">
                     <img src="img/testimonial-2.jpg" alt="Image">
                     <div class="testimonial-text">
-                        <h3>Client Name</h3>
-                        <h4>Profession</h4>
+                        <h3>Selly Rahmawati</h3>
+                        <h4>Mahasiswa</h4>
                         <p>
-                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor auctor gravid
+                            Harga terjangkau, Kualitas bintang 5
                         </p>
                     </div>
                 </div>
                 <div class="testimonial-item">
                     <img src="img/testimonial-3.jpg" alt="Image">
                     <div class="testimonial-text">
-                        <h3>Client Name</h3>
-                        <h4>Profession</h4>
+                        <h3>Rudy Hartono</h3>
+                        <h4>Mahasiswa</h4>
                         <p>
-                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor auctor gravid
+                            Website yang mudah digunakan dan juga menarik
                         </p>
                     </div>
                 </div>
                 <div class="testimonial-item">
                     <img src="img/testimonial-4.jpg" alt="Image">
                     <div class="testimonial-text">
-                        <h3>Client Name</h3>
-                        <h4>Profession</h4>
+                        <h3>Roby Joko Wahyu</h3>
+                        <h4>Mahasiswa</h4>
                         <p>
-                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu metus tortor auctor gravid
+                            Pelayanannya sangat oke
                         </p>
                     </div>
                 </div>
