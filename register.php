@@ -1,14 +1,19 @@
 <?php
 require('koneksi.php');
 if( isset($_POST['register']) ){
-    $userMail = $_POST['txt_email'];
-    $userPass = $_POST['txt_pass'];
+    $Mail = $_POST['txt_email'];
+    $Pass = $_POST['txt_pass'];
     $userName = $_POST['txt_username'];
     $Name = $_POST['txt_nama'];
+    $NIK = $_POST['txt_nik'];
+    $noHp = $_POST['txt_hp'];
+    $Lvl = $_POST['txt_level'];
+    $address = $_POST['txt_alamat'];
 
-    $query = "INSERT INTO user VALUES ('', '$Name','$userMail', '$userName', '$userPass', 2,'')";
+    $query = "INSERT INTO customer VALUES (' ', ' ', ' ', ' ', '$Name', '$NIK', ' $noHp', '$Mail', '$Pass', ' $userName', '$address', ' ', '$Lvl', ' ')";
     $result = mysqli_query($koneksi, $query);
-    header('Location: login.php');
+    // header('Location: login.php');
+    
 }
 ?>
 
@@ -26,7 +31,7 @@ if( isset($_POST['register']) ){
     <title>SB Admin 2 - Register</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -56,9 +61,9 @@ if( isset($_POST['register']) ){
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user" action="register.php" method="POST">
+                            <form class="user" action="" method="post">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampleInputUsername"
+                                    <input type="text" class="form-control form-control-user" id="exampleInputName"
                                         placeholder="Name" name="txt_nama">
                                 </div>
                                 <div class="form-group">
@@ -77,6 +82,7 @@ if( isset($_POST['register']) ){
                                     <input type="text" class="form-control form-control-user" id="exampleInputNIK"
                                         placeholder="NIK" name="txt_nik">
                                 </div>
+
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="exampleInputAddress"
                                         placeholder="Alamat" name="txt_alamat">
@@ -98,6 +104,7 @@ if( isset($_POST['register']) ){
                                             ?>
                                     </select>
                                 </div>
+
                                 <button type="submit" name="register" class="btn btn-primary btn-custom btn-block">Register</button>
                             </form>
                             <hr>
@@ -113,11 +120,11 @@ if( isset($_POST['register']) ){
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
