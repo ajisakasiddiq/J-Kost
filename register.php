@@ -62,7 +62,7 @@ if( isset($_POST['register']) ){
                                         placeholder="Name" name="txt_nama">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="text" class="form-control form-control-user" id="exampleInputEmail"
                                         placeholder="Email Address" name="txt_email">
                                 </div>
                                 <div class="form-group">
@@ -74,15 +74,29 @@ if( isset($_POST['register']) ){
                                         placeholder="Password" name="txt_pass">
                                 </div>
                                 <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                   
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">Pencari Kos</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">Pemilik Kos</label>
-                                    </div>
+                                    <input type="text" class="form-control form-control-user" id="exampleInputNIK"
+                                        placeholder="NIK" name="txt_nik">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="exampleInputAddress"
+                                        placeholder="Alamat" name="txt_alamat">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="exampleInputNoHp"
+                                        placeholder="Nomor Handphone" name="txt_hp">
+                                </div>
+                                <div class="form-group">
+                                    <select placeholder="Pilih Daftar Sebagai" class="form-control  form-select" name="txt_level" id="OptionLevel">
+                                        <option>Daftar sebagai</option>
+                                        <?php 
+                                         $query = "SELECT * FROM level_detail
+                                         WHERE level IN ('Pemilik kos','Pencari Kos');";
+                                         $result = mysqli_query($koneksi, $query);
+                                         while ($row = mysqli_fetch_array($result)) {
+                                            echo "<option value=$row[id_level] > $row[level] </option>";
+                                        }
+                                            ?>
+                                    </select>
                                 </div>
                                 <button type="submit" name="register" class="btn btn-primary btn-custom btn-block">Register</button>
                             </form>
