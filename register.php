@@ -5,10 +5,9 @@ if( isset($_POST['register']) ){
     $Pass = $_POST['txt_pass'];
     $userName = $_POST['txt_username'];
     $Name = $_POST['txt_nama'];
-    $NIK = $_POST['txt_nik'];
     $Lvl = $_POST['txt_level'];
 
-    $query = "INSERT INTO customer VALUES (' ', ' ', ' ', ' ', '$Name', '$NIK', '  ', '$Mail', '$Pass', ' $userName', ' ', ' ', '$Lvl', ' ')";
+    $query = "INSERT INTO user VALUES ('','$Name','$userName','$Pass','$Lvl',' ')";
     $result = mysqli_query($koneksi, $query);
     // header('Location: login.php');
     
