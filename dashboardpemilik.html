@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
+    <title>J-KOST</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -30,8 +31,6 @@
     <link rel="stylesheet" href="css/custom.css" />
     <!-- calendar file css -->
     <link rel="stylesheet" href="js/semantic.min.css" />
-    <!-- fancy box js -->
-    <link rel="stylesheet" href="css/jquery.fancybox.css" />
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
     <!--[if lt IE 9]>
@@ -40,7 +39,7 @@
       <![endif]-->
 </head>
 
-<body class="inner_page tables_page">
+<body class="inner_page widgets">
     <div class="full_container">
         <div class="inner_container">
             <!-- Sidebar  -->
@@ -66,7 +65,7 @@
                     <h4>General</h4>
                     <ul class="list-unstyled components">
                         <li class="active">
-                            <a href="#dashboard" data-toggle="collapse" aria-expanded="false"><i class="fa fa-home yellow_color"></i> <span>Home</span></a>
+                            <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-home yellow_color"></i> <span>Home</span></a>
                             <ul class="collapse list-unstyled" id="dashboard">
                                 <li>
                                     <a href="dashboardpemilik.html">> <span>Dashboard</span></a>
@@ -76,10 +75,7 @@
                         </li>
                         <!-- <li><a href="widgets.html"><i class="fa fa-group orange_color"></i> <span>Profile Admin</span></a></li>
                         <li><a href="Transaksi.html"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
-                        <li>
-                            <a href="contact.html">
-                                <i class="fa fa-university red_color"></i> <span>Data Rumah Kost</span></a>
-                        </li>
+                        <li><a href="contact.html"><i class="fa fa-university red_color"></i> <span>Data Rumah Kost</span></a></li>
                         <li class="active">
                             <a href="#user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-user yellow_color"></i> <span>User</span></a>
                             <ul class="collapse list-unstyled" id="user">
@@ -89,7 +85,7 @@
                             <li><a href="datakamar.html"><i class="fa fa-university red_color"></i> <span>Data Kamar</span></a></li>
                             <li><a href="datarekening.html"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
                     </ul>
-                    </li>
+                        </li>
 
                 </div>
             </nav>
@@ -102,20 +98,22 @@
                         <div class="full">
                             <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
                             <div class="logo_section">
-                                <!-- <a href="index.html"><img class="img-responsive" src="images/logo/logo.png" alt="#" /></a> -->
+                                <a href="index.html"><img class="img-responsive" src="images/logo/logo.png" alt="#" /></a>
                             </div>
                             <div class="right_topbar">
                                 <div class="icon_info">
+                                    <ul>
 
-                                    <ul class="user_profile_dd">
-                                        <li>
-                                            <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/kirana.jpeg" alt="#" /><span class="name_user">Kirana Ramadhanti</span></a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="profile.html">My Profile</a>
-                                                <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                        <ul class="user_profile_dd">
+                                            <li>
+                                                <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/team-4.jpg" alt="#" /><span class="name_user">Kirana Ramadhanti</span></a>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="profile.html">My Profile</a>
+                                                 
+                                                    <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                                </div>
+                                            </li>
+                                        </ul>
                                 </div>
                             </div>
                         </div>
@@ -128,100 +126,68 @@
                         <div class="row column_title">
                             <div class="col-md-12">
                                 <div class="page_title">
-                                    <br>
-                                    <h2>Data Kamar</h2>
+                                    <h2>Dashboard</h2>
                                 </div>
                             </div>
                         </div>
-                        <!-- row -->
                         <div class="row column1">
-                            <div class="col-lg-12">
-                                <div class="white_shd full margin_bottom_30">
-                                    <div class="full graph_head">
-                                        <div class="table_section padding_infor_info">
-                                            <!-- table section -->
-                                            <div class="card-body">
-                                                <div class="table-responsive">
-                                                    <label for="search">
-                                                        Search : 
-                                                        <input type="text" id="search">
-                                                    </label>
-                                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th>Gambar</th>
-                                                                <th>Nama Kost</th>
-                                                                <th>No. Kamar</th>
-                                                                <th>Deskripsi</th>
-                                                                <th>Disetujui</th>
-                                                                <th>Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>-</td>
-                                                                <td>Bara Kost</td>
-                                                                <td>2A</td>
-                                                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum accusamus repudiandae facere distinctio ut omnis laboriosam, corrupti ea cumque deleniti, aperiam iusto pariatur. Itaque ut, eveniet
-                                                                    iste praesentium exercitationem at</td>
-                                                                <td>Disetujui</td>
-                                                                <td>
-                                                                    <a href="edit.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
-
-                                                                    <a href="#" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="full counter_section margin_bottom_30">
+                                    <div class="couter_icon">
+                                        <div>
+                                            <i class="fa fa-user yellow_color"></i>
+                                        </div>
+                                    </div>
+                                    <div class="counter_no">
+                                        <div>
+                                            <p class="total_no">1000</p>
+                                            <p class="head_couter">Total Kamar Kos</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- end row -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- table section -->
-                <!-- dashboard inner -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="full counter_section margin_bottom_30">
+                                    <div class="couter_icon">
+                                        <div>
+                                            <i class="fa fa-user yellow_color"></i>
+                                        </div>
+                                    </div>
+                                    <div class="counter_no">
+                                        <div>
+                                            <p class="total_no">1000</p>
+                                            <p class="head_couter">Total Sewa</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="full counter_section margin_bottom_30">
+                                    <div class="couter_icon">
+                                        <div>
+                                            <i class="fa fa-cloud-download green_color"></i>
+                                        </div>
+                                    </div>
+                                    <div class="counter_no">
+                                        <div>
+                                            <p class="total_no">100.000.000</p>
+                                            <p class="head_couter">Total Pemasukan</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                       
                 <!-- footer -->
                 <div class="container-fluid">
                     <div class="footer">
                         <p>Copyright © 2022 Designed by A2.<br><br> Distributed By: Team ruweet</a>
                         </p>
-                        >>>>>>> 14454d70c24f7399398d75943b9a1e7dfc49505d
                     </div>
                 </div>
             </div>
             <!-- end dashboard inner -->
         </div>
     </div>
-    <!-- model popup -->
-    <!-- The Modal -->
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Modal body..
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end model popup -->
     </div>
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>
@@ -243,13 +209,9 @@
     <script>
         var ps = new PerfectScrollbar('#sidebar');
     </script>
-    <!-- fancy box js -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
     <!-- custom js -->
+    <script src="js/chart_custom_style1.js"></script>
     <script src="js/custom.js"></script>
-    <!-- calendar file css -->
-    <script src="js/semantic.min.js"></script>
 </body>
 
 </html>
