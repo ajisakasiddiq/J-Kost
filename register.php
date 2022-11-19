@@ -65,10 +65,6 @@ if( isset($_POST['register']) ){
                                         placeholder="Name" name="txt_nama">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampleInputNIK"
-                                        placeholder="NIK" name="txt_nik">
-                                </div>
-                                <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="exampleInputEmail"
                                         placeholder="Email Address" name="txt_email">
                                 </div>
