@@ -110,8 +110,7 @@
                                             <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/kirana.jpeg" alt="#" /><span class="name_user">Kirana Ramadhanti</span></a>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="profile.html">My Profile</a>
-
-
+                                                <a class="dropdown-item" href="profile.html">Setting</a>
                                                 <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                                             </div>
                                         </li>
@@ -160,7 +159,7 @@
                                                     </div>
                                                     <h3>Personal info</h3>
 
-                                                    <form class="form-horizontal" role="form">
+                                                    <form class="form-horizontal" role="form" action="" method="post">
                                                         <div class="form-group">
                                                             <label for="name" class="col-lg-3 control-label">Nama :</label>
                                                             <div class="col-lg-8">
@@ -196,7 +195,7 @@
                                                             <div class="col-lg-8">
                                                                 <div class="ui-select">
                                                                     <select name="kecamatan" id="kecamatan" class="form-control">
-                                                          <option>Pilih</option>
+                                                          <option>Pilih Kecamatan</option>
                                                             </select>
                                                                 </div>
                                                             </div>
@@ -205,6 +204,18 @@
                                                             <label for="alamat" class="col-md-3 control-label">Alamat :</label>
                                                             <div class="col-md-8">
                                                                 <input class="form-control" type="text" id="alamat">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="gender" class="col-lg-3 control-label">Status :</label>
+                                                            <div class="col-lg-8">
+                                                                <div class="ui-select">
+                                                                    <select id="gender" class="form-control" id="gender">
+                                                          <option>Pilih Status</option>
+                                                          <option value="Laki">Menikah </option>
+                                                          <option value="perempuan">Lajang</option>
+                                                        </select>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
