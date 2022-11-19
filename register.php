@@ -6,11 +6,9 @@ if( isset($_POST['register']) ){
     $userName = $_POST['txt_username'];
     $Name = $_POST['txt_nama'];
     $NIK = $_POST['txt_nik'];
-    $noHp = $_POST['txt_hp'];
     $Lvl = $_POST['txt_level'];
-    $address = $_POST['txt_alamat'];
 
-    $query = "INSERT INTO customer VALUES (' ', ' ', ' ', ' ', '$Name', '$NIK', ' $noHp', '$Mail', '$Pass', ' $userName', '$address', ' ', '$Lvl', ' ')";
+    $query = "INSERT INTO customer VALUES (' ', ' ', ' ', ' ', '$Name', '$NIK', '  ', '$Mail', '$Pass', ' $userName', ' ', ' ', '$Lvl', ' ')";
     $result = mysqli_query($koneksi, $query);
     // header('Location: login.php');
     
@@ -51,7 +49,7 @@ if( isset($_POST['register']) ){
 
     <div class="container">
 
-        <div class="card o-hidden border-0 shadow-lg" style="margin-top: 20px;">
+        <div class="card o-hidden border-0 shadow-lg" style="margin-top: 100px;">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
@@ -67,6 +65,10 @@ if( isset($_POST['register']) ){
                                         placeholder="Name" name="txt_nama">
                                 </div>
                                 <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="exampleInputNIK"
+                                        placeholder="NIK" name="txt_nik">
+                                </div>
+                                <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="exampleInputEmail"
                                         placeholder="Email Address" name="txt_email">
                                 </div>
@@ -77,19 +79,6 @@ if( isset($_POST['register']) ){
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-user" id="exampleInputPassword"
                                         placeholder="Password" name="txt_pass">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampleInputNIK"
-                                        placeholder="NIK" name="txt_nik">
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampleInputAddress"
-                                        placeholder="Alamat" name="txt_alamat">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampleInputNoHp"
-                                        placeholder="Nomor Handphone" name="txt_hp">
                                 </div>
                                 <div class="form-group">
                                     <select placeholder="Pilih Daftar Sebagai" class="form-control  form-select" name="txt_level" id="OptionLevel">
@@ -105,7 +94,7 @@ if( isset($_POST['register']) ){
                                     </select>
                                 </div>
 
-                                <button type="submit" name="register" class="btn btn-primary btn-custom btn-block">Register</button>
+                                <button type="submit"  name="register" class="btn btn-primary btn-custom btn-block">Register</button>
                             </form>
                             <hr>
                             <div class="text-center">
