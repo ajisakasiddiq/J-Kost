@@ -64,9 +64,9 @@
                 <div class="sidebar_blog_2">
                     <h4>General</h4>
                     <ul class="list-unstyled components">
-                        <li><a href="datakamar.html"><i class="fa fa-university red_color"></i> <span>Transaksi</span></a></li>
-                        <li><a href="datarekening.html"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
-                        <li><a href="transaksicotumer.html"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
+                        <li><a href="datakamar.php"><i class="fa fa-university red_color"></i> <span>Transaksi</span></a></li>
+                        <li><a href="datarekening.php"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
+                        <li><a href="transaksicotumer.php"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
                     </ul>
 
                 </div>
