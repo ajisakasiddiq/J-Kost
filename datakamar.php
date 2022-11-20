@@ -48,7 +48,7 @@
                 <div class="sidebar_blog_1">
                     <div class="sidebar-header">
                         <div class="logo_section">
-                            <a href="index.html"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
+                            <a href="dashboard.php"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
                         </div>
                     </div>
                     <div class="sidebar_user_info">
@@ -69,7 +69,7 @@
                             <a href="#dashboard" data-toggle="collapse" aria-expanded="false"><i class="fa fa-home yellow_color"></i> <span>Home</span></a>
                             <ul class="collapse list-unstyled" id="dashboard">
                                 <li>
-                                    <a href="dashboardpemilik.html">> <span>Dashboard</span></a>
+                                    <a href="dashboard.php">> <span>Dashboard</span></a>
 
                                 </li>
                             </ul>
@@ -86,9 +86,8 @@
                                 <li><a href="table_penyewa.html">> <span>Penyewa</span></a></li>
                                 <li><a href="table_pemilik.html">> <span>Pemilik</span></a></li>
                             </ul> -->
-                        <li><a href="datakamar.html"><i class="fa fa-university red_color"></i> <span>Data Kamar</span></a></li>
-                        <li><a href="datarekening.html"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
-                        <li><a href="transaksipemilik.html"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
+                        <li><a href="datakamar.php"><i class="fa fa-university red_color"></i> <span>Data Kamar</span></a></li>
+                        <li><a href="datarekening.php"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
                     </ul>
                     </li>
 
@@ -112,9 +111,9 @@
                                         <li>
                                             <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/kirana.jpeg" alt="#" /><span class="name_user">Kirana Ramadhanti</span></a>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="profile.html">My Profile</a>
-                                                <a class="dropdown-item" href="ResetPass.html">Setting</a>
-                                                <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                                <a class="dropdown-item" href="profile.php">My Profile</a>
+                                                <a class="dropdown-item" href="ResetPass.php">Setting</a>
+                                                <a class="dropdown-item" href="logout.php"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                                             </div>
                                         </li>
                                     </ul>
@@ -131,7 +130,7 @@
                             <div class="col-md-12">
                                 <div class="page_title">
                                     <br>
-                                    <h2>Data Rekening</h2>
+                                    <h2>Data Kamar</h2>
                                 </div>
                             </div>
                         </div>
@@ -152,24 +151,28 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
-                                                                <th>Kode Pemesanan</th>
+                                                                <th>Gambar</th>
                                                                 <th>Nama Kost</th>
-                                                                <th>Nomor kamar</th>
-                                                                <th>Pemesan</th>
-                                                                <th>Detail</th>
-                                                                <th>Tanggal</th>
-                                                                <th>Harga</th>
+                                                                <th>No. Kamar</th>
+                                                                <th>Deskripsi</th>
+                                                                <th>Disetujui</th>
+                                                                <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
                                                                 <td>1</td>
-                                                                <td>89765</td>
+                                                                <td>-</td>
                                                                 <td>Bara Kost</td>
                                                                 <td>2A</td>
-                                                                <td>Ajisaka Siddiq <a href="detail_pemesan.html"><button style="background-color:rgb(53, 53, 194); border-color:rgb(53, 53, 194); color:white">Detail Pemesanan</button></a></td>
-                                                                <td>20 November 2022</td>
-                                                                <td> Rp 350.0000</td>
+                                                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum accusamus repudiandae facere distinctio ut omnis laboriosam, corrupti ea cumque deleniti, aperiam iusto pariatur. Itaque ut, eveniet
+                                                                    iste praesentium exercitationem at</td>
+                                                                <td>Disetujui</td>
+                                                                <td>
+                                                                    <a href="edit.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
+
+                                                                    <a href="hapus.php" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
+                                                                </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>

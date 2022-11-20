@@ -47,7 +47,7 @@
                 <div class="sidebar_blog_1">
                     <div class="sidebar-header">
                         <div class="logo_section">
-                            <a href="index.html"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
+                            <a href="dashboard.php"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
                         </div>
                     </div>
                     <div class="sidebar_user_info">
@@ -68,22 +68,19 @@
                             <a href="#dashboard" data-toggle="collapse" aria-expanded="false"><i class="fa fa-home yellow_color"></i> <span>Home</span></a>
                             <ul class="collapse list-unstyled" id="dashboard">
                                 <li>
-                                    <a href="dashboard.html">> <span>Default Dashboard</span></a>
+                                    <a href="dashboard.php">> <span>Default Dashboard</span></a>
                                 </li>
 
                             </ul>
                         </li>
-                        <li><a href="widgets.html"><i class="fa fa-group orange_color"></i> <span>Profie Admin</span></a></li>
-                        <li><a href="Transaksi.html"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
-                        <li>
-                            <a href="contact.html">
-                                <i class="fa fa-university red_color"></i> <span>Data Rumah Kost</span></a>
-                        </li>
+                        <li><a href="widgets.php"><i class="fa fa-group orange_color"></i> <span>Profie Admin</span></a></li>
+                        <li><a href="Transaksi.php"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
+                        <li><a href="data_kost.php"><i class="fa fa-university red_color"></i> <span>Data Rumah Kost</span></a> </li>
                         <li class="active">
                             <a href="#user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-user yellow_color"></i> <span>User</span></a>
                             <ul class="collapse list-unstyled" id="user">
-                                <li><a href="table_penyewa.html">> <span>Penyewa</span></a></li>
-                                <li><a href="table_pemilik.html">> <span>Pemilik</span></a></li>
+                                <li><a href="table_penyewa.php">> <span>Penyewa</span></a></li>
+                                <li><a href="table_pemilik.php">> <span>Pemilik</span></a></li>
                             </ul>
 
                         </li>
@@ -101,7 +98,7 @@
                         <div class="full">
                             <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
                             <div class="logo_section">
-                                <a href="index.html"><img class="img-responsive" src="images/logo/logo.png" alt="#" /></a>
+                                <a href="dashboard.php"><img class="img-responsive" src="images/logo/logo.png" alt="#" /></a>
                             </div>
                             <div class="right_topbar">
                                 <div class="icon_info">
@@ -109,9 +106,9 @@
                                         <li>
                                             <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/kirana.jpeg" alt="#" /><span class="name_user">Kirana Ramadhanti</span></a>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="profile.html">My Profile</a>
-                                                <a class="dropdown-item" href="ResetPass.html">Setting</a>
-                                                <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                                <a class="dropdown-item" href="profile.php">My Profile</a>
+                                                <a class="dropdown-item" href="ResetPass.php">Setting</a>
+                                                <a class="dropdown-item" href="logout.php"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                                             </div>
                                         </li>
                                     </ul>

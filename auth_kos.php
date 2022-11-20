@@ -33,6 +33,11 @@
     <link rel="stylesheet" href="js/semantic.min.css" />
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -47,7 +52,7 @@
                 <div class="sidebar_blog_1">
                     <div class="sidebar-header">
                         <div class="logo_section">
-                            <a href="index.html"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
+                            <a href="dashboard.php"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
                         </div>
                     </div>
                     <div class="sidebar_user_info">
@@ -68,25 +73,20 @@
                             <a href="#dashboard" data-toggle="collapse" aria-expanded="false"><i class="fa fa-home yellow_color"></i> <span>Home</span></a>
                             <ul class="collapse list-unstyled" id="dashboard">
                                 <li>
-                                    <a href="dashboard.html">> <span>Default Dashboard</span></a>
+                                    <a href="dashboard.php">> <span>Default Dashboard</span></a>
 
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="widgets.html"><i class="fa fa-group orange_color"></i> <span>Profile Admin</span></a></li>
-                        <li><a href="Transaksi.html"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
-                        <li>
-                            <a href="contact.html">
-                                <i class="fa fa-university red_color"></i> <span>Data Rumah Kost</span></a>
-                        </li>
+                        <li><a href="widgets.php"><i class="fa fa-group orange_color"></i> <span>Profile Admin</span></a></li>
+                        <li><a href="Transaksi.php"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
+                        <li><a href="contact.php"><i class="fa fa-university red_color"></i> <span>Data Rumah Kost</span></a></li>
                         <li class="active">
                             <a href="#user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-user yellow_color"></i> <span>User</span></a>
                             <ul class="collapse list-unstyled" id="user">
-                                <li><a href="table_penyewa.html">> <span>Penyewa</span></a></li>
-                                <li><a href="table_pemilik.html">> <span>Pemilik</span></a></li>
+                                <li><a href="table_penyewa.php">> <span>Penyewa</span></a></li>
+                                <li><a href="table_pemilik.php">> <span>Pemilik</span></a></li>
                             </ul>
-                            <li><a href="datakamar.html"><i class="fa fa-university red_color"></i> <span>Data Kamar</span></a></li>
-                            <li><a href="datarekening.html"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
                     </ul>
                     </li>
 
@@ -101,7 +101,7 @@
                         <div class="full">
                             <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
                             <div class="logo_section">
-                                <!-- <a href="index.html"><img class="img-responsive" src="img/logo.png" alt="#" /></a> -->
+                                <a href="dashboard.php"><img class="img-responsive" src="img/logo.png" alt="#" /></a>
                             </div>
                             <div class="right_topbar">
                                 <div class="icon_info">
@@ -109,9 +109,9 @@
                                         <li>
                                             <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/team-2.jpg" alt="#" /><span class="name_user">John David</span></a>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="profile.html">My Profile</a>
-                                                <a class="dropdown-item" href="ResetPass.html">Setting</a>
-                                                <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                                <a class="dropdown-item" href="profile.php">My Profile</a>
+                                                <a class="dropdown-item" href="ResetPass.php">Settings</a>
+                                                <a class="dropdown-item" href="logout.php"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                                             </div>
                                         </li>
                                     </ul>
@@ -127,7 +127,7 @@
                         <div class="row column_title">
                             <div class="col-md-12">
                                 <div class="page_title">
-                                    <h2>Data Kost</h2>
+                                    <h2>Validate Kost</h2>
                                 </div>
                             </div>
                         </div>
@@ -135,55 +135,29 @@
                         <div class="row column1">
                             <div class="col-lg-12">
                                 <div class="white_shd full margin_bottom_30">
-                                    <div class="full graph_head">
-                                        <div class="table_section padding_infor_info">
-
-                                            <div class="full graph_head">
-                                                <div class="heading1 margin_0">
-                                                    <h2>Data Kost</h2>
-                                                </div>
+                                    <div class="col-lg-6 ">
+                                        <div class="p-5">
+                                            <div class="text-center">
+                                                <h1 class="h4 text-gray-900 mb-4">DATA KOST</h1>
                                             </div>
-                                            <div class="table_section padding_infor_info">
-                                                <div class="table-responsive-sm">
-                                                    <label for="search">
-                                                        Search : 
-                                                        <input type="text" id="search">
-                                                    </label>
-                                                    <table class="table table-bordered">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th>Nama Kost</th>
-                                                                <th>Pemilik</th>
-                                                                <th>Alamat</th>
-                                                                <th>Jumlah</th>
-                                                                <th>Deskripsi</th>
-                                                                <th>Foto</th>
-                                                                <th>Status</th>
-                                                                <th>Aksi</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>Bara Kost</td>
-                                                                <td>Muhammad Ikbal Mubarok</td>
-                                                                <td>Ngawi</td>
-                                                                <td>22</td>
-                                                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum accusamus repudiandae facere distinctio ut omnis laboriosam, corrupti ea cumque deleniti, aperiam iusto pariatur. Itaque ut, eveniet
-                                                                    iste praesentium exercitationem at.</td>
-                                                                <td><img src="img/team-3.jpg" alt="" width="50px"></td>
-                                                                <td>Ready</td>
-                                                                <td>
-                                                                    <a href="auth_kos.html" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
-
-                                                                    <a href="#" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                            <form class="user" action="" method="POST">
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="txt_email">
                                                 </div>
-                                            </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                </div>
+                                                <button type="submit" name="submit" class="btn btn-primary btn-custom btn-block">Simpan</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

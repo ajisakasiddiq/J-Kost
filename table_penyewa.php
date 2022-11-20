@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
+    <title>J-KOST</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -30,8 +31,6 @@
     <link rel="stylesheet" href="css/custom.css" />
     <!-- calendar file css -->
     <link rel="stylesheet" href="js/semantic.min.css" />
-    <!-- fancy box js -->
-    <link rel="stylesheet" href="css/jquery.fancybox.css" />
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
     <!--[if lt IE 9]>
@@ -40,7 +39,7 @@
       <![endif]-->
 </head>
 
-<body class="inner_page tables_page">
+<body class="inner_page map">
     <div class="full_container">
         <div class="inner_container">
             <!-- Sidebar  -->
@@ -48,7 +47,7 @@
                 <div class="sidebar_blog_1">
                     <div class="sidebar-header">
                         <div class="logo_section">
-                            <a href="index.html"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
+                            <a href="dashboard.php"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
                         </div>
                     </div>
                     <div class="sidebar_user_info">
@@ -69,13 +68,13 @@
                             <a href="#dashboard" data-toggle="collapse" aria-expanded="false"><i class="fa fa-home yellow_color"></i> <span>Home</span></a>
                             <ul class="collapse list-unstyled" id="dashboard">
                                 <li>
-                                    <a href="dashboardpemilik.html">> <span>Dashboard</span></a>
+                                    <a href="dashboard.php">> <span>Default Dashboard</span></a>
 
                                 </li>
                             </ul>
                         </li>
-                        <!-- <li><a href="widgets.html"><i class="fa fa-group orange_color"></i> <span>Profile Admin</span></a></li>
-                        <li><a href="Transaksi.html"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
+                        <li><a href="widgets.php"><i class="fa fa-group orange_color"></i> <span>Profile Admin</span></a></li>
+                        <li><a href="Transaksi.php"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
                         <li>
                             <a href="contact.html">
                                 <i class="fa fa-university red_color"></i> <span>Data Rumah Kost</span></a>
@@ -83,11 +82,11 @@
                         <li class="active">
                             <a href="#user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-user yellow_color"></i> <span>User</span></a>
                             <ul class="collapse list-unstyled" id="user">
-                                <li><a href="table_penyewa.html">> <span>Penyewa</span></a></li>
-                                <li><a href="table_pemilik.html">> <span>Pemilik</span></a></li>
-                            </ul> -->
-                        <li><a href="datakamar.html"><i class="fa fa-university red_color"></i> <span>Data Kamar</span></a></li>
-                        <li><a href="datarekening.html"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
+                                <li><a href="table_penyewa.php">> <span>Penyewa</span></a></li>
+                                <li><a href="table_pemilik.php">> <span>Pemilik</span></a></li>
+                            </ul>
+                            <li><a href="datakamar.php"><i class="fa fa-university red_color"></i> <span>Data Kamar</span></a></li>
+                            <li><a href="datarekening.phpp"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
                     </ul>
                     </li>
 
@@ -102,18 +101,17 @@
                         <div class="full">
                             <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
                             <div class="logo_section">
-                                <!-- <a href="index.html"><img class="img-responsive" src="images/logo/logo.png" alt="#" /></a> -->
+                                <!-- <a href="index.html"><img class="img-responsive" src="img/logo.png" alt="#" /></a> -->
                             </div>
                             <div class="right_topbar">
                                 <div class="icon_info">
-
                                     <ul class="user_profile_dd">
                                         <li>
-                                            <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/kirana.jpeg" alt="#" /><span class="name_user">Kirana Ramadhanti</span></a>
+                                            <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/team-2.jpg" alt="#" /><span class="name_user">John David</span></a>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="profile.html">My Profile</a>
-                                                <a class="dropdown-item" href="ResetPass.html">Setting</a>
-                                                <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                                <a class="dropdown-item" href="profile.php">My Profile</a>
+                                                <a class="dropdown-item" href="ResetPass.php">Setting</a>
+                                                <a class="dropdown-item" href="logout.php"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                                             </div>
                                         </li>
                                     </ul>
@@ -129,8 +127,7 @@
                         <div class="row column_title">
                             <div class="col-md-12">
                                 <div class="page_title">
-                                    <br>
-                                    <h2>Data Kamar</h2>
+                                    <h2>User</h2>
                                 </div>
                             </div>
                         </div>
@@ -140,38 +137,48 @@
                                 <div class="white_shd full margin_bottom_30">
                                     <div class="full graph_head">
                                         <div class="table_section padding_infor_info">
-                                            <!-- table section -->
-                                            <div class="card-body">
-                                                <div class="table-responsive">
+
+                                            <div class="full graph_head">
+                                                <div class="heading1 margin_0">
+                                                    <h2>Penyewa</h2>
+                                                </div>
+                                            </div>
+                                            <div class="table_section padding_infor_info">
+                                                <div class="table-responsive-sm">
                                                     <label for="search">
                                                         Search : 
                                                         <input type="text" id="search">
                                                     </label>
-                                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                                    <table class="table table-bordered">
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
-                                                                <th>Gambar</th>
                                                                 <th>Nama Kost</th>
-                                                                <th>No. Kamar</th>
-                                                                <th>Deskripsi</th>
-                                                                <th>Disetujui</th>
-                                                                <th>Action</th>
+                                                                <th>NIK</th>
+                                                                <th>Nama</th>
+                                                                <th>Alamat</th>
+                                                                <th>No. Handphone</th>
+                                                                <th>Jenis Kelamin</th>
+                                                                <th>Waktu Sewa</th>
+                                                                <th>Status</th>
+                                                                <th>Aksi</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
                                                                 <td>1</td>
-                                                                <td>-</td>
                                                                 <td>Bara Kost</td>
-                                                                <td>2A</td>
-                                                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum accusamus repudiandae facere distinctio ut omnis laboriosam, corrupti ea cumque deleniti, aperiam iusto pariatur. Itaque ut, eveniet
-                                                                    iste praesentium exercitationem at</td>
-                                                                <td>Disetujui</td>
+                                                                <td>35181667709267</td>
+                                                                <td>Zidan</td>
+                                                                <td>Jember</td>
+                                                                <td>081456789030</td>
+                                                                <td>Laki-laki</td>
+                                                                <td>1 bulan</td>
+                                                                <td>Lunas</td>
                                                                 <td>
-                                                                    <a href="edit.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
+                                                                    <a href="auth_kos.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
 
-                                                                    <a href="#" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
+                                                                    <a href="hapus.php" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -184,72 +191,40 @@
                             </div>
                             <!-- end row -->
                         </div>
+                        <!-- footer -->
+                        <div class="container-fluid">
+                            <div class="footer">
+                                <p>© 2022 Designed by Team Ruwett.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <!-- table section -->
-                <!-- dashboard inner -->
-                <!-- footer -->
-                <div class="container-fluid">
-                    <div class="footer">
-                        <p>Copyright © 2022 Designed by A2.<br><br> Distributed By: Team ruweet</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- end dashboard inner -->
-        </div>
-    </div>
-    <!-- model popup -->
-    <!-- The Modal -->
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Modal body..
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <!-- end dashboard inner -->
                 </div>
             </div>
         </div>
-    </div>
-    <!-- end model popup -->
-    </div>
-    <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- wow animation -->
-    <script src="js/animate.js"></script>
-    <!-- select country -->
-    <script src="js/bootstrap-select.js"></script>
-    <!-- owl carousel -->
-    <script src="js/owl.carousel.js"></script>
-    <!-- chart js -->
-    <script src="js/Chart.min.js"></script>
-    <script src="js/Chart.bundle.min.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/analyser.js"></script>
-    <!-- nice scrollbar -->
-    <script src="js/perfect-scrollbar.min.js"></script>
-    <script>
-        var ps = new PerfectScrollbar('#sidebar');
-    </script>
-    <!-- fancy box js -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
-    <!-- calendar file css -->
-    <script src="js/semantic.min.js"></script>
+        <!-- jQuery -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <!-- chart js -->
+        <script src="js/Chart.min.js"></script>
+        <script src="js/Chart.bundle.min.js"></script>
+        <script src="js/utils.js"></script>
+        <script src="js/analyser.js"></script>
+        <!-- wow animation -->
+        <script src="js/animate.js"></script>
+        <!-- select country -->
+        <script src="js/bootstrap-select.js"></script>
+        <!-- owl carousel -->
+        <script src="js/owl.carousel.js"></script>
+        <!-- nice scrollbar -->
+        <script src="js/perfect-scrollbar.min.js"></script>
+        <!-- sidebar -->
+        <script>
+            var ps = new PerfectScrollbar('#sidebar');
+        </script>
+        <!-- custom js -->
+        <script src="js/custom.js"></script>
 </body>
 
 </html>

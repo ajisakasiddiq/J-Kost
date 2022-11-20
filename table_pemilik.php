@@ -47,7 +47,7 @@
                 <div class="sidebar_blog_1">
                     <div class="sidebar-header">
                         <div class="logo_section">
-                            <a href="index.html"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
+                            <a href="dashboard.php"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
                         </div>
                     </div>
                     <div class="sidebar_user_info">
@@ -68,25 +68,22 @@
                             <a href="#dashboard" data-toggle="collapse" aria-expanded="false"><i class="fa fa-home yellow_color"></i> <span>Home</span></a>
                             <ul class="collapse list-unstyled" id="dashboard">
                                 <li>
-                                    <a href="dashboard.html">> <span>Default Dashboard</span></a>
+                                    <a href="dashboard.php">> <span>Default Dashboard</span></a>
 
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="widgets.html"><i class="fa fa-group orange_color"></i> <span>Profile Admin</span></a></li>
-                        <li><a href="Transaksi.html"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
-                        <li>
-                            <a href="contact.html">
-                                <i class="fa fa-university red_color"></i> <span>Data Rumah Kost</span></a>
-                        </li>
+                        <li><a href="widgets.php"><i class="fa fa-group orange_color"></i> <span>Profile Admin</span></a></li>
+                        <li><a href="Transaksi.php"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
+                        <li><a href="data_kost.php"><i class="fa fa-university red_color"></i> <span>Data Rumah Kost</span></a></li>
                         <li class="active">
                             <a href="#user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-user yellow_color"></i> <span>User</span></a>
                             <ul class="collapse list-unstyled" id="user">
-                                <li><a href="table_penyewa.html">> <span>Penyewa</span></a></li>
-                                <li><a href="table_pemilik.html">> <span>Pemilik</span></a></li>
+                                <li><a href="table_penyewa.php">> <span>Penyewa</span></a></li>
+                                <li><a href="table_pemilik.php">> <span>Pemilik</span></a></li>
                             </ul>
-                            <li><a href="datakamar.html"><i class="fa fa-university red_color"></i> <span>Data Kamar</span></a></li>
-                            <li><a href="datarekening.html"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
+                            <li><a href="datakamar.php"><i class="fa fa-university red_color"></i> <span>Data Kamar</span></a></li>
+                            <li><a href="datarekening.php"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
                     </ul>
                     </li>
 
@@ -109,9 +106,9 @@
                                         <li>
                                             <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/team-2.jpg" alt="#" /><span class="name_user">John David</span></a>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="profile.html">My Profile</a>
-                                                <a class="dropdown-item" href="ResetPass.html">Setting</a>
-                                                <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                                <a class="dropdown-item" href="profile.php">My Profile</a>
+                                                <a class="dropdown-item" href="ResetPass.php">Setting</a>
+                                                <a class="dropdown-item" href="logout.php"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                                             </div>
                                         </li>
                                     </ul>
@@ -140,7 +137,7 @@
 
                                             <div class="full graph_head">
                                                 <div class="heading1 margin_0">
-                                                    <h2>Penyewa</h2>
+                                                    <h2>Pemilik</h2>
                                                 </div>
                                             </div>
                                             <div class="table_section padding_infor_info">
@@ -154,12 +151,11 @@
                                                             <tr>
                                                                 <th>No</th>
                                                                 <th>Nama Kost</th>
-                                                                <th>NIK</th>
-                                                                <th>Nama</th>
+                                                                <th>Pemilik</th>
                                                                 <th>Alamat</th>
-                                                                <th>No. Handphone</th>
-                                                                <th>Jenis Kelamin</th>
-                                                                <th>Waktu Sewa</th>
+                                                                <th>Jumlah</th>
+                                                                <th>Deskripsi</th>
+                                                                <th>Foto</th>
                                                                 <th>Status</th>
                                                                 <th>Aksi</th>
                                                             </tr>
@@ -168,17 +164,17 @@
                                                             <tr>
                                                                 <td>1</td>
                                                                 <td>Bara Kost</td>
-                                                                <td>35181667709267</td>
-                                                                <td>Zidan</td>
-                                                                <td>Jember</td>
-                                                                <td>081456789030</td>
-                                                                <td>Laki-laki</td>
-                                                                <td>1 bulan</td>
-                                                                <td>Lunas</td>
+                                                                <td>Muhammad Ikbal Mubarok</td>
+                                                                <td>Ngawi</td>
+                                                                <td>22</td>
+                                                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum accusamus repudiandae facere distinctio ut omnis laboriosam, corrupti ea cumque deleniti, aperiam iusto pariatur. Itaque ut, eveniet
+                                                                    iste praesentium exercitationem at.</td>
+                                                                <td><img src="img/team-3.jpg" alt="" width="50px"></td>
+                                                                <td>Ready</td>
                                                                 <td>
-                                                                    <a href="auth_kos.html" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
+                                                                    <a href="auth_kos.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
 
-                                                                    <a href="#" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
+                                                                    <a href="hapus.php" class="btn btn-danger btn-circle" ><i class="fas fa-trash"></i></a>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -194,7 +190,7 @@
                         <!-- footer -->
                         <div class="container-fluid">
                             <div class="footer">
-                                <p>© 2022 Designed by Team Ruwett.</p>
+                                <p>Copyright © 2018 Designed by html.design. All rights reserved.</p>
                             </div>
                         </div>
                     </div>

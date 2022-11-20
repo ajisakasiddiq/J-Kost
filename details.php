@@ -112,8 +112,8 @@ $sesEmail = $_SESSION['email'];
                                     <img src="img/team-2.jpg" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
                                 </a>
                                 <div class="dropdown-menu bg-dark">
-                                    <a href="dashboard.html" class="dropdown-item text-danger">Dashboard</a>
-                                    <a href="dashboard.html" class="dropdown-item text-danger">Setting</a>
+                                    <a href="dashboard.php" class="dropdown-item text-danger">Dashboard</a>
+                                    <a href="ResetPass.php" class="dropdown-item text-danger">Setting</a>
                                     <div class="dropdown-divider"></div>
                                     <a href="logout.php" class="dropdown-item text-danger">Logout</a>
                                 </div>
