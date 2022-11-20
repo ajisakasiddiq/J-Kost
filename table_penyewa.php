@@ -1,3 +1,19 @@
+<?php 
+require("koneksi.php");
+
+session_start();
+if (!isset($_SESSION['id_user'])) {
+    //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
+    header('Location: index.php');
+}
+$sesID = $_SESSION['id_user'];
+$sesName = $_SESSION['username'];
+$name = $_SESSION['nama'];
+$sesLvl = $_SESSION['level'];
+$sesEmail = $_SESSION['email'];
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +71,7 @@
                         <div class="user_profle_side">
                             <div class="user_img"><img class="img-responsive" src="img/profil.jpg" alt="#" /></div>
                             <div class="user_info">
-                                <h6>Admin</h6>
+                                <h6><?php echo $name; ?></h6>
                                 <p><span class="online_animation"></span> Online</p>
                             </div>
                         </div>
@@ -107,7 +123,7 @@
                                 <div class="icon_info">
                                     <ul class="user_profile_dd">
                                         <li>
-                                            <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/team-2.jpg" alt="#" /><span class="name_user">John David</span></a>
+                                            <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/team-2.jpg" alt="#" /><span class="name_user"><?php echo $name; ?></span></a>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="profile.php">My Profile</a>
                                                 <a class="dropdown-item" href="ResetPass.php">Setting</a>
