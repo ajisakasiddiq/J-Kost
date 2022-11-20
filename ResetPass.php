@@ -152,17 +152,29 @@ $sesEmail = $_SESSION['email'];
                                     <div class="full graph_head">
                                         <div class="card login-form">
                                             <div class="card-body">
-                                                <h3 class="card-title text-center">Change password</h3>
+                                                <h3 class="card-title text-center">Setting Account</h3>
 
                                                 <!--Password must contain one lowercase letter, one number, and be at least 7 characters long.-->
 
                                                 <div class="card-text">
                                                     <form>
                                                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                            <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                                                            <strong>Hai <?php echo $name ?>!</strong> You should check in on some of those fields below.
                                                             <a class="close" data-dismiss="alert" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </a>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Nama</label>
+                                                            <input type="text" class="form-control form-control-sm">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Your new password</label>
+                                                            <input type="password" class="form-control form-control-sm">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Your new password</label>
+                                                            <input type="password" class="form-control form-control-sm">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Your new password</label>
