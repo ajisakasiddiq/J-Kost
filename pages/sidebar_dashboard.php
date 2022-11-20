@@ -2,13 +2,13 @@
                 <div class="sidebar_blog_1">
                     <div class="sidebar-header">
                         <div class="logo_section">
-                            <a href="dashboard.php"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
+                            <a href="dashboard.php"><img class="logo_icon img-responsive" src="" alt="logo" /></a>
                         </div>
                     </div>
                     <div class="sidebar_user_info">
                         <div class="icon_setting"></div>
                         <div class="user_profle_side">
-                            <div class="user_img"><img class="img-responsive" src="img/profil.jpg" alt="#" /></div>
+                            <div class="user_img"><img class="img-responsive" src="img/profil.jpg" alt="profil" /></div>
                             <div class="user_info">
                                 <h6><?php echo $name; ?></h6>
                                 <p><span class="online_animation"></span> Online</p>
@@ -18,7 +18,11 @@
                 </div>
                 <div class="sidebar_blog_2">
                     <h4>General</h4>
-                    <ul class="list-unstyled components">
+                    <?php  if($sesLvl == 3){?>
+
+
+                        <!-- admin start -->
+                        <ul class="list-unstyled components">
                         <li class="active">
                             <a href="dashboard.php"><i class="fa fa-home yellow_color"></i> <span>Home</span></a>
                         </li>
@@ -32,9 +36,48 @@
                                 <li><a href="table_pemilik.php">> <span>Pemilik</span></a></li>
                             </ul>
                             <!-- <li><a href="datakamar.html"><i class="fa fa-university red_color"></i> <span>Data Kamar</span></a></li>
-                            <li><a href="datarekening.html"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
-                    </ul> -->
+                            <li><a href="datarekening.html"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>-->
+                    </ul> 
+                    <!-- admin end -->
+
+
+            <?php    }else if($sesLvl == 2 ){?> 
+
+
+                <!-- pencari kos start -->
+                <ul class="list-unstyled components">
+                        <li><a href="datakamar.php"><i class="fa fa-university red_color"></i> <span>Data Kamar</span></a></li>
+                        <li><a href="datarekening.php"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
+                        <li><a href="transaksi.php"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
+                    </ul>
+                <!-- pencari kos end -->
+
+
+                    
+                <?php  }else{ ?>
+
+
+
+                    <!-- pemilik kos start -->
+                    <ul class="list-unstyled components">
+                        <li class="active">
+                            <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-home yellow_color"></i> <span>Home</span></a>
+                            <ul class="collapse list-unstyled" id="dashboard">
+                                <li>
+                                    <a href="dashboardpemilik.html">> <span>Dashboard</span></a>
+
+                                </li>
+                            </ul>
                         </li>
+                        <li><a href="datakamar.html"><i class="fa fa-university red_color"></i> <span>Data Kamar</span></a></li>
+                        <li><a href="datarekening.html"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
+                        <li><a href="transaksipemilik.html"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
+                    </ul>
+                    <!-- pemilik kos end -->
+
+
+
+                 <?php } ?>      
 
                 </div>
             </nav>

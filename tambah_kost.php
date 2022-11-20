@@ -60,74 +60,12 @@ $sesEmail = $_SESSION['email'];
     <div class="full_container">
         <div class="inner_container">
             <!-- Sidebar  -->
-            <nav id="sidebar">
-                <div class="sidebar_blog_1">
-                    <div class="sidebar-header">
-                        <div class="logo_section">
-                            <a href="dashboard.php"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
-                        </div>
-                    </div>
-                    <div class="sidebar_user_info">
-                        <div class="icon_setting"></div>
-                        <div class="user_profle_side">
-                            <div class="user_img"><img class="img-responsive" src="img/profil.jpg" alt="#" /></div>
-                            <div class="user_info">
-                                <h6><?php echo $name; ?></h6>
-                                <p><span class="online_animation"></span> Online</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="sidebar_blog_2">
-                    <h4>General</h4>
-                    <ul class="list-unstyled components">
-                        <li class="active">
-                            <a href="#dashboard" data-toggle="collapse" aria-expanded="false"><i class="fa fa-home yellow_color"></i> <span>Home</span></a>
-                            <ul class="collapse list-unstyled" id="dashboard">
-                                <li>/
-                                    <a href="dashboard.php">> <span>Default Dashboard</span></a>
-
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="widgets.html"><i class="fa fa-group orange_color"></i> <span>Profile Admin</span></a></li>
-                        <li><a href="Transaksi.html"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
-                        <li><a href="data_kost.php"><i class="fa fa-university red_color"></i> <span>Data Rumah Kost</span></a> </li>
-                    </ul>
-                    </li>
-
-                </div>
-            </nav>
+            <?php require("pages/sidebar_dashboard.php") ?>
             <!-- end sidebar -->
             <!-- right content -->
             <div id="content">
                 <!-- topbar -->
-                <div class="topbar">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <div class="full">
-                            <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
-                            <div class="logo_section">
-                                <a href="dashboard.phpclass="img-responsive" src="images/logo/logo.png" alt="#" /></a>
-                            </div>
-                            <div class="right_topbar">
-                                <div class="icon_info">
-
-                                    <ul class="user_profile_dd">
-                                        <li>
-                                            <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/kirana.jpeg" alt="#" /><span class="name_user"><?php echo $name; ?></span></a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="profile.php">My Profile</a>
-                                                <a class="dropdown-item" href="ResetPass.php">Setting</a>
-
-                                                <a class="dropdown-item" href="logout.php"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
+            <?php require("pages/topbar_dashboard.php") ?>
                 <!-- end topbar -->
                 <!-- dashboard inner -->
                 <div class="midde_cont">
