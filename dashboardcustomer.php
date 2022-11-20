@@ -64,22 +64,10 @@
                 <div class="sidebar_blog_2">
                     <h4>General</h4>
                     <ul class="list-unstyled components">
-                        
-                            
-                        <!-- <li><a href="widgets.html"><i class="fa fa-group orange_color"></i> <span>Profile Admin</span></a></li>
-                        <li><a href="Transaksi.html"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
-                        <li><a href="contact.html"><i class="fa fa-university red_color"></i> <span>Data Rumah Kost</span></a></li>
-                        <li class="active">
-                            <a href="#user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-user yellow_color"></i> <span>User</span></a>
-                            <ul class="collapse list-unstyled" id="user">
-                                <li><a href="table_penyewa.html">> <span>Penyewa</span></a></li>
-                                <li><a href="table_pemilik.html">> <span>Pemilik</span></a></li>
-                            </ul> -->
                         <li><a href="datakamar.html"><i class="fa fa-university red_color"></i> <span>Transaksi</span></a></li>
                         <li><a href="datarekening.html"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
                         <li><a href="transaksicotumer.html"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
                     </ul>
-                    </li>
 
                 </div>
             </nav>
