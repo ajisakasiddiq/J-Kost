@@ -91,7 +91,7 @@ $sesEmail = $_SESSION['email'];
                                                 <div class="card-text">
                                                     <form>
                                                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                            <strong>Hai <?php echo $name ?>!</strong> You should check in on some of those fields below.
+                                                            <strong>Hai <?php echo $name ?>!</strong> Double check your data.
                                                             <a class="close" data-dismiss="alert" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </a>
