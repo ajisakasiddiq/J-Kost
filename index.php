@@ -26,7 +26,7 @@ $sesEmail = $_SESSION['email'];
     <div class="carousel">
         <div class="container-fluid">
             <div class="owl-carousel">
-                <div class="carousel-item mt-lg-3">
+                <div class="carousel-item">
                     <div class="carousel-img">
                         <img src="img/kos4.jpg" alt="Image">
                     </div>
@@ -35,7 +35,7 @@ $sesEmail = $_SESSION['email'];
                         <p>
                             Menyajikan kos kosan mulai dari harga Rp 300.000 ke atas
                         </p>
-                        <a class="btn btn-custom" href="order.html">Pesan Sekarang!</a>
+                        <a class="btn btn-custom" href="order.php">Pesan Sekarang!</a>
                     </div>
                 </div>
                 <div class="carousel-item mt-lg-3">
