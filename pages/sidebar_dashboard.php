@@ -64,14 +64,14 @@
                             <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-home yellow_color"></i> <span>Home</span></a>
                             <ul class="collapse list-unstyled" id="dashboard">
                                 <li>
-                                    <a href="dashboardpemilik.html">> <span>Dashboard</span></a>
+                                    <a href="dashboardpemilik.php">> <span>Dashboard</span></a>
 
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="datakamar.html"><i class="fa fa-university red_color"></i> <span>Data Kamar</span></a></li>
-                        <li><a href="datarekening.html"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
-                        <li><a href="transaksipemilik.html"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
+                        <li><a href="datakamar.php"><i class="fa fa-university red_color"></i> <span>Data Kamar</span></a></li>
+                        <li><a href="datarekening.php"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
+                        <li><a href="transaksipemilik.php"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
                     </ul>
                     <!-- pemilik kos end -->
 
