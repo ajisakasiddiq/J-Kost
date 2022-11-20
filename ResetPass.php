@@ -1,18 +1,33 @@
-<?php 
+<?php
 require("koneksi.php");
 
 session_start();
-if (!isset($_SESSION['id_user'])) {
+
+if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
-    header('Location: index.php');
-}
+   // header('Location: login.php');
 $sesID = $_SESSION['id_user'];
 $sesName = $_SESSION['username'];
-$name = $_SESSION['nama'];
+$name = $_SESSION['user_nama'];
 $sesLvl = $_SESSION['level'];
-$sesEmail = $_SESSION['email'];
+$sesEmail = $_SESSION['user_email'];
 
+}
 
+// update data
+if( isset($_POST['update']) ){
+    $userId     = $_POST['txt_id'];
+    $userMail   = $_POST['txt_email'];
+    $userPass   = $_POST['txt_pass'];
+    $Name   = $_POST['txt_name'];
+    $userName   = $_POST['txt_username'];
+
+    $query = "UPDATE user SET user_nama='$Name',user_email='$userEmail',username='$userName',user_password='$userPass' WHERE id_user ='$userId'";
+    $result = mysqli_query($koneksi, $query);
+    header('Location: ResetPass.php');
+}
+
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,26 +112,29 @@ $sesEmail = $_SESSION['email'];
                                                             </a>
                                                         </div>
                                                         <div class="form-group">
+                                                            <input value="<?php echo $sesID ?>" id="id" type="hidden" class="form-control form-control-sm" name="txt_id">
+                                                        </div>
+                                                        <div class="form-group">
                                                             <label for="nama">Nama</label>
-                                                            <input value="<?php echo $name ?>" id="nama" type="text" class="form-control form-control-sm">
+                                                            <input value="<?php echo $name ?>" id="nama" type="text" class="form-control form-control-sm" name="txt_name">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="username">Username</label>
-                                                            <input value="<?php echo $sesName ?>" id="username" type="text" class="form-control form-control-sm">
+                                                            <input value="<?php echo $sesName ?>" id="username" type="text" class="form-control form-control-sm" name="txt_username">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="email">Email</label>
-                                                            <input value="<?php echo $sesEmail ?>" id="email" type="text" class="form-control form-control-sm">
+                                                            <input value="<?php echo $sesEmail ?>" id="email" type="text" class="form-control form-control-sm" name="txt_email">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="exampleInputEmail1">Your new password</label>
-                                                            <input type="password" class="form-control form-control-sm">
+                                                            <label for="password1">Your new password</label>
+                                                            <input id="password1" type="password" class="form-control form-control-sm" name="txt_pass">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="exampleInputEmail1">Repeat password</label>
-                                                            <input type="password" class="form-control form-control-sm">
+                                                            <label for="password2">Repeat password</label>
+                                                            <input  id="password2" type="password" class="form-control form-control-sm" name="txt_pass2">
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary btn-block submit-btn">Confirm</button>
+                                                        <button type="submit" name="update" class="btn btn-primary btn-block submit-btn">Confirm</button>
                                                     </form>
                                                 </div>
                                             </div>

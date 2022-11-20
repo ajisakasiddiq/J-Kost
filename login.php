@@ -10,15 +10,15 @@ if (isset($_POST['submit'])) {
     $pass = $_POST['txt_pass'];
     
     if (!empty(trim($email)) && !empty(trim($pass))) {
-        $query      = "SELECT * FROM user WHERE email = '$email'";
+        $query      = "SELECT * FROM user WHERE user_email = '$email'";
         $result     = mysqli_query($koneksi, $query);
         $num        = mysqli_num_rows($result);
 
         while ($row = mysqli_fetch_array($result)) {
             $id = $row['id_user'];
-            $name = $row['nama'];
-            $userVal = $row['email'];
-            $passVal = $row['password'];
+            $name = $row['user_nama'];
+            $userVal = $row['user_email'];
+            $passVal = $row['user_password'];
             $userName = $row['username'];
             $level = $row['level'];
             $image = $row['foto'];
@@ -28,8 +28,8 @@ if (isset($_POST['submit'])) {
             if ($userVal==$email && $passVal==$pass) {
                 $_SESSION['id_user'] = $id;
                 $_SESSION['username'] = $userName;
-                $_SESSION['nama'] = $name;
-                $_SESSION['email'] = $userVal;
+                $_SESSION['user_nama'] = $name;
+                $_SESSION['user_email'] = $userVal;
                 $_SESSION['level'] = $level;
                 $_SESSION['foto'] = $image;
                 header('Location: index.php');

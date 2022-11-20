@@ -8,9 +8,9 @@ if (isset($_SESSION['id_user'])) {
    // header('Location: login.php');
 $sesID = $_SESSION['id_user'];
 $sesName = $_SESSION['username'];
-$name = $_SESSION['nama'];
+$name = $_SESSION['user_nama'];
 $sesLvl = $_SESSION['level'];
-$sesEmail = $_SESSION['email'];
+$sesEmail = $_SESSION['user_email'];
 
 }
 ?>
