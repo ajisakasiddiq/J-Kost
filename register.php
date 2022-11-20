@@ -7,7 +7,7 @@ if( isset($_POST['register']) ){
     $Name = $_POST['txt_nama'];
     $Lvl = $_POST['txt_level'];
 
-    $query = "INSERT INTO user VALUES ('','$Name','$userName','$Pass','$Lvl',' ')";
+    $query = "INSERT INTO user VALUES ('','$Name','$userName','$Pass','$Lvl','')";
     $result = mysqli_query($koneksi, $query);
     // header('Location: login.php');
     
