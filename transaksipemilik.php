@@ -167,7 +167,7 @@
                                                                 <td>89765</td>
                                                                 <td>Bara Kost</td>
                                                                 <td>2A</td>
-                                                                <td>Ajisaka Siddiq <a href="detail_pemesan.html"><button style="background-color:rgb(53, 53, 194); border-color:rgb(53, 53, 194); color:white">Detail Pemesanan</button></a></td>
+                                                                <td>Ajisaka Siddiq <a href="detail_pemesan.php"><button style="background-color:rgb(53, 53, 194); border-color:rgb(53, 53, 194); color:white">Detail Pemesanan</button></a></td>
                                                                 <td>20 November 2022</td>
                                                                 <td> Rp 350.0000</td>
                                                             </tr>
