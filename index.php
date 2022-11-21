@@ -33,7 +33,7 @@ $sesEmail = $_SESSION['user_email'];
                     <div class="carousel-text">
                         <h1>Kos Kosan murah dan berkualitas</h1>
                         <p>
-                            Menyajikan kos kosan mulai dari harga Rp 300.000 ke atas
+                            Menyajikan kos kosan mulai dari harga Rp 300.000 ke atas sekali
                         </p>
                         <a class="btn btn-custom" href="order.php">Pesan Sekarang!</a>
                     </div>
