@@ -77,6 +77,7 @@ $sesEmail = $_SESSION['user_email'];
                                 </div>
                             </div>
                         </div>
+                        <?php if($sesLvl == 3){ ?>
                         <div class="row column1">
                             <div class="col-md-6 col-lg-4">
                                 <div class="full counter_section margin_bottom_30">
@@ -132,6 +133,63 @@ $sesEmail = $_SESSION['user_email'];
                                 </div>
                             </div>
                         </div>
+                        <?php }else{ ?>
+                            <div class="row column1">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="full counter_section margin_bottom_30">
+                                    <div class="couter_icon">
+                                        <div>
+                                            <i class="fa fa-user yellow_color"></i>
+                                        </div>
+                                    </div>
+                                    <div class="counter_no">
+                                        <div>
+                                            <p class="total_no">1000</p>
+                                            <p class="head_couter">Total Kamar Kos</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="full counter_section margin_bottom_30">
+                                    <div class="couter_icon">
+                                        <div>
+                                            <i class="fa fa-user yellow_color"></i>
+                                        </div>
+                                    </div>
+                                    <div class="counter_no">
+                                        <div>
+                                            <p class="total_no">1000</p>
+                                            <p class="head_couter">Total Sewa</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="full counter_section margin_bottom_30">
+                                    <div class="couter_icon">
+                                        <div>
+                                            <i class="fa fa-cloud-download green_color"></i>
+                                        </div>
+                                    </div>
+                                    <div class="counter_no">
+                                        <div>
+                                            <p class="total_no">100.000.000</p>
+                                            <p class="head_couter">Total Pemasukan</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- footer -->
+                            <div class="container-fluid">
+                                <div class="footer">
+                                    <p>Copyright © 2022 Designed by A2.<br><br> Distributed By: Team ruweet</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                            <?php } ?>
                         <!-- end dashboard inner -->
                     </div>
                 </div>
