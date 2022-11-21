@@ -37,7 +37,7 @@ $sesEmail = $_SESSION['user_email'];
     <!-- responsive css -->
     <link rel="stylesheet" href="css/responsive.css" />
     <!-- color css -->
-    <link rel="stylesheet" href="css/colors.css" />
+    <!-- <link rel="stylesheet" href="css/colors.css" /> -->
     <!-- select bootstrap -->
     <link rel="stylesheet" href="css/bootstrap-select.css" />
     <!-- scrollbar css -->
@@ -45,7 +45,7 @@ $sesEmail = $_SESSION['user_email'];
     <!-- custom css -->
     <link rel="stylesheet" href="css/custom.css" />
     <!-- calendar file css -->
-    <link rel="stylesheet" href="js/semantic.min.css" />
+    <!-- <link rel="stylesheet" href="js/semantic.min.css" /> -->
     <!-- fancy box js -->
     <link rel="stylesheet" href="css/jquery.fancybox.css" />
     <!-- font awesome -->
