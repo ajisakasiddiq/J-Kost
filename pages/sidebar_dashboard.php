@@ -2,7 +2,7 @@
                 <div class="sidebar_blog_1">
                     <div class="sidebar-header">
                         <div class="logo_section">
-                            <a href="dashboard.php"><img class="logo_icon img-responsive" src="" alt="logo" /></a>
+                            <a href="dashboard.php"><img class="logo_icon img-responsive" src="img/profil.jpg" alt="logo" /></a>
                         </div>
                     </div>
                     <div class="sidebar_user_info">
