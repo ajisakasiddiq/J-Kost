@@ -46,7 +46,7 @@
 
                 <!-- pencari kos start -->
                 <ul class="list-unstyled components">
-                        <li><a href="datakamar.php"><i class="fa fa-university red_color"></i> <span>Data Kamar</span></a></li>
+                        <li><a href="datakamar.php"><i class="fa-solid fa-house-chimney red_color"></i></i> <span>Kost ku</span></a></li>
                         <li><a href="datarekening.php"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
                         <li><a href="transaksi.php"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
                     </ul>
