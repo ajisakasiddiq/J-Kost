@@ -89,7 +89,7 @@ $sesEmail = $_SESSION['user_email'];
                                             <div class="card-body">
                                                 <div class="table-responsive">
                                                 <div>
-                                                    <h4 class="mb-2">Data Kamar</h>
+                                                    <h4 class="mb-2">Data Kamar</h4>
                                                         <div id="toolbar">
                                                             <button id="button" class="btn btn-primary">
                                                                 <i class="fa-solid fa-plus"></i> Tambah Kost
