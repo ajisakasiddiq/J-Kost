@@ -49,6 +49,7 @@ $sesEmail = $_SESSION['user_email'];
     <link rel="stylesheet" href="js/semantic.min.css" />
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link href="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -90,11 +91,12 @@ $sesEmail = $_SESSION['user_email'];
                                             </div>
                                             <div class="table_section padding_infor_info">
                                                 <div class="table-responsive-sm">
-                                                    <label for="search">
-                                                        Search : 
-                                                        <input type="text" id="search">
-                                                    </label>
-                                                    <table class="table table-bordered">
+                                                <table
+                                                        id="table"
+                                                        data-toggle="table"
+                                                        data-search="true"
+                                                        data-pagination="true"
+                                                        >
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
@@ -169,6 +171,7 @@ $sesEmail = $_SESSION['user_email'];
         </script>
         <!-- custom js -->
         <script src="js/custom.js"></script>
+        <script src="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.js"></script>
 </body>
 
 </html>
