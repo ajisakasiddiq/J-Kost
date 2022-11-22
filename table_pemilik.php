@@ -89,11 +89,6 @@ $sesEmail = $_SESSION['user_email'];
                                                 </div>
                                             </div>
                                             <div class="table_section padding_infor_info">
-                                                <div class="table-responsive-sm">
-                                                    <label for="search">
-                                                        Search : 
-                                                        <input type="text" id="search">
-                                                    </label>
                                                     <table class="table table-bordered">
                                                         <thead>
                                                             <tr>
