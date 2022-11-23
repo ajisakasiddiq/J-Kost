@@ -71,6 +71,7 @@ if (isset($_POST['submit'])) {
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 
     
     <script>
@@ -122,7 +123,7 @@ if (isset($_POST['submit'])) {
                                                 <label class="custom-control-label" for="show_password">Show Password</label>
                                             </div>
                                         </div>
-                                        <button type="submit" name="submit" class="btn btn-primary btn-custom btn-block">Login</button>
+                                        <button type="submit" name="submit" class="btn btn-custom btn-block">Login</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
