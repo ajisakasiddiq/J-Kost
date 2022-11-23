@@ -50,6 +50,7 @@ $sesEmail = $_SESSION['user_email'];
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
     <link href="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -70,6 +71,41 @@ $sesEmail = $_SESSION['user_email'];
                 <!-- dashboard inner -->
                 <div class="midde_cont">
                     <div class="container-fluid">
+                            <!-- Modal start -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Validate Kost</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                  <form class="user" action="" method="POST">
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="txt_email">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                </div>
+                                            </form>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Modal end -->
                         <div class="row column_title">
                             <div class="col-md-12">
                                 <div class="page_title">
@@ -122,8 +158,7 @@ $sesEmail = $_SESSION['user_email'];
                                                                 <td><img src="img/team-3.jpg" alt="" width="50px"></td>
                                                                 <td>Ready</td>
                                                                 <td>
-                                                                    <a href="auth_kos.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
-
+                                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-pen"></i></button>
                                                                     <a href="hapus.php" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                                                                 </td>
                                                             </tr>
@@ -143,11 +178,25 @@ $sesEmail = $_SESSION['user_email'];
                                 <p>Copyright © 2018 Designed by html.design. All rights reserved.</p>
                             </div>
                         </div>
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Validate Kost</h5>
+                                </div>
+                                <div class="modal-body"></div>
+                                <div class="modal-footer"></div>
+                            </div>
+                        </div>
                     </div>
                     <!-- end dashboard inner -->
                 </div>
             </div>
         </div>
+
+
+
+
+        
         <!-- jQuery -->
         <script src="js/jquery.min.js"></script>
         <script src="js/popper.min.js"></script>
@@ -172,6 +221,7 @@ $sesEmail = $_SESSION['user_email'];
         <!-- custom js -->
         <script src="js/custom.js"></script>
         <script src="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 
 </html>
