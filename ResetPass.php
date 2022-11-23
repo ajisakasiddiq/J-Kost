@@ -22,7 +22,7 @@ if( isset($_POST['update']) ){
     $Name   = $_POST['txt_name'];
     $userName   = $_POST['txt_username'];
 
-    $query = "UPDATE user SET user_nama='$Name',user_email='$userEmail',username='$userName',user_password='$userPass' WHERE id_user ='$userId'";
+    $query = "UPDATE user SET user_nama='$Name',user_email='$userEmail',username='$userName',user_password='$userPass' WHERE id_user ='$userId';";
     $result = mysqli_query($koneksi, $query);
     header('Location: ResetPass.php');
 }

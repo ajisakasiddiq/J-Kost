@@ -47,6 +47,7 @@ $sesEmail = $_SESSION['user_email'];
     <link rel="stylesheet" href="css/custom.css" />
     <!-- calendar file css -->
     <link rel="stylesheet" href="js/semantic.min.css" />
+    
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
     <link href="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.css" rel="stylesheet">
@@ -101,7 +102,7 @@ $sesEmail = $_SESSION['user_email'];
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                                    <button type="submit" name="submit" class="btn btn-danger">Save changes</button>
                                   </div>
                                 </div>
                               </div>
