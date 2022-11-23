@@ -73,7 +73,7 @@ $sesEmail = $_SESSION['user_email'];
                     <div class="container-fluid">
                             <!-- Modal start -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                              <div class="modal-dialog">
+                              <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                   <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Validate Kost</h1>
@@ -81,22 +81,23 @@ $sesEmail = $_SESSION['user_email'];
                                   </div>
                                   <div class="modal-body">
                                   <form class="user" action="" method="POST">
+                                    
                                                 <div class="form-group">
                                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="txt_email">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
                                                 </div>
-                                            </form>
+                                    </form>
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
