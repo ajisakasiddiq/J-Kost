@@ -118,7 +118,7 @@ if (isset($_POST['submit'])) {
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="show_password" name="show_password">
+                                                <input type="checkbox" class="custom-control-input form-checkbox" id="show_password" name="show_password">
                                                 <label class="custom-control-label" for="show_password">Show Password</label>
                                             </div>
                                         </div>
@@ -141,7 +141,7 @@ if (isset($_POST['submit'])) {
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
