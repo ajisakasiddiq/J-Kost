@@ -59,12 +59,12 @@ $sesEmail = $_SESSION['user_email'];
     <div class="full_container">
         <div class="inner_container">
             <!-- Sidebar  -->
-            <?php require("pages/sidebar_dashboard.php") ?>
+            <?php include("pages/sidebar_dashboard.php") ?>
             <!-- end sidebar -->
             <!-- right content -->
             <div id="content">
                 <!-- topbar -->
-            <?php require("pages/topbar_dashboard.php") ?>
+            <?php include("pages/topbar_dashboard.php") ?>
                 <!-- end topbar -->
                 <!-- dashboard inner -->
                 <div class="midde_cont">

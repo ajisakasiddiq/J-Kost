@@ -38,6 +38,7 @@ $sesEmail = $_SESSION['user_email'];
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
@@ -156,51 +157,27 @@ $sesEmail = $_SESSION['user_email'];
                 <p>Kos Kosan</p>
                 <h2>Pilih Kos Sesuai Keinginan Anda</h2>
             </div>
-            <!-- <div class="row">
-                <div class="col-md-4">
-                    <div class="price-item">
-                        <div class="price-header">
-                            <h3>Bara Kost</h3>
-                            <h2><span>$</span><strong>25</strong><span>.99</span></h2>
-                        </div>
-                        <div class="price-body">
-                            <ul>
-                                <li><i class="far fa-check-circle"></i>Seats Washing</li>
-                                <li><i class="far fa-check-circle"></i>Vacuum Cleaning</li>
-                                <li><i class="far fa-check-circle"></i>Exterior Cleaning</li>
-                                <li><i class="far fa-times-circle"></i>Interior Wet Cleaning</li>
-                                <li><i class="far fa-times-circle"></i>Window Wiping</li>
-                            </ul>
-                        </div>
-                        <div class="price-footer">
-                            <a class="btn btn-custom" href="details.html">Pesan Disini</a>
-                        </div>
-                    </div>
+            <div class="row mb-3 justify-content-between">
+                <div class="col-lg-3">
+                    <select class="form-control  form-select" aria-label="Default select example">
+                        <option selected><i class="fa-regular fa-people"></i>Semua Tipe Kost</option>
+                        <option value="1">Cewek</option>
+                        <option value="2">Cowok</option>
+                        <option value="3">Campur</option>
+                    </select>
                 </div>
-                <div class="col-md-4">
-                    <div class="price-item featured-item">
-                        <div class="price-header">
-                            <h3>Kost Sakinah</h3>
-                            <h2><span>$</span><strong>35</strong><span>.99</span></h2>
-                        </div>
-                        <div class="price-body">
-                            <ul>
-                                <li><i class="far fa-check-circle"></i>Seats Washing</li>
-                                <li><i class="far fa-check-circle"></i>Vacuum Cleaning</li>
-                                <li><i class="far fa-check-circle"></i>Exterior Cleaning</li>
-                                <li><i class="far fa-check-circle"></i>Interior Wet Cleaning</li>
-                                <li><i class="far fa-times-circle"></i>Window Wiping</li>
-                            </ul>
-                        </div>
-                        <div class="price-footer">
-                            <a class="btn btn-custom" href="details.html">Pesan Disini</a>
-                        </div>
-                    </div>
+                <div class="col-lg-3">
+                    <select class="form-control  form-select" aria-label="Default select example">
+                        <option selected><i class="fa-regular fa-people"></i>Bulanan</option>
+                        <option value="1">Per 3 Bulan</option>
+                        <option value="2">Per 6 Bulan</option>
+                        <option value="3">Tahunan </option>
+                    </select>
                 </div>
-
-            </div> -->
-
-
+                <div class="col-lg-5">
+                    <input type="text" class="form-control" placeholder="Masukan nama lokasi/area/alamat">
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-3 mb-3">
                     <a href="details.php">

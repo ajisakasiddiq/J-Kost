@@ -19,7 +19,7 @@ $sesEmail = $_SESSION['user_email'];
 
 
 <!-- navbar start -->
-<?php require("pages/navbar_front.php"); ?>
+<?php include("pages/navbar_front.php"); ?>
 <!-- navbar end -->
 
     <!-- Carousel Start -->
