@@ -1,16 +1,21 @@
 <?php
 require('koneksi.php');
-if( isset($_POST['register']) ){
+if(isset($_POST['register']) ){
     $Mail = $_POST['txt_email'];
     $Pass = $_POST['txt_pass'];
     $userName = $_POST['txt_username'];
     $Name = $_POST['txt_nama'];
     $Lvl = $_POST['txt_level'];
 
-    $query = "INSERT INTO user VALUES ('','$Name','$userName','$Pass','$Lvl','')";
-    $result = mysqli_query($koneksi, $query);
+    $query = "INSERT INTO user VALUES (' ','$Name','$Mail','$userName','$Pass','$Lvl')";
+    mysqli_query($koneksi, $query);
     // header('Location: login.php');
     
+    if (mysqli_affected_rows($koneksi) > 0 ) {
+       echo "berhasil";
+    } else {
+        echo mysqli_error($koneksi);
+    }
 }
 ?>
 
