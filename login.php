@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
     $pass = $_POST['txt_pass'];
     
     if (!empty(trim($email)) && !empty(trim($pass))) {
-        $query      = "SELECT * FROM user WHERE user_email = '$email'";
+        $query      = "SELECT * FROM user_detail WHERE user_email = '$email'";
         $result     = mysqli_query($koneksi, $query);
         $num        = mysqli_num_rows($result);
 
@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
             $id = $row['id_user'];
             $name = $row['user_nama'];
             $userVal = $row['user_email'];
-            $passVal = $row['user_password'];
+            $passVal = $row['user_pass'];
             $userName = $row['username'];
             $level = $row['level'];
             $image = $row['foto'];

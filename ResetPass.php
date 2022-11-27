@@ -16,15 +16,22 @@ $sesEmail = $_SESSION['user_email'];
 
 // update data
 if( isset($_POST['update']) ){
+    var_dump($koneksi);
     $userId     = $_POST['txt_id'];
     $userMail   = $_POST['txt_email'];
     $userPass   = $_POST['txt_pass'];
     $Name   = $_POST['txt_name'];
     $userName   = $_POST['txt_username'];
 
-    $query = "UPDATE user SET user_nama='$Name',user_email='$userEmail',username='$userName',user_password='$userPass' WHERE id_user ='$userId';";
+    $query = "UPDATE user_detail SET user_nama='$Name',user_email='$userEmail',username='$userName',user_pass='$userPass' WHERE id_user ='$userId';";
     $result = mysqli_query($koneksi, $query);
+    if (mysqli_affected_rows($koneksi) > 0 ) {
+        echo "berhasil";
+     } else {
+         $error =  mysqli_error($koneksi);
+     }
     header('Location: ResetPass.php');
+    
 }
 
  
@@ -133,6 +140,12 @@ if( isset($_POST['update']) ){
                                                         <div class="form-group">
                                                             <label for="password2">Repeat password</label>
                                                             <input  id="password2" type="password" class="form-control form-control-sm" name="txt_pass2">
+                                                        </div>
+                                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                            <strong><?php echo $error ?>!</strong> 
+                                                            <a class="close" data-dismiss="alert" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </a>
                                                         </div>
                                                         <button type="submit" name="update" class="btn btn-primary btn-block submit-btn">Confirm</button>
                                                     </form>
