@@ -174,8 +174,11 @@ $sesEmail = $_SESSION['user_email'];
                         <option value="3">Tahunan </option>
                     </select>
                 </div>
-                <div class="col-lg-5">
-                    <input type="text" class="form-control" placeholder="Masukan nama lokasi/area/alamat">
+                <div class="col-lg-6 input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Cari nama kos/alamat/tempat " aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="input-group-text  btn" id="basic-addon2">Cari</button>
+                    </div>
                 </div>
             </div>
             <div class="row">
