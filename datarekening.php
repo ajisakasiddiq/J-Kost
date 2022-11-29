@@ -188,7 +188,7 @@ $sesEmail = $_SESSION['user_email'];
            </div>
            <div class="modal-footer">
              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-             <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
+             <button type="submit" name="tambah" class="btn btn-primary">Tambah</button>
            </div>
          </div>
        </div>
@@ -226,10 +226,25 @@ $sesEmail = $_SESSION['user_email'];
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 
+<?php 
+if(isset($_POST['tambah']) ){
+    $user = $_POST['txt_user'];
+    $bank = $_POST['txt_bank'];
+    $name = $_POST['txt_nama'];
+    $noRek = $_POST['txt_rek'];;
+
+    $query = "INSERT INTO rekening VALUES (null,'$user','$bank','$name','$noRek')";
+    mysqli_query($koneksi, $query);
+ 
+    
+    if (mysqli_affected_rows($koneksi) > 0 ) {
+        echo 'Berhasil';
+    } else {
+        echo mysqli_error($koneksi);
+    }
+}
 
 
-
-
-
+?>
 
 </html>
