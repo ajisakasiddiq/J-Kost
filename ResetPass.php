@@ -16,21 +16,18 @@ $sesEmail = $_SESSION['user_email'];
 
 // update data
 if( isset($_POST['update']) ){
-    var_dump($koneksi);
     $userId     = $_POST['txt_id'];
-    $userMail   = $_POST['txt_email'];
     $userPass   = $_POST['txt_pass'];
-    $Name   = $_POST['txt_name'];
-    $userName   = $_POST['txt_username'];
 
-    $query = "UPDATE user_detail SET user_nama='$Name',user_email='$userEmail',username='$userName',user_pass='$userPass' WHERE id_user ='$userId';";
+    $query = "UPDATE user_detail SET user_pass ='$userPass' WHERE id_user ='$sesID';";
     $result = mysqli_query($koneksi, $query);
     if (mysqli_affected_rows($koneksi) > 0 ) {
         echo "berhasil";
+        header('Location: dashboard.php');
      } else {
          $error =  mysqli_error($koneksi);
      }
-    header('Location: ResetPass.php');
+  //header('Location: ResetPass.php');
     
 }
 
@@ -117,21 +114,6 @@ if( isset($_POST['update']) ){
                                                             <a class="close" data-dismiss="alert" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </a>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input value="<?php echo $sesID ?>" id="id" type="hidden" class="form-control form-control-sm" name="txt_id">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="nama">Nama</label>
-                                                            <input value="<?php echo $name ?>" id="nama" type="text" class="form-control form-control-sm" name="txt_name">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="username">Username</label>
-                                                            <input value="<?php echo $sesName ?>" id="username" type="text" class="form-control form-control-sm" name="txt_username">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="email">Email</label>
-                                                            <input value="<?php echo $sesEmail ?>" id="email" type="text" class="form-control form-control-sm" name="txt_email">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="password1">Your new password</label>
