@@ -7,12 +7,12 @@ if(isset($_POST['register']) ){
     $Name = $_POST['txt_nama'];
     $Lvl = $_POST['txt_level'];
 
-    $query = "INSERT INTO user_detail VALUES (null,'$Name','$Mail','$userName','$Pass','$Lvl')";
+    $query = "INSERT INTO user_detail VALUES (null,'$Name','$userName','$Mail','$Pass','$Lvl',null,null,null,null,null)";
     mysqli_query($koneksi, $query);
-    // header('Location: login.php');
+ 
     
     if (mysqli_affected_rows($koneksi) > 0 ) {
-       echo "berhasil";
+        header('Location: login.php');
     } else {
         echo mysqli_error($koneksi);
     }

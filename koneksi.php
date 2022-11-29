@@ -2,7 +2,7 @@
 $server 	= "localhost";
 $username 	= "root";
 $password 	= "";
-$db 		= "db_kos";
+$db 		= "db_kost";
 $koneksi = mysqli_connect($server, $username, $password, $db);
 
 if (mysqli_connect_errno()) {
