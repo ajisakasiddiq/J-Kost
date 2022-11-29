@@ -141,12 +141,6 @@ if( isset($_POST['update']) ){
                                                             <label for="password2">Repeat password</label>
                                                             <input  id="password2" type="password" class="form-control form-control-sm" name="txt_pass2">
                                                         </div>
-                                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                            <strong><?php echo $error ?>!</strong> 
-                                                            <a class="close" data-dismiss="alert" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </a>
-                                                        </div>
                                                         <button type="submit" name="update" class="btn btn-primary btn-block submit-btn">Confirm</button>
                                                     </form>
                                                 </div>

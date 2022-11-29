@@ -90,6 +90,21 @@ $sesEmail = $_SESSION['user_email'];
                                                 </div>
                                             </div>
                                             <div class="table_section padding_infor_info">
+                                            <?php 
+                                                        $query = "SELECT * FROM user_detail WHERE level = 1";
+                                                        $result= mysqli_query($koneksi, $query);
+                                                        $no = 1;
+                                                        while ($row = mysqli_fetch_array($result)){
+                                                            $Name = $row['user_nama'];
+                                                            $userName = $row['username'];
+                                                            $userMail = $row['user_email'];
+                                                            $userNIK = $row['nik'];
+                                                            $userAddress = $row['alamat'];
+                                                            $userImg = $row['foto'];
+                                                            $userNo = $row['no_hp'];
+                                                            $userGender = $row['jenis_kelamin'];
+                                                        
+                                                 ?>
                                             <table
                                                         id="table"
                                                         data-toggle="table"
@@ -99,27 +114,28 @@ $sesEmail = $_SESSION['user_email'];
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
-                                                                <th>Nama Kost</th>
-                                                                <th>Pemilik</th>
+                                                                <th>Nama</th>
+                                                                <th>Email</th>
+                                                                <th>Username</th>
+                                                                <th>NIK</th>
                                                                 <th>Alamat</th>
-                                                                <th>Jumlah</th>
-                                                                <th>Deskripsi</th>
+                                                                <th>No hp</th>
+                                                                <th>Jenis Kelamin</th>
                                                                 <th>Foto</th>
-                                                                <th>Status</th>
                                                                 <th>Aksi</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td>1</td>
-                                                                <td>Bara Kost</td>
-                                                                <td>Muhammad Ikbal Mubarok</td>
-                                                                <td>Ngawi</td>
-                                                                <td>22</td>
-                                                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum accusamus repudiandae facere distinctio ut omnis laboriosam, corrupti ea cumque deleniti, aperiam iusto pariatur. Itaque ut, eveniet
-                                                                    iste praesentium exercitationem at.</td>
-                                                                <td><img src="img/team-3.jpg" alt="" width="50px"></td>
-                                                                <td>Ready</td>
+                                                                <td><?php echo $no; ?></td>
+                                                                <td><?php echo $Name; ?></td>
+                                                                <td><?php echo $userMail; ?></td>
+                                                                <td><?php echo $userName; ?></td>
+                                                                <td><?php echo $userNIK; ?></td>
+                                                                <td><?php echo $userAddress; ?></td>
+                                                                <td><?php echo $userNo; ?></td>
+                                                                <td><?php echo $userGender; ?></td>
+                                                                <td><?php echo $userImg; ?></td>
                                                                 <td>
                                                                     <a href="auth_kos.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
 
@@ -128,6 +144,8 @@ $sesEmail = $_SESSION['user_email'];
                                                             </tr>
                                                         </tbody>
                                                     </table>
+                                                    <?php $no++; ?>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>

@@ -82,56 +82,71 @@ $sesEmail = $_SESSION['user_email'];
                             <div class="col-lg-12">
                                 <div class="white_shd full margin_bottom_30">
                                     <div class="full graph_head">
+                                    <div class="table_section padding_infor_info">
+                                        <div class="full graph_head">
+                                            <div class="heading1 margin_0">
+                                                <h2>Pemilik</h2>
+                                            </div>
+                                        </div>
                                         <div class="table_section padding_infor_info">
-
-                                            <div class="full graph_head">
-                                                <div class="heading1 margin_0">
-                                                    <h2>Penyewa</h2>
-                                                </div>
+                                        <?php 
+                                                    $query = "SELECT * FROM user_detail WHERE level = 2";
+                                                    $result= mysqli_query($koneksi, $query);
+                                                    $no = 1;
+                                                    while ($row = mysqli_fetch_array($result)){
+                                                        $Name = $row['user_nama'];
+                                                        $userName = $row['username'];
+                                                        $userMail = $row['user_email'];
+                                                        $userNIK = $row['nik'];
+                                                        $userAddress = $row['alamat'];
+                                                        $userImg = $row['foto'];
+                                                        $userNo = $row['no_hp'];
+                                                        $userGender = $row['jenis_kelamin'];
+                                                    
+                                             ?>
+                                        <table
+                                                    id="table"
+                                                    data-toggle="table"
+                                                    data-search="true"
+                                                    data-pagination="true"
+                                                    >
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>Nama</th>
+                                                            <th>Email</th>
+                                                            <th>Username</th>
+                                                            <th>NIK</th>
+                                                            <th>Alamat</th>
+                                                            <th>No hp</th>
+                                                            <th>Jenis Kelamin</th>
+                                                            <th>Foto</th>
+                                                            <th>Aksi</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><?php echo $no; ?></td>
+                                                            <td><?php echo $Name; ?></td>
+                                                            <td><?php echo $userMail; ?></td>
+                                                            <td><?php echo $userName; ?></td>
+                                                            <td><?php echo $userNIK; ?></td>
+                                                            <td><?php echo $userAddress; ?></td>
+                                                            <td><?php echo $userNo; ?></td>
+                                                            <td><?php echo $userGender; ?></td>
+                                                            <td><?php echo $userImg; ?></td>
+                                                            <td>
+                                                                <a href="auth_kos.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
+                                                    
+                                                                <a href="hapus.php" class="btn btn-danger btn-circle" ><i class="fas fa-trash"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <?php $no++; ?>
+                                                <?php } ?>
                                             </div>
-                                            <div class="table_section padding_infor_info">
-                                                <div class="table-responsive-sm">
-                                                <table
-                                                        id="table"
-                                                        data-toggle="table"
-                                                        data-search="true"
-                                                        data-pagination="true"
-                                                        >
-                                                        <thead>
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th>Nama Kost</th>
-                                                                <th>NIK</th>
-                                                                <th>Nama</th>
-                                                                <th>Alamat</th>
-                                                                <th>No. Handphone</th>
-                                                                <th>Jenis Kelamin</th>
-                                                                <th>Waktu Sewa</th>
-                                                                <th>Status</th>
-                                                                <th>Aksi</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>Bara Kost</td>
-                                                                <td>35181667709267</td>
-                                                                <td>Zidan</td>
-                                                                <td>Jember</td>
-                                                                <td>081456789030</td>
-                                                                <td>Laki-laki</td>
-                                                                <td>1 bulan</td>
-                                                                <td>Lunas</td>
-                                                                <td>
-                                                                    <a href="auth_kos.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
-
-                                                                    <a href="hapus.php" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
