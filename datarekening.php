@@ -97,16 +97,7 @@ $sesEmail = $_SESSION['user_email'];
                                                              </button>
                                                         </div>
                                                  </div>
-                                                 <?php 
-                                                        $query = "SELECT * FROM rekening WHERE id_user = '$sesID'";
-                                                        $result= mysqli_query($koneksi, $query);
-                                                        $no = 1;
-                                                        while ($row = mysqli_fetch_array($result)){
-                                                            $Namebank = $row['Nama_bank'];
-                                                            $userName = $row['Nama_rek'];
-                                                            $userNo = $row['no_rek'];
-                                                        
-                                                 ?>
+
                                                 <table
                                                         id="table"
                                                         data-toggle="table"
@@ -123,6 +114,16 @@ $sesEmail = $_SESSION['user_email'];
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                        <?php 
+                                                        $query = "SELECT * FROM rekening WHERE id_user = '$sesID'";
+                                                        $result= mysqli_query($koneksi, $query);
+                                                        $no = 1;
+                                                        while ($row = mysqli_fetch_array($result)){
+                                                            $Namebank = $row['Nama_bank'];
+                                                            $userName = $row['Nama_rek'];
+                                                            $userNo = $row['no_rek'];
+                                                        
+                                                 ?>
                                                             <tr>
                                                                 <td><?php echo $no; ?></td>
                                                                 <td><?php echo $Namebank; ?></td>

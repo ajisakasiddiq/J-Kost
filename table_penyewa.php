@@ -89,21 +89,7 @@ $sesEmail = $_SESSION['user_email'];
                                             </div>
                                         </div>
                                         <div class="table_section padding_infor_info">
-                                        <?php 
-                                                    $query = "SELECT * FROM user_detail WHERE level = 2";
-                                                    $result= mysqli_query($koneksi, $query);
-                                                    $no = 1;
-                                                    while ($row = mysqli_fetch_array($result)){
-                                                        $Name = $row['user_nama'];
-                                                        $userName = $row['username'];
-                                                        $userMail = $row['user_email'];
-                                                        $userNIK = $row['nik'];
-                                                        $userAddress = $row['alamat'];
-                                                        $userImg = $row['foto'];
-                                                        $userNo = $row['no_hp'];
-                                                        $userGender = $row['jenis_kelamin'];
-                                                    
-                                             ?>
+
                                         <table
                                                     id="table"
                                                     data-toggle="table"
@@ -125,6 +111,21 @@ $sesEmail = $_SESSION['user_email'];
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                    <?php 
+                                                    $query = "SELECT * FROM user_detail WHERE level = 2";
+                                                    $result= mysqli_query($koneksi, $query);
+                                                    $no = 1;
+                                                    while ($row = mysqli_fetch_array($result)){
+                                                        $Name = $row['user_nama'];
+                                                        $userName = $row['username'];
+                                                        $userMail = $row['user_email'];
+                                                        $userNIK = $row['nik'];
+                                                        $userAddress = $row['alamat'];
+                                                        $userImg = $row['foto'];
+                                                        $userNo = $row['no_hp'];
+                                                        $userGender = $row['jenis_kelamin'];
+                                                    
+                                             ?>
                                                         <tr>
                                                             <td><?php echo $no; ?></td>
                                                             <td><?php echo $Name; ?></td>
@@ -141,10 +142,11 @@ $sesEmail = $_SESSION['user_email'];
                                                                 <a href="hapus.php" class="btn btn-danger btn-circle" ><i class="fas fa-trash"></i></a>
                                                             </td>
                                                         </tr>
+                                                        <?php $no++; ?>
+                                                <?php } ?>
                                                     </tbody>
                                                 </table>
-                                                <?php $no++; ?>
-                                                <?php } ?>
+
                                             </div>
                                         </div>
                                         </div>

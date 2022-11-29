@@ -140,7 +140,7 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                                                 <div class="ui-select">
                                                                     <select id="gender" class="form-control" id="gender">
                                                           <option value="">Pilih Jenis Kelamin </option>
-                                                          <option value="Laki">Laki - Laki </option>
+                                                          <option value="Laki-laki">Laki - Laki </option>
                                                           <option value="perempuan">Perempuan</option>
                                                         </select>
                                                                 </div>
