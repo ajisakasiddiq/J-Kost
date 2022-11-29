@@ -73,7 +73,7 @@ $sesEmail = $_SESSION['user_email'];
                 <div class="midde_cont">
                     <div class="container-fluid">
                             <!-- Modal start -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="validate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                   <div class="modal-header">
@@ -160,7 +160,7 @@ $sesEmail = $_SESSION['user_email'];
                                                                 <td><img src="img/team-3.jpg" alt="" width="50px"></td>
                                                                 <td>Ready</td>
                                                                 <td>
-                                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-pen"></i></button>
+                                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#validate"><i class="fas fa-pen"></i></button>
                                                                     <a href="hapus.php" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                                                                 </td>
                                                             </tr>
