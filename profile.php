@@ -11,6 +11,10 @@ $sesName = $_SESSION['username'];
 $name = $_SESSION['user_nama'];
 $sesLvl = $_SESSION['level'];
 $sesEmail = $_SESSION['user_email'];
+$sesNIK = $_SESSION['nik'];
+$sesNohp = $_SESSION['no_hp'];
+$sesAddress = $_SESSION['alamat'];
+$sesGender = $_SESSION['jenis_kelamin'];
 
 }
 ?>
@@ -91,8 +95,9 @@ $sesEmail = $_SESSION['user_email'];
                                                     <div class="text-center">
                                                         <img src="img/profil.jpg" class="avatar img-circle" alt="avatar" width="100px">
                                                         <h6>Upload a different photo...</h6>
-
-                                                        <input type="file" class="form-control">
+                                                        <form action="" method="post">
+                                                        <input type="file" class="form-control" name="img">
+                                                        </form>
                                                     </div>
                                                 </div>
 
@@ -108,13 +113,25 @@ $sesEmail = $_SESSION['user_email'];
                                                         <div class="form-group">
                                                             <label for="name" class="col-lg-3 control-label">Nama :</label>
                                                             <div class="col-lg-8">
-                                                                <input class="form-control" type="text" name="txt_nama" id="name">
+                                                                <input value="<?php echo $name ?>" class="form-control" type="text" name="txt_nama" id="name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="username" class="col-lg-3 control-label">Username :</label>
+                                                            <div class="col-lg-8">
+                                                                <input value="<?php echo $sesName ?>" class="form-control" type="text" name="txt_username" id="username">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="email" class="col-lg-3 control-label">Email :</label>
+                                                            <div class="col-lg-8">
+                                                                <input value="<?php echo $sesEmail ?>" class="form-control" type="text" name="txt_email" id="email">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="nik" class="col-lg-3 control-label">NIK :</label>
                                                             <div class="col-lg-8">
-                                                                <input class="form-control" type="text" name="txt_nik" id="nik">
+                                                                <input value="<?php echo $sesNIK ?>" class="form-control" type="text" name="txt_nik" id="nik">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -132,41 +149,19 @@ $sesEmail = $_SESSION['user_email'];
                                                         <div class="form-group">
                                                             <label for="numberPhone" class="col-lg-3 control-label">No. HP :</label>
                                                             <div class="col-lg-8">
-                                                                <input class="form-control" type="text" name="txt_nohp" id="numberPhone">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="kecamatan" class="col-lg-3 control-label">Kecamatan :</label>
-                                                            <div class="col-lg-8">
-                                                                <div class="ui-select">
-                                                                    <select name="kecamatan" id="kecamatan" class="form-control">
-                                                          <option>Pilih Kecamatan</option>
-                                                            </select>
-                                                                </div>
+                                                                <input value="<?php echo $sesNohp ?>" class="form-control" type="text" name="txt_nohp" id="numberPhone">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="alamat" class="col-md-3 control-label">Alamat :</label>
                                                             <div class="col-md-8">
-                                                                <textarea class="form-control" rows="5" type="text" id="alamat"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="gender" class="col-lg-3 control-label">Status :</label>
-                                                            <div class="col-lg-8">
-                                                                <div class="ui-select">
-                                                                    <select id="gender" class="form-control" id="gender">
-                                                          <option>Pilih Status</option>
-                                                          <option value="Laki">Menikah </option>
-                                                          <option value="perempuan">Lajang</option>
-                                                        </select>
-                                                                </div>
+                                                                <textarea value="<?php echo $sesAddress ?>" class="form-control" rows="5" type="text" id="alamat"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="col-md-3 control-label"></label>
                                                             <div class="col-md-8">
-                                                                <input type="button" class="btn btn-primary" value="Save Changes">
+                                                                <button class="btn btn-primary" type="submit" name="edit">Simpan</button>
                                                                 <span></span>
                                                                 <input type="reset" class="btn btn-default" value="Cancel">
                                                             </div>

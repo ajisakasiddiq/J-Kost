@@ -22,6 +22,10 @@ if (isset($_POST['submit'])) {
             $userName = $row['username'];
             $level = $row['level'];
             $image = $row['foto'];
+            $nik = $row['nik'];
+            $address = $row['alamat'];
+            $noHp = $row['no_hp'];
+            $gender = $row['jenis_kelamin'];
         }
 
         if ($num != 0) {
@@ -32,10 +36,13 @@ if (isset($_POST['submit'])) {
                 $_SESSION['user_email'] = $userVal;
                 $_SESSION['level'] = $level;
                 $_SESSION['foto'] = $image;
+                $_SESSION['nik'] = $nik;
+                $_SESSION['alamat'] = $address;
+                $_SESSION['no_hp'] = $noHp;
+                $_SESSION['jenis_kelamin'] = $gender;
                 header('Location: index.php');
             }else{
-                $error = 'user atau password salah!!';
-                echo "<script>alert('ERRORR COKKK')</script>";
+                $error = 'user atau password salah!!';;
                 header('Location: login.php');
             }
         }else{
