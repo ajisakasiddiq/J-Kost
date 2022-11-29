@@ -85,7 +85,7 @@ $sesEmail = $_SESSION['user_email'];
                                     <div class="table_section padding_infor_info">
                                         <div class="full graph_head">
                                             <div class="heading1 margin_0">
-                                                <h2>Pemilik</h2>
+                                                <h2>Penyewa</h2>
                                             </div>
                                         </div>
                                         <div class="table_section padding_infor_info">
