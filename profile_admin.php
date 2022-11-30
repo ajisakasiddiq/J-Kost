@@ -293,14 +293,20 @@ if(isset($_POST['tambah']) ){
     $Name = $_POST['txt_nama'];
 
     $query = "INSERT INTO user_detail VALUES (null,'$Name','$userName','$Mail','$Pass',3,null,null,null,null,null)";
-    mysqli_query($koneksi, $query);
- 
-    
-    if (mysqli_affected_rows($koneksi) > 0 ) {
-        echo "Berhasil";
-    } else {
-        echo mysqli_error($koneksi);
+    if (mysqli_query($koneksi,$query)) {
+        $response=array(
+            'status' => 1,
+            'message' => 'Tambah data sukses'
+        );
+    }else{
+        $response=array(
+            'status' => 0,
+            'message' => 'failed',
+            'query' => $query
+        );
     }
+    header('Content-Type: application/json');
+    echo json_encode($response);
 }
 
 $id = $_GET['id_user'];

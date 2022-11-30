@@ -21,6 +21,30 @@ function get_admin()
     echo json_encode($response);
 }
 
+function input_admin()
+{
+    global $koneksi;
+    $Mail = $_POST['txt_email'];
+    $Pass = $_POST['txt_pass'];
+    $userName = $_POST['txt_username'];
+    $Name = $_POST['txt_nama'];
+
+    $query = "INSERT INTO user_detail VALUES (null,'$Name','$userName','$Mail','$Pass',3,null,null,null,null,null)";
+    if (mysqli_query($koneksi,$query)) {
+        $response=array(
+            'status' => 1,
+            'message' => 'Tambah data sukses'
+        );
+    }else{
+        $response=array(
+            'status' => 0,
+            'message' => 'failed',
+            'query' => $query
+        );
+    }
+    header('Content-Type: application/json');
+    echo json_encode($response);
+}
 
 // end admin
 
