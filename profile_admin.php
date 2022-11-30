@@ -11,12 +11,12 @@ $name = $_SESSION['user_nama'];
 $sesLvl = $_SESSION['level'];
 $sesEmail = $_SESSION['user_email'];
 }
-// view data admin
-$API_url='http://localhost:8080/project%20wsi/api/api.php?function=get_admin';
-$json_data=file_get_contents($API_url);
-$response_data=json_decode($json_data);
-$user_data=$response_data->data;
 
+ // view data admin
+ $API_url='http://localhost:8080/project%20wsi/api/api.php?function=get_admin';
+ $json_data=file_get_contents($API_url);
+ $response_data=json_decode($json_data);
+ $user_data=$response_data->data;
 ?>
 
 
@@ -56,7 +56,7 @@ $user_data=$response_data->data;
     
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
     <link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -119,42 +119,29 @@ $user_data=$response_data->data;
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <?php 
-                                                //     $query = "SELECT * FROM user_detail WHERE level = 3";
-                                                //     $result= mysqli_query($koneksi, $query);
-                                                //     $no = 1;
-                                                //     while ($row = mysqli_fetch_array($result)){
-                                                //         $Name = $row['user_nama'];
-                                                //             $userName = $row['username'];
-                                                //             $userMail = $row['user_email'];
-                                                //             $userNIK = $row['nik'];
-                                                //             $userAddress = $row['alamat'];
-                                                //             $userImg = $row['foto'];
-                                                //             $userNo = $row['no_hp'];
-                                                //             $userGender = $row['jenis_kelamin'];
-
-                                                //  ?>
-                                                <?php foreach($user_data as $user) : ?>
-                                                    <?php $no = 1; ?>
+                                                <?php 
+                                                $no = 1; 
+                                                foreach($user_data as $user) :      
+                                                ?>
                                                             <tr>
-                                                                <td><?php echo $no; ?></td>
-                                                                <td><?php $user -> user_nama; ?></td>
-                                                                <td><?php $user -> user_email; ?></td>
-                                                                <td><?php $user -> username; ?></td>
-                                                                <td><?php $user -> nik; ?></td>
-                                                                <td><?php $user -> alamat; ?></td>
-                                                                <td><?php $user -> no_hp; ?></td>
-                                                                <td><?php $user -> jenis_kelamin; ?></td>
-                                                                <td><?php $user -> foto; ?></td>
+                                                                <td><?= $no; ?></td>
+                                                                <td><?= $user -> user_nama; ?></td>
+                                                                <td><?= $user -> user_email; ?></td>
+                                                                <td><?= $user -> username; ?></td>
+                                                                <td><?= $user -> nik; ?></td>
+                                                                <td><?= $user -> alamat; ?></td>
+                                                                <td><?= $user -> no_hp; ?></td>
+                                                                <td><?= $user -> jenis_kelamin; ?></td>
+                                                                <td><?= $user -> foto; ?></td>
                                                                 <td>
-                                                                    <a class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editAdmin<?php echo $row['id_user']; ?>"><i class="fas fa-pen"></i></a>
+                                                                    <a class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editAdmin<?= $user->id_user; ?>"><i class="fas fa-pen"></i></a>
 
                                                                     <a href="hapus.php" class="btn btn-danger btn-circle" ><i class="fas fa-trash"></i></a>
                                                                 </td>
 
                                                             <!-- modal edit admin start -->
 
-                                                            <div class="modal fade" id="editAdmin<?php echo $row['id_user']; ?>" tabindex="-1" aria-labelledby="EditadminLabel" aria-hidden="true">
+                                                            <div class="modal fade" id="editAdmin<?= $user->id_user; ?>" tabindex="-1" aria-labelledby="EditadminLabel" aria-hidden="true">
                                                                    <div class="modal-dialog modal-md">
                                                                      <div class="modal-content">
                                                                        <div class="modal-header">
@@ -165,15 +152,15 @@ $user_data=$response_data->data;
                                                                        <div class="modal-body">
                                                                        <div class="form-group">
                                                                             <input type="text" class="form-control form-control-user" id="exampleInputName"
-                                                                                placeholder="Name" name="txt_nama" value="<?php echo $row['user_nama'] ?>">
+                                                                                placeholder="Name" name="txt_nama" value="<?= $user->user_nama; ?>">
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <input type="text" class="form-control form-control-user" id="exampleInputEmail"
-                                                                                placeholder="Email Address" name="txt_email" value="<?php echo $row['user_email'] ?>">
+                                                                                placeholder="Email Address" name="txt_email" value="<?= $user->user_email; ?>">
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <input type="text" class="form-control form-control-user" id="exampleInputUsername"
-                                                                                placeholder="Username" name="txt_username" value="<?php echo $row['username'] ?>">
+                                                                                placeholder="Username" name="txt_username" value="<?= $user->username; ?>">
                                                                         </div>
                                                                        </div>
                                                                        <div class="modal-footer">

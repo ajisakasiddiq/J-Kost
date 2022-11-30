@@ -13,6 +13,12 @@ $sesLvl = $_SESSION['level'];
 $sesEmail = $_SESSION['user_email'];
 
 }
+
+ // view data pemilik
+ $API_url='http://localhost:8080/project%20wsi/api/api.php?function=get_pemilik';
+ $json_data=file_get_contents($API_url);
+ $response_data=json_decode($json_data);
+ $user_data=$response_data->data;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +55,7 @@ $sesEmail = $_SESSION['user_email'];
     <link rel="stylesheet" href="js/semantic.min.css" />
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
     <link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -108,31 +114,19 @@ $sesEmail = $_SESSION['user_email'];
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <?php 
-                                                        $query = "SELECT * FROM user_detail WHERE level = 1";
-                                                        $result= mysqli_query($koneksi, $query);
-                                                        $no = 1;
-                                                        while ($row = mysqli_fetch_array($result)){
-                                                            $Name = $row['user_nama'];
-                                                            $userName = $row['username'];
-                                                            $userMail = $row['user_email'];
-                                                            $userNIK = $row['nik'];
-                                                            $userAddress = $row['alamat'];
-                                                            $userImg = $row['foto'];
-                                                            $userNo = $row['no_hp'];
-                                                            $userGender = $row['jenis_kelamin'];
-                                                        
-                                                 ?>
+                                                        <?php $no = 1;
+                                                        foreach ($user_data as $user) :
+                                                        ?>
                                                             <tr>
-                                                                <td><?php echo $no; ?></td>
-                                                                <td><?php echo $Name; ?></td>
-                                                                <td><?php echo $userMail; ?></td>
-                                                                <td><?php echo $userName; ?></td>
-                                                                <td><?php echo $userNIK; ?></td>
-                                                                <td><?php echo $userAddress; ?></td>
-                                                                <td><?php echo $userNo; ?></td>
-                                                                <td><?php echo $userGender; ?></td>
-                                                                <td><?php echo $userImg; ?></td>
+                                                                 <td><?= $no; ?></td>
+                                                                <td><?= $user -> user_nama; ?></td>
+                                                                <td><?= $user -> user_email; ?></td>
+                                                                <td><?= $user -> username; ?></td>
+                                                                <td><?= $user -> nik; ?></td>
+                                                                <td><?= $user -> alamat; ?></td>
+                                                                <td><?= $user -> no_hp; ?></td>
+                                                                <td><?= $user -> jenis_kelamin; ?></td>
+                                                                <td><?= $user -> foto; ?></td>
                                                                 <td>
                                                                     <a href="auth_kos.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
 
@@ -140,7 +134,7 @@ $sesEmail = $_SESSION['user_email'];
                                                                 </td>
                                                             </tr>
                                                             <?php $no++; ?>
-                                                    <?php } ?>
+                                                    <?php endforeach ?>
                                                         </tbody>
                                                     </table>
 
