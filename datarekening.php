@@ -89,7 +89,7 @@ $sesEmail = $_SESSION['user_email'];
                                             <!-- table section -->
                                             <div class="card-body">
                                                 <div class="table-responsive">
-                                                <div class="mb-5">
+                                                <div class="mb-2">
                                                         <div id="toolbar">
                                                             <button id="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahRek">
                                                                 <i class="fa-solid fa-plus"></i> Tambah Rekening
@@ -113,6 +113,7 @@ $sesEmail = $_SESSION['user_email'];
                                                         $result= mysqli_query($koneksi, $query);
                                                         $no = 1;
                                                         while ($row = mysqli_fetch_array($result)){
+                                                            $id = $row['id_user'];
                                                             $Namebank = $row['Nama_bank'];
                                                             $userName = $row['Nama_rek'];
                                                             $userNo = $row['no_rek'];
@@ -125,7 +126,7 @@ $sesEmail = $_SESSION['user_email'];
                                                                 <td><?php echo $userNo; ?></td>
                                                                 <td>
                                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#validate"><i class="fas fa-pen"></i></button>
-                                                                    <a href="hapus.php" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
+                                                                    <a name="delete" type="button" href="datarekening.php?id_rek=<?php echo $row['id_rek']; ?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                                                                 </td>
                                                             </tr>
                                                             <?php $no++; ?>
@@ -240,6 +241,14 @@ if(isset($_POST['tambah']) ){
         echo mysqli_error($koneksi);
     }
 }
+
+
+
+    $id = $_GET['id_rek'];
+
+    $query =  "DELETE FROM rekening WHERE id_rek='$id'";
+    mysqli_query($koneksi, $query);
+
 
 
 ?>

@@ -49,9 +49,11 @@ $sesEmail = $_SESSION['user_email'];
     <link rel="stylesheet" href="css/custom.css" />
     <!-- calendar file css -->
     <link rel="stylesheet" href="js/semantic.min.css" />
+    
     <!-- font awesome -->
-    <link href="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.css" rel="stylesheet">
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -90,13 +92,14 @@ $sesEmail = $_SESSION['user_email'];
                                             </div>
                                         </div>
                                         <div class="table_section padding_infor_info">
-
-                                        <table
-                                                    id="table"
-                                                    data-toggle="table"
-                                                    data-search="true"
-                                                    data-pagination="true"
-                                                    >
+                                        <div class="mb-2">
+                                                        <div id="toolbar">
+                                                            <button id="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahAdmin">
+                                                                <i class="fa-solid fa-plus"></i> Tambah Admin
+                                                             </button>
+                                                        </div>
+                                                 </div>
+                                        <table id="admin" class="table table-borderless" style="width:100%" >
                                                     <thead>
                                                         <tr>
                                                             <th>No</th>
@@ -138,7 +141,7 @@ $sesEmail = $_SESSION['user_email'];
                                                                 <td><?php echo $userGender; ?></td>
                                                                 <td><?php echo $userImg; ?></td>
                                                                 <td>
-                                                                    <a href="auth_kos.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
+                                                                    <a  href="profile_admin.php?id_user=<?php echo $row['id_user']; ?>" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
 
                                                                     <a href="hapus.php" class="btn btn-danger btn-circle" ><i class="fas fa-trash"></i></a>
                                                                 </td>
@@ -162,6 +165,94 @@ $sesEmail = $_SESSION['user_email'];
     </div>
 </div>
 </div>
+
+
+<!-- modal tambah admin start -->
+<div class="modal fade" id="tambahAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <div class="modal-dialog modal-lg">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Admin</h1>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+           </div>
+           <form class="user" action="" method="POST">
+           <div class="modal-body">
+           <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="exampleInputName"
+                    placeholder="Name" name="txt_nama">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                    placeholder="Email Address" name="txt_email">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="exampleInputUsername"
+                    placeholder="Username" name="txt_username">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control form-control-user" id="exampleInputPassword"
+                    placeholder="Password" name="txt_pass">
+            </div>
+             
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+             <button type="submit" name="tambah" class="btn btn-primary">Tambah</button>
+           </div>
+           </form>
+         </div>
+       </div>
+     </div>
+<!-- modal tambah admin end -->
+
+
+
+
+
+<!-- modal edit admin start -->
+
+<div class="modal fade" id="editAdmin" tabindex="-1" aria-labelledby="EditadminLabel" aria-hidden="true">
+       <div class="modal-dialog modal-lg">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h1 class="modal-title fs-5" id="EditadminLabel">Edit Admin</h1>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+           </div>
+           <form class="user" action="" method="POST">
+           <div class="modal-body">
+           <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="exampleInputName"
+                    placeholder="Name" name="txt_nama" value="<?php echo $rows['user_nama'] ?>">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                    placeholder="Email Address" name="txt_email" value="<?php echo $rows['user_nama'] ?>">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="exampleInputUsername"
+                    placeholder="Username" name="txt_username" value="<?php echo $rows['user_nama'] ?>">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control form-control-user" id="exampleInputPassword"
+                    placeholder="Password" name="txt_pass" value="<?php echo $rows['user_nama'] ?>">
+            </div>
+             
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+             <button type="submit" name="edit" class="btn btn-primary">Tambah</button>
+           </div>
+           </form>
+         </div>
+       </div>
+     </div>
+<!-- modal edit admin end -->
+
+
+
+
+
+
     <!-- footer -->
     <div class="container-fluid">
         <div class="footer">
@@ -169,31 +260,56 @@ $sesEmail = $_SESSION['user_email'];
         </div>
     </div>
     <!-- end dashboard inner -->
-    <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- wow animation -->
-    <script src="js/animate.js"></script>
-    <!-- select country -->
-    <script src="js/bootstrap-select.js"></script>
-    <!-- owl carousel -->
-    <script src="js/owl.carousel.js"></script>
-    <!-- chart js -->
-    <script src="js/Chart.min.js"></script>
-    <script src="js/Chart.bundle.min.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/analyser.js"></script>
-    <!-- nice scrollbar -->
-    <script src="js/perfect-scrollbar.min.js"></script>
-    <script>
-        var ps = new PerfectScrollbar('#sidebar');
-    </script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
-    <!-- calendar file css -->
-    <script src="js/semantic.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.js"></script>
+       <!-- jQuery -->
+       <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <!-- chart js -->
+        <script src="js/Chart.min.js"></script>
+        <script src="js/Chart.bundle.min.js"></script>
+        <script src="js/utils.js"></script>
+        <script src="js/analyser.js"></script>
+        <!-- wow animation -->
+        <script src="js/animate.js"></script>
+        <!-- select country -->
+        <script src="js/bootstrap-select.js"></script>
+        <!-- owl carousel -->
+        <script src="js/owl.carousel.js"></script>
+        <!-- nice scrollbar -->
+        <script src="js/perfect-scrollbar.min.js"></script>
+        <!-- sidebar -->
+        <script>
+            var ps = new PerfectScrollbar('#sidebar');
+        </script>
+        <!-- custom js -->
+        <script src="js/custom.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#admin').DataTable();
+            });
+        </script>
 </body>
 
 </html>
+
+
+<?php 
+if(isset($_POST['tambah']) ){
+    $Mail = $_POST['txt_email'];
+    $Pass = $_POST['txt_pass'];
+    $userName = $_POST['txt_username'];
+    $Name = $_POST['txt_nama'];
+
+    $query = "INSERT INTO user_detail VALUES (null,'$Name','$userName','$Mail','$Pass',3,null,null,null,null,null)";
+    mysqli_query($koneksi, $query);
+ 
+    
+    if (mysqli_affected_rows($koneksi) > 0 ) {
+        echo "Berhasil";
+    } else {
+        echo mysqli_error($koneksi);
+    }
+}
+?>

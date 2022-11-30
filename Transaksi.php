@@ -90,6 +90,13 @@ $sesEmail = $_SESSION['user_email'];
                                             <!-- table section -->
                                             <div class="card-body">
                                                 <div class="table-responsive">
+                                                <div class="mb-2">
+                                                        <div id="toolbar">
+                                                            <button id="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahRek"><i class="fa-solid fa-print"></i> Print</button>
+                                                            <button id="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tambahRek"><i class="fa-solid fa-file-pdf"></i> PDF</button>
+                                                            <button id="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambahRek"><i class="fa-solid fa-file-excel"></i> Excel</button>
+                                                        </div>
+                                                 </div>
                                                 <table id="transaksi" class="table table-borderless" style="width:100%">
                                                         <thead>
                                                             <tr>
