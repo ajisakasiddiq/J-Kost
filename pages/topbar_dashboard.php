@@ -3,7 +3,10 @@
                         <div class="full">
                             <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
                             <div class="logo_section">
-                                <!-- <a href="dashboard.php"><img class="img-responsive" src="images/logo/logo.png" alt="#" /></a> -->
+                                <a href="index.php">
+                                    <img class="img-responsive rounded-circle" src="img/kost.png" alt="Home"/>
+                                    Kembali ke Home
+                                </a>
                             </div>
                             <div class="right_topbar">
                                 <div class="icon_info">
