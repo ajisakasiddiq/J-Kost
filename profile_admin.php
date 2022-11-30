@@ -2,7 +2,6 @@
 require("koneksi.php");
 
 session_start();
-
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
    // header('Location: login.php');
@@ -12,6 +11,11 @@ $name = $_SESSION['user_nama'];
 $sesLvl = $_SESSION['level'];
 $sesEmail = $_SESSION['user_email'];
 }
+// view data admin
+$API_url='http://localhost:8080/project%20wsi/api/api.php?function=get_admin';
+$json_data=file_get_contents($API_url);
+$response_data=json_decode($json_data);
+$user_data=$response_data->data;
 
 ?>
 
@@ -116,30 +120,32 @@ $sesEmail = $_SESSION['user_email'];
                                                     </thead>
                                                     <tbody>
                                                     <?php 
-                                                    $query = "SELECT * FROM user_detail WHERE level = 3";
-                                                    $result= mysqli_query($koneksi, $query);
-                                                    $no = 1;
-                                                    while ($row = mysqli_fetch_array($result)){
-                                                        $Name = $row['user_nama'];
-                                                            $userName = $row['username'];
-                                                            $userMail = $row['user_email'];
-                                                            $userNIK = $row['nik'];
-                                                            $userAddress = $row['alamat'];
-                                                            $userImg = $row['foto'];
-                                                            $userNo = $row['no_hp'];
-                                                            $userGender = $row['jenis_kelamin'];
+                                                //     $query = "SELECT * FROM user_detail WHERE level = 3";
+                                                //     $result= mysqli_query($koneksi, $query);
+                                                //     $no = 1;
+                                                //     while ($row = mysqli_fetch_array($result)){
+                                                //         $Name = $row['user_nama'];
+                                                //             $userName = $row['username'];
+                                                //             $userMail = $row['user_email'];
+                                                //             $userNIK = $row['nik'];
+                                                //             $userAddress = $row['alamat'];
+                                                //             $userImg = $row['foto'];
+                                                //             $userNo = $row['no_hp'];
+                                                //             $userGender = $row['jenis_kelamin'];
 
-                                                 ?>
+                                                //  ?>
+                                                <?php foreach($user_data as $user) : ?>
+                                                    <?php $no = 1; ?>
                                                             <tr>
                                                                 <td><?php echo $no; ?></td>
-                                                                <td><?php echo $Name; ?></td>
-                                                                <td><?php echo $userMail; ?></td>
-                                                                <td><?php echo $userName; ?></td>
-                                                                <td><?php echo $userNIK; ?></td>
-                                                                <td><?php echo $userAddress; ?></td>
-                                                                <td><?php echo $userNo; ?></td>
-                                                                <td><?php echo $userGender; ?></td>
-                                                                <td><?php echo $userImg; ?></td>
+                                                                <td><?php $user -> user_nama; ?></td>
+                                                                <td><?php $user -> user_email; ?></td>
+                                                                <td><?php $user -> username; ?></td>
+                                                                <td><?php $user -> nik; ?></td>
+                                                                <td><?php $user -> alamat; ?></td>
+                                                                <td><?php $user -> no_hp; ?></td>
+                                                                <td><?php $user -> jenis_kelamin; ?></td>
+                                                                <td><?php $user -> foto; ?></td>
                                                                 <td>
                                                                     <a class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editAdmin<?php echo $row['id_user']; ?>"><i class="fas fa-pen"></i></a>
 
@@ -179,12 +185,9 @@ $sesEmail = $_SESSION['user_email'];
                                                                    </div>
                                                                  </div>
                                                             <!-- modal edit admin end -->
-
-
-
                                                             </tr>
                                                             <?php $no++; ?>
-                                                    <?php } ?>
+                                                    <?php endforeach; ?>
                                                         </tbody>
                                                     </table>
                                                 </div>
