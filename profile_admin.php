@@ -11,8 +11,8 @@ $sesName = $_SESSION['username'];
 $name = $_SESSION['user_nama'];
 $sesLvl = $_SESSION['level'];
 $sesEmail = $_SESSION['user_email'];
-
 }
+
 ?>
 
 
@@ -141,10 +141,47 @@ $sesEmail = $_SESSION['user_email'];
                                                                 <td><?php echo $userGender; ?></td>
                                                                 <td><?php echo $userImg; ?></td>
                                                                 <td>
-                                                                    <a  href="profile_admin.php?id_user=<?php echo $row['id_user']; ?>" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
+                                                                    <a class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editAdmin<?php echo $row['id_user']; ?>"><i class="fas fa-pen"></i></a>
 
                                                                     <a href="hapus.php" class="btn btn-danger btn-circle" ><i class="fas fa-trash"></i></a>
                                                                 </td>
+
+                                                            <!-- modal edit admin start -->
+
+                                                            <div class="modal fade" id="editAdmin<?php echo $row['id_user']; ?>" tabindex="-1" aria-labelledby="EditadminLabel" aria-hidden="true">
+                                                                   <div class="modal-dialog modal-md">
+                                                                     <div class="modal-content">
+                                                                       <div class="modal-header">
+                                                                         <h1 class="modal-title fs-5" id="EditadminLabel">Edit Admin</h1>
+                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                       </div>
+                                                                       <form class="user" action="" method="POST">
+                                                                       <div class="modal-body">
+                                                                       <div class="form-group">
+                                                                            <input type="text" class="form-control form-control-user" id="exampleInputName"
+                                                                                placeholder="Name" name="txt_nama" value="<?php echo $row['user_nama'] ?>">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                                                                placeholder="Email Address" name="txt_email" value="<?php echo $row['user_email'] ?>">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control form-control-user" id="exampleInputUsername"
+                                                                                placeholder="Username" name="txt_username" value="<?php echo $row['username'] ?>">
+                                                                        </div>
+                                                                       </div>
+                                                                       <div class="modal-footer">
+                                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                         <button type="submit" name="edit" class="btn btn-primary">Tambah</button>
+                                                                       </div>
+                                                                       </form>
+                                                                     </div>
+                                                                   </div>
+                                                                 </div>
+                                                            <!-- modal edit admin end -->
+
+
+
                                                             </tr>
                                                             <?php $no++; ?>
                                                     <?php } ?>
@@ -169,7 +206,7 @@ $sesEmail = $_SESSION['user_email'];
 
 <!-- modal tambah admin start -->
 <div class="modal fade" id="tambahAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-       <div class="modal-dialog modal-lg">
+       <div class="modal-dialog modal-dialog-scrollable">
          <div class="modal-content">
            <div class="modal-header">
              <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Admin</h1>
@@ -209,44 +246,7 @@ $sesEmail = $_SESSION['user_email'];
 
 
 
-<!-- modal edit admin start -->
 
-<div class="modal fade" id="editAdmin" tabindex="-1" aria-labelledby="EditadminLabel" aria-hidden="true">
-       <div class="modal-dialog modal-lg">
-         <div class="modal-content">
-           <div class="modal-header">
-             <h1 class="modal-title fs-5" id="EditadminLabel">Edit Admin</h1>
-             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-           </div>
-           <form class="user" action="" method="POST">
-           <div class="modal-body">
-           <div class="form-group">
-                <input type="text" class="form-control form-control-user" id="exampleInputName"
-                    placeholder="Name" name="txt_nama" value="<?php echo $rows['user_nama'] ?>">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control form-control-user" id="exampleInputEmail"
-                    placeholder="Email Address" name="txt_email" value="<?php echo $rows['user_nama'] ?>">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control form-control-user" id="exampleInputUsername"
-                    placeholder="Username" name="txt_username" value="<?php echo $rows['user_nama'] ?>">
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control form-control-user" id="exampleInputPassword"
-                    placeholder="Password" name="txt_pass" value="<?php echo $rows['user_nama'] ?>">
-            </div>
-             
-           </div>
-           <div class="modal-footer">
-             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-             <button type="submit" name="edit" class="btn btn-primary">Tambah</button>
-           </div>
-           </form>
-         </div>
-       </div>
-     </div>
-<!-- modal edit admin end -->
 
 
 
@@ -312,4 +312,9 @@ if(isset($_POST['tambah']) ){
         echo mysqli_error($koneksi);
     }
 }
+
+$id = $_GET['id_user'];
+$query =  "DELETE FROM user_detail WHERE id_user='$id'";
+mysqli_query($koneksi, $query);
+
 ?>

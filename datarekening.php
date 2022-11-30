@@ -245,7 +245,6 @@ if(isset($_POST['tambah']) ){
 
 
     $id = $_GET['id_rek'];
-
     $query =  "DELETE FROM rekening WHERE id_rek='$id'";
     mysqli_query($koneksi, $query);
 

@@ -191,7 +191,7 @@ $sesEmail = $_SESSION['user_email'];
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script>
             $(document).ready(function () {
-                $('#transaksi').DataTable();
+                $('#pemilik').DataTable();
             });
         </script>
 </body>
