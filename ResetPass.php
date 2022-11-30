@@ -25,7 +25,7 @@ if( isset($_POST['update']) ){
         echo "berhasil";
         header('Location: dashboard.php');
      } else {
-         $error =  mysqli_error($koneksi);
+        mysqli_error($koneksi);
      }
   //header('Location: ResetPass.php');
     

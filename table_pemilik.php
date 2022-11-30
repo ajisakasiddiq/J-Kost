@@ -49,7 +49,7 @@ $sesEmail = $_SESSION['user_email'];
     <link rel="stylesheet" href="js/semantic.min.css" />
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
-    <link href="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -91,12 +91,7 @@ $sesEmail = $_SESSION['user_email'];
                                             </div>
                                             <div class="table_section padding_infor_info">
 
-                                            <table
-                                                        id="table"
-                                                        data-toggle="table"
-                                                        data-search="true"
-                                                        data-pagination="true"
-                                                        >
+                                            <table id="pemilik" class="table table-bordered" style="width:100%" >
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
@@ -189,8 +184,13 @@ $sesEmail = $_SESSION['user_email'];
             var ps = new PerfectScrollbar('#sidebar');
         </script>
         <!-- custom js -->
+        <script>
+            $(document).ready(function () {
+                $('#pemilik').DataTable();
+            });
+        </script>
         <script src="js/custom.js"></script>
-        <script src="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 </body>
 
 </html>

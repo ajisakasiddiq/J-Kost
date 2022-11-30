@@ -26,6 +26,7 @@ $sesEmail = $_SESSION['user_email'];
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
+    <title>J-KOST</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -47,12 +48,10 @@ $sesEmail = $_SESSION['user_email'];
     <link rel="stylesheet" href="css/custom.css" />
     <!-- calendar file css -->
     <link rel="stylesheet" href="js/semantic.min.css" />
-    <!-- fancy box js -->
-    <link rel="stylesheet" href="css/jquery.fancybox.css" />
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
-    <link href="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -90,7 +89,7 @@ $sesEmail = $_SESSION['user_email'];
                                             <!-- table section -->
                                             <div class="card-body">
                                                 <div class="table-responsive">
-                                                <div>
+                                                <div class="mb-5">
                                                         <div id="toolbar">
                                                             <button id="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahRek">
                                                                 <i class="fa-solid fa-plus"></i> Tambah Rekening
@@ -98,12 +97,7 @@ $sesEmail = $_SESSION['user_email'];
                                                         </div>
                                                  </div>
 
-                                                <table
-                                                        id="table"
-                                                        data-toggle="table"
-                                                        data-search="true"
-                                                        data-pagination="true"
-                                                        >
+                                                <table id="pemilik" class="table table-borderless" style="width:100%">
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
@@ -171,8 +165,8 @@ $sesEmail = $_SESSION['user_email'];
              <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Rekening</h1>
              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
            </div>
-           <div class="modal-body">
            <form class="user" action="" method="POST">
+           <div class="modal-body">
                  <div class="form-group">
                      <input type="hidden" class="form-control form-control-user" id="idUser" aria-describedby="emailHelp" placeholder="NAMA BANK" name="txt_user" value="<?php echo $sesID; ?>">
                  </div>
@@ -185,47 +179,49 @@ $sesEmail = $_SESSION['user_email'];
                  <div class="form-group">
                      <input type="text" class="form-control form-control-user" id="noRek" placeholder="No Rekening" name="txt_rek">
                  </div>
-             </form>
+             
            </div>
            <div class="modal-footer">
              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
              <button type="submit" name="tambah" class="btn btn-primary">Tambah</button>
            </div>
+           </form>
          </div>
        </div>
      </div>
     <!-- end model popup -->
     </div>
-    <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- wow animation -->
-    <script src="js/animate.js"></script>
-    <!-- select country -->
-    <script src="js/bootstrap-select.js"></script>
-    <!-- owl carousel -->
-    <script src="js/owl.carousel.js"></script>
-    <!-- chart js -->
-    <script src="js/Chart.min.js"></script>
-    <script src="js/Chart.bundle.min.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/analyser.js"></script>
-    <!-- nice scrollbar -->
-    <script src="js/perfect-scrollbar.min.js"></script>
-    <script>
-        var ps = new PerfectScrollbar('#sidebar');
-    </script>
-    <!-- fancy box js -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
-    <!-- calendar file css -->
-    <script src="js/semantic.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-</body>
+        <!-- jQuery -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <!-- chart js -->
+        <script src="js/Chart.min.js"></script>
+        <script src="js/Chart.bundle.min.js"></script>
+        <script src="js/utils.js"></script>
+        <script src="js/analyser.js"></script>
+        <!-- wow animation -->
+        <script src="js/animate.js"></script>
+        <!-- select country -->
+        <script src="js/bootstrap-select.js"></script>
+        <!-- owl carousel -->
+        <script src="js/owl.carousel.js"></script>
+        <!-- nice scrollbar -->
+        <script src="js/perfect-scrollbar.min.js"></script>
+        <!-- sidebar -->
+        <script>
+            var ps = new PerfectScrollbar('#sidebar');
+        </script>
+        <!-- custom js -->
+        <script src="js/custom.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#pemilik').DataTable();
+            });
+        </script>
+        </body>
 
 <?php 
 if(isset($_POST['tambah']) ){

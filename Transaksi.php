@@ -50,7 +50,8 @@ $sesEmail = $_SESSION['user_email'];
     <link rel="stylesheet" href="css/jquery.fancybox.css" />
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
-    <link href="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -89,12 +90,7 @@ $sesEmail = $_SESSION['user_email'];
                                             <!-- table section -->
                                             <div class="card-body">
                                                 <div class="table-responsive">
-                                                <table
-                                                        id="table"
-                                                        data-toggle="table"
-                                                        data-search="true"
-                                                        data-pagination="true"
-                                                        >
+                                                <table id="transaksi" class="table table-borderless" style="width:100%">
                                                         <thead>
                                                             <tr>
                                                                 <th>Nama</th>
@@ -143,12 +139,7 @@ $sesEmail = $_SESSION['user_email'];
                                             <!-- table section -->
                                             <div class="card-body">
                                                 <div class="table-responsive">
-                                                <table
-                                                        id="table"
-                                                        data-toggle="table"
-                                                        data-search="true"
-                                                        data-pagination="true"
-                                                        >
+                                                <table id="transaksi" class="table table-borderless" style="width:100%">
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
@@ -249,7 +240,13 @@ $sesEmail = $_SESSION['user_email'];
     <script src="js/custom.js"></script>
     <!-- calendar file css -->
     <script src="js/semantic.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#transaksi').DataTable();
+            });
+        </script>
 </body>
 
 </html>
