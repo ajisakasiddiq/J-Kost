@@ -136,7 +136,7 @@ $sesEmail = $_SESSION['user_email'];
                                                                 <td>
                                                                     <a class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editAdmin<?= $user->id_user; ?>"><i class="fas fa-pen"></i></a>
 
-                                                                    <a href="hapus.php" class="btn btn-danger btn-circle" ><i class="fas fa-trash"></i></a>
+                                                                    <a href="profile_admin.php?id_user=<?= $user -> id_user ?>" class="btn btn-danger btn-circle" ><i class="fas fa-trash"></i></a>
                                                                 </td>
 
                                                             <!-- modal edit admin start -->
