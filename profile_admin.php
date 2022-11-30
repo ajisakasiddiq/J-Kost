@@ -280,6 +280,7 @@ $sesEmail = $_SESSION['user_email'];
                 $('#admin').DataTable();
             });
         </script>
+        
 </body>
 
 </html>
