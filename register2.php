@@ -1,10 +1,23 @@
+<?php
+require('koneksi.php');
+if(isset($_POST['register']) ){
+    $Mail = $_POST['txt_email'];
+    $Pass = $_POST['txt_pass'];
+    $userName = $_POST['txt_username'];
+    $Name = $_POST['txt_nama'];
+    $Lvl = $_POST['txt_level'];
 
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+    $query = "INSERT INTO user_detail VALUES (null,'$Name','$userName','$Mail','$Pass','$Lvl',null,null,null,null,null)";
+    mysqli_query($koneksi, $query);
+ 
+    
+    if (mysqli_affected_rows($koneksi) > 0 ) {
+        header('Location: login.php');
+    } else {
+        echo mysqli_error($koneksi);
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,12 +61,33 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<form action="#" method="post">
 					<div class="icon1">
 						<span class="fa fa-user"></span>
-						<input type="email" placeholder="Email Address" required=""/>
+						<input type="email" placeholder="Your Name" required/>
+					</div>
+					<div class="icon1">
+						<span class="fa fa-user"></span>
+						<input type="email" placeholder="Email Address" required/>
+					</div>
+					<div class="icon1">
+						<span class="fa fa-user"></span>
+						<input type="email" placeholder="Username" required/>
 					</div>
 					<div class="icon1">
 						<span class="fa fa-lock"></span>
-						<input type="password" placeholder="Password" required=""/>
+						<input type="password" placeholder="Password" required/>
 					</div>
+					<div class="icon1">
+                        <select placeholder="Pilih Daftar Sebagai" class="form-control  form-select" name="txt_level" id="OptionLevel">
+                            <option>Daftar sebagai</option>
+                            <?php 
+                             $query = "SELECT * FROM level_detail
+                             WHERE level IN ('Pemilik kos','Pencari Kos');";
+                             $result = mysqli_query($koneksi, $query);
+                             while ($row = mysqli_fetch_array($result)) {
+                                echo "<option value=$row[id_level] > $row[level] </option>";
+                            }
+                                ?>
+                        </select>
+                    </div>
 					<div class="login-check">
 						 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Keep me logged in</label>
 					</div>
