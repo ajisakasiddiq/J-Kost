@@ -28,12 +28,12 @@ $sesEmail = $_SESSION['user_email'];
             <div class="owl-carousel">
                 <div class="carousel-item">
                     <div class="carousel-img">
-                        <img src="img/kos4.jpg" alt="Image">
+                        <img src="img/kos.jpg" alt="Image">
                     </div>
                     <div class="carousel-text">
                         <h1>Kos Kosan murah dan berkualitas</h1>
                         <p>
-                            Menyajikan kos kosan mulai dari harga Rp 300.000 ke atas
+                            Menyediakan kamar kost yang mempunyai desaign modern dan kekinian dilengkapi dengan fasilitas yang lengkap  mulai dari harga Rp 300.000 
                         </p>
                         <a class="btn btn-custom" href="order.php">Pesan Sekarang!</a>
                     </div>
@@ -44,9 +44,12 @@ $sesEmail = $_SESSION['user_email'];
                     </div>
                     <div class="carousel-text">
                         <h1>Memudahkan penggunanya</h1>
-                        <p>
-                            pembayaran bisa melalui E-WALLET (Ovo, Gopay, Shoppepay, Dll)
+                        <p> Mulai sekarang,Booking Kost dengan mudah dan aman 
+                         
+                         Mudah dalam melakukan Pembayaran dapat melalui E-WALLET (Ovo, Gopay, Shoppepay, Dll)
+                            
                         </p>
+                       
                         <a class="btn btn-custom" href="">Explore More</a>
                     </div>
                 </div>
