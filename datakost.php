@@ -90,14 +90,14 @@ $sesEmail = $_SESSION['user_email'];
                                             <div class="card-body">
                                                 <div class="table-responsive">
                                                 <div class="mb-2">
-                                                    <h4>Data Kamar</h4>
+                                                    <h4>Data Kost</h4>
                                                         <div id="toolbar">
                                                             <button id="button" class="btn btn-primary">
                                                                 <i class="fa-solid fa-plus"></i> Tambah Kost
                                                              </button>
                                                         </div>
                                                  </div>
-                                                <table id="kamar" class="table table-bordered" style="width:100%">
+                                                <table id="kost" class="table table-borderless" style="width:100%">
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
@@ -204,7 +204,7 @@ $sesEmail = $_SESSION['user_email'];
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script>
             $(document).ready(function () {
-                $('#kamar').DataTable();
+                $('#kost').DataTable();
             });
         </script>
 </body>

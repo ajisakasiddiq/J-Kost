@@ -61,11 +61,12 @@
                     <!-- pemilik kos start -->
                     <ul class="list-unstyled components">
                     <li class="active">
-                            <a href="dashboard.php"><i class="fa fa-home yellow_color"></i> <span>Home</span></a>
+                            <a href="dashboard.php"><i class="fa fa-house-user yellow_color"></i> <span>Home</span></a>
                         </li>
-                        <li><a href="datakamar.php"><i class="fa fa-university red_color"></i> <span>Data Kamar</span></a></li>
-                        <li><a href="datarekening.php"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
-                        <li><a href="Transaksi.php"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
+                        <li><a href="datakost.php"><i class="fa-solid fa-house red_color"></i> <span>Data Kost</span></a></li>
+                        <li><a href="datakamar.php"><i class="fa fa-university "></i> <span>Data Kamar</span></a></li>
+                        <li><a href="datarekening.php"><i class="fa-solid fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
+                        <li><a href="Transaksi.php"><i class="f-sharp fa-solid fa-money-bill-transfer purple_color2"></i> <span>Transaksi</span></a></li>
                     </ul>
                     <!-- pemilik kos end -->
 
