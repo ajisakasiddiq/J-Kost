@@ -84,6 +84,7 @@ if (isset($_POST['submit'])) {
 	<!-- web font -->
 	<link href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
 	<!-- //web font -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
 </head>
 <body>
@@ -93,8 +94,8 @@ if (isset($_POST['submit'])) {
 	<div class="bg-layer">
 		<h1>Login</h1>
 		<div class="header-main">
-			<div class="main-icon">
-				<span class="fa fa-eercast"></span>
+			<div class="">
+				<img class="rounded-circle" src="login/images/logoo.png" alt="">
 			</div>
 			<div class="header-left-bottom">
 				<form action="" method="post">
@@ -138,5 +139,7 @@ if (isset($_POST['submit'])) {
 </div>	
 <!-- //main -->
 
+
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
