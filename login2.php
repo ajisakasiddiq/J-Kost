@@ -93,8 +93,7 @@ if (isset($_POST['submit'])) {
 	<div class="bg-layer">
 		<h1>Login</h1>
 		<div class="header-main">
-			<div class="main-icon">
-				<span class="fa fa-eercast"></span>
+			<div class="main-icon pb-2" style="display:block; margin:auto; margin-bottom : 30px !important">
 			</div>
 			<div class="header-left-bottom">
 				<form action="" method="post">
