@@ -15,7 +15,7 @@ $sesEmail = $_SESSION['user_email'];
 }
 
  // view data pemilik
- $API_url='http://localhost:8080/project%20wsi/api/api.php?function=get_pemilik';
+ $API_url='http://localhost:8080/jkos/api/api.php?function=get_pemilik';
  $json_data=file_get_contents($API_url);
  $response_data=json_decode($json_data);
  $user_data=$response_data->data;

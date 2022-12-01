@@ -109,7 +109,7 @@ if (isset($_POST['submit'])) {
 						 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Keep me logged in</label>
 					</div>
 					<div class="bottom">
-						<button type="submit" name="submit" class="btn">Log In</button>
+						<button type="submit" name="submit" class="btn btn-custom">Log In</button>
 					</div>
 					<div class="links">
 						<p><a href="#">Forgot Password?</a></p>
