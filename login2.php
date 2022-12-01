@@ -1,10 +1,62 @@
+<?php  
+require('koneksi.php');
 
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+session_start();
+if(isset($_SESSION['id_user'])){
+    header('Location: index.php');
+}
+if (isset($_POST['submit'])) {
+    $email = $_POST['txt_email'];
+    $pass = $_POST['txt_pass'];
+    
+    if (!empty(trim($email)) && !empty(trim($pass))) {
+        $query      = "SELECT * FROM user_detail WHERE user_email = '$email'";
+        $result     = mysqli_query($koneksi, $query);
+        $num        = mysqli_num_rows($result);
+
+        while ($row = mysqli_fetch_array($result)) {
+            $id = $row['id_user'];
+            $name = $row['user_nama'];
+            $userVal = $row['user_email'];
+            $passVal = $row['user_pass'];
+            $userName = $row['username'];
+            $level = $row['level'];
+            $image = $row['foto'];
+            $nik = $row['nik'];
+            $address = $row['alamat'];
+            $noHp = $row['no_hp'];
+            $gender = $row['jenis_kelamin'];
+        }
+
+        if ($num != 0) {
+            if ($userVal==$email && $passVal==$pass) {
+                $_SESSION['id_user'] = $id;
+                $_SESSION['username'] = $userName;
+                $_SESSION['user_nama'] = $name;
+                $_SESSION['user_email'] = $userVal;
+                $_SESSION['level'] = $level;
+                $_SESSION['foto'] = $image;
+                $_SESSION['nik'] = $nik;
+                $_SESSION['alamat'] = $address;
+                $_SESSION['no_hp'] = $noHp;
+                $_SESSION['jenis_kelamin'] = $gender;
+                header('Location: index.php');
+            }else{
+                $error = 'user atau password salah!!';;
+                header('Location: login.php');
+            }
+        }else{
+            $error = 'user tidak ditemukan!!';
+            echo "<script>alert('$error')</script>";
+            header('Location: login.php');
+        }
+    }else{
+        $error = 'Data tidak boleh kosong!!';
+        echo "<script>alert('$error')</script>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,20 +97,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<span class="fa fa-eercast"></span>
 			</div>
 			<div class="header-left-bottom">
-				<form action="#" method="post">
+				<form action="" method="post">
 					<div class="icon1">
 						<span class="fa fa-user"></span>
-						<input type="email" placeholder="Email Address" required=""/>
+						<input type="email" placeholder="Email Address" name="txt_email" required/>
 					</div>
 					<div class="icon1">
 						<span class="fa fa-lock"></span>
-						<input type="password" placeholder="Password" required=""/>
+						<input type="password" placeholder="Password" name="txt_pass" required/>
 					</div>
 					<div class="login-check">
 						 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Keep me logged in</label>
 					</div>
 					<div class="bottom">
-						<button class="btn">Log In</button>
+						<button type="submit" name="submit" class="btn">Log In</button>
 					</div>
 					<div class="links">
 						<p><a href="#">Forgot Password?</a></p>
