@@ -75,7 +75,7 @@ $sesEmail = $_SESSION['user_email'];
                     </div>
                     <div class="about-content">
                         <p>
-                            Website J-KOS memudahkan pengguna khususnya daerah jember dalam mencari sementara dengan mudah dan efektif anpa harus datang ke tempatnya langsung.
+                            Website J-KOS memudahkan pengguna khususnya daerah jember dalam mencari rumah kost dengan mudah dan efektif tanpa harus datang ke tempatnya langsung. Mudah dalam metode pembayaran dengan menggunakan dompet digital dari Shopeepay, Gopay dan lain-lain.
                             <ul>
                                 <li><i class="far fa-check-circle"></i>Pembayaran mudah</li>
                                 <li><i class="far fa-check-circle"></i>Kos kosan yang nyaman</li>
