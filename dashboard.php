@@ -98,7 +98,7 @@ $sesEmail = $_SESSION['user_email'];
                                 <div class="full counter_section margin_bottom_30">
                                     <div class="couter_icon">
                                         <div>
-                                            <i class="fa fa-user yellow_color"></i>
+                                            <i class="fa fa-group yellow_color"></i>
                                         </div>
                                     </div>
                                     <div class="counter_no">
