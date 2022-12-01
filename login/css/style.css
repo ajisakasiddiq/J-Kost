@@ -97,9 +97,10 @@ h1 {
     content: url(../images/logo1.png);
     font-size: 50px;
     margin-bottom: 1em;
-    width: 80px;
+    width: 70px;
     border-radius: 100%;
     align-self: center;
+    opacity: 0.7;
 }
 .wthree li {
     display: inline-block;
