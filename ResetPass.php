@@ -15,7 +15,7 @@ $sesEmail = $_SESSION['user_email'];
 }
 
 // update data
-if( isset($_POST['update']) ){
+if( isset($_POST['submit']) ){
     $userId     = $_POST['txt_id'];
     $userPass   = $_POST['txt_pass'];
 
@@ -26,6 +26,7 @@ if( isset($_POST['update']) ){
         header('Location: dashboard.php');
      } else {
         mysqli_error($koneksi);
+        header('Location: dashboard.php');
      }
   //header('Location: ResetPass.php');
     
@@ -123,7 +124,7 @@ if( isset($_POST['update']) ){
                                                             <label for="password2">Repeat password</label>
                                                             <input  id="password2" type="password" class="form-control form-control-sm" name="txt_pass2">
                                                         </div>
-                                                        <button type="submit" name="update" class="btn btn-primary btn-block submit-btn">Confirm</button>
+                                                        <button type="submit" name="submit" class="btn btn-primary btn-block submit-btn">Confirm</button>
                                                     </form>
                                                 </div>
                                             </div>
