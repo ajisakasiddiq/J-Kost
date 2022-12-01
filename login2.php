@@ -25,8 +25,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </script>
 
 	<!-- Custom Theme files -->
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="login/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="login/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- //Custom Theme files -->
 
 	<!-- web font -->
@@ -62,18 +62,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="links">
 						<p><a href="#">Forgot Password?</a></p>
-						<p class="right"><a href="#">New User? Register</a></p>
+						<p class="right"><a href="register2.php">New User? Register</a></p>
 						<div class="clear"></div>
 					</div>
 				</form>	
-			</div>
-			<div class="social">
-				<ul>
-					<li>or login using : </li>
-					<li><a href="#" class="facebook"><span class="fa fa-facebook"></span></a></li>
-					<li><a href="#" class="twitter"><span class="fa fa-twitter"></span></a></li>
-					<li><a href="#" class="google"><span class="fa fa-google-plus"></span></a></li>
-				</ul>
 			</div>
 		</div>
 		
