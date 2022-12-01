@@ -60,21 +60,21 @@ if(isset($_POST['register']) ){
 				<form action="#" method="post">
 					<div class="icon1">
 						<span class="fa fa-user"></span>
-						<input type="email" placeholder="Your Name" required/>
+						<input type="text" placeholder="Your Name" name="txt_nama" required  />
 					</div>
 					<div class="icon1">
 						<span class="fa fa-user"></span>
-						<input type="email" placeholder="Email Address" required/>
+						<input type="email" placeholder="Email Address" name="txt_email" required/>
 					</div>
 					<div class="icon1">
 						<span class="fa fa-user"></span>
-						<input type="email" placeholder="Username" required/>
+						<input type="text" placeholder="Username" name="txt_username" required/>
 					</div>
 					<div class="icon1">
 						<span class="fa fa-lock"></span>
-						<input type="password" placeholder="Password" required/>
+						<input type="password" placeholder="Password" name="txt_pass" required/>
 					</div>
-					<div class="icon1">
+					<div>
                         <select placeholder="Pilih Daftar Sebagai" class="form-control  form-select" name="txt_level" id="OptionLevel">
                             <option>Daftar sebagai</option>
                             <?php 
