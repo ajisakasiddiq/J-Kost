@@ -263,13 +263,13 @@ a:focus {
     width: 100%;
     top: 0;
     left: 0;
-    box-shadow: 0 2px 5px #202C45;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
     z-index: 999;
 }
 
 .nav-bar .navbar {
     padding: 20px 0;
-    background: #202C45 !important;
+    background: #000000 !important;
     transition: .3s;
 }
 
