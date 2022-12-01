@@ -94,12 +94,12 @@ h1 {
     width: 22px;
 }
 .main-icon {
-    text-align: center;
-}
-.main-icon span.fa{
+    content: url(../images/logo1.png);
     font-size: 50px;
-    color: #fff;
     margin-bottom: 1em;
+    width: 80px;
+    border-radius: 100%;
+    align-self: center;
 }
 .wthree li {
     display: inline-block;
