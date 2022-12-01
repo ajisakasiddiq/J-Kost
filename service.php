@@ -99,7 +99,7 @@ $sesEmail = $_SESSION['user_email'];
                         <a href="about.php" class="nav-item nav-link">Tentang Kami</a>
                         <a href="service.php" class="nav-item nav-link active">Pelayanan</a>
                         <a href="order.php" class="nav-item nav-link">Pemesanan</a>
-                        <a href="contact.php" class="nav-item nav-link">Contact</a>
+                        <!-- <a href="contact.php" class="nav-item nav-link">Contact</a> -->
                     </div>
                     <div class="ml-auto">
                         <?php if(isset($_SESSION['id_user']) ){ ?>

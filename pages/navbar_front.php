@@ -83,7 +83,7 @@
                         <a href="about.php" class="nav-item nav-link">Tentang Kami</a>
                         <a href="service.php" class="nav-item nav-link">Pelayanan</a>
                         <a href="order.php" class="nav-item nav-link">Pemesanan</a>
-                        <a href="contact.php" class="nav-item nav-link">Contact</a>
+                        <!-- <a href="contact.php" class="nav-item nav-link">Contact</a> -->
                     </div>
                     <div class="ml-auto">
                         <?php if(isset($_SESSION['id_user']) ){ ?>
@@ -103,8 +103,8 @@
                         </ul>
                         <?php 
                     }elseif(!isset($_SESSION['id_user'])) {?>
-                        <a href="register.php" class="btn-regis ">Register</a>
-                        <a href="login.php" class="btn btn-custom">Login</a>
+                        <a href="register2.php" class="btn-regis ">Register</a>
+                        <a href="login2.php" class="btn btn-custom">Login</a>
                        
                         <?php } ?>
                     </div>
