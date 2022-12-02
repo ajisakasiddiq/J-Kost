@@ -94,22 +94,14 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                             <h1>Edit Profile</h1>
                                             <hr>
                                             <div class="row">
-                                                <!-- left column -->
-                                                <div class="col-md-3">
-                                                    <div class="text-center">
-                                                        <img src="img/profil.jpg" class="avatar img-circle" alt="avatar" width="100px">
-                                                        <h6>Upload a different photo...</h6>
-                                                        <input type="file" class="form-control" name="img">
-                                                    </div>
-                                                </div>
-
                                                 <!-- edit form column -->
-                                                <div class="col-md-6 personal-info">
+                                                <div class="col-md-12 personal-info">
                                                     <div class="alert alert-info alert-dismissable">
                                                         <a class="panel-close close" data-dismiss="alert">×</a>
                                                         <i class="fa fa-coffee"></i> Pastikan <strong>Data diri</strong> anda terinput dengan benar!
                                                     </div>
                                                     <h3>Personal info</h3>
+                                                    <form  role="form" action="" method="post">
                                                     <?php 
                                                     $query  = "SELECT * FROM user_detail WHERE id_user = '$sesID'";
                                                     $result = mysqli_query($koneksi, $query);
@@ -125,8 +117,12 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                                         $userGender = $row['jenis_kelamin'];
                                                         $userNo = $row['no_hp'];
                                                     ?>
-                                                    <form class="form-horizontal" role="form" action="" method="post">
-                                                    <input value="<?= $sesID ?>" class="form-control" type="text" name="txt_id" id="id_user">
+                                                    <input value="<?= $sesID ?>" class="form-control" type="hidden" name="txt_id" id="id_user">
+                                                    <div class="text-center">
+                                                        <img src="img/profil.jpg" class="avatar img-circle" alt="avatar" width="100px">
+                                                        <h6>Upload a different photo...</h6>
+                                                        <input type="file" class="form-control" name="img">
+                                                    </div>
                                                         <div class="form-group">
                                                             <label for="name" class="col-lg-3 control-label">Nama :</label>
                                                             <div class="col-lg-8">
@@ -173,7 +169,7 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                                         <div class="form-group">
                                                             <label for="alamat" class="col-md-3 control-label">Alamat :</label>
                                                             <div class="col-md-8">
-                                                                <textarea value="<?= $userAddress; ?>" class="form-control" rows="5" type="text" id="alamat" name="txt_alamat"></textarea>
+                                                                <textarea class="form-control" rows="5"<?= $userAddress; ?>  type="text" id="alamat" name="txt_alamat"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -184,8 +180,8 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                                                 <input type="reset" class="btn btn-default" value="Cancel">
                                                             </div>
                                                         </div>
+                                                        <?php } ?>
                                                     </form>
-                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -230,7 +226,6 @@ if( isset($_POST['edit']) ){
     $Img   = $_POST['img'];
 
     $query = "UPDATE user_detail SET user_nama='$Name', username='$userName', user_email='$Mail',nik='$Nik',alamat='$Address',foto='$Img',no_hp='$Nohp',jenis_kelamin='$Gender' WHERE id_user='$userId'";
-    echo $query;
     $result = mysqli_query($koneksi, $query);
     header('Location: profile_admin.php');
 }
