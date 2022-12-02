@@ -317,7 +317,7 @@ if( isset($_POST['update']) ){
     $userName   = $_POST['txt_username'];
     $Name   = $_POST['txt_nama'];
 
-    $query = "UPDATE user_detail SET  user_nama='$Name', user_email='$Mail', username='$userName' WHERE id_user='$userId'";
+    $query = "UPDATE user_detail SET user_nama='$Name', user_email='$Mail', username='$userName' WHERE id_user='$userId'";
     echo $query;
     $result = mysqli_query($koneksi, $query);
     header('Location: profile_admin.php');
