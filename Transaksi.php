@@ -6,11 +6,16 @@ session_start();
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
    // header('Location: login.php');
-$sesID = $_SESSION['id_user'];
-$sesName = $_SESSION['username'];
-$name = $_SESSION['user_nama'];
-$sesLvl = $_SESSION['level'];
-$sesEmail = $_SESSION['user_email'];
+   $sesID = $_SESSION['id_user'];
+   $sesName = $_SESSION['username'];
+   $name = $_SESSION['user_nama'];
+   $sesEmail = $_SESSION['user_email'];
+   $sesLvl = $_SESSION['level'];
+   $sesImg = $_SESSION['foto'];
+   $sesNik = $_SESSION['nik'];
+   $sesAddress = $_SESSION['alamat'];
+   $sesNo = $_SESSION['no_hp'];
+   $sesGender = $_SESSION['jenis_kelamin'];
 
 }
 ?>
