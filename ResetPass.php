@@ -116,6 +116,7 @@ if( isset($_POST['submit']) ){
                                                                 <span aria-hidden="true">&times;</span>
                                                             </a>
                                                         </div>
+                                                        <input id="id_user" type="text" class="form-control form-control-sm" name="txt_id" value="<?= $sesID;  ?>">
                                                         <div class="form-group">
                                                             <label for="password1">Your new password</label>
                                                             <input id="password1" type="password" class="form-control form-control-sm" name="txt_pass">

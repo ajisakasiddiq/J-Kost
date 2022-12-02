@@ -110,35 +110,37 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                                     <h3>Personal info</h3>
 
                                                     <form class="form-horizontal" role="form" action="" method="post">
+                                                    <input value="<?= $sesID ?>" class="form-control" type="text" name="txt_id" id="id_user">
                                                         <div class="form-group">
                                                             <label for="name" class="col-lg-3 control-label">Nama :</label>
                                                             <div class="col-lg-8">
-                                                                <input value="<?php echo $name ?>" class="form-control" type="text" name="txt_nama" id="name">
+                                                                <input value="<?= $name ?>" class="form-control" type="text" name="txt_nama" id="name">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="username" class="col-lg-3 control-label">Username :</label>
                                                             <div class="col-lg-8">
-                                                                <input value="<?php echo $sesName ?>" class="form-control" type="text" name="txt_username" id="username">
+                                                                <input value="<?= $sesName ?>" class="form-control" type="text" name="txt_username" id="username">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="email" class="col-lg-3 control-label">Email :</label>
                                                             <div class="col-lg-8">
-                                                                <input value="<?php echo $sesEmail ?>" class="form-control" type="text" name="txt_email" id="email">
+                                                                <input value="<?= $sesEmail ?>" class="form-control" type="text" name="txt_email" id="email">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="nik" class="col-lg-3 control-label">NIK :</label>
                                                             <div class="col-lg-8">
-                                                                <input value="<?php echo $sesNIK ?>" class="form-control" type="text" name="txt_nik" id="nik">
+                                                                <input value="<?= $sesNIK ?>" class="form-control" type="text" name="txt_nik" id="nik">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="gender" class="col-lg-3 control-label">Jenis Kelamin :</label>
                                                             <div class="col-lg-8">
                                                                 <div class="ui-select">
-                                                                    <select id="gender" class="form-control" id="gender">
+                                                          <select id="gender" class="form-control" id="gender">
+                                                          <option value="<?= $sesGender;  ?>"><?= $sesGender; ?></option>  
                                                           <option value="">Pilih Jenis Kelamin </option>
                                                           <option value="Laki-laki">Laki - Laki </option>
                                                           <option value="perempuan">Perempuan</option>
@@ -149,13 +151,13 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                                         <div class="form-group">
                                                             <label for="numberPhone" class="col-lg-3 control-label">No. HP :</label>
                                                             <div class="col-lg-8">
-                                                                <input value="<?php echo $sesNohp ?>" class="form-control" type="text" name="txt_nohp" id="numberPhone">
+                                                                <input value="<?= $sesNohp ?>" class="form-control" type="text" name="txt_nohp" id="numberPhone">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="alamat" class="col-md-3 control-label">Alamat :</label>
                                                             <div class="col-md-8">
-                                                                <textarea value="<?php echo $sesAddress ?>" class="form-control" rows="5" type="text" id="alamat"></textarea>
+                                                                <textarea value="<?= $sesAddress ?>" class="form-control" rows="5" type="text" id="alamat"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -197,6 +199,30 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                 <script src="js/custom.js"></script>
                                 <!-- calendar file css -->
                                 <script src="js/semantic.min.js"></script>
+
+<?php 
+if( isset($_POST['edit']) ){
+    $userId     = $_POST['txt_id'];
+    $Mail     = $_POST['txt_email'];
+    $userName   = $_POST['txt_username'];
+    $Name   = $_POST['txt_nama'];
+
+    $query = "UPDATE user_detail SET user_nama='$Name', user_email='$Mail', username='$userName' WHERE id_user='$userId'";
+    echo $query;
+    $result = mysqli_query($koneksi, $query);
+    header('Location: profile_admin.php');
+}
+
+
+
+?>
+
+
+
+
+
+
+
 </body>
 
 </html>
