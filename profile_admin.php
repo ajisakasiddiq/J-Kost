@@ -282,6 +282,8 @@ $sesEmail = $_SESSION['user_email'];
                 $('#admin').DataTable();
             });
         </script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
         
 </body>
 
@@ -318,13 +320,40 @@ if( isset($_POST['update']) ){
     $Name   = $_POST['txt_nama'];
 
     $query = "UPDATE user_detail SET user_nama='$Name', user_email='$Mail', username='$userName' WHERE id_user='$userId'";
-    echo $query;
     $result = mysqli_query($koneksi, $query);
-    header('Location: profile_admin.php');
+    if ($result) {
+        $success = "User data telah terupdate!";
+    }else{
+        $error =  "User data gagal update";
+    }
 }
-
 $id = $_GET['id_user'];
 $query =  "DELETE FROM user_detail WHERE id_user='$id'";
 mysqli_query($koneksi, $query);
 
 ?>
+
+<script>
+    function success(){
+        
+    }
+</script>
+
+<?php if(isset($response)){ ?>
+    <script>
+        swal({
+  title: "<?= $success; ?>",
+  icon: "success",
+  button: "OKE!",
+});
+    </script>
+    <?php }?>
+    <?php if(isset($response)){ ?>
+    <script>
+        swal({
+  title: "<?= $error; ?>",
+  icon: "success",
+  button: "OKE!",
+});
+    </script>
+    <?php }?>
