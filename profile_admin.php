@@ -165,7 +165,7 @@ $sesEmail = $_SESSION['user_email'];
                                                                        </div>
                                                                        <div class="modal-footer">
                                                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                         <button type="submit" name="edit" class="btn btn-primary">Tambah</button>
+                                                                         <button type="submit" name="update" class="btn btn-primary">Tambah</button>
                                                                        </div>
                                                                        </form>
                                                                      </div>
@@ -308,6 +308,17 @@ if(isset($_POST['tambah']) ){
     }
     header('Content-Type: application/json');
     echo json_encode($response);
+}
+if( isset($_POST['update']) ){
+    $userId     = $_POST['txt_id'];
+    $Mail     = $_POST['txt_email'];
+    $userName   = $_POST['txt_username'];
+    $Name   = $_POST['txt_nama'];
+
+    $query = "UPDATE user_detail SET  user_nama='$Name', user_email='$Mail', username='$userName' WHERE id_user='$userId'";
+    echo $query;
+    $result = mysqli_query($koneksi, $query);
+    header('Location: profile_admin.php');
 }
 
 $id = $_GET['id_user'];
