@@ -118,8 +118,8 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                                         $userNo = $row['no_hp'];
                                                     ?>
                                                     <input value="<?= $sesID ?>" class="form-control" type="hidden" name="txt_id" id="id_user">
-                                                    <div class="text-center">
-                                                        <img src="img/profil.jpg" class="avatar img-circle" alt="avatar" width="100px">
+                                                    <div class="text-center col-lg-3">
+                                                        <img src="img/<?= $userImg; ?>" class="avatar img-circle" alt="avatar" width="100px">
                                                         <h6>Upload a different photo...</h6>
                                                         <input type="file" class="form-control" name="img">
                                                     </div>
