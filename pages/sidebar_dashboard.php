@@ -8,7 +8,7 @@
                     <div class="sidebar_user_info">
                         <div class="icon_setting"></div>
                         <div class="user_profle_side">
-                            <div class="user_img"><img class="img-responsive" src="img/profil.jpg" alt="profil" /></div>
+                            <div class="user_img"><img class="img-responsive" src="img/<?= $sesImg;  ?>" alt="profil" /></div>
                             <div class="user_info">
                                 <h6><?php echo $name; ?></h6>
                                 <p><span class="online_animation"></span> Online</p>

@@ -33,7 +33,7 @@
 
                                         <ul class="user_profile_dd">
                                             <li>
-                                                <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/team-4.jpg" alt="#" /><span class="name_user"><?php echo $name; ?></span></a>
+                                                <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/<?= $sesImg;  ?>" alt="#" /><span class="name_user"><?php echo $name; ?></span></a>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="profile.php">My Profile</a>
                                                     <a class="dropdown-item" href="ResetPass.php">Setting</a>

@@ -11,7 +11,7 @@ $sesName = $_SESSION['username'];
 $name = $_SESSION['user_nama'];
 $sesLvl = $_SESSION['level'];
 $sesEmail = $_SESSION['user_email'];
-
+$sesImg = $_SESSION['foto'];
 }
 ?>
 
