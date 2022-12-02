@@ -333,13 +333,9 @@ mysqli_query($koneksi, $query);
 
 ?>
 
-<script>
-    function success(){
-        
-    }
-</script>
 
-<?php if(isset($response)){ ?>
+
+<?php if(isset($success)){ ?>
     <script>
         swal({
   title: "<?= $success; ?>",
@@ -348,7 +344,7 @@ mysqli_query($koneksi, $query);
 });
     </script>
     <?php }?>
-    <?php if(isset($response)){ ?>
+    <?php if(isset($error)){ ?>
     <script>
         swal({
   title: "<?= $error; ?>",

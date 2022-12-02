@@ -12,112 +12,122 @@ if(isset($_POST['register']) ){
  
     
     if (mysqli_affected_rows($koneksi) > 0 ) {
-        header('Location: login.php');
+        header('Location: login2.php');
     } else {
         echo mysqli_error($koneksi);
     }
 }
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
+<title>J-KOST</title>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="Slide Login Form template Responsive, Login form web template, Flat Pricing tables, Flat Drop downs Sign up Web Templates, Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 
-    <title>SB Admin 2 - Register</title>
+	 <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
 
-    <!-- Custom fonts for this template-->
-    <link href="node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <!-- CSS Libraries -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
 
+	<!-- Custom Theme files -->
+	<link href="login/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="login/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- //Custom Theme files -->
+
+	<!-- web font -->
+	<link href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
+	<!-- //web font -->
+<style>
+	.header-left-bottom input[type="text"] {
+    outline: none;
+    font-size: 15px;
+    color: #222;
+    border: none;
+    width: 90%;
+    display: inline-block;
+    background: transparent;
+    letter-spacing: 1px;
+}
+.header-left-bottom .option {
+    outline: none;
+    font-size: 15px;
+    color: #222;
+    border: none;
+    width: 90%;
+    display: inline-block;
+    background: transparent;
+    letter-spacing: 1px;
+}
+
+</style>
 </head>
+<body>
 
-<body class="bg-gradient-primary">
-
-    <div class="container">
-
-        <div class="card o-hidden border-0 shadow-lg" style="margin-top: 100px;">
-            <div class="card-body p-0">
-                <!-- Nested Row within Card Body -->
-                <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block">
-                    <img src="img/logo-kost.png" alt="">
+<!-- main -->
+<div class="w3layouts-main"> 
+	<div class="bg-layer">
+		<h1>Register</h1>
+		<div class="header-main">
+		<div class="main-icon pb-2" style="display:block; margin:auto; margin-bottom : 30px !important">
+			</div>
+			<div class="header-left-bottom">
+				<form action="#" method="post">
+					<div class="icon1">
+						<span class="fa fa-user"></span>
+						<input type="text" placeholder="Your Name" name="txt_nama" required  />
+					</div>
+					<div class="icon1">
+						<span class="fa fa-user"></span>
+						<input type="email" placeholder="Email Address" name="txt_email" required/>
+					</div>
+					<div class="icon1">
+						<span class="fa fa-user"></span>
+						<input type="text" placeholder="Username" name="txt_username" required/>
+					</div>
+					<div class="icon1">
+						<span class="fa fa-lock"></span>
+						<input type="password" placeholder="Password" name="txt_pass" required/>
+					</div>
+					<div class="icon1">
+                        <select class="option" placeholder="Pilih Daftar Sebagai" class="form-control  form-select" name="txt_level" id="OptionLevel">
+                            <option>Daftar sebagai</option>
+                            <?php 
+                             $query = "SELECT * FROM level_detail
+                             WHERE level IN ('Pemilik kos','Pencari Kos');";
+                             $result = mysqli_query($koneksi, $query);
+                             while ($row = mysqli_fetch_array($result)) {
+                                echo "<option value=$row[id_level] > $row[level] </option>";
+                            }
+                                ?>
+                        </select>
                     </div>
-                    <div class="col-lg-7">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                            </div>
-                            <form class="user" action="" method="post">
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampleInputName"
-                                        placeholder="Name" name="txt_nama">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address" name="txt_email">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampleInputUsername"
-                                        placeholder="Username" name="txt_username">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control form-control-user" id="exampleInputPassword"
-                                        placeholder="Password" name="txt_pass">
-                                </div>
-                                <div class="form-group">
-                                    <select placeholder="Pilih Daftar Sebagai" class="form-control  form-select" name="txt_level" id="OptionLevel">
-                                        <option>Daftar sebagai</option>
-                                        <?php 
-                                         $query = "SELECT * FROM level_detail
-                                         WHERE level IN ('Pemilik kos','Pencari Kos');";
-                                         $result = mysqli_query($koneksi, $query);
-                                         while ($row = mysqli_fetch_array($result)) {
-                                            echo "<option value=$row[id_level] > $row[level] </option>";
-                                        }
-                                            ?>
-                                    </select>
-                                </div>
-
-                                <button type="submit"  name="register" class="btn btn-primary btn-custom btn-block">Register</button>
-                            </form>
-                            <hr>
-                            <div class="text-center">
-                                <a class="small" href="login.php">Already have an account? Login!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="js/jquery/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="js/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+					<div class="login-check">
+						 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Keep me logged in</label>
+					</div>
+					<div class="bottom">
+						<button class="btn" name="register">Log In</button>
+					</div>
+					<div class="links">
+						<p class="right"><a href="login2.php">Have account?Login</a></p>
+						<div class="clear"></div>
+					</div>
+				</form>	
+			</div>
+		</div>
+		
+		<!-- copyright -->
+		<!-- //copyright --> 
+	</div>
+</div>	
+<!-- //main -->
 
 </body>
-
 </html>

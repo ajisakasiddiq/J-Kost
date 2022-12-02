@@ -95,7 +95,7 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                             <hr>
                                             <div class="row">
                                                 <!-- edit form column -->
-                                                <div class="col-md-12 personal-info">
+                                                <div class="col-md-10 personal-info">
                                                     <div class="alert alert-info alert-dismissable">
                                                         <a class="panel-close close" data-dismiss="alert">×</a>
                                                         <i class="fa fa-coffee"></i> Pastikan <strong>Data diri</strong> anda terinput dengan benar!
@@ -212,6 +212,7 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                 <script src="js/custom.js"></script>
                                 <!-- calendar file css -->
                                 <script src="js/semantic.min.js"></script>
+                                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <?php 
 if( isset($_POST['edit']) ){
@@ -225,19 +226,37 @@ if( isset($_POST['edit']) ){
     $Address   = $_POST['txt_alamat'];
     // $Img   = $_POST['img'];
     $img = $_FILES['img']['name'];
-    $tmpName = $_FILES['foto']['tmp_name'];
+    $tmpName = $_FILES['img']['tmp_name'];
     move_uploaded_file($file_tmp,'img/'.$img);
 
     $query = "UPDATE user_detail SET user_nama='$Name', username='$userName', user_email='$Mail',nik='$Nik',alamat='$Address',foto='$Img',no_hp='$Nohp',jenis_kelamin='$Gender' WHERE id_user='$userId'";
     $result = mysqli_query($koneksi, $query);
-    header('Location: profile_admin.php');
+    if ($result) {
+        $success = "User data telah terupdate!";
+    }else{
+        $error =  "User data gagal update";
+    }
     
 }
-
-
-
 ?>
-
+<?php if(isset($success)){ ?>
+    <script>
+        swal({
+  title: "<?= $success; ?>",
+  icon: "success",
+  button: "OKE!",
+});
+    </script>
+    <?php }?>
+    <?php if(isset($error)){ ?>
+    <script>
+        swal({
+  title: "<?= $error; ?>",
+  icon: "success",
+  button: "OKE!",
+});
+    </script>
+    <?php }?>
 
 
 

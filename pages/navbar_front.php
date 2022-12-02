@@ -103,8 +103,8 @@
                         </ul>
                         <?php 
                     }elseif(!isset($_SESSION['id_user'])) {?>
-                        <a href="register2.php" class="btn-regis ">Register</a>
-                        <a href="login2.php" class="btn btn-custom">Login</a>
+                        <a href="register.php" class="btn-regis ">Register</a>
+                        <a href="login.php" class="btn btn-custom">Login</a>
                        
                         <?php } ?>
                     </div>
