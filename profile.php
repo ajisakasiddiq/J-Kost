@@ -16,7 +16,11 @@ $sesNohp = $_SESSION['no_hp'];
 $sesAddress = $_SESSION['alamat'];
 $sesGender = $_SESSION['jenis_kelamin'];
 
+
+
+
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -95,9 +99,7 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                                     <div class="text-center">
                                                         <img src="img/profil.jpg" class="avatar img-circle" alt="avatar" width="100px">
                                                         <h6>Upload a different photo...</h6>
-                                                        <form action="" method="post">
                                                         <input type="file" class="form-control" name="img">
-                                                        </form>
                                                     </div>
                                                 </div>
 
@@ -108,39 +110,53 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                                         <i class="fa fa-coffee"></i> Pastikan <strong>Data diri</strong> anda terinput dengan benar!
                                                     </div>
                                                     <h3>Personal info</h3>
-
+                                                    <?php 
+                                                    $query  = "SELECT * FROM user_detail WHERE id_user = '$sesID'";
+                                                    $result = mysqli_query($koneksi, $query);
+                                                    while ($row = mysqli_fetch_array($result)){
+                                                        $userId = $row['id_user'];
+                                                        $userNama = $row['user_nama'];
+                                                        $userMail = $row['user_email'];
+                                                        $userName = $row['username'];
+                                                        $userLevel = $row['level'];
+                                                        $userNik = $row['nik'];
+                                                        $userAddress = $row['alamat'];
+                                                        $userImg = $row['foto'];
+                                                        $userGender = $row['jenis_kelamin'];
+                                                        $userNo = $row['no_hp'];
+                                                    ?>
                                                     <form class="form-horizontal" role="form" action="" method="post">
                                                     <input value="<?= $sesID ?>" class="form-control" type="text" name="txt_id" id="id_user">
                                                         <div class="form-group">
                                                             <label for="name" class="col-lg-3 control-label">Nama :</label>
                                                             <div class="col-lg-8">
-                                                                <input value="<?= $name ?>" class="form-control" type="text" name="txt_nama" id="name">
+                                                                <input value="<?= $userNama; ?>" class="form-control" type="text" name="txt_nama" id="name">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="username" class="col-lg-3 control-label">Username :</label>
                                                             <div class="col-lg-8">
-                                                                <input value="<?= $sesName ?>" class="form-control" type="text" name="txt_username" id="username">
+                                                                <input value="<?= $userName; ?>" class="form-control" type="text" name="txt_username" id="username">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="email" class="col-lg-3 control-label">Email :</label>
                                                             <div class="col-lg-8">
-                                                                <input value="<?= $sesEmail ?>" class="form-control" type="text" name="txt_email" id="email">
+                                                                <input value="<?= $userMail ?>" class="form-control" type="text" name="txt_email" id="email">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="nik" class="col-lg-3 control-label">NIK :</label>
                                                             <div class="col-lg-8">
-                                                                <input value="<?= $sesNIK ?>" class="form-control" type="text" name="txt_nik" id="nik">
+                                                                <input value="<?= $userNik; ?>" class="form-control" type="text" name="txt_nik" id="nik">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="gender" class="col-lg-3 control-label">Jenis Kelamin :</label>
                                                             <div class="col-lg-8">
                                                                 <div class="ui-select">
-                                                          <select id="gender" class="form-control" id="gender">
-                                                          <option value="<?= $sesGender;  ?>"><?= $sesGender; ?></option>  
+                                                          <select id="gender" class="form-control" id="gender" name="txt_gender">
+                                                          <option value="<?= $userGender;  ?>"><?= $userGender; ?></option>  
                                                           <option value="">Pilih Jenis Kelamin </option>
                                                           <option value="Laki-laki">Laki - Laki </option>
                                                           <option value="perempuan">Perempuan</option>
@@ -151,13 +167,13 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                                         <div class="form-group">
                                                             <label for="numberPhone" class="col-lg-3 control-label">No. HP :</label>
                                                             <div class="col-lg-8">
-                                                                <input value="<?= $sesNohp ?>" class="form-control" type="text" name="txt_nohp" id="numberPhone">
+                                                                <input value="<?= $userNo; ?>" class="form-control" type="text" name="txt_nohp" id="numberPhone">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="alamat" class="col-md-3 control-label">Alamat :</label>
                                                             <div class="col-md-8">
-                                                                <textarea value="<?= $sesAddress ?>" class="form-control" rows="5" type="text" id="alamat"></textarea>
+                                                                <textarea value="<?= $userAddress; ?>" class="form-control" rows="5" type="text" id="alamat" name="txt_alamat"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -169,6 +185,7 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                                             </div>
                                                         </div>
                                                     </form>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -206,8 +223,13 @@ if( isset($_POST['edit']) ){
     $Mail     = $_POST['txt_email'];
     $userName   = $_POST['txt_username'];
     $Name   = $_POST['txt_nama'];
+    $Nik   = $_POST['txt_nik'];
+    $Gender   = $_POST['txt_gender'];
+    $Nohp   = $_POST['txt_nohp'];
+    $Address   = $_POST['txt_alamat'];
+    $Img   = $_POST['img'];
 
-    $query = "UPDATE user_detail SET user_nama='$Name', user_email='$Mail', username='$userName' WHERE id_user='$userId'";
+    $query = "UPDATE user_detail SET user_nama='$Name', username='$userName', user_email='$Mail',nik='$Nik',alamat='$Address',foto='$Img',no_hp='$Nohp',jenis_kelamin='$Gender' WHERE id_user='$userId'";
     echo $query;
     $result = mysqli_query($koneksi, $query);
     header('Location: profile_admin.php');
