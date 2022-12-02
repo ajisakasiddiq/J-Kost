@@ -150,6 +150,8 @@ $sesEmail = $_SESSION['user_email'];
                                                                        </div>
                                                                        <form class="user" action="" method="POST">
                                                                        <div class="modal-body">
+                                                                       <input type="text" class="form-control form-control-user" id="exampleInputName"
+                                                                                placeholder="Name" name="txt_id" value="<?= $user->id_user; ?>">
                                                                        <div class="form-group">
                                                                             <input type="text" class="form-control form-control-user" id="exampleInputName"
                                                                                 placeholder="Name" name="txt_nama" value="<?= $user->user_nama; ?>">
