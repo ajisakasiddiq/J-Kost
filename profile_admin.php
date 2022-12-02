@@ -132,7 +132,7 @@ $sesEmail = $_SESSION['user_email'];
                                                                 <td><?= $user -> alamat; ?></td>
                                                                 <td><?= $user -> no_hp; ?></td>
                                                                 <td><?= $user -> jenis_kelamin; ?></td>
-                                                                <td><?= $user -> foto; ?></td>
+                                                                <td><img src="img/profil.jpg" alt="" width="50px"></td>
                                                                 <td>
                                                                     <a class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editAdmin<?= $user->id_user; ?>"><i class="fas fa-pen"></i></a>
 

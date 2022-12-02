@@ -121,7 +121,7 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                                     <div class="text-center col-lg-3">
                                                         <img src="../jkos/img/<?= $userImg; ?>" class="avatar img-circle" alt="avatar" width="100px">
                                                         <h6>Upload a different photo...</h6>
-                                                        <input type="file" class="form-control" name="">
+                                                        <input type="file" class="form-control" name="img">
                                                     </div>
                                                         <div class="form-group">
                                                             <label for="name" class="col-lg-3 control-label">Nama :</label>
@@ -223,50 +223,12 @@ if( isset($_POST['edit']) ){
     $Gender   = $_POST['txt_gender'];
     $Nohp   = $_POST['txt_nohp'];
     $Address   = $_POST['txt_alamat'];
-    $Img   = upload();
+    $Img   = $_POST['img'];
 
     $query = "UPDATE user_detail SET user_nama='$Name', username='$userName', user_email='$Mail',nik='$Nik',alamat='$Address',foto='$Img',no_hp='$Nohp',jenis_kelamin='$Gender' WHERE id_user='$userId'";
     $result = mysqli_query($koneksi, $query);
     header('Location: profile_admin.php');
-    function upload(){
-
-        $file = $_FILES['gambar'] ['name'];
-        $size = $_FILES['gambar'] ['size'];
-        $error = $_FILES ['gambar']['error'];
-        $tmpName = $_FILES['gambar']['tmp_name'];
-    //cek file apakah diupload atau tidak
-        if ( $error === 4 ) {
-          echo "<script> 
-            alert('Pilih gambar terlebih dahulu');
-          </script>";
-          return false;
-        }
-        //cek apakah benar gambar
-        $extensGambarValid = ['jpg','jpeg','png'];
-        $extensGambar = explode('.',$file);
-        $extensGambar = strtolower(end($extensGambar));
-        if (!in_array($extensGambar,$extensGambarValid)) {
-          echo "<script> 
-          alert('Yang anda upload bukan berupa file gambar');
-        </script>";
-        return false;
-        }
-        //cek jika ukuran nya terlalu besar 
-        if ($size > 1000000) {
     
-            echo "<script> 
-            alert('Ukuran gambar terlalu besar');
-          </script>";
-        }
-    //generate nama gambar baru
-    $namaFIlebaru = uniqid();
-    $namaFIlebaru .= '.';
-    $namaFIlebaru .= $extensGambar;
-
-        //lolos cek 
-        move_uploaded_file($tmpName,'img/'.$namaFIlebaru);
-        return $namaFIlebaru;
-    }
 }
 
 
