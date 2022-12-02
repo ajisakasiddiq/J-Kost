@@ -223,7 +223,10 @@ if( isset($_POST['edit']) ){
     $Gender   = $_POST['txt_gender'];
     $Nohp   = $_POST['txt_nohp'];
     $Address   = $_POST['txt_alamat'];
-    $Img   = $_POST['img'];
+    // $Img   = $_POST['img'];
+    $img = $_FILES['img']['name'];
+    $tmpName = $_FILES['foto']['tmp_name'];
+    move_uploaded_file($file_tmp,'img/'.$img);
 
     $query = "UPDATE user_detail SET user_nama='$Name', username='$userName', user_email='$Mail',nik='$Nik',alamat='$Address',foto='$Img',no_hp='$Nohp',jenis_kelamin='$Gender' WHERE id_user='$userId'";
     $result = mysqli_query($koneksi, $query);
