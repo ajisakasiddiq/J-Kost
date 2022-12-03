@@ -96,7 +96,7 @@ if (isset($_SESSION['id_user'])) {
                                             <hr>
                                             <div class="row">
                                                 <!-- edit form column -->
-                                                <div class="col-md-10 personal-info">
+                                                <div class="col-md-10 personal-info justify-align-center">
                                                     <div class="alert alert-info alert-dismissable">
                                                         <a class="panel-close close" data-dismiss="alert">×</a>
                                                         <i class="fa fa-coffee"></i> Pastikan <strong>Data diri</strong> anda terinput dengan benar!

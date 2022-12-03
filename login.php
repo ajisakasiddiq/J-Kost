@@ -85,6 +85,19 @@ if (isset($_POST['submit'])) {
 	<link href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
 	<!-- //web font -->
 
+    <style>
+        .header-main {
+    max-width: 310px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 999;
+    padding: 3em 2em;
+    background: rgba(255, 255, 255, 0.04);
+    -webkit-box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+}
+    </style>
 </head>
 <body>
 
@@ -113,7 +126,7 @@ if (isset($_POST['submit'])) {
 					</div>
 					<div class="links">
 						<p><a href="#">Forgot Password?</a></p>
-						<p class="right"><a href="register2.php">New User? Register</a></p>
+						<p class="right"><a href="register.php">New User? Register</a></p>
 						<div class="clear"></div>
 					</div>
 				</form>	
