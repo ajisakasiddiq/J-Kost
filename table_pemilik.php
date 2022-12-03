@@ -131,7 +131,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 <td><?= $user -> alamat; ?></td>
                                                                 <td><?= $user -> no_hp; ?></td>
                                                                 <td><?= $user -> jenis_kelamin; ?></td>
-                                                                <td><?= $user -> foto; ?></td>
+                                                                <td><img src="img/<?= $user -> foto;  ?>" alt="" width="50px"></td>
                                                                 <td>
                                                                     <a href="auth_kos.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
 
