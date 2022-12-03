@@ -319,20 +319,12 @@ if(isset($_POST['tambah']) ){
     $Name = $_POST['txt_nama'];
 
     $query = "INSERT INTO user_detail VALUES (null,'$Name','$userName','$Mail','$Pass',3,null,null,null,null,null)";
-    if (mysqli_query($koneksi,$query)) {
-        $response=array(
-            'status' => 1,
-            'message' => 'Tambah data sukses'
-        );
+    $result = mysqli_query($koneksi,$query);
+    if ($result) {
+        $succes = "Data berhasil terinput!";
     }else{
-        $response=array(
-            'status' => 0,
-            'message' => 'failed',
-            'query' => $query
-        );
+        $errorr =  "Data gagal terinput";
     }
-    header('Content-Type: application/json');
-    echo json_encode($response);
 }
 if( isset($_POST['update']) ){
     $userId     = $_POST['txt_id'];
@@ -373,6 +365,27 @@ mysqli_query($koneksi, $query);
     <script>
         swal({
   title: "<?= $error; ?>",
+  icon: "success",
+  button: "OKE!",
+});
+    </script>
+    <?php }?>
+
+
+
+    <?php if(isset($succes)){ ?>
+    <script>
+        swal({
+  title: "<?= $succes; ?>",
+  icon: "success",
+  button: "OKE!",
+});
+    </script>
+    <?php }?>
+    <?php if(isset($errorr)){ ?>
+    <script>
+        swal({
+  title: "<?= $errorr; ?>",
   icon: "success",
   button: "OKE!",
 });
