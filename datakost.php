@@ -98,7 +98,6 @@ if (isset($_SESSION['id_user'])) {
                                                         <div id="toolbar">
                                                             <button id="button" class="btn btn-primary">
                                                                 <i class="fa-solid fa-plus"></i> <a  href="tambah_kost.php" class="text-white">Tambah Kost</a>
-                                                                
                                                              </button>
                                                         </div>
                                                  </div>

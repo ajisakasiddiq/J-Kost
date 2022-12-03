@@ -97,7 +97,7 @@ if (isset($_SESSION['id_user'])) {
                                                     <h4>Data Kamar</h4>
                                                         <div id="toolbar">
                                                             <button id="button" class="btn btn-primary">
-                                                                <i class="fa-solid fa-plus"></i> Tambah Kost
+                                                            <i class="fa-solid fa-plus"></i> <a  href="tambah_kamar.php" class="text-white">Tambah Kost</a>
                                                              </button>
                                                         </div>
                                                  </div>
