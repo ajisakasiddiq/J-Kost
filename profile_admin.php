@@ -139,7 +139,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 <td><?= $user -> jenis_kelamin; ?></td>
                                                                 <td><img src="img/profil.jpg" alt="" width="50px"></td>
                                                                 <td>
-                                                                    <a class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editAdmin<?= $user->id_user; ?>"><i class="fas fa-pen"></i></a>
+                                                                    <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editAdmin<?= $user->id_user; ?>"><i class="fas fa-pen"></i></a>
 
                                                                     <a href="profile_admin.php?id_user=<?= $user -> id_user ?>" class="btn btn-danger btn-circle" onclick="return confirm('Yakin deck?');"><i class="fas fa-trash"></i></a>
                                                                 </td>
@@ -168,6 +168,22 @@ if (isset($_SESSION['id_user'])) {
                                                                         <div class="form-group">
                                                                             <input type="text" class="form-control form-control-user" id="exampleInputUsername"
                                                                                 placeholder="Username" name="txt_username" value="<?= $user->username; ?>">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control form-control-user" id="exampleInputUsername"
+                                                                                placeholder="NIK" name="txt_nik" value="<?= $user->nik; ?>">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control form-control-user" id="exampleInputUsername"
+                                                                                placeholder="Alamat" name="txt_alamat" value="<?= $user->alamat; ?>">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control form-control-user" id="exampleInputUsername"
+                                                                                placeholder="No.Handphone" name="txt_nohp" value="<?= $user->no_hp; ?>">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control form-control-user" id="exampleInputUsername"
+                                                                                placeholder="Jenis Kelamin" name="txt_jk" value="<?= $user->jenis_kelamin; ?>">
                                                                         </div>
                                                                        </div>
                                                                        <div class="modal-footer">
@@ -323,8 +339,12 @@ if( isset($_POST['update']) ){
     $Mail     = $_POST['txt_email'];
     $userName   = $_POST['txt_username'];
     $Name   = $_POST['txt_nama'];
+    $Nik   = $_POST['txt_nik'];
+    $alamat   = $_POST['txt_alamat'];
+    $Nohp   = $_POST['txt_nohp'];
+    $jk   = $_POST['txt_jk'];
 
-    $query = "UPDATE user_detail SET user_nama='$Name', user_email='$Mail', username='$userName' WHERE id_user='$userId'";
+    $query = "UPDATE user_detail SET user_nama='$Name', user_email='$Mail', username='$userName', nik='$Nik', alamat='$alamat', no_hp='$Nohp', jenis_kelamin='$jk' WHERE id_user='$userId'";
     $result = mysqli_query($koneksi, $query);
     if ($result) {
         $success = "User data telah terupdate!";

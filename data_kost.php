@@ -91,16 +91,19 @@ if (isset($_SESSION['id_user'])) {
                                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="txt_email">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Nama Kost" name="txt_nama">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Pemilik" name="txt_pemilik">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Alamat" name="txt_alamat">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Password" name="txt_pass">
+                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Jumlah" name="txt_jumlah">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Deskripsi" name="txt_deskripsi">
                                                 </div>
                                     </form>
                                   </div>
