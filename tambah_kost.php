@@ -57,6 +57,7 @@ if (isset($_SESSION['id_user'])) {
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
 
     <link href="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
     
     <!--[if lt IE 9]>
@@ -103,14 +104,14 @@ if (isset($_SESSION['id_user'])) {
             <div class="card-body">
                  <!-- Start Form -->
 <form id="bookingForm" action="" method="post" class="needs-validation" novalidate autocomplete="off">
-        <input type="hidden" class="form-control" id="inputName" name="name" placeholder="Id user" required value="<?= $sesID;  ?>"/>
+        <input type="hidden" class="form-control" id="inputName" name="id_user" placeholder="Id user" required value="<?= $sesID;  ?>"/>
         <div class="form-group">
           <label for="inputName">Nama Kost</label>
-          <input type="text" class="form-control" id="inputName" name="name" placeholder="Nama kost anda!" required />
+          <input type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
         </div>
         <div class="form-group">
           <label for="textAreaRemark">Deskripsi</label>
-          <textarea class="form-control" name="deskripsi" id="textAreaRemark" rows="5" placeholder="Tell us you want more..."></textarea>
+          <textarea class="form-control" name="txt_deskripsi" id="textAreaRemark" rows="5" placeholder="Tell us you want more..."></textarea>
         </div>
         <div class="form-group">
           <label for="inputEmail">Alamat</label>
@@ -165,7 +166,7 @@ if (isset($_SESSION['id_user'])) {
 <!-- get location end-->
 
         <!-- Start Submit Button -->
-        <button class="btn btn-primary btn-block col-lg-2 ms-auto" type="submit">Submit</button>
+        <button class="btn btn-primary btn-block col-lg-2 ms-auto" type="submit" name="tambah">Submit</button>
         <!-- End Submit Button -->
       </form>
     </div>
@@ -201,3 +202,39 @@ if (isset($_SESSION['id_user'])) {
 </body>
 
 </html>
+
+<?php if(isset($_POST['tambah']) ){
+    $id = $_POST['id_user'];
+    $Name = $_POST['txt_nama'];
+    $Deskripsi = $_POST['txt_deskripsi'];
+    $Alamat = $_POST['txt_alamat'];
+    $lng = $_POST['Latitude'];
+    $lat = $_POST['Longitude'];
+
+    $query = "INSERT INTO data_kost VALUES (null,'$id','$Name','$Deskripsi',null,null,'','$lng','$lat')";
+    $result = mysqli_query($koneksi,$query);
+    if ($result) {
+        $succes = "Data berhasil terinput!";
+    }else{
+        $errorr =  "Data gagal terinput";
+    }
+} ?>
+
+<?php if(isset($succes)){ ?>
+    <script>
+        swal({
+  title: "<?= $succes; ?>",
+  icon: "success",
+  button: "OKE!",
+});
+    </script>
+    <?php }?>
+    <?php if(isset($errorr)){ ?>
+    <script>
+        swal({
+  title: "<?= $errorr; ?>",
+  icon: "success",
+  button: "OKE!",
+});
+    </script>
+    <?php }?>
