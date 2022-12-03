@@ -211,12 +211,12 @@ if (isset($_SESSION['id_user'])) {
     $lng = $_POST['Latitude'];
     $lat = $_POST['Longitude'];
 
-    $query = "INSERT INTO data_kost VALUES (null,'$id','$Name','$Deskripsi',null,null,'PENDING','$lng','$lat')";
+    $query = "INSERT INTO data_kost VALUES (null,'$id','$Name','$Alamat','$Deskripsi',null,null,'PENDING','$lng','$lat')";
     $result = mysqli_query($koneksi,$query);
     if ($result) {
         $succes = "Data berhasil terinput!";
     }else{
-        $errorr =  "Data gagal terinput";
+        $errorr =  $query ."Error ".mysqli_error($koneksi);
     }
 } ?>
 
