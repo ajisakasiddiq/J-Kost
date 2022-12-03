@@ -107,27 +107,38 @@ if (isset($_SESSION['id_user'])) {
                                                                 <th>No</th>
                                                                 <th>Gambar</th>
                                                                 <th>Nama Kost</th>
-                                                                <th>No. Kamar</th>
                                                                 <th>Deskripsi</th>
-                                                                <th>Disetujui</th>
+                                                                <th>Status</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            <?php 
+                                                            $query = "SELECT * FROM data_kost WHERE id_user = '$sesID'";
+                                                            $result = mysqli_query($koneksi,$query);
+                                                            $no = 1;
+                                                            while ($row = mysqli_fetch_array($result)) {
+                                                                $NameKost = $row['nama_kost'];
+                                                                $Address = $row['alamat'];
+                                                                $Dess = $row['deskripsi'];
+                                                                $Img = $row['foto'];
+                                                                $Maps = $row['maps'];
+                                                                $Status = $row['status'];
+                                                            ?>
                                                             <tr>
-                                                                <td>1</td>
-                                                                <td>-</td>
-                                                                <td>Bara Kost</td>
-                                                                <td>2A</td>
-                                                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum accusamus repudiandae facere distinctio ut omnis laboriosam, corrupti ea cumque deleniti, aperiam iusto pariatur. Itaque ut, eveniet
-                                                                    iste praesentium exercitationem at</td>
-                                                                <td>Disetujui</td>
+                                                                <td><?= $no; ?></td>
+                                                                <td><img src="img/<?= $Img; ?>" alt=""></td>
+                                                                <td><?= $NameKost; ?></td>
+                                                                <td><?= $Dess; ?></td>
+                                                                <td><?= $Status; ?></td>
                                                                 <td>
                                                                     <a href="edit.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
 
                                                                     <a href="hapus.php" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
                                                                 </td>
                                                             </tr>
+                                                            <?php } ?>
+                                                            <?php $no++; ?>
                                                         </tbody>
                                                     </table>
                                                 </div>

@@ -211,7 +211,7 @@ if (isset($_SESSION['id_user'])) {
     $lng = $_POST['Latitude'];
     $lat = $_POST['Longitude'];
 
-    $query = "INSERT INTO data_kost VALUES (null,'$id','$Name','$Deskripsi',null,null,'','$lng','$lat')";
+    $query = "INSERT INTO data_kost VALUES (null,'$id','$Name','$Deskripsi',null,null,'PENDING','$lng','$lat')";
     $result = mysqli_query($koneksi,$query);
     if ($result) {
         $succes = "Data berhasil terinput!";
