@@ -57,6 +57,7 @@ if (isset($_SESSION['id_user'])) {
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
     <link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -85,7 +86,6 @@ if (isset($_SESSION['id_user'])) {
                             </div>
                         </div>
                         <!-- row -->
-                        <?php if($sesLvl == 3){ ?>
                         <!-- admin start -->
                         <div class="row column1">
                             <div class="col-lg-12">
@@ -95,13 +95,6 @@ if (isset($_SESSION['id_user'])) {
                                             <!-- table section -->
                                             <div class="card-body">
                                                 <div class="table-responsive">
-                                                <div class="mb-2">
-                                                        <div id="toolbar">
-                                                            <button id="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahRek"><i class="fa-solid fa-print"></i> Print</button>
-                                                            <button id="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tambahRek"><i class="fa-solid fa-file-pdf"></i> PDF</button>
-                                                            <button id="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambahRek"><i class="fa-solid fa-file-excel"></i> Excel</button>
-                                                        </div>
-                                                 </div>
                                                 <table id="transaksi" class="table table-borderless" style="width:100%">
                                                         <thead>
                                                             <tr>
@@ -142,50 +135,6 @@ if (isset($_SESSION['id_user'])) {
                         </div>
                         <!-- admin end -->
                         <!-- pemilik ,pencari start -->
-                        <?php }elseif ($sesLvl == 2 || $sesLvl == 1) {?>
-                        <div class="row column1">
-                            <div class="col-lg-12">
-                                <div class="white_shd full margin_bottom_30">
-                                    <div class="full graph_head">
-                                        <div class="table_section padding_infor_info">
-                                            <!-- table section -->
-                                            <div class="card-body">
-                                                <div class="table-responsive">
-                                                <table id="transaksi" class="table table-borderless" style="width:100%">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th>Kode Pemesanan</th>
-                                                                <th>Nama Kost</th>
-                                                                <th>Nomor kamar</th>
-                                                                <th>Pemesan</th>
-                                                                <th>Detail</th>
-                                                                <th>Tanggal</th>
-                                                                <th>Harga</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>89765</td>
-                                                                <td>Bara Kost</td>
-                                                                <td>2A</td>
-                                                                <td>Ajisaka Siddiq <a href="detail_pemesan.php"><button style="background-color:rgb(53, 53, 194); border-color:rgb(53, 53, 194); color:white">Detail Pemesanan</button></a></td>
-                                                                <td>20 November 2022</td>
-                                                                <td> Rp 350.0000</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end row -->
-                        </div>
-                        <?php } ?>
-
                     </div>
                 </div>
 
@@ -254,10 +203,21 @@ if (isset($_SESSION['id_user'])) {
     <script src="js/semantic.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
         <script>
-            $(document).ready(function () {
-                $('#transaksi').DataTable();
-            });
+$(document).ready(function() {
+    $('#transaksi').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
         </script>
 </body>
 
