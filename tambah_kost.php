@@ -105,11 +105,11 @@ if (isset($_SESSION['id_user'])) {
                  <!-- Start Form -->
 <form id="bookingForm" action="" method="post" class="needs-validation" novalidate autocomplete="off">
         <input type="hidden" class="form-control" id="inputName" name="id_user" placeholder="Id user" required value="<?= $sesID;  ?>"/>
-        <div class="text-center col-lg-3">
-             <img src="../jkos/img/<?= $userImg; ?>" class="avatar img-circle" alt="avatar" width="100px">
-             <h6>Upload a different photo...</h6>
-             <input type="file" class="form-control" name="img">
-         </div>
+        <div class="form-group">
+            <div class="col-lg-8">
+            <input type="file" class="form-control" name="gambar">
+            </div>
+            </div>
         <div class="form-group">
           <label for="inputName">Nama Kost</label>
           <input type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
@@ -215,21 +215,68 @@ if (isset($_SESSION['id_user'])) {
     $Alamat = $_POST['txt_alamat'];
     $lng = $_POST['Latitude'];
     $lat = $_POST['Longitude'];
-    $gambar = $_FILES['img']['name'];
-    $ekstensi_diperbolehkan	= array('png','jpg');
-    $x = explode('.', $gambar);
-    $ekstensi = strtolower(end($x));
-    $file_tmp = $_FILES['img']['tmp_name'];
-    move_uploaded_file($file_tmp, 'img/'.$gambar);
+    $Img = upload();
+    // $Img   = $_POST['img'];
+    if (!$gambar) {
+        return false;
+     }
 
-    $query = "INSERT INTO data_kost VALUES (null,'$id','$Name','$Alamat','$Deskripsi','$gambar',null,'PENDING','$lng','$lat')";
+    $query = "INSERT INTO data_kost VALUES (null,'$id','$Name','$Alamat','$Deskripsi','$Img',null,'PENDING','$lng','$lat')";
     $result = mysqli_query($koneksi,$query);
     if ($result) {
         $succes = "Data berhasil terinput!";
     }else{
         $errorr =  $query ."Error ".mysqli_error($koneksi);
+    }   
+} 
+
+function upload(){
+
+    $file = $_FILES['gambar'] ['name'];
+    $size = $_FILES['gambar'] ['size'];
+    $error = $_FILES ['gambar']['error'];
+    $tmpName = $_FILES['gambar']['tmp_name'];
+
+//cek file apakah diupload atau tidak
+    if ( $error === 4 ) {
+      echo "<script> 
+        alert('Pilih gambar terlebih dahulu');
+      </script>";
+      return false;
     }
-} ?>
+
+    //cek apakah benar gambar
+    $extensGambarValid = ['jpg','jpeg','png'];
+    $extensGambar = explode('.',$file);
+    $extensGambar = strtolower(end($extensGambar));
+    if (!in_array($extensGambar,$extensGambarValid)) {
+      echo "<script> 
+      alert('Yang anda upload bukan berupa file gambar');
+    </script>";
+    return false;
+    }
+
+    //cek jika ukuran nya terlalu besar 
+    if ($size > 1000000) {
+
+        echo "<script> 
+        alert('Ukuran gambar terlalu besar');
+      </script>";
+    }
+
+//generate nama gambar baru
+$namaFIlebaru = uniqid();
+$namaFIlebaru .= '.';
+$namaFIlebaru .= $extensGambar;
+
+
+
+    //lolos cek 
+    move_uploaded_file($tmpName,'img/'.$namaFIlebaru);
+    return $namaFIlebaru;
+}
+
+?>
 
 <?php if(isset($succes)){ ?>
     <script>

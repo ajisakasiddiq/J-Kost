@@ -137,7 +137,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 <td><?= $user -> alamat; ?></td>
                                                                 <td><?= $user -> no_hp; ?></td>
                                                                 <td><?= $user -> jenis_kelamin; ?></td>
-                                                                <td><img src="img/profil.jpg" alt="" width="50px"></td>
+                                                                <td><img src="img/<?= $user->foto;  ?>" alt="" width="50px"></td>
                                                                 <td>
                                                                     <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editAdmin<?= $user->id_user; ?>"><i class="fas fa-pen"></i></a>
 
