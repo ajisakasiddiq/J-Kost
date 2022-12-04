@@ -96,7 +96,7 @@ if (isset($_SESSION['id_user'])) {
                                             <hr>
                                             <div class="row">
                                                 <!-- edit form column -->
-                                                <div class="col-md-10 personal-info justify-align-center">
+                                                <div class="col-md-9 personal-info justify-align-center">
                                                     <div class="alert alert-info alert-dismissable">
                                                         <a class="panel-close close" data-dismiss="alert">×</a>
                                                         <i class="fa fa-coffee"></i> Pastikan <strong>Data diri</strong> anda terinput dengan benar!
@@ -225,19 +225,62 @@ if( isset($_POST['edit']) ){
     $Gender   = $_POST['txt_gender'];
     $Nohp   = $_POST['txt_nohp'];
     $Address   = $_POST['txt_alamat'];
+    $Img = upload();
     // $Img   = $_POST['img'];
-    $img = $_FILES['img']['name'];
-    $tmpName = $_FILES['img']['tmp_name'];
-    move_uploaded_file($file_tmp,'img/'.$img);
+    function upload(){
 
-    $query = "UPDATE user_detail SET user_nama='$Name', username='$userName', user_email='$Mail',nik='$Nik',alamat='$Address',foto='$Img',no_hp='$Nohp',jenis_kelamin='$Gender' WHERE id_user='$userId'";
+        $file = $_FILES['gambar'] ['name'];
+        $size = $_FILES['gambar'] ['size'];
+        $error = $_FILES ['gambar']['error'];
+        $tmpName = $_FILES['gambar']['tmp_name'];
+    
+    //cek file apakah diupload atau tidak
+        if ( $error === 4 ) {
+          echo "<script> 
+            alert('Pilih gambar terlebih dahulu');
+          </script>";
+          return false;
+        }
+    
+        //cek apakah benar gambar
+        $extensGambarValid = ['jpg','jpeg','png'];
+        $extensGambar = explode('.',$file);
+        $extensGambar = strtolower(end($extensGambar));
+        if (!in_array($extensGambar,$extensGambarValid)) {
+          echo "<script> 
+          alert('Yang anda upload bukan berupa file gambar');
+        </script>";
+        return false;
+        }
+    
+        //cek jika ukuran nya terlalu besar 
+        if ($size > 1000000) {
+    
+            echo "<script> 
+            alert('Ukuran gambar terlalu besar');
+          </script>";
+        }
+    
+    //generate nama gambar baru
+    $namaFIlebaru = uniqid();
+    $namaFIlebaru .= '.';
+    $namaFIlebaru .= $extensGambar;
+    
+    
+    
+        //lolos cek 
+        move_uploaded_file($tmpName,'img/'.$namaFIlebaru);
+        return $namaFIlebaru;
+    }
+    
+    
+     $query = "UPDATE user_detail SET user_nama='$Name', username='$userName', user_email='$Mail',nik='$Nik',alamat='$Address',foto='$Img',no_hp='$Nohp',jenis_kelamin='$Gender' WHERE id_user='$userId'";
     $result = mysqli_query($koneksi, $query);
     if ($result) {
         $success = "User data telah terupdate!";
     }else{
         $error =  "User data gagal update";
     }
-    
 }
 ?>
 <?php if(isset($success)){ ?>

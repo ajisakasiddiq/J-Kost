@@ -105,6 +105,11 @@ if (isset($_SESSION['id_user'])) {
                  <!-- Start Form -->
 <form id="bookingForm" action="" method="post" class="needs-validation" novalidate autocomplete="off">
         <input type="hidden" class="form-control" id="inputName" name="id_user" placeholder="Id user" required value="<?= $sesID;  ?>"/>
+        <div class="text-center col-lg-3">
+             <img src="../jkos/img/<?= $userImg; ?>" class="avatar img-circle" alt="avatar" width="100px">
+             <h6>Upload a different photo...</h6>
+             <input type="file" class="form-control" name="img">
+         </div>
         <div class="form-group">
           <label for="inputName">Nama Kost</label>
           <input type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
@@ -120,9 +125,9 @@ if (isset($_SESSION['id_user'])) {
         </div>
 
         <!-- get location start-->
-        <input class="form-control" id="Latitude" name="Latitude" placeholder="latitude" required />
-        <input class="form-control" id="Longitude" name="Longitude" placeholder="longitude" required />
-        <div class="mt-2 mb-2" id="mapid" style="width: 700px; height: 400px;"></div>
+        <input type="hidden" class="form-control" id="Latitude" name="Latitude" placeholder="latitude" required />
+        <input type="hidden" class="form-control" id="Longitude" name="Longitude" placeholder="longitude" required />
+        <div class="mt-2 mb-2" id="mapid" style="width: 100%; height: 400px;"></div>
         <script>
             const mymap = L.map('mapid').setView([-8.231935485535336, 113.60678852931734], 13);
             const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -210,8 +215,14 @@ if (isset($_SESSION['id_user'])) {
     $Alamat = $_POST['txt_alamat'];
     $lng = $_POST['Latitude'];
     $lat = $_POST['Longitude'];
+    $gambar = $_FILES['img']['name'];
+    $ekstensi_diperbolehkan	= array('png','jpg');
+    $x = explode('.', $gambar);
+    $ekstensi = strtolower(end($x));
+    $file_tmp = $_FILES['img']['tmp_name'];
+    move_uploaded_file($file_tmp, 'img/'.$gambar);
 
-    $query = "INSERT INTO data_kost VALUES (null,'$id','$Name','$Alamat','$Deskripsi',null,null,'PENDING','$lng','$lat')";
+    $query = "INSERT INTO data_kost VALUES (null,'$id','$Name','$Alamat','$Deskripsi','$gambar',null,'PENDING','$lng','$lat')";
     $result = mysqli_query($koneksi,$query);
     if ($result) {
         $succes = "Data berhasil terinput!";
