@@ -102,14 +102,16 @@ if (isset($_SESSION['id_user'])) {
                <div class="card">
  <!--Start Card Body --> 
             <div class="card-body">
+                <div class="d-flex justify-content-center">
+                <img src="img/638bdbb779611.jpg" alt="" width="300px" height="300px" class="align-center">
+                </div>
                  <!-- Start Form -->
-<form id="bookingForm" action="" method="post" class="needs-validation" novalidate autocomplete="off">
+        <form id="bookingForm" action="" method="post" class="needs-validation" novalidate autocomplete="off">
         <input type="hidden" class="form-control" id="inputName" name="id_user" placeholder="Id user" required value="<?= $sesID;  ?>"/>
         <div class="form-group">
-            <div class="col-lg-8">
-            <input type="file" class="form-control" name="gambar">
-            </div>
-            </div>
+                <label for="img">Kost tampak depan</label>
+                <input id="img" type="file" class="form-control" name="gambar">
+        </div>
         <div class="form-group">
           <label for="inputName">Nama Kost</label>
           <input type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
@@ -213,8 +215,8 @@ if (isset($_SESSION['id_user'])) {
     $Name = $_POST['txt_nama'];
     $Deskripsi = $_POST['txt_deskripsi'];
     $Alamat = $_POST['txt_alamat'];
-    $lng = $_POST['Latitude'];
-    $lat = $_POST['Longitude'];
+    $lat = $_POST['Latitude'];
+    $lng = $_POST['Longitude'];
     $Img = upload();
     // $Img   = $_POST['img'];
     if (!$gambar) {

@@ -151,21 +151,37 @@ if (isset($_SESSION['id_user'])) {
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            <?php 
+                                                            $query = "SELECT user_detail.user_nama AS 'NAMA PEMILIK',user_detail.no_hp AS 'NO HP PEMILIK',data_kost.nama_kost,data_kost.alamat,data_kost.deskripsi,data_kost.foto,data_kost.status
+                                                            FROM data_kost
+                                                            INNER JOIN user_detail ON data_kost.id_user= user_detail.id_user;";
+                                                            $result = mysqli_query($koneksi,$query);
+                                                            $no = 1 ;
+                                                            while($row= mysqli_fetch_array($result)){
+                                                                $Pemilik = $row['NAMA PEMILIK'];
+                                                                $Nop = $row['NO HP PEMILIK'];
+                                                                $Namakost = $row['nama_kost'];
+                                                                $Alamat = $row['alamat'];
+                                                                $Deskripsi = $row['deskripsi'];
+                                                                $Img = $row['foto'];
+                                                                $Status = $row['status'];
+                                                            ?>
                                                             <tr>
-                                                                <td>1</td>
-                                                                <td>Bara Kost</td>
-                                                                <td>Muhammad Ikbal Mubarok</td>
-                                                                <td>Ngawi</td>
+                                                                <td><?= $no; ?></td>
+                                                                <td><?= $Namakost; ?></td>
+                                                                <td><?= $Pemilik; ?></td>
+                                                                <td><?= $Alamat; ?></td>
                                                                 <td>22</td>
-                                                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum accusamus repudiandae facere distinctio ut omnis laboriosam, corrupti ea cumque deleniti, aperiam iusto pariatur. Itaque ut, eveniet
-                                                                    iste praesentium exercitationem at.</td>
-                                                                <td><img src="img/team-3.jpg" alt="" width="50px"></td>
-                                                                <td>Ready</td>
+                                                                <td><?= $Deskripsi; ?></td>
+                                                                <td><img src="img/<?= $Img; ?>" alt="" width="50px"></td>
+                                                                <td><?= $Status; ?></td>
                                                                 <td>
                                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#validate"><i class="fas fa-pen"></i></button>
                                                                     <a href="hapus.php" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                                                                 </td>
                                                             </tr>
+                                                            <?= $no++; ?>
+                                                            <?php } ?>
                                                         </tbody>
                                                     </table>
                                                 </div>

@@ -102,6 +102,9 @@ if (isset($_SESSION['id_user'])) {
                                                         <i class="fa fa-coffee"></i> Pastikan <strong>Data diri</strong> anda terinput dengan benar!
                                                     </div>
                                                     <h3>Personal info</h3>
+                                                    <div class="d-flex justify-content-center">
+                                                        <img src="img/<?= $userImg ?>" alt="" class="avatar img-circle" alt="avatar" width="100px" >
+                                                    </div>
                                                     <form  role="form" action="" method="post" enctype="multipart/form-data">
                                                     <?php 
                                                     $query  = "SELECT * FROM user_detail WHERE id_user = '$sesID'";
@@ -119,7 +122,7 @@ if (isset($_SESSION['id_user'])) {
                                                         $userNo = $row['no_hp'];
                                                     ?>
                                                     <input value="<?= $sesID ?>" class="form-control" type="hidden" name="txt_id" id="id_user">
-                                                        <div class="form-group" style="display:block; margin:auto; margin-bottom : 30px !important">
+                                                        <div class="form-group">
                                                         <img src="img/<?= $userImg; ?>" class="avatar img-circle" alt="avatar" width="100px">
                                                         <h6>Upload a different photo...</h6>
                                                         <div class="col-lg-8">
@@ -172,7 +175,7 @@ if (isset($_SESSION['id_user'])) {
                                                         <div class="form-group">
                                                             <label for="alamat" class="col-md-3 control-label">Alamat :</label>
                                                             <div class="col-md-8">
-                                                                <textarea class="form-control" rows="5"<?= $userAddress; ?>  type="text" id="alamat" name="txt_alamat"></textarea>
+                                                                <textarea class="form-control" rows="5"<?= $userAddress; ?>  id="alamat" name="txt_alamat"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
