@@ -102,9 +102,6 @@ if (isset($_SESSION['id_user'])) {
                <div class="card">
  <!--Start Card Body --> 
             <div class="card-body">
-                <div class="d-flex justify-content-center">
-                <img src="img/638bdbb779611.jpg" alt="" width="300px" height="300px" class="align-center">
-                </div>
                  <!-- Start Form -->
         <form id="bookingForm" action="" method="post" class="needs-validation" novalidate autocomplete="off">
         <input type="hidden" class="form-control" id="inputName" name="id_user" placeholder="Id user" required value="<?= $sesID;  ?>"/>
