@@ -105,7 +105,7 @@ if (isset($_SESSION['id_user'])) {
                                                     <div class="d-flex justify-content-center">
                                                         <img src="img/<?= $userImg ?>" alt="" class="avatar img-circle" alt="avatar" width="100px" >
                                                     </div>
-                                                    <form  role="form" action="" method="post" enctype="multipart/form-data">
+                                    <form  role="form" action="" method="post" enctype="multipart/form-data">
                                                     <?php 
                                                     $query  = "SELECT * FROM user_detail WHERE id_user = '$sesID'";
                                                     $result = mysqli_query($koneksi, $query);

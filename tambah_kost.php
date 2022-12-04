@@ -103,7 +103,7 @@ if (isset($_SESSION['id_user'])) {
  <!--Start Card Body --> 
             <div class="card-body">
                  <!-- Start Form -->
-        <form id="bookingForm" action="" method="post" class="needs-validation" novalidate autocomplete="off">
+        <form id="bookingForm" action="" method="post" class="needs-validation" novalidate autocomplete="off" enctype="multipart/form-data">
         <input type="hidden" class="form-control" id="inputName" name="id_user" placeholder="Id user" required value="<?= $sesID;  ?>"/>
         <div class="form-group">
                 <label for="img">Kost tampak depan</label>
@@ -216,7 +216,7 @@ if (isset($_SESSION['id_user'])) {
     $lng = $_POST['Longitude'];
     $Img = upload();
     // $Img   = $_POST['img'];
-    if (!$gambar) {
+    if (!$Img) {
         return false;
      }
 

@@ -127,7 +127,7 @@ if (isset($_SESSION['id_user'])) {
                                                             ?>
                                                             <tr>
                                                                 <td><?= $no; ?></td>
-                                                                <td><img src="img/<?= $Img; ?>" alt=""></td>
+                                                                <td><img src="img/<?= $Img; ?>" alt="" width="50px"></td>
                                                                 <td><?= $NameKost; ?></td>
                                                                 <td><?= $Dess; ?></td>
                                                                 <td><?= $Status; ?></td>
