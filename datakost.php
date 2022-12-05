@@ -132,10 +132,46 @@ if (isset($_SESSION['id_user'])) {
                                                                 <td><?= $Dess; ?></td>
                                                                 <td><?= $Status; ?></td>
                                                                 <td>
-                                                                    <a href="edit.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
+                                                                    <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editKost"><i class="fas fa-pen"></i></a>
 
                                                                     <a href="hapus.php" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
                                                                 </td>
+
+
+                                                                <!-- edit kost -->
+                                                                <div class="modal fade" id="editKost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                      <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                          <div class="form-group">
+                                                                            <label for="img">Kost tampak depan</label>
+                                                                            <input id="img" type="file" class="form-control" name="gambar">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                              <label for="inputName">Nama Kost</label>
+                                                                              <input type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                              <label for="textAreaRemark">Deskripsi</label>
+                                                                              <textarea class="form-control" name="txt_deskripsi" id="textAreaRemark" rows="5" placeholder="Tell us you want more..."></textarea>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                              <label for="inputEmail">Alamat</label>
+                                                                              <textarea class="form-control" rows="5"  type="text" id="alamat" name="txt_alamat"></textarea>
+                                                                              <small class="form-text text-muted">Isi alamat selengkap mungkin!.</small>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                          <button type="button" class="btn btn-primary">Save changes</button>
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
                                                             </tr>
                                                             <?php } ?>
                                                             <?php $no++; ?>
