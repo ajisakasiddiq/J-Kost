@@ -76,45 +76,7 @@ if (isset($_SESSION['id_user'])) {
                 <!-- dashboard inner -->
                 <div class="midde_cont">
                     <div class="container-fluid">
-                            <!-- Modal start -->
-                            <div class="modal fade" id="validate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                              <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="validate">Validate Kost</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body">
-                                  <form class="user" action="" method="POST">
-                                    
-                                                <div class="form-group">
-                                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="txt_email">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Nama Kost" name="txt_nama">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Pemilik" name="txt_pemilik">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Alamat" name="txt_alamat">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Jumlah" name="txt_jumlah">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control form-control-user" id="password" placeholder="Deskripsi" name="txt_deskripsi">
-                                                </div>
-                                    </form>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="submit" class="btn btn-danger">Save changes</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- Modal end -->
+
                         <div class="row column_title">
                             <div class="col-md-12">
                                 <div class="page_title">
@@ -152,12 +114,13 @@ if (isset($_SESSION['id_user'])) {
                                                         </thead>
                                                         <tbody>
                                                             <?php 
-                                                            $query = "SELECT user_detail.user_nama AS 'NAMA PEMILIK',user_detail.no_hp AS 'NO HP PEMILIK',data_kost.nama_kost,data_kost.alamat,data_kost.deskripsi,data_kost.foto,data_kost.status
+                                                            $query = "SELECT user_detail.user_nama AS 'NAMA PEMILIK',user_detail.no_hp AS 'NO HP PEMILIK',data_kost.id_kost,data_kost.nama_kost,data_kost.alamat,data_kost.deskripsi,data_kost.foto,data_kost.status
                                                             FROM data_kost
                                                             INNER JOIN user_detail ON data_kost.id_user= user_detail.id_user;";
                                                             $result = mysqli_query($koneksi,$query);
                                                             $no = 1 ;
                                                             while($row= mysqli_fetch_array($result)){
+                                                                $id = $row['id_kost'];
                                                                 $Pemilik = $row['NAMA PEMILIK'];
                                                                 $Nop = $row['NO HP PEMILIK'];
                                                                 $Namakost = $row['nama_kost'];
@@ -176,9 +139,39 @@ if (isset($_SESSION['id_user'])) {
                                                                 <td><img src="img/<?= $Img; ?>" alt="" width="50px"></td>
                                                                 <td><?= $Status; ?></td>
                                                                 <td>
-                                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#validate"><i class="fas fa-pen"></i></button>
+                                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#validate<?= $id; ?>"><i class="fas fa-pen"></i></button>
                                                                     <a href="hapus.php" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                                                                 </td>
+
+                                                                                            <!-- Modal start -->
+                            <div class="modal fade" id="validate<?= $id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="validate">Validate Kost</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                  <form class="user" action="" method="POST">
+                                    
+                                                <div class="form-group">
+                                                    <select name="txt_status
+                                                    " id="" class="form-control form-control-user">
+                                                    <option value="<?= $Status;  ?>"><?= $Status; ?></option>  
+                                                        <option value="PENDING">PENDING</option>
+                                                        <option value="APPROVE">APPROVE</option>
+                                                    </select>
+                                                </div>
+                                    </form>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" name="submit" class="btn btn-danger">Save changes</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Modal end -->
                                                             </tr>
                                                             <?= $no++; ?>
                                                             <?php } ?>
@@ -253,6 +246,17 @@ if (isset($_SESSION['id_user'])) {
 
 
 <?php 
+if( isset($_POST['submit']) ){
+    $userId     = $_POST['txt_id'];
+    $Status    = $_POST['txt_status'];
 
+    $query = "UPDATE data_kost SET status='$Status' WHERE id_user='$userId'";
+    $result = mysqli_query($koneksi, $query);
+    if ($result) {
+        $success = "data telah terupdate!";
+    }else{
+        $error =  "data gagal update";
+    }
+}
 
 ?>

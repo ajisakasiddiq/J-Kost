@@ -22,23 +22,49 @@ if (isset($_SESSION['id_user'])) {
 // update data
 if( isset($_POST['submit']) ){
     $userId     = $_POST['txt_id'];
-    $userPass   = $_POST['txt_pass'];
+    $Pass     = $_POST['txt_pass'];
+    if ($_POST['txt_pass']==$_POST['txt_pass2'] ) {
+        $query = "UPDATE user_detail SET user_pass='$Pass'WHERE id_user='$userId'";
+        $result = mysqli_query($koneksi, $query);
+        if ($result) {
+            $success = "User data telah terupdate!";
+        }else{
+            $error =  "User data gagal update";
+        }
+        }else {
+        echo "<script>alert('Password yang Anda Masukan Tidak Sama');history.go(-1)</script>";
+        }
+    
 
-    $query = "UPDATE user_detail SET user_pass ='$userPass' WHERE id_user ='$sesID';";
-    $result = mysqli_query($koneksi, $query);
-    if (mysqli_affected_rows($koneksi) > 0 ) {
-        echo "berhasil";
-        header('Location: dashboard.php');
-     } else {
-        mysqli_error($koneksi);
-        header('Location: dashboard.php');
-     }
+   
+
   //header('Location: ResetPass.php');
     
 }
 
+
  
 ?>
+
+
+<?php if(isset($success)){ ?>
+    <script>
+        swal({
+  title: "<?= $success; ?>",
+  icon: "success",
+  button: "OKE!",
+});
+    </script>
+    <?php }?>
+    <?php if(isset($error)){ ?>
+    <script>
+        swal({
+  title: "<?= $error; ?>",
+  icon: "success",
+  button: "OKE!",
+});
+    </script>
+    <?php }?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -121,7 +147,7 @@ if( isset($_POST['submit']) ){
                                                                 <span aria-hidden="true">&times;</span>
                                                             </a>
                                                         </div>
-                                                        <input id="id_user" type="text" class="form-control form-control-sm" name="txt_id" value="<?= $sesID;  ?>">
+                                                        <input id="id_user" type="hidden" class="form-control form-control-sm" name="txt_id" value="<?= $sesID;  ?>">
                                                         <div class="form-group">
                                                             <label for="password1">Your new password</label>
                                                             <input id="password1" type="password" class="form-control form-control-sm" name="txt_pass">
@@ -162,6 +188,7 @@ if( isset($_POST['submit']) ){
                                 <script src="js/custom.js"></script>
                                 <!-- calendar file css -->
                                 <script src="js/semantic.min.js"></script>
+                                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>

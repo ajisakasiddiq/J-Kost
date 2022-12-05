@@ -139,7 +139,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 <td><?= $user -> jenis_kelamin; ?></td>
                                                                 <td><img src="img/<?= $user->foto;  ?>" alt="" width="50px"></td>
                                                                 <td>
-                                                                    <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editAdmin<?= $user->id_user; ?>"><i class="fas fa-pen"></i></a>
+                                                                    <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editAdmin<?= $user->id_user; ?>"><i class="fas fa-pen"></i></a>
 
                                                                     <a href="profile_admin.php?id_user=<?= $user -> id_user ?>" class="btn btn-danger btn-circle" onclick="return confirm('Yakin deck?');"><i class="fas fa-trash"></i></a>
                                                                 </td>
@@ -336,7 +336,8 @@ if( isset($_POST['update']) ){
     $Nohp   = $_POST['txt_nohp'];
     $jk   = $_POST['txt_jk'];
 
-    $query = "UPDATE user_detail SET user_nama='$Name', user_email='$Mail', username='$userName', nik='$Nik', alamat='$alamat', no_hp='$Nohp', jenis_kelamin='$jk' WHERE id_user='$userId'";
+    $query = "UPDATE user_detail SET user_nama='$Name', user_email='$Mail', 
+    username='$userName', nik='$Nik', alamat='$alamat', no_hp='$Nohp', jenis_kelamin='$jk' WHERE id_user='$userId'";
     $result = mysqli_query($koneksi, $query);
     if ($result) {
         $success = "User data telah terupdate!";

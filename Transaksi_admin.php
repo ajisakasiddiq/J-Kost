@@ -118,9 +118,9 @@ if (isset($_SESSION['id_user'])) {
                                                                 <td>Rp 350.000</td>
                                                                 <td>Terupload</td>
                                                                 <td>
-                                                                    <a href="edit.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
+                                                                    <!-- <a href="edit.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a> -->
 
-                                                                    <a href="hapus.php" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
+                                                                    <!-- <a href="hapus.php" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a> -->
                                                                 </td>
                                                             </tr>
                                                         </tbody>

@@ -175,7 +175,7 @@ if (isset($_SESSION['id_user'])) {
                                                         <div class="form-group">
                                                             <label for="alamat" class="col-md-3 control-label">Alamat :</label>
                                                             <div class="col-md-8">
-                                                                <textarea class="form-control" rows="5"<?= $userAddress; ?>  id="alamat" name="txt_alamat"></textarea>
+                                                                <textarea class="form-control" rows="5"  id="alamat"  type="text" name="txt_alamat"><?= $userAddress; ?></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
