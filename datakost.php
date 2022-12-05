@@ -152,8 +152,7 @@ if (isset($_SESSION['id_user'])) {
                                                                             <div class="img">
                                                                                 <img src="img/<?= $Img; ?>" alt="" width="100%" height="300px">
                                                                             </div>
-                                                                            <input type="hidden" class="form-control form-control-user" id="exampleInputName"
-                                                                                placeholder="Name" name="txt_id" value="<?= $idKost; ?>">
+                                                                            <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $idKost; ?>">
                                                                           <div class="form-group">
                                                                             <label for="img">Kost tampak depan</label>
                                                                             <input id="img" type="file" class="form-control" name="gambar">
@@ -170,20 +169,20 @@ if (isset($_SESSION['id_user'])) {
                                                                               <label for="inputEmail">Alamat</label>
                                                                               <textarea class="form-control" rows="5"  type="text" id="alamat" name="txt_alamat"> <?= $Address; ?></textarea>
                                                                               <small class="form-text text-muted">Isi alamat selengkap mungkin!.</small>
-                                                                            </div>
-                                                                            
+                                                                            </div>  
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                          <button name="edit" type="button" class="btn btn-primary">Save changes</button>
+                                                                          <button name="edit" type="submit" class="btn btn-primary">Save changes</button>
                                                                         </div>
                                                                         </form>
                                                                       </div>
                                                                     </div>
                                                                   </div>
                                                             </tr>
-                                                            <?php } ?>
                                                             <?php $no++; ?>
+                                                            <?php } ?>
+                                                            
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -257,7 +256,6 @@ if( isset($_POST['edit']) ){
     $Name   = $_POST['txt_nama'];
     $Address   = $_POST['txt_alamat'];
     $Img = upload();
-    // $Img   = $_POST['img'];
     
      $query = "UPDATE data_kost SET nama_kost='$Name', alamat='$Alamat', deskripsi='$deskripsi',foto='$Img' WHERE id_kost='$Id'";
     $result = mysqli_query($koneksi, $query);
@@ -315,6 +313,8 @@ $namaFIlebaru .= $extensGambar;
 }
 
 ?>
+
+
 <?php if(isset($success)){ ?>
     <script>
         swal({
@@ -324,6 +324,8 @@ $namaFIlebaru .= $extensGambar;
 });
     </script>
     <?php }?>
+
+
     <?php if(isset($error)){ ?>
     <script>
         swal({
