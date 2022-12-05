@@ -130,9 +130,11 @@ if (isset($_SESSION['id_user'])) {
                                                                 <td><?php echo $userName; ?></td>
                                                                 <td><?php echo $userNo; ?></td>
                                                                 <td>
-                                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#validate"><i class="fas fa-pen"></i></button>
+                                                                    <a href="edit.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
                                                                     <a name="delete" type="button" href="datarekening.php?id_rek=<?php echo $row['id_rek']; ?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
+                                                                    
                                                                 </td>
+                                                                
                                                             </tr>
                                                             <?php $no++; ?>
                                                             <?php } ?>
