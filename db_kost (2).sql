@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 30, 2022 at 03:54 PM
+-- Generation Time: Dec 05, 2022 at 01:56 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -31,16 +31,45 @@ CREATE TABLE `data_kost` (
   `id_kost` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `nama_kost` varchar(255) NOT NULL,
-  `pemilik` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `deskripsi` varchar(255) NOT NULL,
-  `foto` varchar(255) NOT NULL,
-  `no_hp_pemilik` varchar(225) NOT NULL,
-  `maps` varchar(225) NOT NULL,
-  `status` varchar(255) NOT NULL,
+  `foto` varchar(255) DEFAULT NULL,
+  `maps` varchar(225) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
   `longtitude` float(10,6) NOT NULL,
   `latitude` float(10,6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `data_kost`
+--
+
+INSERT INTO `data_kost` (`id_kost`, `id_user`, `nama_kost`, `alamat`, `deskripsi`, `foto`, `maps`, `status`, `longtitude`, `latitude`) VALUES
+(1, 3, 'bara kost', 'jember', 'luas', NULL, NULL, 'PENDING', 113.720551, -8.158108),
+(2, 3, 'Kost keren', 'jember', 'luas', NULL, NULL, 'PENDING', -8.218193, 113.616920),
+(10, 3, 's', 's', 's', '638ca0b58c762.jpg', NULL, 'PENDING', 113.602707, -8.239371);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_kamar`
+--
+
+CREATE TABLE `detail_kamar` (
+  `id_detailkamar` int(11) NOT NULL,
+  `id_fasilitas` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fasilitas`
+--
+
+CREATE TABLE `fasilitas` (
+  `id_fasilitas` int(11) NOT NULL,
+  `jenis_fasilitas` varchar(225) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -63,9 +92,9 @@ CREATE TABLE `foto` (
 CREATE TABLE `kamar_kost` (
   `id_kamar` int(11) NOT NULL,
   `id_kost` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
   `jenis_kamar` varchar(255) NOT NULL,
   `no_kamar` int(10) NOT NULL,
+  `harga` varchar(225) NOT NULL,
   `status_kamar` varchar(255) NOT NULL,
   `deskripsi` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -133,7 +162,7 @@ CREATE TABLE `rekening` (
 --
 
 INSERT INTO `rekening` (`id_rek`, `id_user`, `Nama_bank`, `Nama_rek`, `no_rek`) VALUES
-(7, 3, 'BCA', 'AJISAKA SIDDIQ', '54544454');
+(9, 3, 'BCA', 'AJISAKA SIDDIQ', '345678987654');
 
 -- --------------------------------------------------------
 
@@ -160,12 +189,14 @@ CREATE TABLE `user_detail` (
 --
 
 INSERT INTO `user_detail` (`id_user`, `user_nama`, `username`, `user_email`, `user_pass`, `level`, `nik`, `alamat`, `foto`, `no_hp`, `jenis_kelamin`) VALUES
-(3, 'ajisakasiddiq', 'ajisaka03', 'ajisakasiddiq@gmail.com', 'ajisaka12345', 1, '3509109108020001', NULL, NULL, NULL, NULL),
-(4, 'admin', 'admin', 'admin@gmail.com', 'admin', 3, NULL, NULL, NULL, NULL, NULL),
-(5, 'ahmad hidayar', 'ahmad22', 'ahmad@gmail.com', 'ahmad123', 2, NULL, NULL, NULL, NULL, NULL),
-(6, 'agus', 'agus123', 'agus@gmail.com', 'agus12345', 3, NULL, NULL, NULL, NULL, NULL),
-(7, 'yusuf mahardika', 'yusuf123', 'yusuf@gmail.com', 'yusuf12345', 3, NULL, NULL, NULL, NULL, NULL),
-(8, 'Subaidi ashar', 'subaidi45', 'sub@gmail.com', 'subaidi123', 3, NULL, NULL, NULL, NULL, NULL);
+(3, 'ajisakasiddiq', 'ajisaka03', 'ajisakasiddiq@gmail.com', 'ajisaka12345', 1, '3509109108020001', 'Jl. ambulu NO.73B', '638bf923eadf0.png', '085156091837', 'Laki-laki'),
+(4, 'admin', 'adminiboss', 'admin@gmail.com', 'admin', 3, '657898765432', 'Jl. ambulu NO.73B', 'profil.jpg\r\n', '085156091837', 'Laki-laki'),
+(5, 'ahmad hidayar', 'ahmad22', 'ahmad@gmail.com', 'ahmad123', 2, NULL, NULL, 'profil.jpg', NULL, NULL),
+(6, 'agus mantap', 'agus12', 'agus@gmail.com', 'agus12345', 3, NULL, NULL, 'profil.jpg', NULL, NULL),
+(7, 'yusuf mahardika', 'yusuf123', 'yusuf@gmail.com', 'yusuf12345', 3, NULL, NULL, 'profil.jpg', NULL, NULL),
+(11, 'masa', 'masa45', 'masa@gmail.com', 'masa123', 1, NULL, NULL, 'profil.jpg', NULL, NULL),
+(12, 'a', 'a33', 'a@gmail.com', 'a12345', 2, NULL, NULL, 'profil.jpg', NULL, NULL),
+(13, 'ehem', 'ehem33', 'ehem@gmail.com', 'ehem123', 1, NULL, NULL, 'profil.jpg', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -179,6 +210,19 @@ ALTER TABLE `data_kost`
   ADD KEY `id_user` (`id_user`);
 
 --
+-- Indexes for table `detail_kamar`
+--
+ALTER TABLE `detail_kamar`
+  ADD PRIMARY KEY (`id_detailkamar`),
+  ADD KEY `id_fasilitas` (`id_fasilitas`);
+
+--
+-- Indexes for table `fasilitas`
+--
+ALTER TABLE `fasilitas`
+  ADD PRIMARY KEY (`id_fasilitas`);
+
+--
 -- Indexes for table `foto`
 --
 ALTER TABLE `foto`
@@ -190,7 +234,6 @@ ALTER TABLE `foto`
 --
 ALTER TABLE `kamar_kost`
   ADD PRIMARY KEY (`id_kamar`),
-  ADD KEY `id_user` (`id_user`),
   ADD KEY `kamar_kost_ibfk_1` (`id_kost`);
 
 --
@@ -230,7 +273,19 @@ ALTER TABLE `user_detail`
 -- AUTO_INCREMENT for table `data_kost`
 --
 ALTER TABLE `data_kost`
-  MODIFY `id_kost` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kost` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `detail_kamar`
+--
+ALTER TABLE `detail_kamar`
+  MODIFY `id_detailkamar` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `fasilitas`
+--
+ALTER TABLE `fasilitas`
+  MODIFY `id_fasilitas` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `foto`
@@ -260,13 +315,13 @@ ALTER TABLE `pemesanan`
 -- AUTO_INCREMENT for table `rekening`
 --
 ALTER TABLE `rekening`
-  MODIFY `id_rek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_rek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user_detail`
 --
 ALTER TABLE `user_detail`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -279,6 +334,12 @@ ALTER TABLE `data_kost`
   ADD CONSTRAINT `data_kost_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user_detail` (`id_user`);
 
 --
+-- Constraints for table `detail_kamar`
+--
+ALTER TABLE `detail_kamar`
+  ADD CONSTRAINT `detail_kamar_ibfk_1` FOREIGN KEY (`id_fasilitas`) REFERENCES `fasilitas` (`id_fasilitas`);
+
+--
 -- Constraints for table `foto`
 --
 ALTER TABLE `foto`
@@ -288,8 +349,7 @@ ALTER TABLE `foto`
 -- Constraints for table `kamar_kost`
 --
 ALTER TABLE `kamar_kost`
-  ADD CONSTRAINT `kamar_kost_ibfk_1` FOREIGN KEY (`id_kost`) REFERENCES `data_kost` (`id_kost`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `kamar_kost_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user_detail` (`id_user`);
+  ADD CONSTRAINT `kamar_kost_ibfk_1` FOREIGN KEY (`id_kost`) REFERENCES `data_kost` (`id_kost`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `pemesanan`
