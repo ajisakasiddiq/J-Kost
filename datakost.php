@@ -118,6 +118,7 @@ if (isset($_SESSION['id_user'])) {
                                                             $result = mysqli_query($koneksi,$query);
                                                             $no = 1;
                                                             while ($row = mysqli_fetch_array($result)) {
+                                                                $idKost = $row['id_kost'];
                                                                 $NameKost = $row['nama_kost'];
                                                                 $Address = $row['alamat'];
                                                                 $Dess = $row['deskripsi'];
@@ -132,43 +133,51 @@ if (isset($_SESSION['id_user'])) {
                                                                 <td><?= $Dess; ?></td>
                                                                 <td><?= $Status; ?></td>
                                                                 <td>
-                                                                    <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editKost"><i class="fas fa-pen"></i></a>
+                                                                    <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editKost<?= $idKost; ?>"><i class="fas fa-pen"></i></a>
 
                                                                     <a href="hapus.php" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
                                                                 </td>
 
 
                                                                 <!-- edit kost -->
-                                                                <div class="modal fade" id="editKost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal fade" id="editKost<?= $idKost; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                     <div class="modal-dialog">
                                                                       <div class="modal-content">
                                                                         <div class="modal-header">
                                                                           <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                                                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
+                                                                        <form  role="form" action="" method="post" enctype="multipart/form-data">
                                                                         <div class="modal-body">
+                                                                            <div class="img">
+                                                                                <img src="img/<?= $Img; ?>" alt="" width="100%" height="300px">
+                                                                            </div>
+                                                                            <input type="hidden" class="form-control form-control-user" id="exampleInputName"
+                                                                                placeholder="Name" name="txt_id" value="<?= $idKost; ?>">
                                                                           <div class="form-group">
                                                                             <label for="img">Kost tampak depan</label>
                                                                             <input id="img" type="file" class="form-control" name="gambar">
                                                                             </div>
                                                                             <div class="form-group">
                                                                               <label for="inputName">Nama Kost</label>
-                                                                              <input type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
+                                                                              <input value=" <?= $NameKost; ?>" type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
                                                                             </div>
                                                                             <div class="form-group">
                                                                               <label for="textAreaRemark">Deskripsi</label>
-                                                                              <textarea class="form-control" name="txt_deskripsi" id="textAreaRemark" rows="5" placeholder="Tell us you want more..."></textarea>
+                                                                              <textarea class="form-control" name="txt_deskripsi" id="textAreaRemark" rows="5" placeholder="Tell us you want more..."> <?= $Dess; ?></textarea>
                                                                             </div>
                                                                             <div class="form-group">
                                                                               <label for="inputEmail">Alamat</label>
-                                                                              <textarea class="form-control" rows="5"  type="text" id="alamat" name="txt_alamat"></textarea>
+                                                                              <textarea class="form-control" rows="5"  type="text" id="alamat" name="txt_alamat"> <?= $Address; ?></textarea>
                                                                               <small class="form-text text-muted">Isi alamat selengkap mungkin!.</small>
                                                                             </div>
+                                                                            
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                          <button type="button" class="btn btn-primary">Save changes</button>
+                                                                          <button name="edit" type="button" class="btn btn-primary">Save changes</button>
                                                                         </div>
+                                                                        </form>
                                                                       </div>
                                                                     </div>
                                                                   </div>
@@ -188,9 +197,7 @@ if (isset($_SESSION['id_user'])) {
                     </div>
                 </div>
 
-                <!-- table section -->
-                <!-- dashboard inner -->
-                <!-- footer -->
+
                 <div class="container-fluid">
                     <div class="footer">
                         <p>Copyright © 2022 Designed by A2.<br><br> Distributed By: Team ruweet</a>
@@ -198,31 +205,10 @@ if (isset($_SESSION['id_user'])) {
                     </div>
                 </div>
             </div>
-            <!-- end dashboard inner -->
+ 
         </div>
     </div>
-    <!-- model popup -->
-    <!-- The Modal -->
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Modal body..
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end model popup -->
+
     </div>
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>
@@ -261,3 +247,89 @@ if (isset($_SESSION['id_user'])) {
 </body>
 
 </html>
+
+
+<?php 
+if( isset($_POST['edit']) ){
+    $Id     = $_POST['txt_id'];
+    $Alamat  = $_POST['txt_alamat'];
+    $deskripsi  = $_POST['txt_deskripsi'];
+    $Name   = $_POST['txt_nama'];
+    $Address   = $_POST['txt_alamat'];
+    $Img = upload();
+    // $Img   = $_POST['img'];
+    
+     $query = "UPDATE data_kost SET nama_kost='$Name', alamat='$Alamat', deskripsi='$deskripsi',foto='$Img' WHERE id_kost='$Id'";
+    $result = mysqli_query($koneksi, $query);
+    if ($result) {
+        $success = "User data telah terupdate!";
+    }else{
+        $error =  "User data gagal update";
+    }
+}
+
+function upload(){
+
+    $file = $_FILES['gambar'] ['name'];
+    $size = $_FILES['gambar'] ['size'];
+    $error = $_FILES ['gambar']['error'];
+    $tmpName = $_FILES['gambar']['tmp_name'];
+
+//cek file apakah diupload atau tidak
+    if ( $error === 4 ) {
+      echo "<script> 
+        alert('Pilih gambar terlebih dahulu');
+      </script>";
+      return false;
+    }
+
+    //cek apakah benar gambar
+    $extensGambarValid = ['jpg','jpeg','png'];
+    $extensGambar = explode('.',$file);
+    $extensGambar = strtolower(end($extensGambar));
+    if (!in_array($extensGambar,$extensGambarValid)) {
+      echo "<script> 
+      alert('Yang anda upload bukan berupa file gambar');
+    </script>";
+    return false;
+    }
+
+    //cek jika ukuran nya terlalu besar 
+    if ($size > 1000000) {
+
+        echo "<script> 
+        alert('Ukuran gambar terlalu besar');
+      </script>";
+    }
+
+//generate nama gambar baru
+$namaFIlebaru = uniqid();
+$namaFIlebaru .= '.';
+$namaFIlebaru .= $extensGambar;
+
+
+
+    //lolos cek 
+    move_uploaded_file($tmpName,'img/'.$namaFIlebaru);
+    return $namaFIlebaru;
+}
+
+?>
+<?php if(isset($success)){ ?>
+    <script>
+        swal({
+  title: "<?= $success; ?>",
+  icon: "success",
+  button: "OKE!",
+});
+    </script>
+    <?php }?>
+    <?php if(isset($error)){ ?>
+    <script>
+        swal({
+  title: "<?= $error; ?>",
+  icon: "success",
+  button: "OKE!",
+});
+    </script>
+    <?php }?>
