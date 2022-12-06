@@ -224,6 +224,7 @@ if (isset($_SESSION['id_user'])) {
     $result = mysqli_query($koneksi,$query);
     if ($result) {
         $succes = "Data berhasil terinput!";
+        header('Location: datakost.php');
     }else{
         $errorr =  $query ."Error ".mysqli_error($koneksi);
     }   

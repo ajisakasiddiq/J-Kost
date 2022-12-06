@@ -12,7 +12,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger" href="logout.php">Logout</a>
+                    <a class="btn btn-danger" href="logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -35,8 +35,8 @@
                                             <li>
                                                 <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/<?= $sesImg;  ?>" alt="#" /><span class="name_user"><?php echo $name; ?></span></a>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="profile.php">My Profile</a>
-                                                    <a class="dropdown-item" href="ResetPass.php">Setting</a>
+                                                    <a class="dropdown-item" href="profile">My Profile</a>
+                                                    <a class="dropdown-item" href="ResetPass">Setting</a>
                                                     <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                                                 </div>
                                             </li>

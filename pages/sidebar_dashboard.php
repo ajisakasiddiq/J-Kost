@@ -24,16 +24,16 @@
                         <!-- admin start -->
                         <ul class="list-unstyled components">
                         <li class="active">
-                            <a href="dashboard.php"><i class="fa fa-home yellow_color"></i> <span>Home</span></a>
+                            <a href="dashboard"><i class="fa fa-home yellow_color"></i> <span>Home</span></a>
                         </li>
-                        <li><a href="profile_admin.php"><i class="fa fa-group orange_color"></i> <span>Profile Admin</span></a></li>
-                        <li><a href="Transaksi_admin.php"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
-                        <li><a href="data_kost.php"><i class="fa fa-university red_color"></i> <span>Data Rumah Kost</span></a></li>
+                        <li><a href="profile_admin"><i class="fa fa-group orange_color"></i> <span>Profile Admin</span></a></li>
+                        <li><a href="Transaksi_admin"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
+                        <li><a href="data_kost"><i class="fa fa-university red_color"></i> <span>Data Rumah Kost</span></a></li>
                         <li class="active">
                             <a href="#user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-user yellow_color"></i> <span>User</span></a>
                             <ul class="collapse list-unstyled" id="user">
-                                <li><a href="table_penyewa.php">> <span>Penyewa</span></a></li>
-                                <li><a href="table_pemilik.php">> <span>Pemilik</span></a></li>
+                                <li><a href="table_penyewa">> <span>Penyewa</span></a></li>
+                                <li><a href="table_pemilik">> <span>Pemilik</span></a></li>
                             </ul>
                             <!-- <li><a href="datakamar.html"><i class="fa fa-university red_color"></i> <span>Data Kamar</span></a></li>
                             <li><a href="datarekening.html"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>-->
@@ -46,9 +46,9 @@
 
                 <!-- pencari kos start -->
                 <ul class="list-unstyled components">
-                        <li><a href="datakamar.php"><i class="fa-solid fa-house-chimney red_color"></i></i> <span>Kost ku</span></a></li>
-                        <li><a href="datarekening.php"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
-                        <li><a href="Transaksi_user.php"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
+                        <li><a href="datakamar"><i class="fa-solid fa-house-chimney red_color"></i></i> <span>Kost ku</span></a></li>
+                        <li><a href="datarekening"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
+                        <li><a href="Transaksi_user"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
                     </ul>
                 <!-- pencari kos end -->
 
@@ -61,12 +61,12 @@
                     <!-- pemilik kos start -->
                     <ul class="list-unstyled components">
                     <li class="active">
-                            <a href="dashboard.php"><i class="fa fa-house-user yellow_color"></i> <span>Home</span></a>
+                            <a href="dashboard"><i class="fa fa-house-user yellow_color"></i> <span>Home</span></a>
                         </li>
-                        <li><a href="datakost.php"><i class="fa-solid fa-house red_color"></i> <span>Data Kost</span></a></li>
-                        <li><a href="datakamar.php"><i class="fa fa-university "></i> <span>Data Kamar</span></a></li>
-                        <li><a href="datarekening.php"><i class="fa-solid fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
-                        <li><a href="Transaksi_user.php"><i class="f-sharp fa-solid fa-money-bill-transfer purple_color2"></i> <span>Transaksi</span></a></li>
+                        <li><a href="datakost"><i class="fa-solid fa-house red_color"></i> <span>Data Kost</span></a></li>
+                        <li><a href="datakamar"><i class="fa fa-university "></i> <span>Data Kamar</span></a></li>
+                        <li><a href="datarekening"><i class="fa-solid fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
+                        <li><a href="Transaksi_user"><i class="f-sharp fa-solid fa-money-bill-transfer purple_color2"></i> <span>Transaksi</span></a></li>
                     </ul>
                     <!-- pemilik kos end -->
 

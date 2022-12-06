@@ -95,7 +95,11 @@ if (isset($_SESSION['id_user'])) {
                                             <!-- table section -->
                                             <div class="card-body">
                                                 <div class="table-responsive">
-                                                <table id="transaksi" class="table table-borderless" style="width:100%">
+                                                <div class="mb-2">
+                                                    <h4>Data Kamar</h4>
+
+                                                 </div>
+                                                <table id="trans" class="table table-bordered" style="width:100%">
                                                         <thead>
                                                             <tr>
                                                                 <th>Nama</th>
@@ -106,21 +110,23 @@ if (isset($_SESSION['id_user'])) {
                                                                 <th>Nominal</th>
                                                                 <th>Bukti Pembayaran</th>
                                                                 <th>Status</th>
+                                                                <th>action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td>Muhammad Ikbal Mubarok</td>
+                                                            <td>Muhammad Ikbal Mubarok</td>
                                                                 <td>Bara Kost</td>
                                                                 <td>2A</td>
                                                                 <td>Ngawi</td>
                                                                 <td>089765567655</td>
                                                                 <td>Rp 350.000</td>
-                                                                <td>Terupload</td>
+                                                                <td><img src="img/avatar.png" alt="" width="50px"></td>
+                                                                <td>Pending</td>
                                                                 <td>
-                                                                    <!-- <a href="edit.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a> -->
+                                                                    <a href="edit.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
 
-                                                                    <!-- <a href="hapus.php" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a> -->
+                                                                    <a href="hapus.php" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -211,7 +217,7 @@ if (isset($_SESSION['id_user'])) {
         <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
         <script>
 $(document).ready(function() {
-    $('#transaksi').DataTable( {
+    $('#trans').DataTable( {
         dom: 'Bfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
