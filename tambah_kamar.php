@@ -109,60 +109,21 @@ if (isset($_SESSION['id_user'])) {
           <input type="text" class="form-control" id="inputName" name="name" placeholder="Nama kost anda!" required />
         </div>
         <div class="form-group">
+          <label for="inputName">Jenis Kamar</label>
+          <select name="txt_jenis" id="" class="form-control form-control-user">
+            <option value="Laki-Laki">Laki-Laki</option>
+            <option value="Perempuan">Perempuan</option>
+            <option value="Campue">Campur</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="inputName">No Kamar</label>
+          <input type="text" class="form-control" id="inputName" name="name" placeholder="Nomor Kamar" required />
+        </div>
+        <div class="form-group">
           <label for="textAreaRemark">Deskripsi</label>
           <textarea name="deskripsi" class="form-control" name="deskripsi" id="textAreaRemark" rows="5" placeholder="Tell us you want more..."></textarea>
         </div>
-        <div class="form-group">
-          <label for="inputEmail">Alamat</label>
-          <textarea class="form-control" rows="5"  type="text" id="alamat" name="txt_alamat"></textarea>
-          <small class="form-text text-muted">Isi alamat selengkap mungkin!.</small>
-        </div>
-
-        <!-- get location start-->
-        <input class="form-control" id="Latitude" name="Latitude" placeholder="latitude" required />
-        <input class="form-control" id="Longitude" name="Longitude" placeholder="longitude" required />
-        <div class="mt-2 mb-2" id="mapid" style="width: 700px; height: 400px;"></div>
-        <script>
-            const mymap = L.map('mapid').setView([-8.231935485535336, 113.60678852931734], 13);
-            const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-            }).addTo(mymap);
-
-            var Latinput = document.querySelector("[name=Latitude]");
-            var Lnginput = document.querySelector("[name=Longitude]");
-            
-            var curLocation = [-8.231935485535336, 113.60678852931734];
-            mymap.attributionControl.setPrefix(false);
-
-            var marker = new L.marker(curLocation,{
-                draggable: 'true',
-            });
-
-            marker.on('dragend', function(event){
-                var position = marker.getLatLng();
-                marker.setLatLng(position,{
-                    draggable: 'true',
-                }).bindPopup(position).update();
-                $("#Latitude").val(position.lat);
-                $("#Longitude").val(position.lng);
-            });
-
-            mymap.addLayer(marker);
-            
-
-            mymap.on("click", function(e){
-              var lat = e.latlng.lat;
-              var lng = e.latlng.lng;
-              if(!marker){
-                marker = L.marker(e.latlng).addTo(mymap);
-              }else{
-                marker.setLatLng(e.latlng);
-              }
-              Latinput.value = lat;
-              Lnginput.value = lng;
-            });
-        </script>
-<!-- get location end-->
 
         <!-- Start Submit Button -->
         <button class="btn btn-primary btn-block col-lg-2 ms-auto" type="submit">Submit</button>
