@@ -6,11 +6,4 @@ RewriteRule ^(.*)$ $1.php
 </IfModule>
 
 
-#Rewrite URL's
-RewriteEngine On
-RewriteRule ^error/?$ errors/4040_error.php [NC]
-
-# Enable Error Documents
-# (404,File Not Found) | (403,Forbidden) | (500,Internal Server Error)
-ErrorDocument 404 /error
-ErrorDocument 403 /error
+ErrorDocument 404 /404_error.php
