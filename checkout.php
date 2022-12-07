@@ -16,14 +16,16 @@ if (isset($_SESSION['id_user'])) {
    $sesAddress = $_SESSION['alamat'];
    $sesNo = $_SESSION['no_hp'];
    $sesGender = $_SESSION['jenis_kelamin'];
+
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>J-KOS</title>
+    <title>J KOST</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free Website Template" name="keywords">
     <meta content="Free Website Template" name="description">
@@ -40,11 +42,10 @@ if (isset($_SESSION['id_user'])) {
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
 
     <!-- Template Stylesheet -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -101,9 +102,9 @@ if (isset($_SESSION['id_user'])) {
                     <div class="navbar-nav mr-auto">
                         <a href="index.php" class="nav-item nav-link ">Home</a>
                         <a href="about.php" class="nav-item nav-link">Tentang Kami</a>
-                        <a href="service.php" class="nav-item nav-link">Pelayanan</a>
+                        <a href="service.php" class="nav-item nav-link ">Pelayanan</a>
                         <a href="order.php" class="nav-item nav-link active">Pemesanan</a>
-                        <a href="contact.php" class="nav-item nav-link">Contact</a>
+                        <!-- <a href="contact.php" class="nav-item nav-link">Contact</a> -->
                     </div>
                     <div class="ml-auto">
                         <?php if(isset($_SESSION['id_user']) ){ ?>
@@ -130,6 +131,7 @@ if (isset($_SESSION['id_user'])) {
                     </div>
 
 
+
                 </div>
             </nav>
         </div>
@@ -137,72 +139,200 @@ if (isset($_SESSION['id_user'])) {
     <!-- Nav Bar End -->
 
 
-    <div class="page-content page-details">
-        <section class="store-gallery mt-5" id="gallery">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8" data-aos="zoom-in">
-                        <transition name="slide-fade" mode="out-in">
-                            <img :key="photos[activePhoto].id" :src="photos[activePhoto].url" class="w-100 main-image" alt="" />
-                        </transition>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="row">
-                            <div class="col-3 col-lg-12 mt-lg-2 mt-lg-2 mt-md-3" v-for="(photo, index) in photos" :key="photo.id" data-aos="zoom-in" data-aos-delay="100">
-                                <a href="#" @click="changeActive(index)">
-                                    <img :src="photo.url" class="w-100 thumbnail-image" :class="{ active: index == activePhoto }" alt="" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Page Header Start -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Checkout</h2>
+                </div>
+                <div class="col-12">
+                    <a href="order">Pemesanan</a>
+                    <a href="">Checkout</a>
                 </div>
             </div>
-        </section>
-        <div class="store-details-container" data-aos="fade-up">
-            <section class="store-heading">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <h1 class="kost-name">Bara Kost</h1>
-                            <p class="kost-owner">By Dayat</p>
-                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
-
-                            <!-- <div class="owner">By Dayat</div>
-                            <div class="price">Rp.350.000</div> -->
-                        </div>
-                        <div class="col-lg-2" data-aos="zoom-in">
-                            <a class="btn btn-custom px-4 btn-block mb-3" href="checkout">Sewa</a
-                  >
-                </div>
-              </div>
-            </div>
-          </section>
-          <section class="store-description">
-            <div class="container">
-              <div class="row">
-                <div class="col-12 col-lg-8">
-                  <p>
-                    The Nike Air Max 720 SE goes bigger than ever before with
-                    Nike's tallest Air unit yet for unimaginable, all-day comfort.
-                    There's super breathable fabrics on the upper, while colours
-                    add a modern edge.
-                  </p>
-                  <p>
-                    Bring the past into the future with the Nike Air Max 2090, a
-                    bold look inspired by the DNA of the iconic Air Max 90.
-                    Brand-new Nike Air cushioning underfoot adds unparalleled
-                    comfort while transparent mesh and vibrantly coloured details
-                    on the upper are blended with timeless OG features for an
-                    edgy, modernised look.
-                  </p>
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.42355736385!2d113.72099831436081!3d-8.160010184012863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695b617d8f623%3A0xf6c4437632474338!2sPoliteknik%20Negeri%20Jember!5e0!3m2!1sid!2sid!4v1668518560066!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-              </div>
-            </div>
-          </section>
         </div>
-      </div>
-  
+    </div>
+    <!-- Page Header End -->
+
+
+    <div class="page-content page-cart">
+      <section
+        class="store-breadcrumbs"
+        data-aos="fade-down"
+        data-aos-delay="100"
+      >
+      </section>
+      <section class="store-cart">
+        <div class="container">
+          <div class="row" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-12 table-responsive">
+              <table
+                class="table table-borderless table-cart"
+                aria-describedby="Cart"
+              >
+                <thead>
+                  <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name &amp; Owner</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Menu</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="width: 25%;">
+                      <img
+                        src="img/638de345c2f56.jpeg"
+                        alt=""
+                        width="100px"
+                      />
+                    </td>
+                    <td style="width: 35%;">
+                      <div class="product-title">Kos bara</div>
+                      <div class="product-subtitle">by Dayat</div>
+                    </td>
+                    <td style="width: 35%;">
+                      <div class="product-title">350.000</div>
+                      <div class="product-subtitle">/Bulan</div>
+                    </td>
+                    <td style="width: 20%;">
+                      <a href="#" class="btn btn-remove-cart">
+                        Remove
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row" data-aos="fade-up" data-aos-delay="150">
+            <div class="col-12">
+              <hr />
+            </div>
+            <div class="col-12">
+              <h2 class="mb-4">Shipping Details</h2>
+            </div>
+          </div>
+          <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="addressOne">Address 1</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="addressOne"
+                  aria-describedby="emailHelp"
+                  name="addressOne"
+                  value="Setra Duta Cemara"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="addressTwo">Address 2</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="addressTwo"
+                  aria-describedby="emailHelp"
+                  name="addressTwo"
+                  value="Blok B2 No. 34"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="province">Province</label>
+                <select name="province" id="province" class="form-control">
+                  <option value="West Java">West Java</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="city">City</label>
+                <select name="city" id="city" class="form-control">
+                  <option value="Bandung">Bandung</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="postalCode">Postal Code</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="postalCode"
+                  name="postalCode"
+                  value="40512"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="country">Country</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="country"
+                  name="country"
+                  value="Indonesia"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="mobile">Mobile</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="mobile"
+                  name="mobile"
+                  value="+628 2020 11111"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row" data-aos="fade-up" data-aos-delay="150">
+            <div class="col-12">
+              <hr />
+            </div>
+            <div class="col-12">
+              <h2>Payment Informations</h2>
+            </div>
+          </div>
+          <div class="row" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-4 col-md-2">
+              <div class="product-title">$10</div>
+              <div class="product-subtitle">Country Tax</div>
+            </div>
+            <div class="col-4 col-md-3">
+              <div class="product-title">$280</div>
+              <div class="product-subtitle">Product Insurance</div>
+            </div>
+            <div class="col-4 col-md-2">
+              <div class="product-title">$580</div>
+              <div class="product-subtitle">Ship to Jakarta</div>
+            </div>
+            <div class="col-4 col-md-2">
+              <div class="product-title text-success">$392,409</div>
+              <div class="product-subtitle">Total</div>
+            </div>
+            <div class="col-8 col-md-3">
+              <a
+                href="/success.html"
+                class="btn btn-custom mt-4 px-4 btn-block"
+              >
+                Checkout Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
     <!-- Footer Start -->
     <div class="footer">
         <div class="container">
@@ -251,11 +381,11 @@ if (isset($_SESSION['id_user'])) {
                         </form>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
-    <div class="container copyright">
-        <p>&copy; <a href="index.html">J'Kost</a>, All Right Reserved.</p>
-    </div>
+        <div class="container copyright">
+            <p>&copy; <a href="index.html">J'Kost</a>, All Right Reserved.</p>
+        </div>
     </div>
     <!-- Footer End -->
 
@@ -281,40 +411,6 @@ if (isset($_SESSION['id_user'])) {
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script src="js/vue/vue.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
-    <script>
-        var gallery = new Vue({
-            el: "#gallery",
-            mounted() {
-                AOS.init();
-            },
-            data: {
-                activePhoto: 3,
-                photos: [{
-                    id: 1,
-                    url: "img/product-details-1.jpg",
-                }, {
-                    id: 2,
-                    url: "img/product-details-2.jpg",
-                }, {
-                    id: 3,
-                    url: "img/product-details-3.jpg",
-                }, {
-                    id: 4,
-                    url: "img/product-details-4.jpg",
-                }, ],
-            },
-            methods: {
-                changeActive(id) {
-                    this.activePhoto = id;
-                },
-            },
-        });
-    </script>
 </body>
 
 </html>
