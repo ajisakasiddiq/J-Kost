@@ -100,10 +100,10 @@ if (isset($_SESSION['id_user'])) {
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                        <a href="index.php" class="nav-item nav-link ">Home</a>
-                        <a href="about.php" class="nav-item nav-link">Tentang Kami</a>
-                        <a href="service.php" class="nav-item nav-link active">Pelayanan</a>
-                        <a href="order.php" class="nav-item nav-link">Pemesanan</a>
+                        <a href="index" class="nav-item nav-link ">Home</a>
+                        <a href="about" class="nav-item nav-link">Tentang Kami</a>
+                        <a href="service" class="nav-item nav-link active">Pelayanan</a>
+                        <a href="order" class="nav-item nav-link">Pemesanan</a>
                         <!-- <a href="contact.php" class="nav-item nav-link">Contact</a> -->
                     </div>
                     <div class="ml-auto">
@@ -115,17 +115,17 @@ if (isset($_SESSION['id_user'])) {
                                     <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
                                 </a>
                                 <div class="dropdown-menu bg-dark">
-                                    <a href="dashboard.php" class="dropdown-item text-danger">Dashboard</a>
-                                    <a href="ResetPass.php" class="dropdown-item text-danger">Setting</a>
+                                    <a href="dashboard" class="dropdown-item text-danger">Dashboard</a>
+                                    <a href="ResetPass" class="dropdown-item text-danger">Setting</a>
                                     <div class="dropdown-divider"></div>
-                                    <a href="logout.php" class="dropdown-item text-danger">Logout</a>
+                                    <a href="logout" class="dropdown-item text-danger">Logout</a>
                                 </div>
                             </li>
                         </ul>
                         <?php 
                     }elseif(!isset($_SESSION['id_user'])) {?>
-                        <a href="register.php" class="btn-regis ">Register</a>
-                        <a href="login.php" class="btn btn-custom">Login</a>
+                        <a href="register" class="btn-regis ">Register</a>
+                        <a href="login" class="btn btn-custom">Login</a>
                        
                         <?php } ?>
                     </div>
