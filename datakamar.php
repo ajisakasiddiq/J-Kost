@@ -5,17 +5,17 @@ session_start();
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
-   // header('Location: login.php');
-   $sesID = $_SESSION['id_user'];
-   $sesName = $_SESSION['username'];
-   $name = $_SESSION['user_nama'];
-   $sesEmail = $_SESSION['user_email'];
-   $sesLvl = $_SESSION['level'];
-   $sesImg = $_SESSION['foto'];
-   $sesNik = $_SESSION['nik'];
-   $sesAddress = $_SESSION['alamat'];
-   $sesNo = $_SESSION['no_hp'];
-   $sesGender = $_SESSION['jenis_kelamin'];
+    // header('Location: login.php');
+    $sesID = $_SESSION['id_user'];
+    $sesName = $_SESSION['username'];
+    $name = $_SESSION['user_nama'];
+    $sesEmail = $_SESSION['user_email'];
+    $sesLvl = $_SESSION['level'];
+    $sesImg = $_SESSION['foto'];
+    $sesNik = $_SESSION['nik'];
+    $sesAddress = $_SESSION['alamat'];
+    $sesNo = $_SESSION['no_hp'];
+    $sesGender = $_SESSION['jenis_kelamin'];
 }
 ?>
 <!DOCTYPE html>
@@ -51,7 +51,7 @@ if (isset($_SESSION['id_user'])) {
     <link rel="stylesheet" href="css/custom.css" />
     <!-- calendar file css -->
     <link rel="stylesheet" href="js/semantic.min.css" />
-    
+
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
@@ -71,7 +71,7 @@ if (isset($_SESSION['id_user'])) {
             <!-- right content -->
             <div id="content">
                 <!-- topbar -->
-            <?php include("pages/topbar_dashboard.php") ?>
+                <?php include("pages/topbar_dashboard.php") ?>
                 <!-- end topbar -->
                 <!-- dashboard inner -->
                 <div class="midde_cont">
@@ -93,15 +93,15 @@ if (isset($_SESSION['id_user'])) {
                                             <!-- table section -->
                                             <div class="card-body">
                                                 <div class="table-responsive">
-                                                <div class="mb-2">
-                                                    <h4>Data Kamar</h4>
+                                                    <div class="mb-2">
+                                                        <h4>Data Kamar</h4>
                                                         <div id="toolbar">
                                                             <button id="button" class="btn btn-primary">
-                                                            <i class="fa-solid fa-plus"></i> <a  href="tambah_kamar.php" class="text-white">Tambah Kamar</a>
-                                                             </button>
+                                                                <i class="fa-solid fa-plus"></i> <a href="tambah_kamar.php" class="text-white">Tambah Kamar</a>
+                                                            </button>
                                                         </div>
-                                                 </div>
-                                                <table id="kamar" class="table table-bordered" style="width:100%">
+                                                    </div>
+                                                    <table id="kamar" class="table table-bordered" style="width:100%">
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
@@ -205,12 +205,12 @@ if (isset($_SESSION['id_user'])) {
     <!-- calendar file css -->
     <script src="js/semantic.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#kamar').DataTable();
-            });
-        </script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#kamar').DataTable();
+        });
+    </script>
 </body>
 
 </html>

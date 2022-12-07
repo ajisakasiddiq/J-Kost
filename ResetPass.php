@@ -5,66 +5,65 @@ session_start();
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
-   // header('Location: login.php');
-   $sesID = $_SESSION['id_user'];
-   $sesName = $_SESSION['username'];
-   $name = $_SESSION['user_nama'];
-   $sesEmail = $_SESSION['user_email'];
-   $sesLvl = $_SESSION['level'];
-   $sesImg = $_SESSION['foto'];
-   $sesNik = $_SESSION['nik'];
-   $sesAddress = $_SESSION['alamat'];
-   $sesNo = $_SESSION['no_hp'];
-   $sesGender = $_SESSION['jenis_kelamin'];
-
+    // header('Location: login.php');
+    $sesID = $_SESSION['id_user'];
+    $sesName = $_SESSION['username'];
+    $name = $_SESSION['user_nama'];
+    $sesEmail = $_SESSION['user_email'];
+    $sesLvl = $_SESSION['level'];
+    $sesImg = $_SESSION['foto'];
+    $sesNik = $_SESSION['nik'];
+    $sesAddress = $_SESSION['alamat'];
+    $sesNo = $_SESSION['no_hp'];
+    $sesGender = $_SESSION['jenis_kelamin'];
 }
 
 // update data
-if( isset($_POST['submit']) ){
+if (isset($_POST['submit'])) {
     $userId     = $_POST['txt_id'];
     $Pass     = $_POST['txt_pass'];
-    if ($_POST['txt_pass']==$_POST['txt_pass2'] ) {
+    if ($_POST['txt_pass'] == $_POST['txt_pass2']) {
         $query = "UPDATE user_detail SET user_pass='$Pass'WHERE id_user='$userId'";
         $result = mysqli_query($koneksi, $query);
         if ($result) {
             $success = "User data telah terupdate!";
-        }else{
+        } else {
             $error =  "User data gagal update";
         }
-        }else {
+    } else {
         echo "<script>alert('Password yang Anda Masukan Tidak Sama');history.go(-1)</script>";
-        }
-    
+    }
 
-   
 
-  //header('Location: ResetPass.php');
-    
+
+
+    //header('Location: ResetPass.php');
+
 }
 
 
- 
+
 ?>
 
 
-<?php if(isset($success)){ ?>
+<?php if (isset($success)) { ?>
     <script>
         swal({
-  title: "<?= $success; ?>",
-  icon: "success",
-  button: "OKE!",
-});
+            title: "<?= $success; ?>",
+            icon: "success",
+            button: "OKE!",
+        });
     </script>
-    <?php }?>
-    <?php if(isset($error)){ ?>
+<?php } ?>
+<?php if (isset($error)) { ?>
     <script>
         swal({
-  title: "<?= $error; ?>",
-  icon: "success",
-  button: "OKE!",
-});
+            title: "<?= $error; ?>",
+            icon: "success",
+            button: "OKE!",
+        });
     </script>
-    <?php }?>
+<?php } ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -115,7 +114,7 @@ if( isset($_POST['submit']) ){
             <!-- right content -->
             <div id="content">
                 <!-- topbar -->
-            <?php include("pages/topbar_dashboard.php") ?>
+                <?php include("pages/topbar_dashboard.php") ?>
                 <!-- end topbar -->
                 <!-- dashboard inner -->
                 <div class="midde_cont">
@@ -154,7 +153,7 @@ if( isset($_POST['submit']) ){
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="password2">Repeat password</label>
-                                                            <input  id="password2" type="password" class="form-control form-control-sm" name="txt_pass2">
+                                                            <input id="password2" type="password" class="form-control form-control-sm" name="txt_pass2">
                                                         </div>
                                                         <button type="submit" name="submit" class="btn btn-primary btn-block submit-btn">Confirm</button>
                                                     </form>

@@ -5,17 +5,17 @@ session_start();
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
-   // header('Location: login.php');
-   $sesID = $_SESSION['id_user'];
-   $sesName = $_SESSION['username'];
-   $name = $_SESSION['user_nama'];
-   $sesEmail = $_SESSION['user_email'];
-   $sesLvl = $_SESSION['level'];
-   $sesImg = $_SESSION['foto'];
-   $sesNik = $_SESSION['nik'];
-   $sesAddress = $_SESSION['alamat'];
-   $sesNo = $_SESSION['no_hp'];
-   $sesGender = $_SESSION['jenis_kelamin'];
+    // header('Location: login.php');
+    $sesID = $_SESSION['id_user'];
+    $sesName = $_SESSION['username'];
+    $name = $_SESSION['user_nama'];
+    $sesEmail = $_SESSION['user_email'];
+    $sesLvl = $_SESSION['level'];
+    $sesImg = $_SESSION['foto'];
+    $sesNik = $_SESSION['nik'];
+    $sesAddress = $_SESSION['alamat'];
+    $sesNo = $_SESSION['no_hp'];
+    $sesGender = $_SESSION['jenis_kelamin'];
 }
 ?>
 
@@ -48,43 +48,43 @@ if (isset($_SESSION['id_user'])) {
 </head>
 
 <body>
-<div class="page-content page-success">
-      <div class="section-success" data-aos="zoom-in">
-        <div class="container">
-          <div class="row align-items-center row-login justify-content-center">
-            <div class="col-lg-6 text-center">
-              <img src="img/logo-kost.png" alt="" class="mb-4" />
-              <h2>
-                Transaction Processed!
-              </h2>
-              <p>
-                Silahkan tunggu konfirmasi email dari kami dan <br />
-                kami akan menginformasikan resi secept mungkin!
-              </p>
-              <div>
-                <a class="btn btn-custom w-50 mt-4" href="dashboard">
-                  My Dashboard
-                </a>
-                <a class="btn btn-signup w-50 mt-2" href="order">
-                  Go To Shopping
-                </a>
-              </div>
+    <div class="page-content page-success">
+        <div class="section-success" data-aos="zoom-in">
+            <div class="container">
+                <div class="row align-items-center row-login justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <img src="img/logo-kost.png" alt="" class="mb-4" />
+                        <h2>
+                            Transaction Processed!
+                        </h2>
+                        <p>
+                            Silahkan tunggu konfirmasi email dari kami dan <br />
+                            kami akan menginformasikan resi secept mungkin!
+                        </p>
+                        <div>
+                            <a class="btn btn-custom w-50 mt-4" href="dashboard">
+                                My Dashboard
+                            </a>
+                            <a class="btn btn-signup w-50 mt-2" href="order">
+                                Go To Shopping
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
 
     <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-12 text-center">
-            <p class="pt-4 pb-2">
-              2019 Copyright J'Kost. All Rights Reserved.
-            </p>
-          </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="pt-4 pb-2">
+                        2019 Copyright J'Kost. All Rights Reserved.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </footer>
 
     <!-- JavaScript Libraries -->

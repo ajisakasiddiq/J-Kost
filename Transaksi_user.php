@@ -5,18 +5,17 @@ session_start();
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
-   // header('Location: login.php');
-   $sesID = $_SESSION['id_user'];
-   $sesName = $_SESSION['username'];
-   $name = $_SESSION['user_nama'];
-   $sesEmail = $_SESSION['user_email'];
-   $sesLvl = $_SESSION['level'];
-   $sesImg = $_SESSION['foto'];
-   $sesNik = $_SESSION['nik'];
-   $sesAddress = $_SESSION['alamat'];
-   $sesNo = $_SESSION['no_hp'];
-   $sesGender = $_SESSION['jenis_kelamin'];
-
+    // header('Location: login.php');
+    $sesID = $_SESSION['id_user'];
+    $sesName = $_SESSION['username'];
+    $name = $_SESSION['user_nama'];
+    $sesEmail = $_SESSION['user_email'];
+    $sesLvl = $_SESSION['level'];
+    $sesImg = $_SESSION['foto'];
+    $sesNik = $_SESSION['nik'];
+    $sesAddress = $_SESSION['alamat'];
+    $sesNo = $_SESSION['no_hp'];
+    $sesGender = $_SESSION['jenis_kelamin'];
 }
 ?>
 <!DOCTYPE html>
@@ -73,7 +72,7 @@ if (isset($_SESSION['id_user'])) {
             <!-- right content -->
             <div id="content">
                 <!-- topbar -->
-            <?php include("pages/topbar_dashboard.php") ?>
+                <?php include("pages/topbar_dashboard.php") ?>
                 <!-- end topbar -->
                 <!-- dashboard inner -->
                 <div class="midde_cont">
@@ -95,11 +94,11 @@ if (isset($_SESSION['id_user'])) {
                                             <!-- table section -->
                                             <div class="card-body">
                                                 <div class="table-responsive">
-                                                <div class="mb-2">
-                                                    <h4>Riwayat Transaksi</h4>
+                                                    <div class="mb-2">
+                                                        <h4>Riwayat Transaksi</h4>
 
-                                                 </div>
-                                                <table id="uang" class="table table-bordered" style="width:100%">
+                                                    </div>
+                                                    <table id="uang" class="table table-bordered" style="width:100%">
                                                         <thead>
                                                             <tr>
                                                                 <th>Nama</th>
@@ -114,7 +113,7 @@ if (isset($_SESSION['id_user'])) {
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                            <td>Muhammad Ikbal Mubarok</td>
+                                                                <td>Muhammad Ikbal Mubarok</td>
                                                                 <td>Bara Kost</td>
                                                                 <td>2A</td>
                                                                 <td>Ngawi</td>
@@ -122,7 +121,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 <td>Rp 350.000</td>
                                                                 <td>Terupload</td>
                                                                 <td>
-                                                                    <a href="" class="btn btn-primary btn-circle"  data-bs-toggle="modal" data-bs-target="#detail"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
+                                                                    <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#detail"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -204,23 +203,23 @@ if (isset($_SESSION['id_user'])) {
     <!-- calendar file css -->
     <script src="js/semantic.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
-        <script>
-$(document).ready(function() {
-    $('#uang').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-        </script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#uang').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+    </script>
 </body>
 
 </html>

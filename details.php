@@ -5,21 +5,21 @@ session_start();
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
-   // header('Location: login.php');
-   $sesID = $_SESSION['id_user'];
-   $sesName = $_SESSION['username'];
-   $name = $_SESSION['user_nama'];
-   $sesEmail = $_SESSION['user_email'];
-   $sesLvl = $_SESSION['level'];
-   $sesImg = $_SESSION['foto'];
-   $sesNik = $_SESSION['nik'];
-   $sesAddress = $_SESSION['alamat'];
-   $sesNo = $_SESSION['no_hp'];
-   $sesGender = $_SESSION['jenis_kelamin'];
+    // header('Location: login.php');
+    $sesID = $_SESSION['id_user'];
+    $sesName = $_SESSION['username'];
+    $name = $_SESSION['user_nama'];
+    $sesEmail = $_SESSION['user_email'];
+    $sesLvl = $_SESSION['level'];
+    $sesImg = $_SESSION['foto'];
+    $sesNik = $_SESSION['nik'];
+    $sesAddress = $_SESSION['alamat'];
+    $sesNo = $_SESSION['no_hp'];
+    $sesGender = $_SESSION['jenis_kelamin'];
 }
 if ($sesLvl == 1) {
-    $dis = "";    
-}else{
+    $dis = "";
+} else {
     $dis = "disabled";
     echo "<script>alert('Hanya untuk akun pencari kos');</script>";
 }
@@ -100,8 +100,8 @@ if ($sesLvl == 1) {
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
                 <a href="#" class="navbar-brand">MENU</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
@@ -112,26 +112,26 @@ if ($sesLvl == 1) {
                         <a href="contact" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="ml-auto">
-                        <?php if(isset($_SESSION['id_user']) ){ ?>
+                        <?php if (isset($_SESSION['id_user'])) { ?>
                             <ul class="navbar-nav d-lg-flex">
-                            <li class="nav-item dropdown">
-                                <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
-                                    Hi, <?php echo $name; ?>
-                                    <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
-                                </a>
-                                <div class="dropdown-menu bg-dark">
-                                    <a href="dashboard" class="dropdown-item text-danger">Dashboard</a>
-                                    <a href="ResetPass" class="dropdown-item text-danger">Setting</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="logout" class="dropdown-item text-danger">Logout</a>
-                                </div>
-                            </li>
-                        </ul>
-                        <?php 
-                    }elseif(!isset($_SESSION['id_user'])) {?>
-                        <a href="register.php" class="btn-regis ">Register</a>
-                        <a href="login.php" class="btn btn-custom">Login</a>
-                       
+                                <li class="nav-item dropdown">
+                                    <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
+                                        Hi, <?php echo $name; ?>
+                                        <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
+                                    </a>
+                                    <div class="dropdown-menu bg-dark">
+                                        <a href="dashboard" class="dropdown-item text-danger">Dashboard</a>
+                                        <a href="ResetPass" class="dropdown-item text-danger">Setting</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="logout" class="dropdown-item text-danger">Logout</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        <?php
+                        } elseif (!isset($_SESSION['id_user'])) { ?>
+                            <a href="register.php" class="btn-regis ">Register</a>
+                            <a href="login.php" class="btn btn-custom">Login</a>
+
                         <?php } ?>
                     </div>
 
@@ -177,38 +177,37 @@ if ($sesLvl == 1) {
                             <div class="price">Rp.350.000</div> -->
                         </div>
                         <div class="col-lg-2" data-aos="zoom-in">
-                            <a class="btn btn-custom px-4 btn-block mb-3 <?= $dis ?>" href="checkout">Sewa</a
-                  >
+                            <a class="btn btn-custom px-4 btn-block mb-3 <?= $dis ?>" href="checkout">Sewa</a>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </section>
-          <section class="store-description">
-            <div class="container">
-              <div class="row">
-                <div class="col-12 col-lg-8">
-                  <p>
-                    The Nike Air Max 720 SE goes bigger than ever before with
-                    Nike's tallest Air unit yet for unimaginable, all-day comfort.
-                    There's super breathable fabrics on the upper, while colours
-                    add a modern edge.
-                  </p>
-                  <p>
-                    Bring the past into the future with the Nike Air Max 2090, a
-                    bold look inspired by the DNA of the iconic Air Max 90.
-                    Brand-new Nike Air cushioning underfoot adds unparalleled
-                    comfort while transparent mesh and vibrantly coloured details
-                    on the upper are blended with timeless OG features for an
-                    edgy, modernised look.
-                  </p>
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.42355736385!2d113.72099831436081!3d-8.160010184012863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695b617d8f623%3A0xf6c4437632474338!2sPoliteknik%20Negeri%20Jember!5e0!3m2!1sid!2sid!4v1668518560066!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </section>
+            <section class="store-description">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-8">
+                            <p>
+                                The Nike Air Max 720 SE goes bigger than ever before with
+                                Nike's tallest Air unit yet for unimaginable, all-day comfort.
+                                There's super breathable fabrics on the upper, while colours
+                                add a modern edge.
+                            </p>
+                            <p>
+                                Bring the past into the future with the Nike Air Max 2090, a
+                                bold look inspired by the DNA of the iconic Air Max 90.
+                                Brand-new Nike Air cushioning underfoot adds unparalleled
+                                comfort while transparent mesh and vibrantly coloured details
+                                on the upper are blended with timeless OG features for an
+                                edgy, modernised look.
+                            </p>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.42355736385!2d113.72099831436081!3d-8.160010184012863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695b617d8f623%3A0xf6c4437632474338!2sPoliteknik%20Negeri%20Jember!5e0!3m2!1sid!2sid!4v1668518560066!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </section>
+            </section>
         </div>
-      </div>
-  
+    </div>
+
     <!-- Footer Start -->
     <div class="footer">
         <div class="container">
@@ -257,11 +256,11 @@ if ($sesLvl == 1) {
                         </form>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
-    <div class="container copyright">
-        <p>&copy; <a href="index.html">J'Kost</a>, All Right Reserved.</p>
-    </div>
+        <div class="container copyright">
+            <p>&copy; <a href="index.html">J'Kost</a>, All Right Reserved.</p>
+        </div>
     </div>
     <!-- Footer End -->
 

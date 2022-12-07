@@ -5,25 +5,24 @@ session_start();
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
-   // header('Location: login.php');
-   $sesID = $_SESSION['id_user'];
-   $sesName = $_SESSION['username'];
-   $name = $_SESSION['user_nama'];
-   $sesEmail = $_SESSION['user_email'];
-   $sesLvl = $_SESSION['level'];
-   $sesImg = $_SESSION['foto'];
-   $sesNik = $_SESSION['nik'];
-   $sesAddress = $_SESSION['alamat'];
-   $sesNo = $_SESSION['no_hp'];
-   $sesGender = $_SESSION['jenis_kelamin'];
-
+    // header('Location: login.php');
+    $sesID = $_SESSION['id_user'];
+    $sesName = $_SESSION['username'];
+    $name = $_SESSION['user_nama'];
+    $sesEmail = $_SESSION['user_email'];
+    $sesLvl = $_SESSION['level'];
+    $sesImg = $_SESSION['foto'];
+    $sesNik = $_SESSION['nik'];
+    $sesAddress = $_SESSION['alamat'];
+    $sesNo = $_SESSION['no_hp'];
+    $sesGender = $_SESSION['jenis_kelamin'];
 }
 
- // view data pemilik
- $API_url='http://localhost:8080/jkos/api/api.php?function=get_pemilik';
- $json_data=file_get_contents($API_url);
- $response_data=json_decode($json_data);
- $user_data=$response_data->data;
+// view data pemilik
+$API_url = 'http://localhost:8080/jkos/api/api.php?function=get_pemilik';
+$json_data = file_get_contents($API_url);
+$response_data = json_decode($json_data);
+$user_data = $response_data->data;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +76,7 @@ if (isset($_SESSION['id_user'])) {
             <!-- right content -->
             <div id="content">
                 <!-- topbar -->
-            <?php include("pages/topbar_dashboard.php") ?>
+                <?php include("pages/topbar_dashboard.php") ?>
                 <!-- end topbar -->
                 <!-- dashboard inner -->
                 <div class="midde_cont">
@@ -103,96 +102,96 @@ if (isset($_SESSION['id_user'])) {
                                             </div>
                                             <div class="table_section padding_infor_info">
 
-                                            <table id="pemilik" class="table table-bordered" style="width:100%" >
-                                                        <thead>
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th>Nama</th>
-                                                                <th>Email</th>
-                                                                <th>Username</th>
-                                                                <th>NIK</th>
-                                                                <th>Alamat</th>
-                                                                <th>No hp</th>
-                                                                <th>Jenis Kelamin</th>
-                                                                <th>Foto</th>
-                                                                <th>Aksi</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
+                                                <table id="pemilik" class="table table-bordered" style="width:100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>Nama</th>
+                                                            <th>Email</th>
+                                                            <th>Username</th>
+                                                            <th>NIK</th>
+                                                            <th>Alamat</th>
+                                                            <th>No hp</th>
+                                                            <th>Jenis Kelamin</th>
+                                                            <th>Foto</th>
+                                                            <th>Aksi</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
                                                         <?php $no = 1;
                                                         foreach ($user_data as $user) :
                                                         ?>
                                                             <tr>
-                                                                 <td><?= $no; ?></td>
-                                                                <td><?= $user -> user_nama; ?></td>
-                                                                <td><?= $user -> user_email; ?></td>
-                                                                <td><?= $user -> username; ?></td>
-                                                                <td><?= $user -> nik; ?></td>
-                                                                <td><?= $user -> alamat; ?></td>
-                                                                <td><?= $user -> no_hp; ?></td>
-                                                                <td><?= $user -> jenis_kelamin; ?></td>
-                                                                <td><img src="img/<?= $user -> foto;  ?>" alt="" width="50px"></td>
+                                                                <td><?= $no; ?></td>
+                                                                <td><?= $user->user_nama; ?></td>
+                                                                <td><?= $user->user_email; ?></td>
+                                                                <td><?= $user->username; ?></td>
+                                                                <td><?= $user->nik; ?></td>
+                                                                <td><?= $user->alamat; ?></td>
+                                                                <td><?= $user->no_hp; ?></td>
+                                                                <td><?= $user->jenis_kelamin; ?></td>
+                                                                <td><img src="img/<?= $user->foto;  ?>" alt="" width="50px"></td>
                                                                 <td>
                                                                     <a href="auth_kos.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
 
-                                                                    <a href="hapus.php" class="btn btn-danger btn-circle" ><i class="fas fa-trash"></i></a>
+                                                                    <a href="hapus.php" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                                                                 </td>
                                                             </tr>
                                                             <?php $no++; ?>
-                                                    <?php endforeach ?>
-                                                        </tbody>
-                                                    </table>
+                                                        <?php endforeach ?>
+                                                    </tbody>
+                                                </table>
 
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- end row -->
                         </div>
-                        <!-- footer -->
-                        <div class="container-fluid">
-                            <div class="footer">
-                                <p>Copyright © 2018 Designed by html.design. All rights reserved.</p>
-                            </div>
+                        <!-- end row -->
+                    </div>
+                    <!-- footer -->
+                    <div class="container-fluid">
+                        <div class="footer">
+                            <p>Copyright © 2018 Designed by html.design. All rights reserved.</p>
                         </div>
                     </div>
-                    <!-- end dashboard inner -->
                 </div>
+                <!-- end dashboard inner -->
             </div>
         </div>
-        <!-- jQuery -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <!-- chart js -->
-        <script src="js/Chart.min.js"></script>
-        <script src="js/Chart.bundle.min.js"></script>
-        <script src="js/utils.js"></script>
-        <script src="js/analyser.js"></script>
-        <!-- wow animation -->
-        <script src="js/animate.js"></script>
-        <!-- select country -->
-        <script src="js/bootstrap-select.js"></script>
-        <!-- owl carousel -->
-        <script src="js/owl.carousel.js"></script>
-        <!-- nice scrollbar -->
-        <script src="js/perfect-scrollbar.min.js"></script>
-        <!-- sidebar -->
-        <script>
-            var ps = new PerfectScrollbar('#sidebar');
-        </script>
-        <!-- custom js -->
+    </div>
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- chart js -->
+    <script src="js/Chart.min.js"></script>
+    <script src="js/Chart.bundle.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/analyser.js"></script>
+    <!-- wow animation -->
+    <script src="js/animate.js"></script>
+    <!-- select country -->
+    <script src="js/bootstrap-select.js"></script>
+    <!-- owl carousel -->
+    <script src="js/owl.carousel.js"></script>
+    <!-- nice scrollbar -->
+    <script src="js/perfect-scrollbar.min.js"></script>
+    <!-- sidebar -->
+    <script>
+        var ps = new PerfectScrollbar('#sidebar');
+    </script>
+    <!-- custom js -->
 
-        <script src="js/custom.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#pemilik').DataTable();
-            });
-        </script>
+    <script src="js/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#pemilik').DataTable();
+        });
+    </script>
 </body>
 
 </html>

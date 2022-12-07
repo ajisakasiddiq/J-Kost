@@ -5,17 +5,17 @@ session_start();
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
-   // header('Location: login.php');
-$sesID = $_SESSION['id_user'];
-$sesName = $_SESSION['username'];
-$name = $_SESSION['user_nama'];
-$sesEmail = $_SESSION['user_email'];
-$sesLvl = $_SESSION['level'];
-$sesImg = $_SESSION['foto'];
-$sesNik = $_SESSION['nik'];
-$sesAddress = $_SESSION['alamat'];
-$sesNo = $_SESSION['no_hp'];
-$sesGender = $_SESSION['jenis_kelamin'];
+    // header('Location: login.php');
+    $sesID = $_SESSION['id_user'];
+    $sesName = $_SESSION['username'];
+    $name = $_SESSION['user_nama'];
+    $sesEmail = $_SESSION['user_email'];
+    $sesLvl = $_SESSION['level'];
+    $sesImg = $_SESSION['foto'];
+    $sesNik = $_SESSION['nik'];
+    $sesAddress = $_SESSION['alamat'];
+    $sesNo = $_SESSION['no_hp'];
+    $sesGender = $_SESSION['jenis_kelamin'];
 }
 ?>
 
@@ -64,12 +64,12 @@ $sesGender = $_SESSION['jenis_kelamin'];
     <div class="full_container">
         <div class="inner_container">
             <!-- Sidebar  -->
-<?php include("pages/sidebar_dashboard.php") ?>
+            <?php include("pages/sidebar_dashboard.php") ?>
             <!-- end sidebar -->
             <!-- right content -->
             <div id="content">
                 <!-- topbar -->
-<?php include("pages/topbar_dashboard.php") ?>
+                <?php include("pages/topbar_dashboard.php") ?>
                 <!-- end topbar -->
                 <!-- dashboard inner -->
                 <div class="midde_cont">
@@ -81,119 +81,119 @@ $sesGender = $_SESSION['jenis_kelamin'];
                                 </div>
                             </div>
                         </div>
-                        <?php if($sesLvl == 3){ ?>
-                        <div class="row column1">
-                            <div class="col-md-6 col-lg-4">
-                                <div class="full counter_section margin_bottom_30">
-                                    <div class="couter_icon">
-                                        <div>
-                                            <i class="fa fa-user yellow_color"></i>
-                                        </div>
-                                    </div>
-                                    <div class="counter_no">
-                                        <div>
-                                            <p class="total_no">1000</p>
-                                            <p class="head_couter">Total Penyewa</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="full counter_section margin_bottom_30">
-                                    <div class="couter_icon">
-                                        <div>
-                                            <i class="fa fa-group yellow_color"></i>
-                                        </div>
-                                    </div>
-                                    <div class="counter_no">
-                                        <div>
-                                            <p class="total_no">1000</p>
-                                            <p class="head_couter">Total Sewa</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="full counter_section margin_bottom_30">
-                                    <div class="couter_icon">
-                                        <div>
-                                            <i class="fa fa-cloud-download green_color"></i>
-                                        </div>
-                                    </div>
-                                    <div class="counter_no">
-                                        <div>
-                                            <p class="total_no">100.000.000</p>
-                                            <p class="head_couter">Total Pemasukan</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- footer -->
-                            <div class="container-fluid">
-                                <div class="footer">
-                                    <p>Copyright © 2022 Designed by A2.<br><br> Distributed By: Team ruweet</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <?php }else{ ?>
+                        <?php if ($sesLvl == 3) { ?>
                             <div class="row column1">
-                            <div class="col-md-6 col-lg-4">
-                                <div class="full counter_section margin_bottom_30">
-                                    <div class="couter_icon">
-                                        <div>
-                                            <i class="fa fa-user yellow_color"></i>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="full counter_section margin_bottom_30">
+                                        <div class="couter_icon">
+                                            <div>
+                                                <i class="fa fa-user yellow_color"></i>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="counter_no">
-                                        <div>
-                                            <p class="total_no">1000</p>
-                                            <p class="head_couter">Total Kamar Kos</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="full counter_section margin_bottom_30">
-                                    <div class="couter_icon">
-                                        <div>
-                                            <i class="fa fa-group yellow_color"></i>
-                                        </div>
-                                    </div>
-                                    <div class="counter_no">
-                                        <div>
-                                            <p class="total_no">1000</p>
-                                            <p class="head_couter">Total Sewa</p>
+                                        <div class="counter_no">
+                                            <div>
+                                                <p class="total_no">1000</p>
+                                                <p class="head_couter">Total Penyewa</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="full counter_section margin_bottom_30">
-                                    <div class="couter_icon">
-                                        <div>
-                                            <i class="fa fa-cloud-download green_color"></i>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="full counter_section margin_bottom_30">
+                                        <div class="couter_icon">
+                                            <div>
+                                                <i class="fa fa-group yellow_color"></i>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="counter_no">
-                                        <div>
-                                            <p class="total_no">100.000.000</p>
-                                            <p class="head_couter">Total Pemasukan</p>
+                                        <div class="counter_no">
+                                            <div>
+                                                <p class="total_no">1000</p>
+                                                <p class="head_couter">Total Sewa</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="full counter_section margin_bottom_30">
+                                        <div class="couter_icon">
+                                            <div>
+                                                <i class="fa fa-cloud-download green_color"></i>
+                                            </div>
+                                        </div>
+                                        <div class="counter_no">
+                                            <div>
+                                                <p class="total_no">100.000.000</p>
+                                                <p class="head_couter">Total Pemasukan</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <!-- footer -->
-                            <div class="container-fluid">
-                                <div class="footer">
-                                    <p>Copyright © 2022 Designed by A2.<br><br> Distributed By: Team ruweet</a>
-                                    </p>
+                                <!-- footer -->
+                                <div class="container-fluid">
+                                    <div class="footer">
+                                        <p>Copyright © 2022 Designed by A2.<br><br> Distributed By: Team ruweet</a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                            <?php } ?>
+                        <?php } else { ?>
+                            <div class="row column1">
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="full counter_section margin_bottom_30">
+                                        <div class="couter_icon">
+                                            <div>
+                                                <i class="fa fa-user yellow_color"></i>
+                                            </div>
+                                        </div>
+                                        <div class="counter_no">
+                                            <div>
+                                                <p class="total_no">1000</p>
+                                                <p class="head_couter">Total Kamar Kos</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="full counter_section margin_bottom_30">
+                                        <div class="couter_icon">
+                                            <div>
+                                                <i class="fa fa-group yellow_color"></i>
+                                            </div>
+                                        </div>
+                                        <div class="counter_no">
+                                            <div>
+                                                <p class="total_no">1000</p>
+                                                <p class="head_couter">Total Sewa</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="full counter_section margin_bottom_30">
+                                        <div class="couter_icon">
+                                            <div>
+                                                <i class="fa fa-cloud-download green_color"></i>
+                                            </div>
+                                        </div>
+                                        <div class="counter_no">
+                                            <div>
+                                                <p class="total_no">100.000.000</p>
+                                                <p class="head_couter">Total Pemasukan</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- footer -->
+                                <div class="container-fluid">
+                                    <div class="footer">
+                                        <p>Copyright © 2022 Designed by A2.<br><br> Distributed By: Team ruweet</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
                         <!-- end dashboard inner -->
                     </div>
                 </div>

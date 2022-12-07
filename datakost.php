@@ -5,17 +5,17 @@ session_start();
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
-   // header('Location: login.php');
-   $sesID = $_SESSION['id_user'];
-   $sesName = $_SESSION['username'];
-   $name = $_SESSION['user_nama'];
-   $sesEmail = $_SESSION['user_email'];
-   $sesLvl = $_SESSION['level'];
-   $sesImg = $_SESSION['foto'];
-   $sesNik = $_SESSION['nik'];
-   $sesAddress = $_SESSION['alamat'];
-   $sesNo = $_SESSION['no_hp'];
-   $sesGender = $_SESSION['jenis_kelamin'];
+    // header('Location: login.php');
+    $sesID = $_SESSION['id_user'];
+    $sesName = $_SESSION['username'];
+    $name = $_SESSION['user_nama'];
+    $sesEmail = $_SESSION['user_email'];
+    $sesLvl = $_SESSION['level'];
+    $sesImg = $_SESSION['foto'];
+    $sesNik = $_SESSION['nik'];
+    $sesAddress = $_SESSION['alamat'];
+    $sesNo = $_SESSION['no_hp'];
+    $sesGender = $_SESSION['jenis_kelamin'];
 }
 ?>
 <!DOCTYPE html>
@@ -51,7 +51,7 @@ if (isset($_SESSION['id_user'])) {
     <link rel="stylesheet" href="css/custom.css" />
     <!-- calendar file css -->
     <link rel="stylesheet" href="js/semantic.min.css" />
-    
+
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
@@ -71,7 +71,7 @@ if (isset($_SESSION['id_user'])) {
             <!-- right content -->
             <div id="content">
                 <!-- topbar -->
-            <?php include("pages/topbar_dashboard.php") ?>
+                <?php include("pages/topbar_dashboard.php") ?>
                 <!-- end topbar -->
                 <!-- dashboard inner -->
                 <div class="midde_cont">
@@ -93,29 +93,30 @@ if (isset($_SESSION['id_user'])) {
                                             <!-- table section -->
                                             <div class="card-body">
                                                 <div class="table-responsive">
-                                                <div class="mb-2">
-                                                    <h4>Data Kost</h4>
+                                                    <div class="mb-2">
+                                                        <h4>Data Kost</h4>
                                                         <div id="toolbar">
                                                             <button id="button" class="btn btn-primary">
-                                                                <i class="fa-solid fa-plus"></i> <a  href="tambah_kost.php" class="text-white">Tambah Kost</a>
-                                                             </button>
+                                                                <i class="fa-solid fa-plus"></i> <a href="tambah_kost.php" class="text-white">Tambah Kost</a>
+                                                            </button>
                                                         </div>
-                                                 </div>
-                                                <table id="kost" class="table table-borderless" style="width:100%">
+                                                    </div>
+                                                    <table id="kost" class="table table-borderless" style="width:100%">
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
                                                                 <th>Gambar</th>
                                                                 <th>Nama Kost</th>
                                                                 <th>Deskripsi</th>
+                                                                <th>Alamat</th>
                                                                 <th>Status</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <?php 
+                                                            <?php
                                                             $query = "SELECT * FROM data_kost WHERE id_user = '$sesID'";
-                                                            $result = mysqli_query($koneksi,$query);
+                                                            $result = mysqli_query($koneksi, $query);
                                                             $no = 1;
                                                             while ($row = mysqli_fetch_array($result)) {
                                                                 $idKost = $row['id_kost'];
@@ -126,63 +127,64 @@ if (isset($_SESSION['id_user'])) {
                                                                 $Maps = $row['maps'];
                                                                 $Status = $row['status'];
                                                             ?>
-                                                            <tr>
-                                                                <td><?= $no; ?></td>
-                                                                <td><img src="img/<?= $Img; ?>" alt="" width="50px"></td>
-                                                                <td><?= $NameKost; ?></td>
-                                                                <td><?= $Dess; ?></td>
-                                                                <td><?= $Status; ?></td>
-                                                                <td>
-                                                                    <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editKost<?= $idKost; ?>"><i class="fas fa-pen"></i></a>
+                                                                <tr>
+                                                                    <td><?= $no; ?></td>
+                                                                    <td><img src="img/<?= $Img; ?>" alt="" width="50px"></td>
+                                                                    <td><?= $NameKost; ?></td>
+                                                                    <td><?= $Dess; ?></td>
+                                                                    <td><?= $Address; ?></td>
+                                                                    <td><?= $Status; ?></td>
+                                                                    <td>
+                                                                        <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editKost<?= $idKost; ?>"><i class="fas fa-pen"></i></a>
 
-                                                                    <a href="datakost.php?id_kost=<?php echo $row['id_kost']; ?>" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
-                                                                </td>
+                                                                        <a href="datakost.php?id_kost=<?php echo $row['id_kost']; ?>" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
+                                                                    </td>
 
 
-                                                                <!-- edit kost -->
-                                                                <div class="modal fade" id="editKost<?= $idKost; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                      <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    <!-- edit kost -->
+                                                                    <div class="modal fade" id="editKost<?= $idKost; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                </div>
+                                                                                <form role="form" action="" method="post" enctype="multipart/form-data">
+                                                                                    <div class="modal-body">
+                                                                                        <div class="img">
+                                                                                            <img src="img/<?= $Img; ?>" alt="" width="100%" height="300px">
+                                                                                        </div>
+                                                                                        <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $idKost; ?>">
+                                                                                        <div class="form-group">
+                                                                                            <label for="img">Kost tampak depan</label>
+                                                                                            <input id="img" type="file" class="form-control" name="gambar">
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="inputName">Nama Kost</label>
+                                                                                            <input value=" <?= $NameKost; ?>" type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="textAreaRemark">Deskripsi</label>
+                                                                                            <textarea class="form-control" name="txt_deskripsi" id="textAreaRemark" rows="5" placeholder="Tell us you want more..."> <?= $Dess; ?></textarea>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="inputEmail">Alamat</label>
+                                                                                            <textarea class="form-control" rows="5" type="text" id="alamat" name="txt_alamat"> <?= $Address; ?></textarea>
+                                                                                            <small class="form-text text-muted">Isi alamat selengkap mungkin!.</small>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                        <button name="edit" type="submit" class="btn btn-primary">Save changes</button>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
                                                                         </div>
-                                                                        <form  role="form" action="" method="post" enctype="multipart/form-data">
-                                                                        <div class="modal-body">
-                                                                            <div class="img">
-                                                                                <img src="img/<?= $Img; ?>" alt="" width="100%" height="300px">
-                                                                            </div>
-                                                                            <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $idKost; ?>">
-                                                                          <div class="form-group">
-                                                                            <label for="img">Kost tampak depan</label>
-                                                                            <input id="img" type="file" class="form-control" name="gambar">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                              <label for="inputName">Nama Kost</label>
-                                                                              <input value=" <?= $NameKost; ?>" type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                              <label for="textAreaRemark">Deskripsi</label>
-                                                                              <textarea class="form-control" name="txt_deskripsi" id="textAreaRemark" rows="5" placeholder="Tell us you want more..."> <?= $Dess; ?></textarea>
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                              <label for="inputEmail">Alamat</label>
-                                                                              <textarea class="form-control" rows="5"  type="text" id="alamat" name="txt_alamat"> <?= $Address; ?></textarea>
-                                                                              <small class="form-text text-muted">Isi alamat selengkap mungkin!.</small>
-                                                                            </div>  
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                          <button name="edit" type="submit" class="btn btn-primary">Save changes</button>
-                                                                        </div>
-                                                                        </form>
-                                                                      </div>
                                                                     </div>
-                                                                  </div>
-                                                            </tr>
-                                                            <?php $no++; ?>
+                                                                </tr>
+                                                                <?php $no++; ?>
                                                             <?php } ?>
-                                                            
+
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -204,7 +206,7 @@ if (isset($_SESSION['id_user'])) {
                     </div>
                 </div>
             </div>
- 
+
         </div>
     </div>
 
@@ -237,59 +239,60 @@ if (isset($_SESSION['id_user'])) {
     <!-- calendar file css -->
     <script src="js/semantic.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#kost').DataTable();
-            });
-        </script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#kost').DataTable();
+        });
+    </script>
 </body>
 
 </html>
 
 
-<?php 
-if( isset($_POST['edit']) ){
+<?php
+if (isset($_POST['edit'])) {
     $Id     = $_POST['txt_id'];
     $Alamat  = $_POST['txt_alamat'];
     $deskripsi  = $_POST['txt_deskripsi'];
     $Name   = $_POST['txt_nama'];
     $Address   = $_POST['txt_alamat'];
     $Img = upload();
-    
-     $query = "UPDATE data_kost SET nama_kost='$Name', alamat='$Alamat', deskripsi='$deskripsi',foto='$Img' WHERE id_kost='$Id'";
+
+    $query = "UPDATE data_kost SET nama_kost='$Name', alamat='$Alamat', deskripsi='$deskripsi',foto='$Img' WHERE id_kost='$Id'";
     $result = mysqli_query($koneksi, $query);
     if ($result) {
         $success = "User data telah terupdate!";
-    }else{
+    } else {
         $error =  "User data gagal update";
     }
 }
 
-function upload(){
+function upload()
+{
 
-    $file = $_FILES['gambar'] ['name'];
-    $size = $_FILES['gambar'] ['size'];
-    $error = $_FILES ['gambar']['error'];
+    $file = $_FILES['gambar']['name'];
+    $size = $_FILES['gambar']['size'];
+    $error = $_FILES['gambar']['error'];
     $tmpName = $_FILES['gambar']['tmp_name'];
 
-//cek file apakah diupload atau tidak
-    if ( $error === 4 ) {
-      echo "<script> 
+    //cek file apakah diupload atau tidak
+    if ($error === 4) {
+        echo "<script> 
         alert('Pilih gambar terlebih dahulu');
       </script>";
-      return false;
+        return false;
     }
 
     //cek apakah benar gambar
-    $extensGambarValid = ['jpg','jpeg','png'];
-    $extensGambar = explode('.',$file);
+    $extensGambarValid = ['jpg', 'jpeg', 'png'];
+    $extensGambar = explode('.', $file);
     $extensGambar = strtolower(end($extensGambar));
-    if (!in_array($extensGambar,$extensGambarValid)) {
-      echo "<script> 
+    if (!in_array($extensGambar, $extensGambarValid)) {
+        echo "<script> 
       alert('Yang anda upload bukan berupa file gambar');
     </script>";
-    return false;
+        return false;
     }
 
     //cek jika ukuran nya terlalu besar 
@@ -300,15 +303,15 @@ function upload(){
       </script>";
     }
 
-//generate nama gambar baru
-$namaFIlebaru = uniqid();
-$namaFIlebaru .= '.';
-$namaFIlebaru .= $extensGambar;
+    //generate nama gambar baru
+    $namaFIlebaru = uniqid();
+    $namaFIlebaru .= '.';
+    $namaFIlebaru .= $extensGambar;
 
 
 
     //lolos cek 
-    move_uploaded_file($tmpName,'img/'.$namaFIlebaru);
+    move_uploaded_file($tmpName, 'img/' . $namaFIlebaru);
     return $namaFIlebaru;
 }
 
@@ -323,23 +326,23 @@ unlink($Img);
 ?>
 
 
-<?php if(isset($success)){ ?>
+<?php if (isset($success)) { ?>
     <script>
         swal({
-  title: "<?= $success; ?>",
-  icon: "success",
-  button: "OKE!",
-});
+            title: "<?= $success; ?>",
+            icon: "success",
+            button: "OKE!",
+        });
     </script>
-    <?php }?>
+<?php } ?>
 
 
-    <?php if(isset($error)){ ?>
+<?php if (isset($error)) { ?>
     <script>
         swal({
-  title: "<?= $error; ?>",
-  icon: "success",
-  button: "OKE!",
-});
+            title: "<?= $error; ?>",
+            icon: "success",
+            button: "OKE!",
+        });
     </script>
-    <?php }?>
+<?php } ?>
