@@ -135,7 +135,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 <td>
                                                                     <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editKost<?= $idKost; ?>"><i class="fas fa-pen"></i></a>
 
-                                                                    <a href="hapus.php" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
+                                                                    <a href="datakost.php?id_kost=<?php echo $row['id_kost']; ?>" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
                                                                 </td>
 
 
@@ -312,6 +312,14 @@ $namaFIlebaru .= $extensGambar;
     return $namaFIlebaru;
 }
 
+
+
+
+// hapus
+$id = $_GET['id_kost'];
+$query =  "DELETE FROM data_kost WHERE id_kost='$id'";
+mysqli_query($koneksi, $query);
+unlink($Img);
 ?>
 
 

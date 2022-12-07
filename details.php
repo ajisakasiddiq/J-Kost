@@ -17,7 +17,7 @@ if (isset($_SESSION['id_user'])) {
    $sesNo = $_SESSION['no_hp'];
    $sesGender = $_SESSION['jenis_kelamin'];
 }
-if ($sesLvl === 1) {
+if ($sesLvl == 1) {
     $dis = "";    
 }else{
     $dis = "disabled";
