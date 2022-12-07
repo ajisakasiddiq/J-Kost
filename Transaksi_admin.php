@@ -147,9 +147,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     <td><?= $status; ?></td>
                                                                     <td><img src="img/<?= $bukti; ?>" alt="" width="50px"></td>
                                                                     <td>
-                                                                        <a href="" class="btn btn-primary btn-circle" ata-bs-toggle="modal" data-bs-target="#myModal"><i class="fas fa-pen"></i></a>
-
-                                                                        <a href="hapus.php" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
+                                                                        <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#detail"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
                                                                     </td>
                                                                     <?= $no++; ?>
                                                                 <?php } ?>
@@ -184,7 +182,7 @@ if (isset($_SESSION['id_user'])) {
     </div>
     <!-- model popup -->
     <!-- The Modal -->
-    <div class="modal fade" id="myModal">
+    <div class="modal fade" id="detail">
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Modal Header -->
@@ -245,7 +243,7 @@ if (isset($_SESSION['id_user'])) {
             $('#trans').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
+                    'csv', 'excel', 'pdf', 'print'
                 ]
             });
         });
