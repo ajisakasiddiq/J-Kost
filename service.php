@@ -124,8 +124,8 @@ if (isset($_SESSION['id_user'])) {
                         </ul>
                         <?php 
                     }elseif(!isset($_SESSION['id_user'])) {?>
-                        <a href="register" class="btn-regis ">Register</a>
-                        <a href="login" class="btn btn-custom">Login</a>
+                        <a href="register.php" class="btn-regis ">Register</a>
+                        <a href="login.php" class="btn btn-custom">Login</a>
                        
                         <?php } ?>
                     </div>
