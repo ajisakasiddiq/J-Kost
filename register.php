@@ -12,7 +12,7 @@ if (isset($_POST['register'])) {
 
 
     if (mysqli_affected_rows($koneksi) > 0) {
-        header('Location: login2.php');
+        header('Location: login.php');
     } else {
         echo mysqli_error($koneksi);
     }
