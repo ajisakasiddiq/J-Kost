@@ -153,13 +153,12 @@ if (isset($_SESSION['id_user'])) {
                                                                                 </div>
                                                                                 <form class="user" action="" method="POST">
                                                                                     <div class="modal-body">
-                                                                                        <input type="text" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $id; ?>">
+                                                                                        <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $id; ?>">
                                                                                         <div class="form-group">
                                                                                             <select name="txt_status" id="" class="form-control form-control-user">
                                                                                                 <option value="<?= $Status;  ?>"><?= $Status; ?></option>
                                                                                                 <option value="">------</option>
-                                                                                                <option value="PENDING">PENDING</option>
-                                                                                                <option value="APPROVE">APPROVED</option>
+                                                                                                <option value="APPROVED">APPROVED</option>
                                                                                                 <option value="NOT APPROVED">NOT APPROVED</option>
                                                                                             </select>
                                                                                         </div>
