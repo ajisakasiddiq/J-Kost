@@ -144,29 +144,31 @@ if (isset($_SESSION['id_user'])) {
                                                                     </td>
 
                                                                     <!-- Modal start -->
-                                                                    <div class="modal fade" id="validate<?= $id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog modal-lg">
+                                                                    <div class="modal fade" id="validate<?= $id; ?>" tabindex="-1" aria-labelledby="EditadminLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-md">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
-                                                                                    <h1 class="modal-title fs-5" id="validate">Validate Kost</h1>
+                                                                                    <h1 class="modal-title fs-5" id="EditadminLabel">Edit Admin</h1>
                                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                                 </div>
-                                                                                <div class="modal-body">
-                                                                                    <form class="user" action="" method="POST">
+                                                                                <form class="user" action="" method="POST">
+                                                                                    <div class="modal-body">
+                                                                                        <input type="text" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $id; ?>">
                                                                                         <div class="form-group">
                                                                                             <select name="txt_status" id="" class="form-control form-control-user">
                                                                                                 <option value="<?= $Status;  ?>"><?= $Status; ?></option>
-                                                                                                <option selected>Status</option>
+                                                                                                <option value="">------</option>
                                                                                                 <option value="PENDING">PENDING</option>
-                                                                                                <option value="APPROVE">APPROVE</option>
+                                                                                                <option value="APPROVE">APPROVED</option>
+                                                                                                <option value="NOT APPROVED">NOT APPROVED</option>
                                                                                             </select>
                                                                                         </div>
-                                                                                    </form>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                                    <button type="submit" name="submit" class="btn btn-danger">Save changes</button>
-                                                                                </div>
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                        <button type="submit" name="update" class="btn btn-primary">Tambah</button>
+                                                                                    </div>
+                                                                                </form>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -239,17 +241,18 @@ if (isset($_SESSION['id_user'])) {
                 $('#datakost').DataTable();
             });
         </script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>
 
 
 <?php
-if (isset($_POST['submit'])) {
-    $userId     = $_POST['txt_id'];
+if (isset($_POST['update'])) {
+    $kostId     = $_POST['txt_id'];
     $Status    = $_POST['txt_status'];
 
-    $query = "UPDATE data_kost SET status='$Status' WHERE id_user='$userId'";
+    $query = "UPDATE data_kost SET status='$Status' WHERE id_kost='$kostId'";
     $result = mysqli_query($koneksi, $query);
     if ($result) {
         $success = "data telah terupdate!";
@@ -259,3 +262,21 @@ if (isset($_POST['submit'])) {
 }
 
 ?>
+<?php if (isset($success)) { ?>
+    <script>
+        swal({
+            title: "<?= $success; ?>",
+            icon: "success",
+            button: "OKE!",
+        });
+    </script>
+<?php } ?>
+<?php if (isset($error)) { ?>
+    <script>
+        swal({
+            title: "<?= $error; ?>",
+            icon: "success",
+            button: "OKE!",
+        });
+    </script>
+<?php } ?>
