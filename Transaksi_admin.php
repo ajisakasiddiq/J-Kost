@@ -107,6 +107,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 <th>No.kamar</th>
                                                                 <th>Nama Penyewa</th>
                                                                 <th>Durasi Sewa</th>
+                                                                <th>Tanggal Pemesanan</th>
                                                                 <th>Total Harga</th>
                                                                 <th>Status Pembayaran</th>
                                                                 <th>Bukti Pembayaran</th>
@@ -130,6 +131,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     $No = $row['No Kamar'];
                                                                     $NamaPenyewa = $row['Nama Penyewa'];
                                                                     $durasi = $row['Durasi Sewa'];
+                                                                    $tgl = $row['Tanggal Pemesanan'];
                                                                     $total = $row['Total'];
                                                                     $status = $row['Status Pembayaran'];
                                                                     $bukti = $row['Bukti Pembayaran'];
@@ -140,6 +142,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     <td><?= $No; ?></td>
                                                                     <td><?= $NamaPenyewa; ?></td>
                                                                     <td><?= $durasi; ?></td>
+                                                                    <td><?= $tgl; ?></td>
                                                                     <td>Rp.<?= $total; ?></td>
                                                                     <td><?= $status; ?></td>
                                                                     <td><img src="img/<?= $bukti; ?>" alt="" width="50px"></td>
