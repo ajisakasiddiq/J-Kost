@@ -176,7 +176,7 @@ if (isset($_SESSION['id_user'])) {
                     <th scope="col">Image</th>
                     <th scope="col">Name &amp; Owner</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Menu</th>
+                    <th scope="col">Address</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -198,7 +198,7 @@ if (isset($_SESSION['id_user'])) {
                     </td>
                     <td style="width: 20%;">
                       <a href="#" class="btn btn-remove-cart">
-                        Remove
+                        Jember
                       </a>
                     </td>
                   </tr>
