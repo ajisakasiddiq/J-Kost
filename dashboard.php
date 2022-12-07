@@ -91,8 +91,15 @@ if (isset($_SESSION['id_user'])) {
                                             </div>
                                         </div>
                                         <div class="counter_no">
+                                            <?php
+                                            $query = "SELECT COUNT(id_user) as user FROM user_detail WHERE level = 2";
+                                            $result = mysqli_query($koneksi, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+                                                $user = $row['user'];
+                                            }
+                                            ?>
                                             <div>
-                                                <p class="total_no">1000</p>
+                                                <p class="total_no"><?= $user; ?></p>
                                                 <p class="head_couter">Total Penyewa</p>
                                             </div>
                                         </div>
@@ -107,7 +114,15 @@ if (isset($_SESSION['id_user'])) {
                                         </div>
                                         <div class="counter_no">
                                             <div>
-                                                <p class="total_no">1000</p>
+                                                <?php
+
+                                                $query = "SELECT COUNT(id_pemesanan) as sewa FROM pemesanan";
+                                                $result = mysqli_query($koneksi, $query);
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    $sewa = $row['sewa'];
+                                                }
+                                                ?>
+                                                <p class="total_no"><?= $sewa; ?></p>
                                                 <p class="head_couter">Total Sewa</p>
                                             </div>
                                         </div>
@@ -122,7 +137,15 @@ if (isset($_SESSION['id_user'])) {
                                         </div>
                                         <div class="counter_no">
                                             <div>
-                                                <p class="total_no">100.000.000</p>
+                                                <?php
+
+                                                $query = "SELECT COUNT(total_pembayaran) as harga FROM pemesanan ";
+                                                $result = mysqli_query($koneksi, $query);
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    $harga = $row['harga'];
+                                                }
+                                                ?>
+                                                <p class="total_no"><?= $harga; ?></p>
                                                 <p class="head_couter">Total Pemasukan</p>
                                             </div>
                                         </div>

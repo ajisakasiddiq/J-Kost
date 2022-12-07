@@ -156,6 +156,7 @@ if (isset($_SESSION['id_user'])) {
                                                                                         <div class="form-group">
                                                                                             <select name="txt_status" id="" class="form-control form-control-user">
                                                                                                 <option value="<?= $Status;  ?>"><?= $Status; ?></option>
+                                                                                                <option selected>Status</option>
                                                                                                 <option value="PENDING">PENDING</option>
                                                                                                 <option value="APPROVE">APPROVE</option>
                                                                                             </select>
