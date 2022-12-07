@@ -17,6 +17,12 @@ if (isset($_SESSION['id_user'])) {
    $sesNo = $_SESSION['no_hp'];
    $sesGender = $_SESSION['jenis_kelamin'];
 }
+if ($sesLvl === 1) {
+    $dis = "";    
+}else{
+    $dis = "disabled";
+    echo "<script>alert('Hanya untuk akun pencari kos');</script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -171,7 +177,7 @@ if (isset($_SESSION['id_user'])) {
                             <div class="price">Rp.350.000</div> -->
                         </div>
                         <div class="col-lg-2" data-aos="zoom-in">
-                            <a class="btn btn-custom px-4 btn-block mb-3" href="checkout">Sewa</a
+                            <a class="btn btn-custom px-4 btn-block mb-3 <?= $dis ?>" href="checkout">Sewa</a
                   >
                 </div>
               </div>

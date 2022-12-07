@@ -109,7 +109,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 <th>No.Handphone</th>
                                                                 <th>Nominal</th>
                                                                 <th>Bukti Pembayaran</th>
-                                                                <!-- <th>Status</th> -->
+                                                                <th>Aksi</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -121,11 +121,9 @@ if (isset($_SESSION['id_user'])) {
                                                                 <td>089765567655</td>
                                                                 <td>Rp 350.000</td>
                                                                 <td>Terupload</td>
-                                                                <!-- <td>
-                                                                    <a href="edit.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
-
-                                                                    <a href="hapus.php" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
-                                                                </td> -->
+                                                                <td>
+                                                                    <a href="" class="btn btn-primary btn-circle"  data-bs-toggle="modal" data-bs-target="#detail"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
+                                                                </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -157,7 +155,7 @@ if (isset($_SESSION['id_user'])) {
     </div>
     <!-- model popup -->
     <!-- The Modal -->
-    <div class="modal fade" id="myModal">
+    <div class="modal fade" id="detail">
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Modal Header -->
