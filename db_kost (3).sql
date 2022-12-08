@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 05, 2022 at 01:56 AM
+-- Generation Time: Dec 08, 2022 at 01:11 PM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -45,9 +45,8 @@ CREATE TABLE `data_kost` (
 --
 
 INSERT INTO `data_kost` (`id_kost`, `id_user`, `nama_kost`, `alamat`, `deskripsi`, `foto`, `maps`, `status`, `longtitude`, `latitude`) VALUES
-(1, 3, 'bara kost', 'jember', 'luas', NULL, NULL, 'PENDING', 113.720551, -8.158108),
-(2, 3, 'Kost keren', 'jember', 'luas', NULL, NULL, 'PENDING', -8.218193, 113.616920),
-(10, 3, 's', 's', 's', '638ca0b58c762.jpg', NULL, 'PENDING', 113.602707, -8.239371);
+(11, 3, '   Kost jember rek', '   jember rek', '   parkiran luas', '', NULL, 'APPROVED', 113.616623, -8.213216),
+(14, 3, '     kost ', '     jember', '     bebas gausah bayar ', '639176ae88547.jpeg', NULL, 'NOT APPROVED', 113.563385, -8.217563);
 
 -- --------------------------------------------------------
 
@@ -99,6 +98,13 @@ CREATE TABLE `kamar_kost` (
   `deskripsi` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `kamar_kost`
+--
+
+INSERT INTO `kamar_kost` (`id_kamar`, `id_kost`, `jenis_kamar`, `no_kamar`, `harga`, `status_kamar`, `deskripsi`) VALUES
+(1, 11, 'laki laki', 12, '350000', 'tersedia', 'aaaa');
+
 -- --------------------------------------------------------
 
 --
@@ -133,6 +139,7 @@ CREATE TABLE `pemesanan` (
   `kode_pemesanan` varchar(225) NOT NULL,
   `nama_pemesan` varchar(255) NOT NULL,
   `tgl_pemesanan` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `durasi_sewa` varchar(225) NOT NULL,
   `harga` varchar(255) NOT NULL,
   `tgl_pembayaran` date NOT NULL,
   `total_pembayaran` varchar(255) NOT NULL,
@@ -142,6 +149,13 @@ CREATE TABLE `pemesanan` (
   `nama_bank` varchar(255) NOT NULL,
   `bukti_pembayaran` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pemesanan`
+--
+
+INSERT INTO `pemesanan` (`id_pemesanan`, `id_user`, `id_kamar`, `id_rek`, `kode_pemesanan`, `nama_pemesan`, `tgl_pemesanan`, `durasi_sewa`, `harga`, `tgl_pembayaran`, `total_pembayaran`, `status_pembayaran`, `no_rek_pemilik`, `nama_rek_pemilik`, `nama_bank`, `bukti_pembayaran`) VALUES
+(1, 3, 1, 9, 'f', 'f', '2022-12-07 20:39:34', '30 hari', 'f', '2022-12-19', '350000', 'Terbayar', 323232, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -162,7 +176,8 @@ CREATE TABLE `rekening` (
 --
 
 INSERT INTO `rekening` (`id_rek`, `id_user`, `Nama_bank`, `Nama_rek`, `no_rek`) VALUES
-(9, 3, 'BCA', 'AJISAKA SIDDIQ', '345678987654');
+(9, 3, 'BCA', 'AJISAKA SIDDIQ', '345678987654'),
+(11, 3, 'BCA', 'tes', '34567');
 
 -- --------------------------------------------------------
 
@@ -189,14 +204,15 @@ CREATE TABLE `user_detail` (
 --
 
 INSERT INTO `user_detail` (`id_user`, `user_nama`, `username`, `user_email`, `user_pass`, `level`, `nik`, `alamat`, `foto`, `no_hp`, `jenis_kelamin`) VALUES
-(3, 'ajisakasiddiq', 'ajisaka03', 'ajisakasiddiq@gmail.com', 'ajisaka12345', 1, '3509109108020001', 'Jl. ambulu NO.73B', '638bf923eadf0.png', '085156091837', 'Laki-laki'),
-(4, 'admin', 'adminiboss', 'admin@gmail.com', 'admin', 3, '657898765432', 'Jl. ambulu NO.73B', 'profil.jpg\r\n', '085156091837', 'Laki-laki'),
+(3, 'ajisakasiddiq', 'ajisaka03', 'ajisakasiddiq@gmail.com', 'ajisaka12345', 1, '3509109108020001', 'Jl. ambulu NO.73B Balung', '638de1be13f77.jpg', '085156091837', 'Laki-laki'),
+(4, 'admin', 'adminiboss', 'admin@gmail.com', 'admin', 3, '65789876543233', 'Jl. ambulu NO.73B', 'profil.jpg', '085156091837', 'Laki-laki'),
 (5, 'ahmad hidayar', 'ahmad22', 'ahmad@gmail.com', 'ahmad123', 2, NULL, NULL, 'profil.jpg', NULL, NULL),
 (6, 'agus mantap', 'agus12', 'agus@gmail.com', 'agus12345', 3, NULL, NULL, 'profil.jpg', NULL, NULL),
-(7, 'yusuf mahardika', 'yusuf123', 'yusuf@gmail.com', 'yusuf12345', 3, NULL, NULL, 'profil.jpg', NULL, NULL),
+(7, 'yusuf mahardika', 'yusuf', 'yusuf@gmail.com', 'yusuf12345', 3, '', '', 'profil.jpg', '', ''),
 (11, 'masa', 'masa45', 'masa@gmail.com', 'masa123', 1, NULL, NULL, 'profil.jpg', NULL, NULL),
-(12, 'a', 'a33', 'a@gmail.com', 'a12345', 2, NULL, NULL, 'profil.jpg', NULL, NULL),
-(13, 'ehem', 'ehem33', 'ehem@gmail.com', 'ehem123', 1, NULL, NULL, 'profil.jpg', NULL, NULL);
+(12, 'a', 'a33', 'a@gmail.com', 'a12345', 2, '', '', '638f392178e1a.jpeg', '', ''),
+(13, 'ehem', 'ehem33', 'ehem@gmail.com', 'ehem123', 1, NULL, NULL, 'profil.jpg', NULL, NULL),
+(14, 'b', 'bb', 'b@gmail.com', 'b123', 2, NULL, NULL, 'profil.jpg', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -273,7 +289,7 @@ ALTER TABLE `user_detail`
 -- AUTO_INCREMENT for table `data_kost`
 --
 ALTER TABLE `data_kost`
-  MODIFY `id_kost` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_kost` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `detail_kamar`
@@ -297,7 +313,7 @@ ALTER TABLE `foto`
 -- AUTO_INCREMENT for table `kamar_kost`
 --
 ALTER TABLE `kamar_kost`
-  MODIFY `id_kamar` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kamar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `level_detail`
@@ -309,19 +325,19 @@ ALTER TABLE `level_detail`
 -- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `rekening`
 --
 ALTER TABLE `rekening`
-  MODIFY `id_rek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_rek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user_detail`
 --
 ALTER TABLE `user_detail`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
