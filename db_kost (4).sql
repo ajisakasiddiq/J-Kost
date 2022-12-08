@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 08, 2022 at 01:11 PM
+-- Generation Time: Dec 08, 2022 at 01:16 PM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -46,7 +46,7 @@ CREATE TABLE `data_kost` (
 
 INSERT INTO `data_kost` (`id_kost`, `id_user`, `nama_kost`, `alamat`, `deskripsi`, `foto`, `maps`, `status`, `longtitude`, `latitude`) VALUES
 (11, 3, '   Kost jember rek', '   jember rek', '   parkiran luas', '', NULL, 'APPROVED', 113.616623, -8.213216),
-(14, 3, '     kost ', '     jember', '     bebas gausah bayar ', '639176ae88547.jpeg', NULL, 'NOT APPROVED', 113.563385, -8.217563);
+(14, 3, '     kost ', '     jember', '     bebas gausah bayar ', '639176ae88547.jpeg', NULL, 'APPROVED', 113.563385, -8.217563);
 
 -- --------------------------------------------------------
 
@@ -196,23 +196,24 @@ CREATE TABLE `user_detail` (
   `alamat` varchar(255) DEFAULT NULL,
   `foto` varchar(255) DEFAULT NULL,
   `no_hp` varchar(225) DEFAULT NULL,
-  `jenis_kelamin` varchar(255) DEFAULT NULL
+  `jenis_kelamin` varchar(255) DEFAULT NULL,
+  `bukti_kontrak` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user_detail`
 --
 
-INSERT INTO `user_detail` (`id_user`, `user_nama`, `username`, `user_email`, `user_pass`, `level`, `nik`, `alamat`, `foto`, `no_hp`, `jenis_kelamin`) VALUES
-(3, 'ajisakasiddiq', 'ajisaka03', 'ajisakasiddiq@gmail.com', 'ajisaka12345', 1, '3509109108020001', 'Jl. ambulu NO.73B Balung', '638de1be13f77.jpg', '085156091837', 'Laki-laki'),
-(4, 'admin', 'adminiboss', 'admin@gmail.com', 'admin', 3, '65789876543233', 'Jl. ambulu NO.73B', 'profil.jpg', '085156091837', 'Laki-laki'),
-(5, 'ahmad hidayar', 'ahmad22', 'ahmad@gmail.com', 'ahmad123', 2, NULL, NULL, 'profil.jpg', NULL, NULL),
-(6, 'agus mantap', 'agus12', 'agus@gmail.com', 'agus12345', 3, NULL, NULL, 'profil.jpg', NULL, NULL),
-(7, 'yusuf mahardika', 'yusuf', 'yusuf@gmail.com', 'yusuf12345', 3, '', '', 'profil.jpg', '', ''),
-(11, 'masa', 'masa45', 'masa@gmail.com', 'masa123', 1, NULL, NULL, 'profil.jpg', NULL, NULL),
-(12, 'a', 'a33', 'a@gmail.com', 'a12345', 2, '', '', '638f392178e1a.jpeg', '', ''),
-(13, 'ehem', 'ehem33', 'ehem@gmail.com', 'ehem123', 1, NULL, NULL, 'profil.jpg', NULL, NULL),
-(14, 'b', 'bb', 'b@gmail.com', 'b123', 2, NULL, NULL, 'profil.jpg', NULL, NULL);
+INSERT INTO `user_detail` (`id_user`, `user_nama`, `username`, `user_email`, `user_pass`, `level`, `nik`, `alamat`, `foto`, `no_hp`, `jenis_kelamin`, `bukti_kontrak`) VALUES
+(3, 'ajisakasiddiq', 'ajisaka03', 'ajisakasiddiq@gmail.com', 'ajisaka12345', 1, '3509109108020001', 'Jl. ambulu NO.73B Balung', '638de1be13f77.jpg', '085156091837', 'Laki-laki', ''),
+(4, 'admin', 'adminiboss', 'admin@gmail.com', 'admin', 3, '65789876543233', 'Jl. ambulu NO.73B', 'profil.jpg', '085156091837', 'Laki-laki', ''),
+(5, 'ahmad hidayar', 'ahmad22', 'ahmad@gmail.com', 'ahmad123', 2, NULL, NULL, 'profil.jpg', NULL, NULL, ''),
+(6, 'agus mantap', 'agus12', 'agus@gmail.com', 'agus12345', 3, NULL, NULL, 'profil.jpg', NULL, NULL, ''),
+(7, 'yusuf mahardika', 'yusuf', 'yusuf@gmail.com', 'yusuf12345', 3, '', '', 'profil.jpg', '', '', ''),
+(11, 'masa', 'masa45', 'masa@gmail.com', 'masa123', 1, NULL, NULL, 'profil.jpg', NULL, NULL, ''),
+(12, 'a', 'a33', 'a@gmail.com', 'a12345', 2, '', '', '638f392178e1a.jpeg', '', '', ''),
+(13, 'ehem', 'ehem33', 'ehem@gmail.com', 'ehem123', 1, NULL, NULL, 'profil.jpg', NULL, NULL, ''),
+(14, 'b', 'bb', 'b@gmail.com', 'b123', 2, NULL, NULL, 'profil.jpg', NULL, NULL, '');
 
 --
 -- Indexes for dumped tables
