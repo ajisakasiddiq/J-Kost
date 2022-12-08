@@ -101,11 +101,24 @@ if (isset($_SESSION['id_user'])) {
                     <!--Start Card Body -->
                     <div class="card-body">
                       <!-- Start Form -->
-                      <form id="bookingForm" action="" method="post" class="needs-validation" novalidate autocomplete="off">
-                        <input type="hidden" class="form-control" id="inputName" name="name" placeholder="Id user" required value="<?= $sesID;  ?>" />
+                      <form id="bookingForm" action="" method="post" enctype="multipart/form-data" class="needs-validation" novalidate autocomplete="off">
+                        <input type="hidden" class="form-control" id="inputName" name="name" placeholder="Id kost" required value="<?= $sesID;  ?>" />
                         <div class="form-group">
-                          <label for="inputName">Nama Kost</label>
-                          <input type="text" class="form-control" id="inputName" name="name" placeholder="Nama kost anda!" required />
+                          <label for="inputName">Foto kamar</label>
+                          <input type="file" class="form-control" id="inputName" name="gambar" placeholder="Nama kost anda!" required />
+                        </div>
+                        <div class="form-group">
+                          <label for="">Kost</label>
+                          <select name="txt_kost" id="" class="form-control">
+                            <?php
+                            $query = "SELECT * FROM data_kost
+                             WHERE id_user = '$sesID';";
+                            $result = mysqli_query($koneksi, $query);
+                            while ($row = mysqli_fetch_array($result)) {
+                              echo "<option value=$row[id_kost] > $row[nama_kost] </option>";
+                            }
+                            ?>
+                          </select>
                         </div>
                         <div class="form-group">
                           <label for="inputName">Jenis Kamar</label>
@@ -117,7 +130,11 @@ if (isset($_SESSION['id_user'])) {
                         </div>
                         <div class="form-group">
                           <label for="inputName">No Kamar</label>
-                          <input type="text" class="form-control" id="inputName" name="name" placeholder="Nomor Kamar" required />
+                          <input type="text" class="form-control" id="inputName" name="no" placeholder="Nomor Kamar" required />
+                        </div>
+                        <div class="form-group">
+                          <label for="inputName">Harga</label>
+                          <input type="text" class="form-control" id="inputName" name="harga" placeholder="Harga/Bulan" required />
                         </div>
                         <div class="form-group">
                           <label for="textAreaRemark">Deskripsi</label>
