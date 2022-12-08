@@ -159,6 +159,28 @@ $user_data = $response_data->data;
             </div>
         </div>
     </div>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="detail">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Modal body..
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end model popup -->
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>

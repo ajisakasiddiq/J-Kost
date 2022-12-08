@@ -139,13 +139,13 @@ if (isset($_SESSION['id_user'])) {
                                             <div>
                                                 <?php
 
-                                                $query = "SELECT COUNT(total_pembayaran) as harga FROM pemesanan ";
+                                                $query = "SELECT SUM(total_pembayaran) as harga FROM pemesanan ";
                                                 $result = mysqli_query($koneksi, $query);
                                                 while ($row = mysqli_fetch_array($result)) {
                                                     $harga = $row['harga'];
                                                 }
                                                 ?>
-                                                <p class="total_no"><?= $harga; ?></p>
+                                                <p class="total_no">Rp.<?= $harga; ?></p>
                                                 <p class="head_couter">Total Pemasukan</p>
                                             </div>
                                         </div>

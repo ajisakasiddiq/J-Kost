@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 08, 2022 at 01:16 PM
+-- Generation Time: Dec 08, 2022 at 01:53 PM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -95,6 +95,7 @@ CREATE TABLE `kamar_kost` (
   `no_kamar` int(10) NOT NULL,
   `harga` varchar(225) NOT NULL,
   `status_kamar` varchar(255) NOT NULL,
+  `foto_kamar` varchar(225) NOT NULL,
   `deskripsi` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -102,8 +103,8 @@ CREATE TABLE `kamar_kost` (
 -- Dumping data for table `kamar_kost`
 --
 
-INSERT INTO `kamar_kost` (`id_kamar`, `id_kost`, `jenis_kamar`, `no_kamar`, `harga`, `status_kamar`, `deskripsi`) VALUES
-(1, 11, 'laki laki', 12, '350000', 'tersedia', 'aaaa');
+INSERT INTO `kamar_kost` (`id_kamar`, `id_kost`, `jenis_kamar`, `no_kamar`, `harga`, `status_kamar`, `foto_kamar`, `deskripsi`) VALUES
+(1, 11, 'laki laki', 12, '350000', 'tersedia', '', 'aaaa');
 
 -- --------------------------------------------------------
 
