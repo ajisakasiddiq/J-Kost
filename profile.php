@@ -5,21 +5,17 @@ session_start();
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
-   // header('Location: login.php');
-   $sesID = $_SESSION['id_user'];
-   $sesName = $_SESSION['username'];
-   $name = $_SESSION['user_nama'];
-   $sesEmail = $_SESSION['user_email'];
-   $sesLvl = $_SESSION['level'];
-   $sesImg = $_SESSION['foto'];
-   $sesNik = $_SESSION['nik'];
-   $sesAddress = $_SESSION['alamat'];
-   $sesNo = $_SESSION['no_hp'];
-   $sesGender = $_SESSION['jenis_kelamin'];
-
-
-
-
+    // header('Location: login.php');
+    $sesID = $_SESSION['id_user'];
+    $sesName = $_SESSION['username'];
+    $name = $_SESSION['user_nama'];
+    $sesEmail = $_SESSION['user_email'];
+    $sesLvl = $_SESSION['level'];
+    $sesImg = $_SESSION['foto'];
+    $sesNik = $_SESSION['nik'];
+    $sesAddress = $_SESSION['alamat'];
+    $sesNo = $_SESSION['no_hp'];
+    $sesGender = $_SESSION['jenis_kelamin'];
 }
 
 ?>
@@ -73,7 +69,7 @@ if (isset($_SESSION['id_user'])) {
             <!-- right content -->
             <div id="content">
                 <!-- topbar -->
-            <?php include("pages/topbar_dashboard.php") ?>
+                <?php include("pages/topbar_dashboard.php") ?>
                 <!-- end topbar -->
                 <!-- dashboard inner -->
                 <div class="midde_cont">
@@ -103,89 +99,90 @@ if (isset($_SESSION['id_user'])) {
                                                     </div>
                                                     <h3>Personal info</h3>
                                                     <div class="d-flex justify-content-center">
-                                                        <img src="img/<?= $userImg ?>" alt="" class="avatar img-circle" alt="avatar" width="100px" >
+                                                        <img src="img/<?= $userImg ?>" alt="" class="avatar img-circle" alt="avatar" width="100px">
                                                     </div>
-                                    <form  role="form" action="" method="post" enctype="multipart/form-data">
-                                                    <?php 
-                                                    $query  = "SELECT * FROM user_detail WHERE id_user = '$sesID'";
-                                                    $result = mysqli_query($koneksi, $query);
-                                                    while ($row = mysqli_fetch_array($result)){
-                                                        $userId = $row['id_user'];
-                                                        $userNama = $row['user_nama'];
-                                                        $userMail = $row['user_email'];
-                                                        $userName = $row['username'];
-                                                        $userLevel = $row['level'];
-                                                        $userNik = $row['nik'];
-                                                        $userAddress = $row['alamat'];
-                                                        $userImg = $row['foto'];
-                                                        $userGender = $row['jenis_kelamin'];
-                                                        $userNo = $row['no_hp'];
-                                                    ?>
-                                                    <input value="<?= $sesID ?>" class="form-control" type="hidden" name="txt_id" id="id_user">
-                                                        <div class="form-group">
-                                                        <img src="img/<?= $userImg; ?>" class="avatar img-circle" alt="avatar" width="100px">
-                                                        <h6>Upload a different photo...</h6>
-                                                        <div class="col-lg-8">
-                                                        <input type="file" class="form-control" name="gambar">
-                                                        </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="name" class="col-lg-3 control-label">Nama :</label>
-                                                            <div class="col-lg-8">
-                                                                <input value="<?= $userNama; ?>" class="form-control" type="text" name="txt_nama" id="name">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="username" class="col-lg-3 control-label">Username :</label>
-                                                            <div class="col-lg-8">
-                                                                <input value="<?= $userName; ?>" class="form-control" type="text" name="txt_username" id="username">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="email" class="col-lg-3 control-label">Email :</label>
-                                                            <div class="col-lg-8">
-                                                                <input value="<?= $userMail ?>" class="form-control" type="text" name="txt_email" id="email">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="nik" class="col-lg-3 control-label">NIK :</label>
-                                                            <div class="col-lg-8">
-                                                                <input value="<?= $userNik; ?>" class="form-control" type="text" name="txt_nik" id="nik">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="gender" class="col-lg-3 control-label">Jenis Kelamin :</label>
-                                                            <div class="col-lg-8">
-                                                                <div class="ui-select">
-                                                          <select id="gender" class="form-control" id="gender" name="txt_gender">
-                                                          <option value="<?= $userGender;  ?>"><?= $userGender; ?></option>  
-                                                          <option value="">Pilih Jenis Kelamin </option>
-                                                          <option value="Laki-laki">Laki - Laki </option>
-                                                          <option value="perempuan">Perempuan</option>
-                                                        </select>
+                                                    <form role="form" action="" method="post" enctype="multipart/form-data">
+                                                        <?php
+                                                        $query  = "SELECT * FROM user_detail WHERE id_user = '$sesID'";
+                                                        $result = mysqli_query($koneksi, $query);
+                                                        while ($row = mysqli_fetch_array($result)) {
+                                                            $userId = $row['id_user'];
+                                                            $userNama = $row['user_nama'];
+                                                            $userMail = $row['user_email'];
+                                                            $userName = $row['username'];
+                                                            $userLevel = $row['level'];
+                                                            $userNik = $row['nik'];
+                                                            $userAddress = $row['alamat'];
+                                                            $userImg = $row['foto'];
+                                                            $userGender = $row['jenis_kelamin'];
+                                                            $userNo = $row['no_hp'];
+                                                        ?>
+                                                            <input value="<?= $sesID ?>" class="form-control" type="hidden" name="txt_id" id="id_user">
+                                                            <div class="form-group">
+                                                                <img src="img/<?= $userImg; ?>" class="avatar img-circle" alt="avatar" width="100px">
+                                                                <h6>Upload a different photo...</h6>
+                                                                <div class="col-lg-8">
+                                                                    <input type="file" class="form-control" name="gambar">
+                                                                    <input type="hidden" class="form-control" name="gambarLama" value="<?= $userImg; ?>">
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="numberPhone" class="col-lg-3 control-label">No. HP :</label>
-                                                            <div class="col-lg-8">
-                                                                <input value="<?= $userNo; ?>" class="form-control" type="text" name="txt_nohp" id="numberPhone">
+                                                            <div class="form-group">
+                                                                <label for="name" class="col-lg-3 control-label">Nama :</label>
+                                                                <div class="col-lg-8">
+                                                                    <input value="<?= $userNama; ?>" class="form-control" type="text" name="txt_nama" id="name">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="alamat" class="col-md-3 control-label">Alamat :</label>
-                                                            <div class="col-md-8">
-                                                                <textarea class="form-control" rows="5"  id="alamat"  type="text" name="txt_alamat"><?= $userAddress; ?></textarea>
+                                                            <div class="form-group">
+                                                                <label for="username" class="col-lg-3 control-label">Username :</label>
+                                                                <div class="col-lg-8">
+                                                                    <input value="<?= $userName; ?>" class="form-control" type="text" name="txt_username" id="username">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-md-3 control-label"></label>
-                                                            <div class="col-md-8">
-                                                                <button class="btn btn-primary" type="submit" name="edit">Simpan</button>
-                                                                <span></span>
-                                                                <input type="reset" class="btn btn-default" value="Cancel">
+                                                            <div class="form-group">
+                                                                <label for="email" class="col-lg-3 control-label">Email :</label>
+                                                                <div class="col-lg-8">
+                                                                    <input value="<?= $userMail ?>" class="form-control" type="text" name="txt_email" id="email">
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                            <div class="form-group">
+                                                                <label for="nik" class="col-lg-3 control-label">NIK :</label>
+                                                                <div class="col-lg-8">
+                                                                    <input value="<?= $userNik; ?>" class="form-control" type="text" name="txt_nik" id="nik">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="gender" class="col-lg-3 control-label">Jenis Kelamin :</label>
+                                                                <div class="col-lg-8">
+                                                                    <div class="ui-select">
+                                                                        <select id="gender" class="form-control" id="gender" name="txt_gender">
+                                                                            <option value="<?= $userGender;  ?>"><?= $userGender; ?></option>
+                                                                            <option value="">Pilih Jenis Kelamin </option>
+                                                                            <option value="Laki-laki">Laki - Laki </option>
+                                                                            <option value="perempuan">Perempuan</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="numberPhone" class="col-lg-3 control-label">No. HP :</label>
+                                                                <div class="col-lg-8">
+                                                                    <input value="<?= $userNo; ?>" class="form-control" type="text" name="txt_nohp" id="numberPhone">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="alamat" class="col-md-3 control-label">Alamat :</label>
+                                                                <div class="col-md-8">
+                                                                    <textarea class="form-control" rows="5" id="alamat" type="text" name="txt_alamat"><?= $userAddress; ?></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label"></label>
+                                                                <div class="col-md-8">
+                                                                    <button class="btn btn-primary" type="submit" name="edit">Simpan</button>
+                                                                    <span></span>
+                                                                    <input type="reset" class="btn btn-default" value="Cancel">
+                                                                </div>
+                                                            </div>
                                                         <?php } ?>
                                                     </form>
                                                 </div>
@@ -220,93 +217,101 @@ if (isset($_SESSION['id_user'])) {
                                 <script src="js/semantic.min.js"></script>
                                 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<?php 
-if( isset($_POST['edit']) ){
-    $userId     = $_POST['txt_id'];
-    $Mail     = $_POST['txt_email'];
-    $userName   = $_POST['txt_username'];
-    $Name   = $_POST['txt_nama'];
-    $Nik   = $_POST['txt_nik'];
-    $Gender   = $_POST['txt_gender'];
-    $Nohp   = $_POST['txt_nohp'];
-    $Address   = $_POST['txt_alamat'];
-    $Img = upload();
-    // $Img   = $_POST['img'];
-    
-     $query = "UPDATE user_detail SET user_nama='$Name', username='$userName', user_email='$Mail',nik='$Nik',alamat='$Address',foto='$Img',no_hp='$Nohp',jenis_kelamin='$Gender' WHERE id_user='$userId'";
-    $result = mysqli_query($koneksi, $query);
-    if ($result) {
-        $success = "User data telah terupdate!";
-    }else{
-        $error =  "User data gagal update";
-    }
-}
+                                <?php
+                                if (isset($_POST['edit'])) {
+                                    $userId     = $_POST['txt_id'];
+                                    $Mail     = $_POST['txt_email'];
+                                    $userName   = $_POST['txt_username'];
+                                    $Name   = $_POST['txt_nama'];
+                                    $Nik   = $_POST['txt_nik'];
+                                    $Gender   = $_POST['txt_gender'];
+                                    $Nohp   = $_POST['txt_nohp'];
+                                    $Address   = $_POST['txt_alamat'];
+                                    $gambarLama = $_POST['gambarLama'];
 
-function upload(){
+                                    if ($_FILES['gambar']['error'] === 4) {
+                                        $Img = $gambarLama;
+                                    } else {
+                                        $Img = upload();
+                                    }
 
-    $file = $_FILES['gambar'] ['name'];
-    $size = $_FILES['gambar'] ['size'];
-    $error = $_FILES ['gambar']['error'];
-    $tmpName = $_FILES['gambar']['tmp_name'];
+                                    // $Img   = $_POST['img'];
 
-//cek file apakah diupload atau tidak
-    if ( $error === 4 ) {
-      echo "<script> 
+                                    $query = "UPDATE user_detail SET user_nama='$Name', username='$userName', user_email='$Mail',nik='$Nik',alamat='$Address',foto='$Img',no_hp='$Nohp',jenis_kelamin='$Gender' WHERE id_user='$userId'";
+                                    $result = mysqli_query($koneksi, $query);
+                                    if ($result) {
+                                        $success = "User data telah terupdate!";
+                                    } else {
+                                        $error =  "User data gagal update";
+                                    }
+                                }
+
+                                function upload()
+                                {
+
+                                    $file = $_FILES['gambar']['name'];
+                                    $size = $_FILES['gambar']['size'];
+                                    $error = $_FILES['gambar']['error'];
+                                    $tmpName = $_FILES['gambar']['tmp_name'];
+
+                                    //cek file apakah diupload atau tidak
+                                    if ($error === 4) {
+                                        echo "<script> 
         alert('Pilih gambar terlebih dahulu');
       </script>";
-      return false;
-    }
+                                        return false;
+                                    }
 
-    //cek apakah benar gambar
-    $extensGambarValid = ['jpg','jpeg','png'];
-    $extensGambar = explode('.',$file);
-    $extensGambar = strtolower(end($extensGambar));
-    if (!in_array($extensGambar,$extensGambarValid)) {
-      echo "<script> 
+                                    //cek apakah benar gambar
+                                    $extensGambarValid = ['jpg', 'jpeg', 'png'];
+                                    $extensGambar = explode('.', $file);
+                                    $extensGambar = strtolower(end($extensGambar));
+                                    if (!in_array($extensGambar, $extensGambarValid)) {
+                                        echo "<script> 
       alert('Yang anda upload bukan berupa file gambar');
     </script>";
-    return false;
-    }
+                                        return false;
+                                    }
 
-    //cek jika ukuran nya terlalu besar 
-    if ($size > 1000000) {
+                                    //cek jika ukuran nya terlalu besar 
+                                    if ($size > 1000000) {
 
-        echo "<script> 
+                                        echo "<script> 
         alert('Ukuran gambar terlalu besar');
       </script>";
-    }
+                                    }
 
-//generate nama gambar baru
-$namaFIlebaru = uniqid();
-$namaFIlebaru .= '.';
-$namaFIlebaru .= $extensGambar;
+                                    //generate nama gambar baru
+                                    $namaFIlebaru = uniqid();
+                                    $namaFIlebaru .= '.';
+                                    $namaFIlebaru .= $extensGambar;
 
 
 
-    //lolos cek 
-    move_uploaded_file($tmpName,'img/'.$namaFIlebaru);
-    return $namaFIlebaru;
-}
+                                    //lolos cek 
+                                    move_uploaded_file($tmpName, 'img/' . $namaFIlebaru);
+                                    return $namaFIlebaru;
+                                }
 
-?>
-<?php if(isset($success)){ ?>
-    <script>
-        swal({
-  title: "<?= $success; ?>",
-  icon: "success",
-  button: "OKE!",
-});
-    </script>
-    <?php }?>
-    <?php if(isset($error)){ ?>
-    <script>
-        swal({
-  title: "<?= $error; ?>",
-  icon: "success",
-  button: "OKE!",
-});
-    </script>
-    <?php }?>
+                                ?>
+                                <?php if (isset($success)) { ?>
+                                    <script>
+                                        swal({
+                                            title: "<?= $success; ?>",
+                                            icon: "success",
+                                            button: "OKE!",
+                                        });
+                                    </script>
+                                <?php } ?>
+                                <?php if (isset($error)) { ?>
+                                    <script>
+                                        swal({
+                                            title: "<?= $error; ?>",
+                                            icon: "success",
+                                            button: "OKE!",
+                                        });
+                                    </script>
+                                <?php } ?>
 
 
 
