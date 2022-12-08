@@ -158,6 +158,7 @@ if (isset($_SESSION['id_user'])) {
                                                                                         <div class="form-group">
                                                                                             <label for="img">Kost tampak depan</label>
                                                                                             <input id="img" type="file" class="form-control" name="gambar">
+                                                                                            <input id="img" type="text" class="form-control" name="gambarLama" value="<?= $Img; ?>">
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="inputName">Nama Kost</label>
@@ -257,7 +258,12 @@ if (isset($_POST['edit'])) {
     $deskripsi  = $_POST['txt_deskripsi'];
     $Name   = $_POST['txt_nama'];
     $Address   = $_POST['txt_alamat'];
-    $Img = upload();
+    $gambarLama   = $_POST['gambarLama'];
+    if ($_FILES['gambar']['error'] === 4) {
+        $Img = $gambarLama;
+    } else {
+        $Img = upload();
+    }
 
     $query = "UPDATE data_kost SET nama_kost='$Name', alamat='$Alamat', deskripsi='$deskripsi',foto='$Img' WHERE id_kost='$Id'";
     $result = mysqli_query($koneksi, $query);
@@ -277,12 +283,12 @@ function upload()
     $tmpName = $_FILES['gambar']['tmp_name'];
 
     //cek file apakah diupload atau tidak
-    if ($error === 4) {
-        echo "<script> 
-        alert('Pilih gambar terlebih dahulu');
-      </script>";
-        return false;
-    }
+    // if ($error === 4) {
+    //     echo "<script> 
+    //     alert('Pilih gambar terlebih dahulu');
+    //   </script>";
+    //     return false;
+    // }
 
     //cek apakah benar gambar
     $extensGambarValid = ['jpg', 'jpeg', 'png'];
