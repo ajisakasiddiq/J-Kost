@@ -5,17 +5,17 @@ session_start();
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
-   // header('Location: login.php');
-   $sesID = $_SESSION['id_user'];
-   $sesName = $_SESSION['username'];
-   $name = $_SESSION['user_nama'];
-   $sesEmail = $_SESSION['user_email'];
-   $sesLvl = $_SESSION['level'];
-   $sesImg = $_SESSION['foto'];
-   $sesNik = $_SESSION['nik'];
-   $sesAddress = $_SESSION['alamat'];
-   $sesNo = $_SESSION['no_hp'];
-   $sesGender = $_SESSION['jenis_kelamin'];
+    // header('Location: login.php');
+    $sesID = $_SESSION['id_user'];
+    $sesName = $_SESSION['username'];
+    $name = $_SESSION['user_nama'];
+    $sesEmail = $_SESSION['user_email'];
+    $sesLvl = $_SESSION['level'];
+    $sesImg = $_SESSION['foto'];
+    $sesNik = $_SESSION['nik'];
+    $sesAddress = $_SESSION['alamat'];
+    $sesNo = $_SESSION['no_hp'];
+    $sesGender = $_SESSION['jenis_kelamin'];
 }
 ?>
 
@@ -96,38 +96,38 @@ if (isset($_SESSION['id_user'])) {
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
                 <a href="#" class="navbar-brand">MENU</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                        <a href="index.php" class="nav-item nav-link ">Home</a>
-                        <a href="about.php" class="nav-item nav-link">Tentang Kami</a>
-                        <a href="service.php" class="nav-item nav-link">Pelayanan</a>
-                        <a href="order.php" class="nav-item nav-link active">Pemesanan</a>
+                        <a href="index" class="nav-item nav-link ">Home</a>
+                        <a href="about" class="nav-item nav-link">Tentang Kami</a>
+                        <a href="service" class="nav-item nav-link">Pelayanan</a>
+                        <a href="order" class="nav-item nav-link active">Pemesanan</a>
                         <!-- <a href="contact.php" class="nav-item nav-link">Contact</a> -->
                     </div>
                     <div class="ml-auto">
-                        <?php if(isset($_SESSION['id_user']) ){ ?>
+                        <?php if (isset($_SESSION['id_user'])) { ?>
                             <ul class="navbar-nav d-lg-flex">
-                            <li class="nav-item dropdown">
-                                <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
-                                    Hi, <?php echo $name; ?>
-                                    <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
-                                </a>
-                                <div class="dropdown-menu bg-dark">
-                                    <a href="dashboard.php" class="dropdown-item text-danger">Dashboard</a>
-                                    <a href="ResetPass.php" class="dropdown-item text-danger">Setting</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="logout.php" class="dropdown-item text-danger">Logout</a>
-                                </div>
-                            </li>
-                        </ul>
-                        <?php 
-                    }elseif(!isset($_SESSION['id_user'])) {?>
-                        <a href="register.php" class="btn-regis ">Register</a>
-                        <a href="login.php" class="btn btn-custom">Login</a>
-                       
+                                <li class="nav-item dropdown">
+                                    <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
+                                        Hi, <?php echo $name; ?>
+                                        <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
+                                    </a>
+                                    <div class="dropdown-menu bg-dark">
+                                        <a href="dashboard" class="dropdown-item text-danger">Dashboard</a>
+                                        <a href="ResetPass" class="dropdown-item text-danger">Setting</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="logout" class="dropdown-item text-danger">Logout</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        <?php
+                        } elseif (!isset($_SESSION['id_user'])) { ?>
+                            <a href="register.php" class="btn-regis ">Register</a>
+                            <a href="login.php" class="btn btn-custom">Login</a>
+
                         <?php } ?>
                     </div>
 
@@ -182,105 +182,105 @@ if (isset($_SESSION['id_user'])) {
                 <div class="col-lg-6 input-group mb-3">
                     <input type="text" class="form-control" placeholder="Cari nama kos/alamat/tempat " aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                      <button class="input-group-text  btn" id="basic-addon2">Cari</button>
+                        <button class="input-group-text  btn" id="basic-addon2">Cari</button>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-3 mb-3">
                     <a href="details.php">
-                    <div class="card">
-                        <img src="img/product-details-1.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h3 class="card-text">Bara Kost</h3>
-                            <p>By Bara kost</p>
-                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                        <div class="card">
+                            <img src="img/product-details-1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-text">Bara Kost</h3>
+                                <p>By Bara kost</p>
+                                <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                            </div>
                         </div>
-                    </div>
                     </a>
                 </div>
                 <div class="col-lg-3 mb-3">
                     <a href="details.php">
-                    <div class="card">
-                        <img src="img/product-details-2.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h3 class="card-text">Bara Kost</h3>
-                            <p>By Bara kost</p>
-                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                        <div class="card">
+                            <img src="img/product-details-2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-text">Bara Kost</h3>
+                                <p>By Bara kost</p>
+                                <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                            </div>
                         </div>
-                    </div>
                     </a>
                 </div>
                 <div class="col-lg-3 mb-3">
                     <a href="details.php">
-                    <div class="card">
-                        <img src="img/product-details-3.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h3 class="card-text">Bara Kost</h3>
-                            <p>By Bara kost</p>
-                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                        <div class="card">
+                            <img src="img/product-details-3.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-text">Bara Kost</h3>
+                                <p>By Bara kost</p>
+                                <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                            </div>
                         </div>
-                    </div>
                     </a>
                 </div>
                 <div class="col-lg-3 mb-3">
                     <a href="details.php">
-                    <div class="card">
-                        <img src="img/product-details-4.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h3 class="card-text">Bara Kost</h3>
-                            <p>By Bara kost</p>
-                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                        <div class="card">
+                            <img src="img/product-details-4.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-text">Bara Kost</h3>
+                                <p>By Bara kost</p>
+                                <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                            </div>
                         </div>
-                    </div>
                     </a>
                 </div>
                 <div class="col-lg-3 mb-3">
                     <a href="details.php">
-                    <div class="card">
-                        <img src="img/product-details-1.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h3 class="card-text">Bara Kost</h3>
-                            <p>By Bara kost</p>
-                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                        <div class="card">
+                            <img src="img/product-details-1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-text">Bara Kost</h3>
+                                <p>By Bara kost</p>
+                                <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                            </div>
                         </div>
-                    </div>
                     </a>
                 </div>
                 <div class="col-lg-3 mb-3">
                     <a href="details.php">
-                    <div class="card">
-                        <img src="img/product-details-2.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h3 class="card-text">Bara Kost</h3>
-                            <p>By Bara kost</p>
-                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                        <div class="card">
+                            <img src="img/product-details-2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-text">Bara Kost</h3>
+                                <p>By Bara kost</p>
+                                <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                            </div>
                         </div>
-                    </div>
                     </a>
                 </div>
                 <div class="col-lg-3 mb-3">
                     <a href="details.php">
-                    <div class="card">
-                        <img src="img/product-details-3.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h3 class="card-text">Bara Kost</h3>
-                            <p>By Bara kost</p>
-                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                        <div class="card">
+                            <img src="img/product-details-3.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-text">Bara Kost</h3>
+                                <p>By Bara kost</p>
+                                <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                            </div>
                         </div>
-                    </div>
                     </a>
                 </div>
                 <div class="col-lg-3 mb-3">
                     <a href="details.php">
-                    <div class="card">
-                        <img src="img/product-details-4.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h3 class="card-text">Bara Kost</h3>
-                            <p>By Bara kost</p>
-                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                        <div class="card">
+                            <img src="img/product-details-4.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-text">Bara Kost</h3>
+                                <p>By Bara kost</p>
+                                <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                            </div>
                         </div>
-                    </div>
                     </a>
                 </div>
 

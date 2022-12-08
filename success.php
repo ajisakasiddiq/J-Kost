@@ -58,11 +58,11 @@ if (isset($_SESSION['id_user'])) {
                             Transaction Processed!
                         </h2>
                         <p>
-                            Silahkan tunggu konfirmasi email dari kami dan <br />
-                            kami akan menginformasikan resi secept mungkin!
+                            Silahkan Melakukan pembayaran dengan menuju <br />
+                            dashboard dan mngecek di bagian transaksi!
                         </p>
                         <div>
-                            <a class="btn btn-custom w-50 mt-4" href="dashboard">
+                            <a class="btn btn-custom w-50 mt-4" href="transaksi_user">
                                 My Dashboard
                             </a>
                             <a class="btn btn-signup w-50 mt-2" href="order">

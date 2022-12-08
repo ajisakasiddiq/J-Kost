@@ -122,6 +122,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 <td>Terupload</td>
                                                                 <td>
                                                                     <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#detail"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
+                                                                    <a href="cetakTransaksi?" class="btn btn-warning btn-circle"><i class="fa-solid fa-print mr-1"></i>Cetak</a>
                                                                 </td>
                                                             </tr>
                                                         </tbody>

@@ -105,29 +105,93 @@ if (isset($_SESSION['id_user'])) {
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
-                                                                <th>Gambar</th>
+                                                                <th>Foto</th>
                                                                 <th>Nama Kost</th>
                                                                 <th>No. Kamar</th>
+                                                                <th>Jenis Kamar</th>
                                                                 <th>Deskripsi</th>
-                                                                <th>Disetujui</th>
+                                                                <th>Harga</th>
+                                                                <th>Status</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>-</td>
-                                                                <td>Bara Kost</td>
-                                                                <td>2A</td>
-                                                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum accusamus repudiandae facere distinctio ut omnis laboriosam, corrupti ea cumque deleniti, aperiam iusto pariatur. Itaque ut, eveniet
-                                                                    iste praesentium exercitationem at</td>
-                                                                <td>Disetujui</td>
-                                                                <td>
-                                                                    <a href="edit.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
+                                                            <?php
+                                                            $query = "SELECT kamar_kost.id_kamar,kamar_kost.foto_kamar , data_kost.nama_kost,kamar_kost.jenis_kamar,kamar_kost.no_kamar,kamar_kost.deskripsi,kamar_kost.status_kamar,kamar_kost.harga
+                                                                FROM kamar_kost
+                                                                INNER JOIN data_kost ON data_kost.id_kost=kamar_kost.id_kost
+                                                                WHERE data_kost.id_user='$sesID'";
+                                                            $result = mysqli_query($koneksi, $query);
+                                                            $no = 1;
+                                                            while ($row = mysqli_fetch_array($result)) {
+                                                                $id = $row['id_kamar'];
+                                                                $img = $row['foto_kamar'];
+                                                                $Name = $row['nama_kost'];
+                                                                $Jenis = $row['jenis_kamar'];
+                                                                $No = $row['no_kamar'];
+                                                                $Dess = $row['deskripsi'];
+                                                                $status = $row['status_kamar'];
+                                                                $harga = $row['harga'];
+                                                            ?>
+                                                                <tr>
+                                                                    <td><?= $no; ?></td>
+                                                                    <td><?= $img; ?></td>
+                                                                    <td><?= $Name; ?></td>
+                                                                    <td><?= $No; ?></td>
+                                                                    <td><?= $Jenis; ?></td>
+                                                                    <td><?= $Dess; ?></td>
+                                                                    <td><?= $harga; ?></td>
+                                                                    <td><?= $status; ?></td>
+                                                                    <td>
+                                                                        <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editKamar<?= $id; ?>"><i class="fas fa-pen"></i></a>
 
-                                                                    <a href="hapus.php" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
-                                                                </td>
-                                                            </tr>
+                                                                        <a href="hapus.php" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
+                                                                    </td>
+
+                                                                    <!-- edit kamar -->
+                                                                    <div class="modal fade" id="editKamar<?= $id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                </div>
+                                                                                <form role="form" action="" method="post" enctype="multipart/form-data">
+                                                                                    <div class="modal-body">
+                                                                                        <div class="img">
+                                                                                            <img src="img/<?= $Img; ?>" alt="" width="100%" height="300px">
+                                                                                        </div>
+                                                                                        <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $idKost; ?>">
+                                                                                        <div class="form-group">
+                                                                                            <label for="img">Kost tampak depan</label>
+                                                                                            <input id="img" type="file" class="form-control" name="gambar">
+                                                                                            <input id="img" type="hidden" class="form-control" name="gambarLama" value="<?= $Img; ?>">
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="inputName">Nama Kost</label>
+                                                                                            <input value=" <?= $NameKost; ?>" type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="textAreaRemark">Deskripsi</label>
+                                                                                            <textarea class="form-control" name="txt_deskripsi" id="textAreaRemark" rows="5" placeholder="Tell us you want more..."> <?= $Dess; ?></textarea>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="inputEmail">Alamat</label>
+                                                                                            <textarea class="form-control" rows="5" type="text" id="alamat" name="txt_alamat"> <?= $Address; ?></textarea>
+                                                                                            <small class="form-text text-muted">Isi alamat selengkap mungkin!.</small>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                        <button name="edit" type="submit" class="btn btn-primary">Save changes</button>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </tr>
+                                                                <?php echo $no++; ?>
+                                                            <?php  } ?>
                                                         </tbody>
                                                     </table>
                                                 </div>

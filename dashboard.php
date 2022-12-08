@@ -186,7 +186,15 @@ if (isset($_SESSION['id_user'])) {
                                         </div>
                                         <div class="counter_no">
                                             <div>
-                                                <p class="total_no">1000</p>
+                                                <?php
+
+                                                $query = "SELECT COUNT(id_pemesanan) as sewa FROM pemesanan WHERE id_user = '$sesID'";
+                                                $result = mysqli_query($koneksi, $query);
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    $sewa = $row['sewa'];
+                                                }
+                                                ?>
+                                                <p class="total_no"><?= $sewa; ?></p>
                                                 <p class="head_couter">Total Sewa</p>
                                             </div>
                                         </div>
@@ -201,7 +209,15 @@ if (isset($_SESSION['id_user'])) {
                                         </div>
                                         <div class="counter_no">
                                             <div>
-                                                <p class="total_no">100.000.000</p>
+                                                <?php
+
+                                                $query = "SELECT SUM(total_pembayaran) as harga FROM pemesanan WHERE id_user = '$sesID'";
+                                                $result = mysqli_query($koneksi, $query);
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    $harga = $row['harga'];
+                                                }
+                                                ?>
+                                                <p class="total_no">Rp.<?= $harga; ?></p>
                                                 <p class="head_couter">Total Pemasukan</p>
                                             </div>
                                         </div>

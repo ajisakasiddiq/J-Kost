@@ -80,7 +80,7 @@ if (isset($_SESSION['id_user'])) {
                             <div class="col-md-12">
                                 <div class="page_title">
                                     <br>
-                                    <h2>Data Kamar</h2>
+                                    <h2>Data Kost</h2>
                                 </div>
                             </div>
                         </div>
@@ -158,7 +158,7 @@ if (isset($_SESSION['id_user'])) {
                                                                                         <div class="form-group">
                                                                                             <label for="img">Kost tampak depan</label>
                                                                                             <input id="img" type="file" class="form-control" name="gambar">
-                                                                                            <input id="img" type="text" class="form-control" name="gambarLama" value="<?= $Img; ?>">
+                                                                                            <input id="img" type="hidden" class="form-control" name="gambarLama" value="<?= $Img; ?>">
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="inputName">Nama Kost</label>
