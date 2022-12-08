@@ -321,7 +321,7 @@ if (isset($_SESSION['id_user'])) {
             </div>
             <div class="col-8 col-md-3">
               <a
-                href="/success.html"
+                href="success.php"
                 class="btn btn-custom mt-4 px-4 btn-block"
               >
                 Checkout Now
