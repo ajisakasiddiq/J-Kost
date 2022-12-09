@@ -157,13 +157,13 @@ if (isset($_SESSION['id_user'])) {
                                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                                 </div>
                                                                                 <form role="form" action="" method="post" enctype="multipart/form-data">
+                                                                                    <input type="text" name="txt_id" value="<?= $id; ?>">
                                                                                     <div class="modal-body">
                                                                                         <div class="img">
                                                                                             <img src="img/<?= $Img; ?>" alt="" width="100%" height="300px">
                                                                                         </div>
-                                                                                        <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $idKost; ?>">
                                                                                         <div class="form-group">
-                                                                                            <label for="img">Kost tampak depan</label>
+                                                                                            <label for="img">Kamar kost</label>
                                                                                             <input id="img" type="file" class="form-control" name="gambar">
                                                                                             <input id="img" type="hidden" class="form-control" name="gambarLama" value="<?= $img; ?>">
                                                                                         </div>
@@ -183,16 +183,20 @@ if (isset($_SESSION['id_user'])) {
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="inputName">Harga</label>
-                                                                                            <input value=" <?= $No; ?>" type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
+                                                                                            <input value=" <?= $harga; ?>" type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="textAreaRemark">Deskripsi</label>
                                                                                             <textarea class="form-control" name="txt_deskripsi" id="textAreaRemark" rows="5" placeholder="Tell us you want more..."> <?= $Dess; ?></textarea>
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label for="inputEmail">Alamat</label>
-                                                                                            <textarea class="form-control" rows="5" type="text" id="alamat" name="txt_alamat"> <?= $Address; ?></textarea>
-                                                                                            <small class="form-text text-muted">Isi peraturan di kamar kost anda!.</small>
+                                                                                            <label for="inputName">Status Kamar</label>
+                                                                                            <select name="txt_status" id="" class="form-control form-control-user" required>
+                                                                                                <option value="<?= $status; ?>"><?= $status; ?></option>
+                                                                                                <option value="">----</option>
+                                                                                                <option value="Tersedia">Tersedia</option>
+                                                                                                <option value="Berpenghuni">Berpenghuni</option>
+                                                                                            </select>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="modal-footer">
@@ -291,5 +295,86 @@ if (isset($_SESSION['id_user'])) {
         });
     </script>
 </body>
+
+
+<?php
+if (isset($_POST['edit'])) {
+    $Id     = $_POST['txt_id'];
+    $Alamat  = $_POST['txt_alamat'];
+    $deskripsi  = $_POST['txt_deskripsi'];
+    $Name   = $_POST['txt_nama'];
+    $Address   = $_POST['txt_alamat'];
+    $gambarLama   = $_POST['gambarLama'];
+    if ($_FILES['gambar']['error'] === 4) {
+        $Img = $gambarLama;
+    } else {
+        $Img = upload();
+    }
+
+    $query = "UPDATE data_kost SET nama_kost='$Name', alamat='$Alamat', deskripsi='$deskripsi',foto='$Img' WHERE id_kost='$Id'";
+    $result = mysqli_query($koneksi, $query);
+    if ($result) {
+        $success = "User data telah terupdate!";
+    } else {
+        $error =  "User data gagal update";
+    }
+}
+
+function upload()
+{
+
+    $file = $_FILES['gambar']['name'];
+    $size = $_FILES['gambar']['size'];
+    $error = $_FILES['gambar']['error'];
+    $tmpName = $_FILES['gambar']['tmp_name'];
+
+    //cek file apakah diupload atau tidak
+    // if ($error === 4) {
+    //     echo "<script> 
+    //     alert('Pilih gambar terlebih dahulu');
+    //   </script>";
+    //     return false;
+    // }
+
+    //cek apakah benar gambar
+    $extensGambarValid = ['jpg', 'jpeg', 'png'];
+    $extensGambar = explode('.', $file);
+    $extensGambar = strtolower(end($extensGambar));
+    if (!in_array($extensGambar, $extensGambarValid)) {
+        echo "<script> 
+      alert('Yang anda upload bukan berupa file gambar');
+    </script>";
+        return false;
+    }
+
+    //cek jika ukuran nya terlalu besar 
+    if ($size > 1000000) {
+
+        echo "<script> 
+        alert('Ukuran gambar terlalu besar');
+      </script>";
+    }
+
+    //generate nama gambar baru
+    $namaFIlebaru = uniqid();
+    $namaFIlebaru .= '.';
+    $namaFIlebaru .= $extensGambar;
+
+
+
+    //lolos cek 
+    move_uploaded_file($tmpName, 'img/' . $namaFIlebaru);
+    return $namaFIlebaru;
+}
+
+
+
+
+// hapus
+$id = $_GET['id_kost'];
+$query =  "DELETE FROM data_kost WHERE id_kost='$id'";
+mysqli_query($koneksi, $query);
+unlink($Img);
+?>
 
 </html>
