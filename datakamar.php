@@ -135,7 +135,7 @@ if (isset($_SESSION['id_user'])) {
                                                             ?>
                                                                 <tr>
                                                                     <td><?= $no; ?></td>
-                                                                    <td><?= $img; ?></td>
+                                                                    <td><img src="img/<?= $img; ?>" alt="" width="80px"></td>
                                                                     <td><?= $Name; ?></td>
                                                                     <td><?= $No; ?></td>
                                                                     <td><?= $Jenis; ?></td>
@@ -165,11 +165,25 @@ if (isset($_SESSION['id_user'])) {
                                                                                         <div class="form-group">
                                                                                             <label for="img">Kost tampak depan</label>
                                                                                             <input id="img" type="file" class="form-control" name="gambar">
-                                                                                            <input id="img" type="hidden" class="form-control" name="gambarLama" value="<?= $Img; ?>">
+                                                                                            <input id="img" type="hidden" class="form-control" name="gambarLama" value="<?= $img; ?>">
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label for="inputName">Nama Kost</label>
-                                                                                            <input value=" <?= $NameKost; ?>" type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
+                                                                                            <label for="inputName">No kamar</label>
+                                                                                            <input value=" <?= $No; ?>" type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="inputName">Jenis Kamar</label>
+                                                                                            <select name="txt_jenis" id="" class="form-control form-control-user" required>
+                                                                                                <option value="<?= $Jenis; ?>"><?= $Jenis; ?></option>
+                                                                                                <option value="">----</option>
+                                                                                                <option value="Laki-Laki">Laki-Laki</option>
+                                                                                                <option value="Perempuan">Perempuan</option>
+                                                                                                <option value="Campur">Campur</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="inputName">Harga</label>
+                                                                                            <input value=" <?= $No; ?>" type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="textAreaRemark">Deskripsi</label>
@@ -178,7 +192,7 @@ if (isset($_SESSION['id_user'])) {
                                                                                         <div class="form-group">
                                                                                             <label for="inputEmail">Alamat</label>
                                                                                             <textarea class="form-control" rows="5" type="text" id="alamat" name="txt_alamat"> <?= $Address; ?></textarea>
-                                                                                            <small class="form-text text-muted">Isi alamat selengkap mungkin!.</small>
+                                                                                            <small class="form-text text-muted">Isi peraturan di kamar kost anda!.</small>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="modal-footer">

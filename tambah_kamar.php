@@ -105,11 +105,11 @@ if (isset($_SESSION['id_user'])) {
                         <input type="hidden" class="form-control" id="inputName" name="name" placeholder="Id kost" required value="<?= $sesID;  ?>" />
                         <div class="form-group">
                           <label for="inputName">Foto kamar</label>
-                          <input type="file" class="form-control" id="inputName" name="gambar" placeholder="Nama kost anda!" required />
+                          <input type="file" class="form-control" id="inputName" name="gambar" required />
                         </div>
                         <div class="form-group">
                           <label for="">Kost</label>
-                          <select name="txt_kost" id="" class="form-control">
+                          <select name="id_kost" id="" class="form-control" required>
                             <?php
                             $query = "SELECT * FROM data_kost
                              WHERE id_user = '$sesID';";
@@ -122,10 +122,10 @@ if (isset($_SESSION['id_user'])) {
                         </div>
                         <div class="form-group">
                           <label for="inputName">Jenis Kamar</label>
-                          <select name="txt_jenis" id="" class="form-control form-control-user">
+                          <select name="txt_jenis" id="" class="form-control form-control-user" required>
                             <option value="Laki-Laki">Laki-Laki</option>
                             <option value="Perempuan">Perempuan</option>
-                            <option value="Campue">Campur</option>
+                            <option value="Campur">Campur</option>
                           </select>
                         </div>
                         <div class="form-group">
@@ -142,7 +142,7 @@ if (isset($_SESSION['id_user'])) {
                         </div>
 
                         <!-- Start Submit Button -->
-                        <button class="btn btn-primary btn-block col-lg-2 ms-auto" type="submit">Submit</button>
+                        <button class="btn btn-primary btn-block col-lg-2 ms-auto" type="submit" name="tambah">Submit</button>
                         <!-- End Submit Button -->
                       </form>
                     </div>
@@ -174,7 +174,91 @@ if (isset($_SESSION['id_user'])) {
                   <script src="js/custom.js"></script>
                   <!-- calendar file css -->
                   <script src="js/semantic.min.js"></script>
+                  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+
+
+                  <?php if (isset($_POST['tambah'])) {
+                    $id = $_POST['id_kost'];
+                    $Jenis = $_POST['txt_jenis'];
+                    $Deskripsi = $_POST['deskripsi'];
+                    $No = $_POST['no'];
+                    $Harga = $_POST['harga'];
+                    $Img = upload();
+                    // $Img   = $_POST['img'];
+                    if (!$Img) {
+                      return false;
+                    }
+
+                    $query = "INSERT INTO kamar_kost VALUES (null,'$id','$Jenis','$No','$Harga','Tersedia','$Img','$Deskripsi')";
+                    $result = mysqli_query($koneksi, $query);
+                    if ($result) {
+                      $succes = "Data berhasil terinput!";
+                    } else {
+                      $errorr =  $query . "Error " . mysqli_error($koneksi);
+                    }
+                  }
+
+                  function upload()
+                  {
+
+                    $file = $_FILES['gambar']['name'];
+                    $size = $_FILES['gambar']['size'];
+                    $error = $_FILES['gambar']['error'];
+                    $tmpName = $_FILES['gambar']['tmp_name'];
+
+                    //cek file apakah diupload atau tidak
+                    if ($error === 4) {
+                      echo "<script>alert('Pilih gambar terlebih dahulu');</script>";
+                      return false;
+                    }
+
+                    //cek apakah benar gambar
+                    $extensGambarValid = ['jpg', 'jpeg', 'png'];
+                    $extensGambar = explode('.', $file);
+                    $extensGambar = strtolower(end($extensGambar));
+                    if (!in_array($extensGambar, $extensGambarValid)) {
+                      echo "<script>alert('Yang anda upload bukan berupa file gambar');</script>";
+                      return false;
+                    }
+
+                    //cek jika ukuran nya terlalu besar 
+                    if ($size > 1000000) {
+                      echo "<script>alert('Ukuran gambar terlalu besar');</script>";
+                    }
+
+                    //generate nama gambar baru
+                    $namaFIlebaru = uniqid();
+                    $namaFIlebaru .= '.';
+                    $namaFIlebaru .= $extensGambar;
+
+
+
+                    //lolos cek 
+                    move_uploaded_file($tmpName, 'img/' . $namaFIlebaru);
+                    return $namaFIlebaru;
+                  }
+
+                  ?>
+
+                  <?php if (isset($succes)) { ?>
+                    <script>
+                      swal({
+                        title: "<?= $succes; ?>",
+                        icon: "success",
+                        button: "OKE!",
+                      });
+                    </script>
+                  <?php } ?>
+                  <?php if (isset($errorr)) { ?>
+                    <script>
+                      swal({
+                        title: "<?= $errorr; ?>",
+                        icon: "success",
+                        button: "OKE!",
+                      });
+                    </script>
+                  <?php } ?>
 </body>
 
 </html>
