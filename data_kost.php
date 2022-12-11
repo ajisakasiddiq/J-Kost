@@ -140,7 +140,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     <td><?= $Status; ?></td>
                                                                     <td>
                                                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#validate<?= $id; ?>"><i class="fas fa-pen"></i></button>
-                                                                        <a href="hapus.php" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
+                                                                        <a href="data_kost.php?id_kost" onclick="return confirm('yakin ?');" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                                                                     </td>
 
                                                                     <!-- Modal start -->

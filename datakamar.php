@@ -145,7 +145,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     <td>
                                                                         <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editKamar<?= $id; ?>"><i class="fas fa-pen"></i></a>
 
-                                                                        <a href="hapus.php" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
+                                                                        <a href="datakamar.php?id_kamar=<?= $row['id_kamar']; ?>" class="btn btn-danger btn-circle" onclick="return confirm('Yakin ingin menghapus data ini?');"><i class="fas fa-trash"></i></a>
                                                                     </td>
 
                                                                     <!-- edit kamar -->
@@ -372,10 +372,9 @@ function upload()
 
 
 // hapus
-$id = $_GET['id_kost'];
-$query =  "DELETE FROM data_kost WHERE id_kost='$id'";
+$id = $_GET['id_kamar'];
+$query =  "DELETE FROM kamar_kost WHERE id_kamar='$id'";
 mysqli_query($koneksi, $query);
-unlink($Img);
 ?>
 
 </html>
