@@ -163,13 +163,13 @@ if (isset($_SESSION['id_user'])) {
                                                                                             <img src="img/<?= $Img; ?>" alt="" width="100%" height="300px">
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label for="img">Kamar kost</label>
+                                                                                            <label for="img">Foto Kamar kost</label>
                                                                                             <input id="img" type="file" class="form-control" name="gambar">
                                                                                             <input id="img" type="hidden" class="form-control" name="gambarLama" value="<?= $img; ?>">
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="inputName">No kamar</label>
-                                                                                            <input value=" <?= $No; ?>" type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
+                                                                                            <input value=" <?= $No; ?>" type="text" class="form-control" id="inputName" name="txt_no" placeholder="Nama kost anda!" required />
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="inputName">Jenis Kamar</label>
@@ -183,7 +183,7 @@ if (isset($_SESSION['id_user'])) {
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="inputName">Harga</label>
-                                                                                            <input value=" <?= $harga; ?>" type="text" class="form-control" id="inputName" name="txt_nama" placeholder="Nama kost anda!" required />
+                                                                                            <input value=" <?= $harga; ?>" type="text" class="form-control" id="inputName" name="txt_harga" placeholder="Nama kost anda!" required />
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="textAreaRemark">Deskripsi</label>
@@ -300,10 +300,11 @@ if (isset($_SESSION['id_user'])) {
 <?php
 if (isset($_POST['edit'])) {
     $Id     = $_POST['txt_id'];
-    $Alamat  = $_POST['txt_alamat'];
+    $jenis  = $_POST['txt_jenis'];
     $deskripsi  = $_POST['txt_deskripsi'];
-    $Name   = $_POST['txt_nama'];
-    $Address   = $_POST['txt_alamat'];
+    $Nokamar   = $_POST['txt_no'];
+    $Status  = $_POST['txt_status'];
+    $Harga  = $_POST['txt_harga'];
     $gambarLama   = $_POST['gambarLama'];
     if ($_FILES['gambar']['error'] === 4) {
         $Img = $gambarLama;
@@ -311,7 +312,7 @@ if (isset($_POST['edit'])) {
         $Img = upload();
     }
 
-    $query = "UPDATE data_kost SET nama_kost='$Name', alamat='$Alamat', deskripsi='$deskripsi',foto='$Img' WHERE id_kost='$Id'";
+    $query = "UPDATE kamar_kost SET jenis_kamar='$jenis', no_kamar='$Nokamar', harga='$Harga',status_kamar='$Status',foto_kamar='$Img',deskripsi='$deskripsi' WHERE id_kamar='$Id'";
     $result = mysqli_query($koneksi, $query);
     if ($result) {
         $success = "User data telah terupdate!";
