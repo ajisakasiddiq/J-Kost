@@ -157,7 +157,7 @@ if (isset($_SESSION['id_user'])) {
                                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                                 </div>
                                                                                 <form role="form" action="" method="post" enctype="multipart/form-data">
-                                                                                    <input type="text" name="txt_id" value="<?= $id; ?>">
+                                                                                    <input type="hidden" name="txt_id" value="<?= $id; ?>">
                                                                                     <div class="modal-body">
                                                                                         <div class="img">
                                                                                             <img src="img/<?= $Img; ?>" alt="" width="100%" height="300px">
