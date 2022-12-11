@@ -3,6 +3,7 @@ require("koneksi.php");
 
 session_start();
 
+
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
     // header('Location: login.php');
@@ -95,35 +96,62 @@ if (isset($_SESSION['id_user'])) {
                                             <div class="card-body">
                                                 <div class="table-responsive">
                                                     <div class="mb-2">
-                                                        <h4>Riwayat Transaksi</h4>
+                                                        <h4>Transaksi</h4>
 
                                                     </div>
-                                                    <table id="uang" class="table table-bordered" style="width:100%">
+                                                    <table id="trans" class="table table-bordered" style="width:100%">
                                                         <thead>
                                                             <tr>
-                                                                <th>Nama</th>
+                                                                <th>No</th>
+                                                                <th>Kode Pemesanan</th>
                                                                 <th>Nama Kost</th>
                                                                 <th>No.kamar</th>
-                                                                <th>Alamat</th>
-                                                                <th>No.Handphone</th>
-                                                                <th>Nominal</th>
+                                                                <th>Nama Penyewa</th>
+                                                                <th>Durasi Sewa</th>
+                                                                <th>Tanggal Pemesanan</th>
+                                                                <th>Total Harga</th>
+                                                                <th>Status Pembayaran</th>
                                                                 <th>Bukti Pembayaran</th>
-                                                                <th>Aksi</th>
+                                                                <th>action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td>Muhammad Ikbal Mubarok</td>
-                                                                <td>Bara Kost</td>
-                                                                <td>2A</td>
-                                                                <td>Ngawi</td>
-                                                                <td>089765567655</td>
-                                                                <td>Rp 350.000</td>
-                                                                <td>Terupload</td>
-                                                                <td>
-                                                                    <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#detail"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
-                                                                    <a href="cetakTransaksi?" class="btn btn-warning btn-circle"><i class="fa-solid fa-print mr-1"></i>Cetak</a>
-                                                                </td>
+                                                                <?php
+                                                                $query = "SELECT pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
+                                                            ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
+                                                            , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' 
+                                                            FROM pemesanan
+                                                            INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar
+                                                            INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost";
+                                                                $result = mysqli_query($koneksi, $query);
+                                                                $no = 1;
+                                                                while ($row = mysqli_fetch_array($result)) {
+                                                                    $kode = $row['Kode Pemesanan'];
+                                                                    $namaKost = $row['Nama Kost'];
+                                                                    $No = $row['No Kamar'];
+                                                                    $NamaPenyewa = $row['Nama Penyewa'];
+                                                                    $durasi = $row['Durasi Sewa'];
+                                                                    $tgl = $row['Tanggal Pemesanan'];
+                                                                    $total = $row['Total'];
+                                                                    $status = $row['Status Pembayaran'];
+                                                                    $bukti = $row['Bukti Pembayaran'];
+                                                                ?>
+                                                                    <td><?= $no; ?></td>
+                                                                    <td><?= $kode; ?></td>
+                                                                    <td><?= $namaKost; ?></td>
+                                                                    <td><?= $No; ?></td>
+                                                                    <td><?= $NamaPenyewa; ?></td>
+                                                                    <td><?= $durasi; ?></td>
+                                                                    <td><?= $tgl; ?></td>
+                                                                    <td>Rp.<?= $total; ?></td>
+                                                                    <td><?= $status; ?></td>
+                                                                    <td><img src="img/<?= $bukti; ?>" alt="" width="50px"></td>
+                                                                    <td>
+                                                                        <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#detail"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
+                                                                    </td>
+                                                                    <?= $no++; ?>
+                                                                <?php } ?>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -213,7 +241,7 @@ if (isset($_SESSION['id_user'])) {
     <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#uang').DataTable({
+            $('#trans').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
                     'csv', 'excel', 'pdf', 'print'

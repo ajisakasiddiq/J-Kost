@@ -3,6 +3,7 @@ require("koneksi.php");
 
 session_start();
 
+
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
     // header('Location: login.php');
@@ -95,7 +96,7 @@ if (isset($_SESSION['id_user'])) {
                                             <div class="card-body">
                                                 <div class="table-responsive">
                                                     <div class="mb-2">
-                                                        <h4>Data Kamar</h4>
+                                                        <h4>Transaksi</h4>
 
                                                     </div>
                                                     <table id="trans" class="table table-bordered" style="width:100%">
