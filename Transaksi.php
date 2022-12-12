@@ -49,9 +49,6 @@ if (isset($_SESSION['id_user'])) {
     <link rel="stylesheet" href="css/perfect-scrollbar.css" />
     <!-- custom css -->
     <link rel="stylesheet" href="css/custom.css" />
-    <!-- calendar file css -->
-    <!-- <link rel="stylesheet" href="js/semantic.min.css" /> -->
-    <!-- fancy box js -->
     <link rel="stylesheet" href="css/jquery.fancybox.css" />
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
@@ -88,60 +85,60 @@ if (isset($_SESSION['id_user'])) {
                         <!-- row -->
 
                         <!-- admin start -->
-                        <?php if ($sesLvl == 1) { ?>
-                            <!-- admin start -->
-                            <div class="row column1">
-                                <div class="col-lg-12">
-                                    <div class="white_shd full margin_bottom_30">
-                                        <div class="full graph_head">
-                                            <div class="table_section padding_infor_info">
-                                                <!-- table section -->
-                                                <div class="card-body">
-                                                    <div class="table-responsive">
-                                                        <div class="mb-2">
-                                                            <h4>Transaksi</h4>
+                        <!-- admin start -->
+                        <div class="row column1">
+                            <div class="col-lg-12">
+                                <div class="white_shd full margin_bottom_30">
+                                    <div class="full graph_head">
+                                        <div class="table_section padding_infor_info">
+                                            <!-- table section -->
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <div class="mb-2">
+                                                        <h4>Transaksi</h4>
 
-                                                        </div>
-                                                        <table id="trans" class="table table-bordered" style="width:100%">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>No</th>
-                                                                    <th>Kode Pemesanan</th>
-                                                                    <th>Nama Kost</th>
-                                                                    <th>No.kamar</th>
-                                                                    <th>Nama Penyewa</th>
-                                                                    <th>Durasi Sewa</th>
-                                                                    <th>Tanggal Pemesanan</th>
-                                                                    <th>Total Harga</th>
-                                                                    <th>Status Pembayaran</th>
-                                                                    <th>Bukti Pembayaran</th>
-                                                                    <th>action</th>
-                                                                </tr>
-                                                            </thead>
+                                                    </div>
+                                                    <table id="trans" class="table table-bordered" style="width:100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>No</th>
+                                                                <th>Kode Pemesanan</th>
+                                                                <th>Nama Kost</th>
+                                                                <th>No.kamar</th>
+                                                                <th>Nama Penyewa</th>
+                                                                <th>Durasi Sewa</th>
+                                                                <th>Tanggal Pemesanan</th>
+                                                                <th>Total Harga</th>
+                                                                <th>Status Pembayaran</th>
+                                                                <th>Bukti Pembayaran</th>
+                                                                <th>action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <?php if ($sesLvl == 1) { ?>
                                                             <tbody>
-                                                                <tr>
-                                                                    <?php
-                                                                    $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
-                                                                    ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
+                                                                <?php
+                                                                $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
+                                                                    ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa AS 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
                                                                     , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' FROM pemesanan 
                                                                     INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
                                                                     INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
                                                                     INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user
                                                                     WHERE user_detail.id_user = '$sesID'";
-                                                                    $result = mysqli_query($koneksi, $query);
-                                                                    $no = 1;
-                                                                    while ($row = mysqli_fetch_array($result)) {
-                                                                        $idPesan = $row['id_pemesanan'];
-                                                                        $kode = $row['Kode Pemesanan'];
-                                                                        $namaKost = $row['Nama Kost'];
-                                                                        $No = $row['No Kamar'];
-                                                                        $NamaPenyewa = $row['Nama Penyewa'];
-                                                                        $durasi = $row['Durasi Sewa'];
-                                                                        $tgl = $row['Tanggal Pemesanan'];
-                                                                        $total = $row['Total'];
-                                                                        $status = $row['Status Pembayaran'];
-                                                                        $bukti = $row['Bukti Pembayaran'];
-                                                                    ?>
+                                                                $result = mysqli_query($koneksi, $query);
+                                                                $no = 1;
+                                                                while ($row = mysqli_fetch_array($result)) {
+                                                                    $idPesan = $row['id_pemesanan'];
+                                                                    $kode = $row['Kode Pemesanan'];
+                                                                    $namaKost = $row['Nama Kost'];
+                                                                    $No = $row['No Kamar'];
+                                                                    $NamaPenyewa = $row['Nama Penyewa'];
+                                                                    $durasi = $row['Durasi Sewa'];
+                                                                    $tgl = $row['Tanggal Pemesanan'];
+                                                                    $total = $row['Total'];
+                                                                    $status = $row['Status Pembayaran'];
+                                                                    $bukti = $row['Bukti Pembayaran'];
+                                                                ?>
+                                                                    <tr>
                                                                         <td><?= $no; ?></td>
                                                                         <td><?= $kode; ?></td>
                                                                         <td><?= $namaKost; ?></td>
@@ -156,9 +153,9 @@ if (isset($_SESSION['id_user'])) {
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#cek<?= $idPesan; ?>"><i class="fa-solid mr-1 fa-check"></i>Check</a>
                                                                             <a href="" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
-                                                                        <?= $no++; ?>
-                                                                    <?php } ?>
-                                                                </tr>
+                                                                    </tr>
+                                                                    <?= $no++; ?>
+                                                                <?php } ?>
                                                                 <!-- pembayaran pemilik start -->
                                                                 <div class="modal fade" id="cek<?= $idPesan; ?>" tabindex="-1" aria-labelledby="EditadminLabel" aria-hidden="true">
                                                                     <div class="modal-dialog modal-md">
@@ -219,68 +216,30 @@ if (isset($_SESSION['id_user'])) {
                                                                 </div>
                                                                 <!-- modal pembayaran pemilik end -->
                                                             </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end row -->
-                            </div>
-                        <?php } else if ($sesLvl == 2) { ?>
-                            <!-- admin start -->
-                            <div class="row column1">
-                                <div class="col-lg-12">
-                                    <div class="white_shd full margin_bottom_30">
-                                        <div class="full graph_head">
-                                            <div class="table_section padding_infor_info">
-                                                <!-- table section -->
-                                                <div class="card-body">
-                                                    <div class="table-responsive">
-                                                        <div class="mb-2">
-                                                            <h4>Transaksi</h4>
-
-                                                        </div>
-                                                        <table id="trans" class="table table-bordered" style="width:100%">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>No</th>
-                                                                    <th>Kode Pemesanan</th>
-                                                                    <th>Nama Kost</th>
-                                                                    <th>No.kamar</th>
-                                                                    <th>Nama Penyewa</th>
-                                                                    <th>Durasi Sewa</th>
-                                                                    <th>Tanggal Pemesanan</th>
-                                                                    <th>Total Harga</th>
-                                                                    <th>Status Pembayaran</th>
-                                                                    <th>Bukti Pembayaran</th>
-                                                                    <!-- <th>action</th> -->
-                                                                </tr>
-                                                            </thead>
+                                                        <?php    } else if ($sesLvl == 2) { ?>
                                                             <tbody>
-                                                                <tr>
-                                                                    <?php
-                                                                    $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
+
+                                                                <?php
+                                                                $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
                                                                     ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
                                                                     , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' FROM pemesanan 
                                                                     INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
                                                                     INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
-                                                                    INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user
-                                                                    WHERE user_detail.id_user = '$sesID'";
-                                                                    $result = mysqli_query($koneksi, $query);
-                                                                    $no = 1;
-                                                                    while ($row = mysqli_fetch_array($result)) {
-                                                                        $kode = $row['Kode Pemesanan'];
-                                                                        $namaKost = $row['Nama Kost'];
-                                                                        $No = $row['No Kamar'];
-                                                                        $NamaPenyewa = $row['Nama Penyewa'];
-                                                                        $durasi = $row['Durasi Sewa'];
-                                                                        $tgl = $row['Tanggal Pemesanan'];
-                                                                        $total = $row['Total'];
-                                                                        $status = $row['Status Pembayaran'];
-                                                                        $bukti = $row['Bukti Pembayaran'];
-                                                                    ?>
+                                                                    INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user";
+                                                                $result = mysqli_query($koneksi, $query);
+                                                                $no = 1;
+                                                                while ($row = mysqli_fetch_array($result)) {
+                                                                    $kode = $row['Kode Pemesanan'];
+                                                                    $namaKost = $row['Nama Kost'];
+                                                                    $No = $row['No Kamar'];
+                                                                    $NamaPenyewa = $row['Nama Penyewa'];
+                                                                    $durasi = $row['Durasi Sewa'];
+                                                                    $tgl = $row['Tanggal Pemesanan'];
+                                                                    $total = $row['Total'];
+                                                                    $status = $row['Status Pembayaran'];
+                                                                    $bukti = $row['Bukti Pembayaran'];
+                                                                ?>
+                                                                    <tr>
                                                                         <td><?= $no; ?></td>
                                                                         <td><?= $kode; ?></td>
                                                                         <td><?= $namaKost; ?></td>
@@ -295,72 +254,35 @@ if (isset($_SESSION['id_user'])) {
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar"><i class="fa-sharp fa-solid mr-1 fa-money-bill"></i>Bayar</a>
                                                                             <a href="" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
-                                                                        <?= $no++; ?>
-                                                                    <?php } ?>
-                                                                </tr>
+                                                                    </tr>
+                                                                    <?= $no++; ?>
+                                                                <?php } ?>
+
                                                             </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end row -->
-                            </div>
-                        <?php } else { ?>
-
-
-                            <div class="row column1">
-                                <div class="col-lg-12">
-                                    <div class="white_shd full margin_bottom_30">
-                                        <div class="full graph_head">
-                                            <div class="table_section padding_infor_info">
-                                                <!-- table section -->
-                                                <div class="card-body">
-                                                    <div class="table-responsive">
-                                                        <div class="mb-2">
-                                                            <h4>Transaksi</h4>
-
-                                                        </div>
-                                                        <table id="trans" class="table table-bordered" style="width:100%">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>No</th>
-                                                                    <th>Kode Pemesanan</th>
-                                                                    <th>Nama Kost</th>
-                                                                    <th>No.kamar</th>
-                                                                    <th>Nama Penyewa</th>
-                                                                    <th>Durasi Sewa</th>
-                                                                    <th>Tanggal Pemesanan</th>
-                                                                    <th>Total Harga</th>
-                                                                    <th>Status Pembayaran</th>
-                                                                    <th>Bukti Pembayaran</th>
-                                                                    <th>action</th>
-                                                                </tr>
-                                                            </thead>
+                                                        <?php } else { ?>
                                                             <tbody>
-                                                                <tr>
-                                                                    <?php
-                                                                    $query = "SELECT pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
-                                                            ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
-                                                            , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' 
-                                                            FROM pemesanan
-                                                            INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar
-                                                            INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost";
-                                                                    $result = mysqli_query($koneksi, $query);
-                                                                    $no = 1;
-                                                                    while ($row = mysqli_fetch_array($result)) {
-                                                                        $kode = $row['Kode Pemesanan'];
-                                                                        $namaKost = $row['Nama Kost'];
-                                                                        $No = $row['No Kamar'];
-                                                                        $NamaPenyewa = $row['Nama Penyewa'];
-                                                                        $durasi = $row['Durasi Sewa'];
-                                                                        $tgl = $row['Tanggal Pemesanan'];
-                                                                        $total = $row['Total'];
-                                                                        $status = $row['Status Pembayaran'];
-                                                                        $bukti = $row['Bukti Pembayaran'];
-                                                                    ?>
+
+                                                                <?php
+                                                                $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
+                                                                    ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
+                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' FROM pemesanan 
+                                                                    INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
+                                                                    INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
+                                                                    INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user";
+                                                                $result = mysqli_query($koneksi, $query);
+                                                                $no = 1;
+                                                                while ($row = mysqli_fetch_array($result)) {
+                                                                    $kode = $row['Kode Pemesanan'];
+                                                                    $namaKost = $row['Nama Kost'];
+                                                                    $No = $row['No Kamar'];
+                                                                    $NamaPenyewa = $row['Nama Penyewa'];
+                                                                    $durasi = $row['Durasi Sewa'];
+                                                                    $tgl = $row['Tanggal Pemesanan'];
+                                                                    $total = $row['Total'];
+                                                                    $status = $row['Status Pembayaran'];
+                                                                    $bukti = $row['Bukti Pembayaran'];
+                                                                ?>
+                                                                    <tr>
                                                                         <td><?= $no; ?></td>
                                                                         <td><?= $kode; ?></td>
                                                                         <td><?= $namaKost; ?></td>
@@ -372,23 +294,23 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $status; ?></td>
                                                                         <td><img src="img/<?= $bukti; ?>" alt="" width="50px"></td>
                                                                         <td>
-                                                                            <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#detail"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
-                                                                            <a href="" class="btn btn-warning mt-2 btn-circle"><i class="fa-solid fa-print"></i>Cetak</a>
+                                                                            <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar"><i class="fa-sharp fa-solid mr-1 fa-money-bill"></i>Bayar</a>
+                                                                            <a href="" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
-                                                                        <?= $no++; ?>
-                                                                    <?php } ?>
-                                                                </tr>
+                                                                    </tr>
+                                                                    <?= $no++; ?>
+                                                                <?php } ?>
                                                             </tbody>
-                                                        </table>
-                                                    </div>
+                                                        <?php } ?>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- end row -->
                             </div>
-                        <?php } ?>
+                            <!-- end row -->
+                        </div>
                     </div>
                 </div>
 
