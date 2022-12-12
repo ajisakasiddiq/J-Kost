@@ -170,7 +170,7 @@ if (isset($_SESSION['id_user'])) {
                                                                             <form class="user" action="" method="POST">
                                                                                 <div class="modal-body">
                                                                                     <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $idPesan; ?>">
-                                                                                    <div class="form-group">
+                                                                                    <div class="form-group text-center">
                                                                                         <label for="kode">Bukti Pembayaran</label> <br>
                                                                                         <img src="img/<?= $bukti; ?>" alt="" width="90px" height="120px">
                                                                                     </div>

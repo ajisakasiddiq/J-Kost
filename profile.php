@@ -90,7 +90,7 @@ if (isset($_SESSION['id_user'])) {
                                         <div class="container">
                                             <h1>Edit Profile</h1>
                                             <hr>
-                                            <div class="row">
+                                            <div class="row ">
                                                 <!-- edit form column -->
                                                 <div class="col-md-9 personal-info justify-align-center">
                                                     <div class="alert alert-info alert-dismissable">
@@ -98,7 +98,7 @@ if (isset($_SESSION['id_user'])) {
                                                         <i class="fa fa-coffee"></i> Pastikan <strong>Data diri</strong> anda terinput dengan benar!
                                                     </div>
                                                     <h3>Personal info</h3>
-                                                    <div class="d-flex justify-content-center">
+                                                    <div class="d-flex">
                                                         <img src="img/<?= $userImg ?>" alt="" class="avatar img-circle" alt="avatar" width="100px">
                                                     </div>
                                                     <form role="form" action="" method="post" enctype="multipart/form-data">
