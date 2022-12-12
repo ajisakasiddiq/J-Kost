@@ -114,7 +114,7 @@ if (isset($_SESSION['id_user'])) {
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="textAreaRemark">Deskripsi</label>
-                                                    <textarea class="form-control" name="txt_deskripsi" id="textAreaRemark" rows="5" placeholder="Tell us you want more..."></textarea>
+                                                    <textarea class="form-control" name="txt_deskripsi" id="textAreaRemark" rows="5" placeholder="Tambahkan peraturan dan deskripsi kost anda...."></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputEmail">Alamat</label>
