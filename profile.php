@@ -116,6 +116,7 @@ if (isset($_SESSION['id_user'])) {
                                                             $userImg = $row['foto'];
                                                             $userGender = $row['jenis_kelamin'];
                                                             $userNo = $row['no_hp'];
+                                                            $kontrak = $row['bukti_kontrak'];
                                                         ?>
                                                             <input value="<?= $sesID ?>" class="form-control" type="hidden" name="txt_id" id="id_user">
                                                             <div class="form-group">
@@ -126,6 +127,15 @@ if (isset($_SESSION['id_user'])) {
                                                                     <input type="hidden" class="form-control" name="gambarLama" value="<?= $userImg; ?>">
                                                                 </div>
                                                             </div>
+                                                            <?php if ($sesLvl == 1) { ?>
+                                                                <div class="form-group">
+                                                                    <label for="kontrak" class="col-lg-3 control-label">Bukti Kontrak :</label>
+                                                                    <div class="col-lg-8">
+                                                                        <input value="<?= $kontrak; ?>" class="form-control" type="file" name="txt_kontrak" id="kontrak">
+                                                                        <small>Periksa sebelum mengupload bukti kontrak anda*</small>
+                                                                    </div>
+                                                                </div>
+                                                            <?php } ?>
                                                             <div class="form-group">
                                                                 <label for="name" class="col-lg-3 control-label">Nama :</label>
                                                                 <div class="col-lg-8">
