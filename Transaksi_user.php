@@ -49,9 +49,6 @@ if (isset($_SESSION['id_user'])) {
     <link rel="stylesheet" href="css/perfect-scrollbar.css" />
     <!-- custom css -->
     <link rel="stylesheet" href="css/custom.css" />
-    <!-- calendar file css -->
-    <!-- <link rel="stylesheet" href="js/semantic.min.css" /> -->
-    <!-- fancy box js -->
     <link rel="stylesheet" href="css/jquery.fancybox.css" />
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
