@@ -170,38 +170,43 @@ if (isset($_SESSION['id_user'])) {
                                                                             <form class="user" action="" method="POST">
                                                                                 <div class="modal-body">
                                                                                     <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $idPesan; ?>">
-                                                                                    <div class="form-group">
+                                                                                    <div class="form-group text-center">
                                                                                         <label for="kode">Bukti Pembayaran</label> <br>
                                                                                         <img src="img/<?= $bukti; ?>" alt="" width="90px" height="120px">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="kode">Kode Pemesanan</label>
-                                                                                        <input type="disabled" class="form-control form-control-user " id="kode" placeholder="Name" name="txt_kode" value="<?= $kode; ?>">
+                                                                                        <input type="disabled" class="form-control form-control-user " id="kode" placeholder="Kode Transaksi" name="txt_kode" value="<?= $kode; ?>">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="namaKost">Nama Kost</label>
-                                                                                        <input type="text" class="form-control form-control-user" id="namaKost" placeholder="Email Address" name="txt_Namakost" value="<?= $namaKost; ?>">
+                                                                                        <input type="text" class="form-control form-control-user" id="namaKost" placeholder="Nama Kost" name="txt_Namakost" value="<?= $namaKost; ?>">
                                                                                     </div>
                                                                                     <div class="form-group">
-                                                                                        <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="Username" name="txt_Namapenyewa" value="<?= $NamaPenyewa; ?>">
+                                                                                        <label for="penyewa">Nama Penyewa</label>
+                                                                                        <input type="text" class="form-control form-control-user" id="penyewa" placeholder="Nama Penyewa" name="txt_Namapenyewa" value="<?= $NamaPenyewa; ?>">
                                                                                     </div>
                                                                                     <div class="form-group">
-                                                                                        <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="NIK" name="txt_durasi" value="<?= $durasi; ?>">
+                                                                                        <label for="lama">Lama Sewa</label>
+                                                                                        <input type="text" class="form-control form-control-user" id="lama" placeholder="Lama sewa" name="txt_durasi" value="<?= $durasi; ?>">
                                                                                     </div>
                                                                                     <div class="form-group">
-                                                                                        <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="Alamat" name="txt_tgl" value="<?= $tgl; ?>">
+                                                                                        <label for="bayar">Tanggal Pembayaran</label>
+                                                                                        <input type="text" class="form-control form-control-user" id="bayar" placeholder="Tanggal Pembayaran" name="txt_tgl" value="<?= $tgl; ?>">
                                                                                     </div>
                                                                                     <div class="form-group">
-                                                                                        <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="Jenis Kelamin" name="txt_jk" value="<?= $total; ?>">
+                                                                                        <label for="total">Total Pembayaran</label>
+                                                                                        <input type="text" class="form-control form-control-user" id="total" placeholder="Total Pembayaran" name="txt_jk" value="<?= $total; ?>">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="status">Status pembayaran</label>
                                                                                         <select name="txt_status" id="status" class="form-control form-control-user">
                                                                                             <option value="<?= $status;  ?>"><?= $status; ?></option>
                                                                                             <option value="">------</option>
-                                                                                            <option value="Sukses">Sukses</option>
-                                                                                            <option value="Di Tolak">Di Tolak</option>
+                                                                                            <option value="SUKSES">Sukses</option>
+                                                                                            <option value="DITOLAK">Di Tolak</option>
                                                                                         </select>
+                                                                                        <small>Periksa terlebih dahulu bukti pembayaran sebelum approve pembayaran*</small>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="modal-footer">
@@ -250,7 +255,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     <th>Total Harga</th>
                                                                     <th>Status Pembayaran</th>
                                                                     <th>Bukti Pembayaran</th>
-                                                                    <th>action</th>
+                                                                    <!-- <th>action</th> -->
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
