@@ -131,7 +131,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     <td><?php echo $userNo; ?></td>
                                                                     <td>
                                                                         <a href="edit.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
-                                                                        <a name="delete" type="button" onclick="return confirm('Yakin ingin menghapus data ini?');" href="datarekening.php?id_rek=<?php echo $row['id_rek']; ?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
+                                                                        <a name="delete" href="datarekening.php?id_rek=<?php echo $row['id_rek']; ?>" type="button" onclick="return confirm('Yakin ingin menghapus data ini?');" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
 
                                                                     </td>
 
@@ -254,8 +254,6 @@ if (isset($_POST['tambah'])) {
 $id = $_GET['id_rek'];
 $query =  "DELETE FROM rekening WHERE id_rek='$id'";
 mysqli_query($koneksi, $query);
-
-
 
 ?>
 
