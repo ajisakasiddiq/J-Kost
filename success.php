@@ -24,6 +24,7 @@ if (isset($_SESSION['id_user'])) {
 <html lang="en">
 
 <head>
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
     <meta charset="utf-8">
     <title>J-KOS</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">

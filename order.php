@@ -32,7 +32,7 @@ if (isset($_SESSION['id_user'])) {
     <meta content="Free Website Template" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">

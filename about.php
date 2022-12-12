@@ -5,17 +5,17 @@ session_start();
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
-   // header('Location: login.php');
-   $sesID = $_SESSION['id_user'];
-   $sesName = $_SESSION['username'];
-   $name = $_SESSION['user_nama'];
-   $sesEmail = $_SESSION['user_email'];
-   $sesLvl = $_SESSION['level'];
-   $sesImg = $_SESSION['foto'];
-   $sesNik = $_SESSION['nik'];
-   $sesAddress = $_SESSION['alamat'];
-   $sesNo = $_SESSION['no_hp'];
-   $sesGender = $_SESSION['jenis_kelamin'];
+    // header('Location: login.php');
+    $sesID = $_SESSION['id_user'];
+    $sesName = $_SESSION['username'];
+    $name = $_SESSION['user_nama'];
+    $sesEmail = $_SESSION['user_email'];
+    $sesLvl = $_SESSION['level'];
+    $sesImg = $_SESSION['foto'];
+    $sesNik = $_SESSION['nik'];
+    $sesAddress = $_SESSION['alamat'];
+    $sesNo = $_SESSION['no_hp'];
+    $sesGender = $_SESSION['jenis_kelamin'];
 }
 ?>
 
@@ -31,8 +31,7 @@ if (isset($_SESSION['id_user'])) {
     <meta content="Free Website Template" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -94,8 +93,8 @@ if (isset($_SESSION['id_user'])) {
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
                 <a href="#" class="navbar-brand">MENU</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
@@ -106,26 +105,26 @@ if (isset($_SESSION['id_user'])) {
                         <!-- <a href="contact.php" class="nav-item nav-link">Contact</a> -->
                     </div>
                     <div class="ml-auto">
-                        <?php if(isset($_SESSION['id_user']) ){ ?>
+                        <?php if (isset($_SESSION['id_user'])) { ?>
                             <ul class="navbar-nav d-lg-flex">
-                            <li class="nav-item dropdown">
-                                <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
-                                    Hi, <?php echo $name; ?>
-                                    <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
-                                </a>
-                                <div class="dropdown-menu bg-dark">
-                                    <a href="dashboard" class="dropdown-item text-danger">Dashboard</a>
-                                    <a href="ResetPass" class="dropdown-item text-danger">Setting</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="logout" class="dropdown-item text-danger">Logout</a>
-                                </div>
-                            </li>
-                        </ul>
-                        <?php 
-                    }elseif(!isset($_SESSION['id_user'])) {?>
-                        <a href="register.php" class="btn-regis ">Register</a>
-                        <a href="login.php" class="btn btn-custom">Login</a>
-                       
+                                <li class="nav-item dropdown">
+                                    <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
+                                        Hi, <?php echo $name; ?>
+                                        <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
+                                    </a>
+                                    <div class="dropdown-menu bg-dark">
+                                        <a href="dashboard" class="dropdown-item text-danger">Dashboard</a>
+                                        <a href="ResetPass" class="dropdown-item text-danger">Setting</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="logout" class="dropdown-item text-danger">Logout</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        <?php
+                        } elseif (!isset($_SESSION['id_user'])) { ?>
+                            <a href="register.php" class="btn-regis ">Register</a>
+                            <a href="login.php" class="btn btn-custom">Login</a>
+
                         <?php } ?>
                     </div>
 

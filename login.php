@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
 
 <head>
     <title>J-KOST</title>
-
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="Slide Login Form template Responsive, Login form web template, Flat Pricing tables, Flat Drop downs Sign up Web Templates, Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />

@@ -80,7 +80,7 @@ if (isset($_POST['submit'])) {
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- site icon -->
-    <link rel="icon" href="images/fevicon.png" type="image/png" />
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
     <!-- bootstrap css -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- site css -->

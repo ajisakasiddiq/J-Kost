@@ -34,7 +34,7 @@ if (isset($_SESSION['id_user'])) {
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- site icon -->
-    <link rel="icon" href="images/fevicon.png" type="image/png" />
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
     <!-- bootstrap css -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- site css -->
@@ -121,15 +121,17 @@ if (isset($_SESSION['id_user'])) {
                                                             <tbody>
                                                                 <tr>
                                                                     <?php
-                                                                    $query = "SELECT pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
-                                                            ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
-                                                            , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' 
-                                                            FROM pemesanan
-                                                            INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar
-                                                            INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost";
+                                                                    $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
+                                                                    ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
+                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' FROM pemesanan 
+                                                                    INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
+                                                                    INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
+                                                                    INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user
+                                                                    WHERE user_detail.id_user = '$sesID'";
                                                                     $result = mysqli_query($koneksi, $query);
                                                                     $no = 1;
                                                                     while ($row = mysqli_fetch_array($result)) {
+                                                                        $idPesan = $row['id_pemesanan'];
                                                                         $kode = $row['Kode Pemesanan'];
                                                                         $namaKost = $row['Nama Kost'];
                                                                         $No = $row['No Kamar'];
@@ -151,12 +153,66 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $status; ?></td>
                                                                         <td><img src="img/<?= $bukti; ?>" alt="" width="50px"></td>
                                                                         <td>
-                                                                            <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#detail"><i class="fa-solid mr-1 fa-check"></i>Check</a>
+                                                                            <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#cek<?= $idPesan; ?>"><i class="fa-solid mr-1 fa-check"></i>Check</a>
                                                                             <a href="" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
                                                                         <?= $no++; ?>
                                                                     <?php } ?>
                                                                 </tr>
+                                                                <!-- pembayaran pemilik start -->
+                                                                <div class="modal fade" id="cek<?= $idPesan; ?>" tabindex="-1" aria-labelledby="EditadminLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-md">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h1 class="modal-title fs-5" id="EditadminLabel">Bukti Pembayaran</h1>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                            <form class="user" action="" method="POST">
+                                                                                <div class="modal-body">
+                                                                                    <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $idPesan; ?>">
+                                                                                    <div class="form-group">
+                                                                                        <label for="kode">Bukti Pembayaran</label> <br>
+                                                                                        <img src="img/<?= $bukti; ?>" alt="" width="90px" height="120px">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="kode">Kode Pemesanan</label>
+                                                                                        <input type="disabled" class="form-control form-control-user " id="kode" placeholder="Name" name="txt_kode" value="<?= $kode; ?>">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="namaKost">Nama Kost</label>
+                                                                                        <input type="text" class="form-control form-control-user" id="namaKost" placeholder="Email Address" name="txt_Namakost" value="<?= $namaKost; ?>">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="Username" name="txt_Namapenyewa" value="<?= $NamaPenyewa; ?>">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="NIK" name="txt_durasi" value="<?= $durasi; ?>">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="Alamat" name="txt_tgl" value="<?= $tgl; ?>">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="Jenis Kelamin" name="txt_jk" value="<?= $total; ?>">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="status">Status pembayaran</label>
+                                                                                        <select name="txt_status" id="status" class="form-control form-control-user">
+                                                                                            <option value="<?= $status;  ?>"><?= $status; ?></option>
+                                                                                            <option value="">------</option>
+                                                                                            <option value="APPROVED">APPROVED</option>
+                                                                                            <option value="NOT APPROVED">NOT APPROVED</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                    <button type="submit" name="update" class="btn btn-primary">Tambah</button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- modal pembayaran pemilik end -->
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -200,12 +256,13 @@ if (isset($_SESSION['id_user'])) {
                                                             <tbody>
                                                                 <tr>
                                                                     <?php
-                                                                    $query = "SELECT pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
-                                                            ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
-                                                            , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' 
-                                                            FROM pemesanan
-                                                            INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar
-                                                            INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost";
+                                                                    $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
+                                                                    ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
+                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' FROM pemesanan 
+                                                                    INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
+                                                                    INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
+                                                                    INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user
+                                                                    WHERE user_detail.id_user = '$sesID'";
                                                                     $result = mysqli_query($koneksi, $query);
                                                                     $no = 1;
                                                                     while ($row = mysqli_fetch_array($result)) {
@@ -327,8 +384,6 @@ if (isset($_SESSION['id_user'])) {
                                 <!-- end row -->
                             </div>
                         <?php } ?>
-                        <!-- admin end -->
-                        <!-- pemilik ,pencari start -->
                     </div>
                 </div>
 
@@ -345,28 +400,10 @@ if (isset($_SESSION['id_user'])) {
             <!-- end dashboard inner -->
         </div>
     </div>
-    <!-- model popup -->
-    <!-- The Modal -->
-    <div class="modal fade" id="detail">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Modal body..
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end model popup -->
+
+
+
+
     </div>
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>

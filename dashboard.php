@@ -34,6 +34,7 @@ if (isset($_SESSION['id_user'])) {
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
     <!-- site icon -->
     <link rel="icon" href="images/fevicon.png" type="image/png" />
     <!-- bootstrap css -->

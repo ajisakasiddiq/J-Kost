@@ -46,7 +46,7 @@ if (isset($_SESSION['id_user'])) {
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
     <!-- Template Stylesheet -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">

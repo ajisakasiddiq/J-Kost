@@ -5,18 +5,17 @@ session_start();
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
-   // header('Location: login.php');
-   $sesID = $_SESSION['id_user'];
-   $sesName = $_SESSION['username'];
-   $name = $_SESSION['user_nama'];
-   $sesEmail = $_SESSION['user_email'];
-   $sesLvl = $_SESSION['level'];
-   $sesImg = $_SESSION['foto'];
-   $sesNik = $_SESSION['nik'];
-   $sesAddress = $_SESSION['alamat'];
-   $sesNo = $_SESSION['no_hp'];
-   $sesGender = $_SESSION['jenis_kelamin'];
-
+    // header('Location: login.php');
+    $sesID = $_SESSION['id_user'];
+    $sesName = $_SESSION['username'];
+    $name = $_SESSION['user_nama'];
+    $sesEmail = $_SESSION['user_email'];
+    $sesLvl = $_SESSION['level'];
+    $sesImg = $_SESSION['foto'];
+    $sesNik = $_SESSION['nik'];
+    $sesAddress = $_SESSION['alamat'];
+    $sesNo = $_SESSION['no_hp'];
+    $sesGender = $_SESSION['jenis_kelamin'];
 }
 ?>
 
@@ -24,6 +23,7 @@ if (isset($_SESSION['id_user'])) {
 <html lang="en">
 
 <head>
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
     <meta charset="utf-8">
     <title>J KOST</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -95,8 +95,8 @@ if (isset($_SESSION['id_user'])) {
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
                 <a href="#" class="navbar-brand">MENU</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
@@ -107,26 +107,26 @@ if (isset($_SESSION['id_user'])) {
                         <!-- <a href="contact.php" class="nav-item nav-link">Contact</a> -->
                     </div>
                     <div class="ml-auto">
-                        <?php if(isset($_SESSION['id_user']) ){ ?>
+                        <?php if (isset($_SESSION['id_user'])) { ?>
                             <ul class="navbar-nav d-lg-flex">
-                            <li class="nav-item dropdown">
-                                <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
-                                    Hi, <?php echo $name; ?>
-                                    <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
-                                </a>
-                                <div class="dropdown-menu bg-dark">
-                                    <a href="dashboard" class="dropdown-item text-danger">Dashboard</a>
-                                    <a href="ResetPass" class="dropdown-item text-danger">Setting</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="logout" class="dropdown-item text-danger">Logout</a>
-                                </div>
-                            </li>
-                        </ul>
-                        <?php 
-                    }elseif(!isset($_SESSION['id_user'])) {?>
-                        <a href="register.php" class="btn-regis ">Register</a>
-                        <a href="login.php" class="btn btn-custom">Login</a>
-                       
+                                <li class="nav-item dropdown">
+                                    <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
+                                        Hi, <?php echo $name; ?>
+                                        <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
+                                    </a>
+                                    <div class="dropdown-menu bg-dark">
+                                        <a href="dashboard" class="dropdown-item text-danger">Dashboard</a>
+                                        <a href="ResetPass" class="dropdown-item text-danger">Setting</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="logout" class="dropdown-item text-danger">Logout</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        <?php
+                        } elseif (!isset($_SESSION['id_user'])) { ?>
+                            <a href="register.php" class="btn-regis ">Register</a>
+                            <a href="login.php" class="btn btn-custom">Login</a>
+
                         <?php } ?>
                     </div>
 
@@ -166,28 +166,28 @@ if (isset($_SESSION['id_user'])) {
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="service-item">
-                    <i class="fa-solid fa-people-roof text-center"></i>
+                        <i class="fa-solid fa-people-roof text-center"></i>
                         <h3>Konsultasi Tentang Kost</h3>
                         <p>Anda bisa menanyakan hal tentang seputar kost </p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="service-item">
-                    <i class="fa-solid fa-hotel text-center"></i>
+                        <i class="fa-solid fa-hotel text-center"></i>
                         <h3>Pemesanan Kamar Kost Melalui Online</h3>
                         <p>Anda bisa memesan kamar kos secara online sehingga anda tidak perlu mendatanginya</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="service-item">
-                    <i class="fa-solid fa-money-bill-1-wave text-center"></i>
+                        <i class="fa-solid fa-money-bill-1-wave text-center"></i>
                         <h3>Pembayaran E-WALLET</h3>
                         <p>Nah untuk pembayaran anda bisa melalui E-wallet (ovo, gopay,dll).</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="service-item">
-                    <i class="fa-solid fa-shop text-center"></i>
+                        <i class="fa-solid fa-shop text-center"></i>
                         <h3>Membuka Jasa Promosi Kost</h3>
                         <p>Untuk bapak/ibu yang mempuyai usaha kos kosan anda bisa mendaftarkan usaha bapak ibu di website kami, karna itu bisa memudahkan pekerjaan bapak/ibu.</p>
                     </div>
