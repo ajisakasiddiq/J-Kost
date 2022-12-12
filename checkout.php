@@ -2,6 +2,9 @@
 require("koneksi.php");
 
 session_start();
+if (!isset($_SESSION['id_user'])) {
+  header('Location: login.php');
+}
 
 if (isset($_SESSION['id_user'])) {
   //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
@@ -209,7 +212,7 @@ if (isset($_SESSION['id_user'])) {
               <input type="text" class="form-control" id="addressOne" aria-describedby="emailHelp" name="addressOne" value="Setra Duta Cemara" />
             </div>
           </div>
-      
+
           <div class="col-md-4">
             <div class="form-group">
               <label for="province">Provinsi</label>
@@ -260,13 +263,13 @@ if (isset($_SESSION['id_user'])) {
         <div class="row" data-aos="fade-up" data-aos-delay="200">
           <div class="col-4 col-md-2">
             <div class="product-title">M. Zidan P. </div>
-           
+
           </div>
           <div class="col-4 col-md-3">
             <div class="product-title">Telepon :+62 331 333533</div>
             <div class="product-subtitle">Email : zidan@gmail.com</div>
           </div>
-          
+
           <div class="col-8 col-md-3">
             <a href="success.php" class="btn btn-custom mt-4 px-4 btn-block">
               Checkout Now
