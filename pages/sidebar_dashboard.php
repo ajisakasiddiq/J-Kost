@@ -46,9 +46,9 @@
 
             <!-- pencari kos start -->
             <ul class="list-unstyled components">
-                <li><a href="kamarAktif"><i class="fa-solid fa-house-chimney red_color"></i></i> <span>Kost ku</span></a></li>
-                <li><a href="datarekening"><i class="fa fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
-                <li><a href="Transaksi_user"><i class="fa fa-money purple_color2"></i> <span>Transaksi</span></a></li>
+                <li><a href="kamarAktif"><i class="fa fa-university "></i> <span>Kost ku</span></a></li>
+                <li><a href="datarekening"><i class="fa-solid fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
+                <li><a href="Transaksi_user"><i class="f-sharp fa-solid fa-money-bill-transfer purple_color2"></i> <span>Transaksi</span></a></li>
             </ul>
             <!-- pencari kos end -->
 
