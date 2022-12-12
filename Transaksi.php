@@ -199,8 +199,8 @@ if (isset($_SESSION['id_user'])) {
                                                                                         <select name="txt_status" id="status" class="form-control form-control-user">
                                                                                             <option value="<?= $status;  ?>"><?= $status; ?></option>
                                                                                             <option value="">------</option>
-                                                                                            <option value="APPROVED">Sukses</option>
-                                                                                            <option value="NOT APPROVED">Di Tolak</option>
+                                                                                            <option value="Sukses">Sukses</option>
+                                                                                            <option value="Di Tolak">Di Tolak</option>
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
@@ -458,12 +458,9 @@ if (isset($_SESSION['id_user'])) {
 <?php
 if (isset($_POST['edit'])) {
     $Id     = $_POST['txt_id'];
-    $Alamat  = $_POST['txt_alamat'];
-    $deskripsi  = $_POST['txt_deskripsi'];
-    $Name   = $_POST['txt_nama'];
-    $Address   = $_POST['txt_alamat'];
+    $Stat  = $_POST['txt_status'];
 
-    $query = "UPDATE pemesanan SET nama_kost='$Name', alamat='$Alamat', deskripsi='$deskripsi',foto='$Img' WHERE id_kost='$Id'";
+    $query = "UPDATE pemesanan SET status_pembayaran='$Stat' WHERE id_pemesanan='$Id'";
     $result = mysqli_query($koneksi, $query);
     if ($result) {
         $success = "User data telah terupdate!";
