@@ -199,14 +199,14 @@ if (isset($_SESSION['id_user'])) {
                                                                                         <select name="txt_status" id="status" class="form-control form-control-user">
                                                                                             <option value="<?= $status;  ?>"><?= $status; ?></option>
                                                                                             <option value="">------</option>
-                                                                                            <option value="APPROVED">APPROVED</option>
-                                                                                            <option value="NOT APPROVED">NOT APPROVED</option>
+                                                                                            <option value="APPROVED">Sukses</option>
+                                                                                            <option value="NOT APPROVED">Di Tolak</option>
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="modal-footer">
                                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                                    <button type="submit" name="update" class="btn btn-primary">Tambah</button>
+                                                                                    <button type="submit" name="edit" class="btn btn-primary">Tambah</button>
                                                                                 </div>
                                                                             </form>
                                                                         </div>
@@ -451,5 +451,26 @@ if (isset($_SESSION['id_user'])) {
         });
     </script>
 </body>
+
+
+
+<!-- pemilik cek pembayaran -->
+<?php
+if (isset($_POST['edit'])) {
+    $Id     = $_POST['txt_id'];
+    $Alamat  = $_POST['txt_alamat'];
+    $deskripsi  = $_POST['txt_deskripsi'];
+    $Name   = $_POST['txt_nama'];
+    $Address   = $_POST['txt_alamat'];
+
+    $query = "UPDATE pemesanan SET nama_kost='$Name', alamat='$Alamat', deskripsi='$deskripsi',foto='$Img' WHERE id_kost='$Id'";
+    $result = mysqli_query($koneksi, $query);
+    if ($result) {
+        $success = "User data telah terupdate!";
+    } else {
+        $error =  "User data gagal update";
+    }
+}
+?>
 
 </html>
