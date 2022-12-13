@@ -141,7 +141,25 @@ if (isset($_SESSION['id_user'])) {
         </div>
     </div>
     <!-- Nav Bar End -->
-
+    <?php
+    $id = $_GET['id_kamar'];
+    $queryKost = "SELECT data_kost.longtitude,data_kost.latitude,data_kost.alamat,kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar,kamar_kost.status_kamar,kamar_kost.deskripsi
+                FROM kamar_kost
+                INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
+                WHERE kamar_kost.status_kamar = 'Tersedia' and kamar_kost.id_kamar = '$id'";
+    $result = mysqli_query($koneksi, $queryKost);
+    while ($row = mysqli_fetch_array($result)) {
+        $idKamar = $row['id_kamar'];
+        $noKamar = $row['no_kamar'];
+        $namaKost = $row['nama_kost'];
+        $harga = $row['harga'];
+        $foto = $row['foto_kamar'];
+        $statKamar = $row['status_kamar'];
+        $long = $row['longtitude'];
+        $lat = $row['latitude'];
+        $des = $row['deskripsi'];
+    }
+    ?>
 
     <div class="page-content page-details">
         <section class="store-gallery mt-5" id="gallery">
@@ -169,9 +187,9 @@ if (isset($_SESSION['id_user'])) {
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8">
-                            <h1 class="kost-name">Bara Kost</h1>
-                            <p class="kost-owner">By Dayat</p>
-                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                            <h1 class="kost-name">Kamar Kost No.Kamar <?= $noKamar; ?></h1>
+                            <p class="kost-owner">By <?= $namaKost; ?></p>
+                            <p><span class="kost-price">Rp. <?= $harga; ?> </span>/ Bulan</p>
 
                             <!-- <div class="owner">By Dayat</div>
                             <div class="price">Rp.350.000</div> -->
@@ -186,19 +204,10 @@ if (isset($_SESSION['id_user'])) {
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-lg-8">
+                            <h5>Deskripsi Kamar Kost</h5>
+                            <hr>
                             <p>
-                                The Nike Air Max 720 SE goes bigger than ever before with
-                                Nike's tallest Air unit yet for unimaginable, all-day comfort.
-                                There's super breathable fabrics on the upper, while colours
-                                add a modern edge.
-                            </p>
-                            <p>
-                                Bring the past into the future with the Nike Air Max 2090, a
-                                bold look inspired by the DNA of the iconic Air Max 90.
-                                Brand-new Nike Air cushioning underfoot adds unparalleled
-                                comfort while transparent mesh and vibrantly coloured details
-                                on the upper are blended with timeless OG features for an
-                                edgy, modernised look.
+                                <?= $des; ?>
                             </p>
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.42355736385!2d113.72099831436081!3d-8.160010184012863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695b617d8f623%3A0xf6c4437632474338!2sPoliteknik%20Negeri%20Jember!5e0!3m2!1sid!2sid!4v1668518560066!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
