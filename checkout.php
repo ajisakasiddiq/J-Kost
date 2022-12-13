@@ -188,9 +188,7 @@ if (isset($_SESSION['id_user'])) {
                     <div class="product-subtitle">/Bulan</div>
                   </td>
                   <td style="width: 20%;">
-                    <a href="#" class="btn btn-remove-cart">
-                      Jember
-                    </a>
+                    <div class="product-title">Jember</div>
                   </td>
                 </tr>
               </tbody>

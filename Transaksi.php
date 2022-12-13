@@ -106,6 +106,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 <th>Nama Kost</th>
                                                                 <th>No.kamar</th>
                                                                 <th>Nama Penyewa</th>
+                                                                <th>No Hp Penyewa</th>
                                                                 <th>Durasi Sewa</th>
                                                                 <th>Tanggal Pemesanan</th>
                                                                 <th>Total Harga</th>
@@ -119,7 +120,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 <?php
                                                                 $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
                                                                     ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa AS 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
-                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' FROM pemesanan 
+                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' , user_detail.no_hp FROM pemesanan 
                                                                     INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
                                                                     INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
                                                                     INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user
@@ -133,6 +134,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     $No = $row['No Kamar'];
                                                                     $NamaPenyewa = $row['Nama Penyewa'];
                                                                     $durasi = $row['Durasi Sewa'];
+                                                                    $No_hp = $row['no_hp'];
                                                                     $tgl = $row['Tanggal Pemesanan'];
                                                                     $total = $row['Total'];
                                                                     $status = $row['Status Pembayaran'];
@@ -144,6 +146,7 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $namaKost; ?></td>
                                                                         <td><?= $No; ?></td>
                                                                         <td><?= $NamaPenyewa; ?></td>
+                                                                        <td><?= $No_hp; ?></td>
                                                                         <td><?= $durasi; ?></td>
                                                                         <td><?= $tgl; ?></td>
                                                                         <td>Rp.<?= $total; ?></td>
@@ -220,19 +223,20 @@ if (isset($_SESSION['id_user'])) {
                                                             <tbody>
 
                                                                 <?php
-                                                                $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
+                                                                $queryPenyewa = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
                                                                     ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
-                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' FROM pemesanan 
+                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran',user_detail.no_hp FROM pemesanan 
                                                                     INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
                                                                     INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
                                                                     INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user";
-                                                                $result = mysqli_query($koneksi, $query);
+                                                                $hasil = mysqli_query($koneksi, $queryPenyewa);
                                                                 $no = 1;
-                                                                while ($row = mysqli_fetch_array($result)) {
+                                                                while ($row = mysqli_fetch_array($hasil)) {
                                                                     $kode = $row['Kode Pemesanan'];
                                                                     $namaKost = $row['Nama Kost'];
                                                                     $No = $row['No Kamar'];
                                                                     $NamaPenyewa = $row['Nama Penyewa'];
+                                                                    $No_hp = $row['no_hp'];
                                                                     $durasi = $row['Durasi Sewa'];
                                                                     $tgl = $row['Tanggal Pemesanan'];
                                                                     $total = $row['Total'];
@@ -245,6 +249,7 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $namaKost; ?></td>
                                                                         <td><?= $No; ?></td>
                                                                         <td><?= $NamaPenyewa; ?></td>
+                                                                        <td><?= $No_hp; ?></td>
                                                                         <td><?= $durasi; ?></td>
                                                                         <td><?= $tgl; ?></td>
                                                                         <td>Rp.<?= $total; ?></td>
@@ -265,7 +270,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 <?php
                                                                 $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
                                                                     ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
-                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' FROM pemesanan 
+                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran', user_detail.no_hp FROM pemesanan 
                                                                     INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
                                                                     INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
                                                                     INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user";
@@ -276,6 +281,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     $namaKost = $row['Nama Kost'];
                                                                     $No = $row['No Kamar'];
                                                                     $NamaPenyewa = $row['Nama Penyewa'];
+                                                                    $No_hp = $row['no_hp'];
                                                                     $durasi = $row['Durasi Sewa'];
                                                                     $tgl = $row['Tanggal Pemesanan'];
                                                                     $total = $row['Total'];
@@ -288,13 +294,14 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $namaKost; ?></td>
                                                                         <td><?= $No; ?></td>
                                                                         <td><?= $NamaPenyewa; ?></td>
+                                                                        <td><?= $No_hp; ?></td>
                                                                         <td><?= $durasi; ?></td>
                                                                         <td><?= $tgl; ?></td>
                                                                         <td>Rp.<?= $total; ?></td>
                                                                         <td><?= $status; ?></td>
                                                                         <td><img src="img/<?= $bukti; ?>" alt="" width="50px"></td>
                                                                         <td>
-                                                                            <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar"><i class="fa-sharp fa-solid mr-1 fa-money-bill"></i>Bayar</a>
+                                                                            <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
                                                                             <a href="" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
                                                                     </tr>
