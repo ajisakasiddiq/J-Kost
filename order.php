@@ -188,12 +188,13 @@ if (isset($_SESSION['id_user'])) {
             </div>
             <div class="row">
                 <?php
-                $queryKost = "SELECT data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar,kamar_kost.status_kamar
+                $queryKost = "SELECT kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar,kamar_kost.status_kamar
                         FROM kamar_kost
                         INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
                         WHERE kamar_kost.status_kamar = 'Tersedia'";
                 $result = mysqli_query($koneksi, $queryKost);
                 while ($row = mysqli_fetch_array($result)) {
+                    $idKamar = $row['id_kamar'];
                     $noKamar = $row['no_kamar'];
                     $namaKost = $row['nama_kost'];
                     $harga = $row['harga'];
@@ -201,7 +202,7 @@ if (isset($_SESSION['id_user'])) {
                     $statKamar = $row['status_kamar']
                 ?>
                     <div class="col-lg-3 mb-3">
-                        <a href="details.php">
+                        <a href="details.php?id_kamar=<?= $idKamar; ?>">
                             <div class="card">
                                 <img src="img/<?= $foto; ?>" class="card-img-top" alt="..." style="max-height: 140px;">
                                 <div class="card-body">
