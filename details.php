@@ -167,14 +167,14 @@ if (isset($_SESSION['id_user'])) {
                 <div class="row">
                     <div class="col-lg-8" data-aos="zoom-in">
                         <transition name="slide-fade" mode="out-in">
-                            <img :key="photos[activePhoto].id" :src="photos[activePhoto].url" class="w-100 main-image" alt="" />
+                            <img :key="photos[activePhoto].id" :src="photos[activePhoto].url" class="w-100 main-image" alt="" style="max-height: 460px; min-height: 460px; border-radius: 40px;" />
                         </transition>
                     </div>
                     <div class="col-lg-2">
                         <div class="row">
                             <div class="col-3 col-lg-12 mt-lg-2 mt-lg-2 mt-md-3" v-for="(photo, index) in photos" :key="photo.id" data-aos="zoom-in" data-aos-delay="100">
                                 <a href="#" @click="changeActive(index)">
-                                    <img :src="photo.url" class="w-100 thumbnail-image" :class="{ active: index == activePhoto }" alt="" />
+                                    <img :src="photo.url" class="w-100 thumbnail-image" :class="{ active: index == activePhoto }" alt="" style="max-height: 110px;" />
                                 </a>
                             </div>
                         </div>
