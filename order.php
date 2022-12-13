@@ -205,7 +205,7 @@ if (isset($_SESSION['id_user'])) {
                             <div class="card">
                                 <img src="img/<?= $foto; ?>" class="card-img-top" alt="..." style="max-height: 140px;">
                                 <div class="card-body">
-                                    <h3 class="card-text">Kamar Kost No.Kamar <?= $noKamar; ?></h3>
+                                    <h2 class="card-text">Kamar Kost No.Kamar <?= $noKamar; ?></h2>
                                     <p>By <?= $namaKost; ?></p>
                                     <p><span class="kost-price">Rp. <?= $harga; ?> </span>/ Bulan</p>
                                     <p><?= $statKamar; ?></p>

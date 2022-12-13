@@ -98,9 +98,6 @@ if (isset($_SESSION['id_user'])) {
                                                         <i class="fa fa-coffee"></i> Pastikan <strong>Data diri</strong> anda terinput dengan benar!
                                                     </div>
                                                     <h3>Personal info</h3>
-                                                    <div class="d-flex">
-                                                        <img src="img/<?= $userImg ?>" alt="" class="avatar img-circle" alt="avatar" width="100px">
-                                                    </div>
                                                     <form role="form" action="" method="post" enctype="multipart/form-data">
                                                         <?php
                                                         $query  = "SELECT * FROM user_detail WHERE id_user = '$sesID'";
@@ -120,8 +117,7 @@ if (isset($_SESSION['id_user'])) {
                                                         ?>
                                                             <input value="<?= $sesID ?>" class="form-control" type="hidden" name="txt_id" id="id_user">
                                                             <div class="form-group">
-                                                                <img src="img/<?= $userImg; ?>" class="avatar img-circle" alt="avatar" width="100px">
-                                                                <h6>Upload a different photo...</h6>
+                                                                <label>Upload a profile photo...</label>
                                                                 <div class="col-lg-8">
                                                                     <input type="file" class="form-control" name="gambar">
                                                                     <input type="hidden" class="form-control" name="gambarLama" value="<?= $userImg; ?>">
