@@ -209,7 +209,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     </div>
 
                                                                 </tr>
-                                                                <?php echo $no++; ?>
+                                                                <?php $no++; ?>
                                                             <?php  } ?>
                                                         </tbody>
                                                     </table>

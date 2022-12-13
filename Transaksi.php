@@ -157,7 +157,7 @@ if (isset($_SESSION['id_user'])) {
                                                                             <a href="" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
                                                                     </tr>
-                                                                    <?= $no++; ?>
+                                                                    <?php $no++; ?>
                                                                 <?php } ?>
                                                                 <!-- pembayaran pemilik start -->
                                                                 <div class="modal fade" id="cek<?= $idPesan; ?>" tabindex="-1" aria-labelledby="EditadminLabel" aria-hidden="true">
@@ -260,7 +260,7 @@ if (isset($_SESSION['id_user'])) {
                                                                             <a href="" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
                                                                     </tr>
-                                                                    <?= $no++; ?>
+                                                                    <?php $no++; ?>
                                                                 <?php } ?>
 
                                                             </tbody>
@@ -268,6 +268,7 @@ if (isset($_SESSION['id_user'])) {
                                                             <tbody>
 
                                                                 <?php
+                                                                $no = 1;
                                                                 $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
                                                                     ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
                                                                     , pemesanan.bukti_pembayaran as 'Bukti Pembayaran', user_detail.no_hp FROM pemesanan 
@@ -275,7 +276,6 @@ if (isset($_SESSION['id_user'])) {
                                                                     INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
                                                                     INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user";
                                                                 $result = mysqli_query($koneksi, $query);
-                                                                $no = 1;
                                                                 while ($row = mysqli_fetch_array($result)) {
                                                                     $kode = $row['Kode Pemesanan'];
                                                                     $namaKost = $row['Nama Kost'];
@@ -305,7 +305,7 @@ if (isset($_SESSION['id_user'])) {
                                                                             <a href="" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
                                                                     </tr>
-                                                                    <?= $no++; ?>
+                                                                    <?php $no++; ?>
                                                                 <?php } ?>
                                                             </tbody>
                                                         <?php } ?>
