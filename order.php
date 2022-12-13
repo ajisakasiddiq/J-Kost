@@ -204,8 +204,8 @@ if (isset($_SESSION['id_user'])) {
                         <div class="card">
                             <img src="img/product-details-2.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h3 class="card-text">Bara Kost</h3>
-                                <p>By Bara kost</p>
+                                <h3 class="card-text">Kost Putri Sakinah</h3>
+                                <p>By Putri Sakinah kost</p>
                                 <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
                             </div>
                         </div>
@@ -216,9 +216,9 @@ if (isset($_SESSION['id_user'])) {
                         <div class="card">
                             <img src="img/product-details-3.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h3 class="card-text">Bara Kost</h3>
-                                <p>By Bara kost</p>
-                                <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                                <h3 class="card-text">Kost Cantik</h3>
+                                <p>By Cantik kost</p>
+                                <p><span class="kost-price">Rp. 800.000 </span>/ Bulan</p>
                             </div>
                         </div>
                     </a>
@@ -228,9 +228,9 @@ if (isset($_SESSION['id_user'])) {
                         <div class="card">
                             <img src="img/product-details-4.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h3 class="card-text">Bara Kost</h3>
-                                <p>By Bara kost</p>
-                                <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                                <h3 class="card-text">Fatimah Kost</h3>
+                                <p>By Fatimah kost</p>
+                                <p><span class="kost-price">Rp. 700.000 </span>/ Bulan</p>
                             </div>
                         </div>
                     </a>
