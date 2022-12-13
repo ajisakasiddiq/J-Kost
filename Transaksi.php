@@ -232,6 +232,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 $hasil = mysqli_query($koneksi, $queryPenyewa);
                                                                 $no = 1;
                                                                 while ($row = mysqli_fetch_array($hasil)) {
+                                                                    $idPesan = $row['id_pemesanan'];
                                                                     $kode = $row['Kode Pemesanan'];
                                                                     $namaKost = $row['Nama Kost'];
                                                                     $No = $row['No Kamar'];
@@ -256,10 +257,27 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $status; ?></td>
                                                                         <td><img src="img/<?= $bukti; ?>" alt="" width="50px"></td>
                                                                         <td>
-                                                                            <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar"><i class="fa-sharp fa-solid mr-1 fa-money-bill"></i>Bayar</a>
+                                                                            <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar<?= $idPesan; ?>"><i class="fa-sharp fa-solid mr-1 fa-money-bill"></i>Bayar</a>
                                                                             <a href="" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
                                                                     </tr>
+                                                                    <div class="modal fade" id="bayar<?= $idPesan; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Pembayaran</h1>
+                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <h2></h2>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                     <?php $no++; ?>
                                                                 <?php } ?>
 
