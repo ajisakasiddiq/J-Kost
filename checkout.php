@@ -156,7 +156,25 @@ if (isset($_SESSION['id_user'])) {
     </div>
   </div>
   <!-- Page Header End -->
-
+  <?php
+  $id = $_GET['id_kamar'];
+  $queryKost = "SELECT data_kost.longtitude,data_kost.latitude,data_kost.alamat,kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar,kamar_kost.status_kamar,kamar_kost.deskripsi
+                FROM kamar_kost
+                INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
+                WHERE kamar_kost.status_kamar = 'Tersedia' and kamar_kost.id_kamar = '$id'";
+  $result = mysqli_query($koneksi, $queryKost);
+  while ($row = mysqli_fetch_array($result)) {
+    $idKamar = $row['id_kamar'];
+    $noKamar = $row['no_kamar'];
+    $namaKost = $row['nama_kost'];
+    $harga = $row['harga'];
+    $foto = $row['foto_kamar'];
+    $statKamar = $row['status_kamar'];
+    $long = $row['longtitude'];
+    $lat = $row['latitude'];
+    $des = $row['deskripsi'];
+  }
+  ?>
 
   <div class="page-content page-cart">
     <section class="store-breadcrumbs" data-aos="fade-down" data-aos-delay="100">
@@ -177,14 +195,14 @@ if (isset($_SESSION['id_user'])) {
               <tbody>
                 <tr>
                   <td style="width: 25%;">
-                    <img src="img/638de345c2f56.jpeg" alt="" width="100px" />
+                    <img src="img/<?= $foto; ?>" alt="" width="100px" />
                   </td>
                   <td style="width: 35%;">
-                    <div class="product-title">Kos bara</div>
-                    <div class="product-subtitle">by Dayat</div>
+                    <div class="product-title">Kamar Kost No.Kamar <?= $noKamar; ?></div>
+                    <div class="product-subtitle">By <?= $namaKost; ?></div>
                   </td>
                   <td style="width: 35%;">
-                    <div class="product-title">350.000</div>
+                    <div class="product-title">Rp. <?= $harga; ?></div>
                     <div class="product-subtitle">/Bulan</div>
                   </td>
                   <td style="width: 20%;">
@@ -204,53 +222,53 @@ if (isset($_SESSION['id_user'])) {
           </div>
         </div>
         <form action="">
-        <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="addressOne">Alamat</label>
-              <input type="text" class="form-control" id="addressOne" aria-describedby="emailHelp" name="addressOne" value="Setra Duta Cemara" />
+          <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="addressOne">Alamat</label>
+                <input type="text" class="form-control" id="addressOne" aria-describedby="emailHelp" name="addressOne" value="Setra Duta Cemara" />
+              </div>
             </div>
-          </div>
 
-          <div class="col-md-4">
-            <div class="form-group">
-              <label for="province">Provinsi</label>
-              <select name="province" id="province" class="form-control">
-                <option value="West Java">Jawa Timur</option>
-              </select>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="province">Provinsi</label>
+                <select name="province" id="province" class="form-control">
+                  <option value="West Java">Jawa Timur</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="city">kelurahan</label>
+                <select name="city" id="city" class="form-control">
+                  <option value="Sumbersari">Ambulu</option>
+                  <option value="Sumbersari">Ajung</option>
+                  <option value="Sumbersari">Arjasa</option>
+                  <option value="Sumbersari">Kalisat</option>
+                  <option value="Sumbersari">Sumbersari</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="postalCode">Postal Code</label>
+                <input type="text" class="form-control" id="postalCode" name="postalCode" value="40512" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="kota">Kota</label>
+                <input type="text" class="form-control" id="kota" name="kota" value="Jember" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="mobile">Telepon</label>
+                <input type="text" class="form-control" id="mobile" name="mobile" value="+628 2020 11111" />
+              </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="form-group">
-              <label for="city">kelurahan</label>
-              <select name="city" id="city" class="form-control">
-                <option value="Sumbersari">Ambulu</option>
-                <option value="Sumbersari">Ajung</option>
-                <option value="Sumbersari">Arjasa</option>
-                <option value="Sumbersari">Kalisat</option>
-                <option value="Sumbersari">Sumbersari</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="form-group">
-              <label for="postalCode">Postal Code</label>
-              <input type="text" class="form-control" id="postalCode" name="postalCode" value="40512" />
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="kota">Kota</label>
-              <input type="text" class="form-control" id="kota" name="kota" value="Jember" />
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="mobile">Telepon</label>
-              <input type="text" class="form-control" id="mobile" name="mobile" value="+628 2020 11111" />
-            </div>
-          </div>
-        </div>
         </form>
         <div class="row" data-aos="fade-up" data-aos-delay="150">
           <div class="col-12">

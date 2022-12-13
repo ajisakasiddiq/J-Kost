@@ -195,7 +195,7 @@ if (isset($_SESSION['id_user'])) {
                             <div class="price">Rp.350.000</div> -->
                         </div>
                         <div class="col-lg-2" data-aos="zoom-in">
-                            <a class="btn btn-custom px-4 btn-block mb-3" href="checkout">Sewa</a>
+                            <a class="btn btn-custom px-4 btn-block mb-3" href="checkout?id_kamar=<?= $idKamar; ?>">Sewa</a>
                         </div>
                     </div>
                 </div>
@@ -310,7 +310,7 @@ if (isset($_SESSION['id_user'])) {
                 activePhoto: 3,
                 photos: [{
                     id: 1,
-                    url: "img/product-details-1.jpg",
+                    url: "img/<?= $foto; ?>",
                 }, {
                     id: 2,
                     url: "img/product-details-2.jpg",
