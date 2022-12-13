@@ -55,6 +55,9 @@ if (isset($_SESSION['id_user'])) {
     <link rel="stylesheet" href="js/semantic.min.css" />
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -152,6 +155,31 @@ if (isset($_SESSION['id_user'])) {
                                         </div>
                                     </div>
                                 </div>
+                                <div class="container-fluid">
+                                    <div class="white_shd full margin_bottom_30">
+                                        <div class="full graph_head">
+                                            <h2 class="text-center text-primary mb-1">Kost Jember</h2>
+                                            <div class="mt-2 mb-2" id="mapid" style="width: 100%; height: 400px;"></div>
+                                            <script>
+                                                const mymap = L.map('mapid').setView([-8.231935485535336, 113.60678852931734], 13);
+                                                const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                                    maxZoom: 19,
+                                                }).addTo(mymap);
+                                                // <?php
+                                                    // $query = "SELECT * FROM data_kost WHERE status = APPROVED";
+                                                    // $result = mysqli_query($koneksi, $query);
+                                                    // $no = 1;
+                                                    // while ($row = mysqli_fetch_array($result)) {
+                                                    //     $long = $row['longtitude'];
+                                                    //     $lat = $row['latitude'];
+                                                    // 
+                                                    ?>
+                                                L.marker([-8.236030799081844, 113.55308237785485]).addTo(mymap);
+                                                //
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <!-- footer -->
                                 <div class="container-fluid">
@@ -224,7 +252,6 @@ if (isset($_SESSION['id_user'])) {
                                         </div>
                                     </div>
                                 </div>
-
                                 <!-- footer -->
                                 <div class="container-fluid">
                                     <div class="footer">
