@@ -203,6 +203,7 @@ if (isset($_SESSION['id_user'])) {
             <h2 class="mb-4">Detail Pemesanan</h2>
           </div>
         </div>
+        <form action="">
         <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
           <div class="col-md-6">
             <div class="form-group">
@@ -250,6 +251,7 @@ if (isset($_SESSION['id_user'])) {
             </div>
           </div>
         </div>
+        </form>
         <div class="row" data-aos="fade-up" data-aos-delay="150">
           <div class="col-12">
             <hr />
