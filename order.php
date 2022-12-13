@@ -188,7 +188,7 @@ if (isset($_SESSION['id_user'])) {
             </div>
             <div class="row">
                 <?php
-                $queryKost = "SELECT data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar
+                $queryKost = "SELECT data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar,kamar_kost.status_kamar
                         FROM kamar_kost
                         INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
                         WHERE kamar_kost.status_kamar = 'Tersedia'";
@@ -198,7 +198,7 @@ if (isset($_SESSION['id_user'])) {
                     $namaKost = $row['nama_kost'];
                     $harga = $row['harga'];
                     $foto = $row['foto_kamar'];
-
+                    $statKamar = $row['status_kamar']
                 ?>
                     <div class="col-lg-3 mb-3">
                         <a href="details.php">
@@ -208,6 +208,7 @@ if (isset($_SESSION['id_user'])) {
                                     <h3 class="card-text">Kamar Kost No.Kamar <?= $noKamar; ?></h3>
                                     <p>By <?= $namaKost; ?></p>
                                     <p><span class="kost-price">Rp. <?= $harga; ?> </span>/ Bulan</p>
+                                    <p><?= $statKamar; ?></p>
                                 </div>
                             </div>
                         </a>
