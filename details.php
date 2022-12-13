@@ -65,7 +65,7 @@ if (isset($_SESSION['id_user'])) {
                         </a>
                     </div>
                 </div>
-                <div class="col-4 col-md-4">
+                <div class="col-4 col-md-4 d-none">
                     <div class="top-bar-item">
                         <div class="top-bar-icon">
                             <i class="fa fa-phone-alt"></i>
@@ -76,7 +76,7 @@ if (isset($_SESSION['id_user'])) {
                         </div>
                     </div>
                 </div>
-                <div class="col-4 col-md-4">
+                <div class="col-4 col-md-4 d-none">
                     <div class="top-bar-item">
                         <div class="top-bar-icon">
                             <i class="far fa-envelope"></i>
@@ -117,7 +117,7 @@ if (isset($_SESSION['id_user'])) {
                                 <li class="nav-item dropdown">
                                     <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
                                         Hi, <?php echo $name; ?>
-                                        <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
+                                        <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture d-none" height="50px">
                                     </a>
                                     <div class="dropdown-menu bg-dark">
                                         <a href="dashboard" class="dropdown-item text-danger">Dashboard</a>
@@ -167,12 +167,18 @@ if (isset($_SESSION['id_user'])) {
                 <div class="row">
                     <div class="col-lg-8" data-aos="zoom-in">
                         <transition name="slide-fade" mode="out-in">
-                            <img :key="photos[activePhoto].id" :src="photos[activePhoto].url" class="w-100 main-image" alt="" style="max-height: 460px; min-height: 460px; border-radius: 40px;" />
+                            <img :key="photos[activePhoto].id" :src="photos[activePhoto].url" class="w-100 main-image" alt="" style="
+                            max-height: 460px; 
+                            min-height: 460px; 
+                            border-radius: 40px;
+                            
+                            
+                            " />
                         </transition>
                     </div>
                     <div class="col-lg-2">
                         <div class="row">
-                            <div class="col-3 col-lg-12 mt-lg-2 mt-lg-2 mt-md-3" v-for="(photo, index) in photos" :key="photo.id" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="col-3 col-lg-12 mt-lg-2 mt-2 mt-md-3" v-for="(photo, index) in photos" :key="photo.id" data-aos="zoom-in" data-aos-delay="100">
                                 <a href="#" @click="changeActive(index)">
                                     <img :src="photo.url" class="w-100 thumbnail-image" :class="{ active: index == activePhoto }" alt="" style="max-height: 110px;" />
                                 </a>
@@ -209,7 +215,7 @@ if (isset($_SESSION['id_user'])) {
                             <p>
                                 <?= $des; ?>
                             </p>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.42355736385!2d113.72099831436081!3d-8.160010184012863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695b617d8f623%3A0xf6c4437632474338!2sPoliteknik%20Negeri%20Jember!5e0!3m2!1sid!2sid!4v1668518560066!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.42355736385!2d113.72099831436081!3d-8.160010184012863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695b617d8f623%3A0xf6c4437632474338!2sPoliteknik%20Negeri%20Jember!5e0!3m2!1sid!2sid!4v1668518560066!5m2!1sid!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
