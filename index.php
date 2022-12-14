@@ -63,7 +63,7 @@ if (isset($_SESSION['id_user'])) {
                         </a>
                     </div>
                 </div>
-                <div class="col-4 col-md-4 d-none">
+                <div class="col-4 col-md-4">
                     <div class="top-bar-item">
                         <div class="top-bar-icon">
                             <i class="fa fa-phone-alt"></i>
@@ -74,7 +74,7 @@ if (isset($_SESSION['id_user'])) {
                         </div>
                     </div>
                 </div>
-                <div class="col-4 col-md-4 d-none">
+                <div class="col-4 col-md-4">
                     <div class="top-bar-item">
                         <div class="top-bar-icon">
                             <i class="far fa-envelope"></i>
@@ -115,7 +115,7 @@ if (isset($_SESSION['id_user'])) {
                                 <li class="nav-item dropdown">
                                     <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
                                         Hi, <?php echo $name; ?>
-                                        <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture d-none " height="50px">
+                                        <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture" height="50px">
                                     </a>
                                     <div class="dropdown-menu bg-dark">
                                         <a href="dashboard" class="dropdown-item text-danger">Dashboard</a>
