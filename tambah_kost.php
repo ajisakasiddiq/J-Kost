@@ -123,8 +123,8 @@ if (isset($_SESSION['id_user'])) {
                                                 </div>
 
                                                 <!-- get location start-->
-                                                <input type="text" class="form-control" id="Latitude" name="Latitude" placeholder="latitude" required />
-                                                <input type="text" class="form-control" id="Longitude" name="Longitude" placeholder="longitude" required />
+                                                <input type="hidden" class="form-control" id="Latitude" name="Latitude" placeholder="latitude" required />
+                                                <input type="hidden" class="form-control" id="Longitude" name="Longitude" placeholder="longitude" required />
                                                 <div class="mt-2 mb-2" id="mapid" style="width: 100%; height: 400px;"></div>
                                                 <script>
                                                     const mymap = L.map('mapid').setView([-8.231935485535336, 113.60678852931734], 13);

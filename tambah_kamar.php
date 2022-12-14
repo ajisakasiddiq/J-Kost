@@ -104,8 +104,25 @@ if (isset($_SESSION['id_user'])) {
                       <form id="bookingForm" action="" method="post" enctype="multipart/form-data" class="needs-validation" novalidate autocomplete="off">
                         <input type="hidden" class="form-control" id="inputName" name="name" placeholder="Id kost" required value="<?= $sesID;  ?>" />
                         <div class="form-group">
-                          <label for="inputName">Foto kamar</label>
-                          <input type="file" class="form-control" id="inputName" name="gambar" required />
+                          <div class="row">
+                            <div class="col-3">
+                              <label for="inputName">Foto Depan kamar</label>
+                              <input type="file" class="form-control" id="inputName" name="gambar" required />
+                            </div>
+                            <div class="col-3">
+                              <label for="inputName">Foto Dalam Kamar</label>
+                              <input type="file" class="form-control" id="inputName" name="gambarDalam" required />
+                            </div>
+                            <div class="col-3">
+                              <label for="inputName">Foto kamar mandi</label>
+                              <input type="file" class="form-control" id="inputName" name="gambarMandi" required />
+                            </div>
+                            <div class="col-3">
+                              <label for="inputName">Foto Dapur</label>
+                              <input type="file" class="form-control" id="inputName" name="gambarDapur" required />
+                            </div>
+                          </div>
+
                         </div>
                         <div class="form-group">
                           <label for="">Kost</label>
