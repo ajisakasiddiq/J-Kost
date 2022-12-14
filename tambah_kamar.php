@@ -218,18 +218,15 @@ if (isset($_SESSION['id_user'])) {
 
                   function upload()
                   {
-
                     $file = $_FILES['gambar']['name'];
                     $size = $_FILES['gambar']['size'];
                     $error = $_FILES['gambar']['error'];
                     $tmpName = $_FILES['gambar']['tmp_name'];
-
                     //cek file apakah diupload atau tidak
                     if ($error === 4) {
                       echo "<script>alert('Pilih gambar terlebih dahulu');</script>";
                       return false;
                     }
-
                     //cek apakah benar gambar
                     $extensGambarValid = ['jpg', 'jpeg', 'png'];
                     $extensGambar = explode('.', $file);
@@ -238,19 +235,14 @@ if (isset($_SESSION['id_user'])) {
                       echo "<script>alert('Yang anda upload bukan berupa file gambar');</script>";
                       return false;
                     }
-
                     //cek jika ukuran nya terlalu besar 
                     if ($size > 1000000) {
                       echo "<script>alert('Ukuran gambar terlalu besar');</script>";
                     }
-
                     //generate nama gambar baru
                     $namaFIlebaru = uniqid();
                     $namaFIlebaru .= '.';
                     $namaFIlebaru .= $extensGambar;
-
-
-
                     //lolos cek 
                     move_uploaded_file($tmpName, 'img/' . $namaFIlebaru);
                     return $namaFIlebaru;
