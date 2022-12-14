@@ -125,17 +125,15 @@ if (isset($_SESSION['id_user'])) {
 
                         </div>
                         <div class="form-group">
-                          <label for="">Kost</label>
-                          <select name="id_kost" id="" class="form-control" required>
-                            <?php
-                            $query = "SELECT * FROM data_kost
-                             WHERE id_user = '$sesID';";
-                            $result = mysqli_query($koneksi, $query);
-                            while ($row = mysqli_fetch_array($result)) {
-                              echo "<option value=$row[id_kost] > $row[nama_kost] </option>";
-                            }
-                            ?>
-                          </select>
+                          <?php
+                          $query = "SELECT * FROM data_kost
+                             WHERE id_user = '$sesID' AND status = 'APPROVED';";
+                          $result = mysqli_query($koneksi, $query);
+                          while ($row = mysqli_fetch_array($result)) {
+                            $id = $row['id_kost'];
+                          }
+                          ?>
+                          <input type="hidden" name="id_kost" id="" value="<?= $id; ?>">
                         </div>
                         <div class="form-group">
                           <label for="inputName">Jenis Kamar</label>
@@ -202,12 +200,15 @@ if (isset($_SESSION['id_user'])) {
                     $No = $_POST['no'];
                     $Harga = $_POST['harga'];
                     $Img = upload();
+                    $ImgDalam = uploadDalam();
+                    $ImgDapur = uploadDapur();
+                    $ImgMandi = uploadMandi();
                     // $Img   = $_POST['img'];
                     if (!$Img) {
                       return false;
                     }
 
-                    $query = "INSERT INTO kamar_kost VALUES (null,'$id','$Jenis','$No','$Harga','Tersedia','$Img','$Deskripsi')";
+                    $query = "INSERT INTO kamar_kost VALUES (null,'$id','$Jenis','$No','$Harga','Tersedia','$Img','$ImgDalam','$ImgMandi','$ImgDapur','$Deskripsi')";
                     $result = mysqli_query($koneksi, $query);
                     if ($result) {
                       $succes = "Data berhasil terinput!";
@@ -246,6 +247,99 @@ if (isset($_SESSION['id_user'])) {
                     //lolos cek 
                     move_uploaded_file($tmpName, 'img/' . $namaFIlebaru);
                     return $namaFIlebaru;
+                  }
+                  function uploadDalam()
+                  {
+                    $fileDalam = $_FILES['gambarDalam']['name'];
+                    $size = $_FILES['gambarDalam']['size'];
+                    $error = $_FILES['gambarDalam']['error'];
+                    $tmpName = $_FILES['gambarDalam']['tmp_name'];
+                    //cek file apakah diupload atau tidak
+                    if ($error === 4) {
+                      echo "<script>alert('Pilih gambar terlebih dahulu');</script>";
+                      return false;
+                    }
+                    //cek apakah benar gambar
+                    $extensGambarValid = ['jpg', 'jpeg', 'png'];
+                    $extensGambar = explode('.', $fileDalam);
+                    $extensGambar = strtolower(end($extensGambar));
+                    if (!in_array($extensGambar, $extensGambarValid)) {
+                      echo "<script>alert('Yang anda upload bukan berupa file gambar');</script>";
+                      return false;
+                    }
+                    //cek jika ukuran nya terlalu besar 
+                    if ($size > 1000000) {
+                      echo "<script>alert('Ukuran gambar terlalu besar');</script>";
+                    }
+                    //generate nama gambar baru
+                    $namaFIlebaruDalam = uniqid();
+                    $namaFIlebaruDalam .= '.';
+                    $namaFIlebaruDalam .= $extensGambar;
+                    //lolos cek 
+                    move_uploaded_file($tmpName, 'img/' . $namaFIlebaruDalam);
+                    return $namaFIlebaruDalam;
+                  }
+                  function uploadMandi()
+                  {
+                    $fileMandi = $_FILES['gambarMandi']['name'];
+                    $size = $_FILES['gambarMandi']['size'];
+                    $error = $_FILES['gambarMandi']['error'];
+                    $tmpName = $_FILES['gambarMandi']['tmp_name'];
+                    //cek file apakah diupload atau tidak
+                    if ($error === 4) {
+                      echo "<script>alert('Pilih gambar terlebih dahulu');</script>";
+                      return false;
+                    }
+                    //cek apakah benar gambar
+                    $extensGambarValid = ['jpg', 'jpeg', 'png'];
+                    $extensGambar = explode('.', $fileMandi);
+                    $extensGambar = strtolower(end($extensGambar));
+                    if (!in_array($extensGambar, $extensGambarValid)) {
+                      echo "<script>alert('Yang anda upload bukan berupa file gambar');</script>";
+                      return false;
+                    }
+                    //cek jika ukuran nya terlalu besar 
+                    if ($size > 1000000) {
+                      echo "<script>alert('Ukuran gambar terlalu besar');</script>";
+                    }
+                    //generate nama gambar baru
+                    $namaFIlebaruMandi = uniqid();
+                    $namaFIlebaruMandi .= '.';
+                    $namaFIlebaruMandi .= $extensGambar;
+                    //lolos cek 
+                    move_uploaded_file($tmpName, 'img/' . $namaFIlebaruMandi);
+                    return $namaFIlebaruMandi;
+                  }
+                  function uploadDapur()
+                  {
+                    $fileDapur = $_FILES['gambarDapur']['name'];
+                    $size = $_FILES['gambarDapur']['size'];
+                    $error = $_FILES['gambarDapur']['error'];
+                    $tmpName = $_FILES['gambarDapur']['tmp_name'];
+                    //cek file apakah diupload atau tidak
+                    if ($error === 4) {
+                      echo "<script>alert('Pilih gambar terlebih dahulu');</script>";
+                      return false;
+                    }
+                    //cek apakah benar gambar
+                    $extensGambarValid = ['jpg', 'jpeg', 'png'];
+                    $extensGambar = explode('.', $fileDapur);
+                    $extensGambar = strtolower(end($extensGambar));
+                    if (!in_array($extensGambar, $extensGambarValid)) {
+                      echo "<script>alert('Yang anda upload bukan berupa file gambar');</script>";
+                      return false;
+                    }
+                    //cek jika ukuran nya terlalu besar 
+                    if ($size > 1000000) {
+                      echo "<script>alert('Ukuran gambar terlalu besar');</script>";
+                    }
+                    //generate nama gambar baru
+                    $namaFIlebaruDapur = uniqid();
+                    $namaFIlebaruDapur .= '.';
+                    $namaFIlebaruDapur .= $extensGambar;
+                    //lolos cek 
+                    move_uploaded_file($tmpName, 'img/' . $namaFIlebaruDapur);
+                    return $namaFIlebaruDapur;
                   }
 
                   ?>
