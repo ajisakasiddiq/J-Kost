@@ -143,7 +143,7 @@ if (isset($_SESSION['id_user'])) {
     <!-- Nav Bar End -->
     <?php
     $id = $_GET['id_kamar'];
-    $queryKost = "SELECT data_kost.alamat, data_kost.longtitude,data_kost.latitude,data_kost.alamat,kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar,kamar_kost.status_kamar,kamar_kost.deskripsi
+    $queryKost = "SELECT data_kost.alamat, data_kost.longtitude,data_kost.latitude,data_kost.alamat,kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar_pertama,kamar_kost.foto_kamar_kedua,kamar_kost.foto_kamar_ketiga,kamar_kost.foto_kamar_keempat,kamar_kost.status_kamar,kamar_kost.deskripsi
                 FROM kamar_kost
                 INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
                 WHERE kamar_kost.status_kamar = 'Tersedia' and kamar_kost.id_kamar = '$id'";
@@ -153,7 +153,7 @@ if (isset($_SESSION['id_user'])) {
         $noKamar = $row['no_kamar'];
         $namaKost = $row['nama_kost'];
         $harga = $row['harga'];
-        $foto = $row['foto_kamar'];
+        $foto = $row['foto_kamar_pertama'];
         $statKamar = $row['status_kamar'];
         $long = $row['longtitude'];
         $lat = $row['latitude'];

@@ -162,33 +162,35 @@ if (isset($_SESSION['id_user'])) {
                 <p>Kos Kosan</p>
                 <h2>Pilih Kos Sesuai Keinginan Anda</h2>
             </div>
-            <div class="row mb-3 justify-content-between">
-                <div class="col-lg-3">
-                    <select class="form-control  form-select" aria-label="Default select example">
-                        <option selected><i class="fa-regular fa-people"></i>Semua Tipe Kost</option>
-                        <option value="1">Cewek</option>
-                        <option value="2">Cowok</option>
-                        <option value="3">Campur</option>
-                    </select>
-                </div>
-                <div class="col-lg-3">
-                    <select class="form-control  form-select" aria-label="Default select example">
-                        <option selected><i class="fa-regular fa-people"></i>Bulanan</option>
-                        <option value="1">Per 3 Bulan</option>
-                        <option value="2">Per 6 Bulan</option>
-                        <option value="3">Tahunan </option>
-                    </select>
-                </div>
-                <div class="col-lg-6 input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Cari nama kos/alamat/tempat " aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="input-group-text  btn" id="basic-addon2">Cari</button>
+            <form action="">
+                <div class="row mb-3 justify-content-between">
+                    <div class="col-lg-3">
+                        <select class="form-control  form-select" aria-label="Default select example">
+                            <option selected><i class="fa-regular fa-people"></i>Semua Tipe Kost</option>
+                            <option value="1">Cewek</option>
+                            <option value="2">Cowok</option>
+                            <option value="3">Campur</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3">
+                        <select class="form-control  form-select" aria-label="Default select example">
+                            <option selected><i class="fa-regular fa-people"></i>Bulanan</option>
+                            <option value="1">Per 3 Bulan</option>
+                            <option value="2">Per 6 Bulan</option>
+                            <option value="3">Tahunan </option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6 input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Cari nama kos/alamat/tempat " aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="input-group-text  btn" id="basic-addon2">Cari</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
             <div class="row">
                 <?php
-                $queryKost = "SELECT kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar,kamar_kost.status_kamar
+                $queryKost = "SELECT kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar_pertama,kamar_kost.status_kamar
                         FROM kamar_kost
                         INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
                         WHERE kamar_kost.status_kamar = 'Tersedia'";
@@ -198,7 +200,7 @@ if (isset($_SESSION['id_user'])) {
                     $noKamar = $row['no_kamar'];
                     $namaKost = $row['nama_kost'];
                     $harga = $row['harga'];
-                    $foto = $row['foto_kamar'];
+                    $foto = $row['foto_kamar_pertama'];
                     $statKamar = $row['status_kamar']
                 ?>
                     <div class="col-lg-3 mb-3">

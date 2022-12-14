@@ -117,7 +117,7 @@ if (isset($_SESSION['id_user'])) {
                                                         </thead>
                                                         <tbody>
                                                             <?php
-                                                            $query = "SELECT kamar_kost.id_kamar,kamar_kost.foto_kamar , data_kost.nama_kost,kamar_kost.jenis_kamar,kamar_kost.no_kamar,kamar_kost.deskripsi,kamar_kost.status_kamar,kamar_kost.harga
+                                                            $query = "SELECT kamar_kost.id_kamar,kamar_kost.foto_kamar_pertama,kamar_kost.foto_kamar_kedua,kamar_kost.foto_kamar_ketiga,kamar_kost.foto_kamar_keempat , data_kost.nama_kost,kamar_kost.jenis_kamar,kamar_kost.no_kamar,kamar_kost.deskripsi,kamar_kost.status_kamar,kamar_kost.harga
                                                                 FROM kamar_kost
                                                                 INNER JOIN data_kost ON data_kost.id_kost=kamar_kost.id_kost
                                                                 WHERE data_kost.id_user='$sesID'";
@@ -125,7 +125,7 @@ if (isset($_SESSION['id_user'])) {
                                                             $no = 1;
                                                             while ($row = mysqli_fetch_array($result)) {
                                                                 $id = $row['id_kamar'];
-                                                                $img = $row['foto_kamar'];
+                                                                $img = $row['foto_kamar_pertama'];
                                                                 $Name = $row['nama_kost'];
                                                                 $Jenis = $row['jenis_kamar'];
                                                                 $No = $row['no_kamar'];
@@ -312,7 +312,7 @@ if (isset($_POST['edit'])) {
         $Img = upload();
     }
 
-    $query = "UPDATE kamar_kost SET jenis_kamar='$jenis', no_kamar='$Nokamar', harga='$Harga',status_kamar='$Status',foto_kamar='$Img',deskripsi='$deskripsi' WHERE id_kamar='$Id'";
+    $query = "UPDATE kamar_kost SET jenis_kamar='$jenis', no_kamar='$Nokamar', harga='$Harga',status_kamar='$Status',foto_kamar_pertama='$Img',deskripsi='$deskripsi' WHERE id_kamar='$Id'";
     $result = mysqli_query($koneksi, $query);
     if ($result) {
         $success = "User data telah terupdate!";
