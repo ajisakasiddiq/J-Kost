@@ -154,6 +154,9 @@ if (isset($_SESSION['id_user'])) {
         $namaKost = $row['nama_kost'];
         $harga = $row['harga'];
         $foto = $row['foto_kamar_pertama'];
+        $fotoKedua = $row['foto_kamar_kedua'];
+        $fotoKetiga = $row['foto_kamar_ketiga'];
+        $fotoKeempat = $row['foto_kamar_keempat'];
         $statKamar = $row['status_kamar'];
         $long = $row['longtitude'];
         $lat = $row['latitude'];
@@ -325,13 +328,13 @@ if (isset($_SESSION['id_user'])) {
                     url: "img/<?= $foto; ?>",
                 }, {
                     id: 2,
-                    url: "img/product-details-2.jpg",
+                    url: "img/<?= $fotoKedua; ?>",
                 }, {
                     id: 3,
-                    url: "img/product-details-3.jpg",
+                    url: "img/<?= $fotoKetiga; ?>",
                 }, {
                     id: 4,
-                    url: "img/product-details-4.jpg",
+                    url: "img/<?= $fotoKeempat; ?>",
                 }, ],
             },
             methods: {
