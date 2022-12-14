@@ -17,6 +17,7 @@ if (isset($_SESSION['id_user'])) {
     $sesNo = $_SESSION['no_hp'];
     $sesGender = $_SESSION['jenis_kelamin'];
 }
+
 ?>
 
 
@@ -162,7 +163,7 @@ if (isset($_SESSION['id_user'])) {
                 <p>Kos Kosan</p>
                 <h2>Pilih Kos Sesuai Keinginan Anda</h2>
             </div>
-            <form action="">
+            <form action="" method="get">
                 <div class="row mb-3 justify-content-between">
                     <div class="col-lg-3">
                         <select class="form-control  form-select" aria-label="Default select example">
@@ -181,7 +182,7 @@ if (isset($_SESSION['id_user'])) {
                         </select>
                     </div>
                     <div class="col-lg-6 input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Cari nama kos/alamat/tempat " aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <input type="text" name="keyword" class="form-control" placeholder="Cari nama kos/alamat/tempat " aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="input-group-text  btn" id="basic-addon2">Cari</button>
                         </div>
@@ -189,6 +190,7 @@ if (isset($_SESSION['id_user'])) {
                 </div>
             </form>
             <div class="row">
+
                 <?php
                 $queryKost = "SELECT kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar_pertama,kamar_kost.status_kamar
                         FROM kamar_kost
