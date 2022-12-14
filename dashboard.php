@@ -16,6 +16,7 @@ if (isset($_SESSION['id_user'])) {
     $sesAddress = $_SESSION['alamat'];
     $sesNo = $_SESSION['no_hp'];
     $sesGender = $_SESSION['jenis_kelamin'];
+    $sesKontrak = $_SESSION['bukti_kontrak'];
 }
 ?>
 
