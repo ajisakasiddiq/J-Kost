@@ -143,7 +143,7 @@ if (isset($_SESSION['id_user'])) {
     <!-- Nav Bar End -->
     <?php
     $id = $_GET['id_kamar'];
-    $queryKost = "SELECT data_kost.longtitude,data_kost.latitude,data_kost.alamat,kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar,kamar_kost.status_kamar,kamar_kost.deskripsi
+    $queryKost = "SELECT data_kost.alamat, data_kost.longtitude,data_kost.latitude,data_kost.alamat,kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar,kamar_kost.status_kamar,kamar_kost.deskripsi
                 FROM kamar_kost
                 INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
                 WHERE kamar_kost.status_kamar = 'Tersedia' and kamar_kost.id_kamar = '$id'";
@@ -158,6 +158,7 @@ if (isset($_SESSION['id_user'])) {
         $long = $row['longtitude'];
         $lat = $row['latitude'];
         $des = $row['deskripsi'];
+        $alamat = $row['alamat'];
     }
     ?>
 
@@ -214,6 +215,11 @@ if (isset($_SESSION['id_user'])) {
                             <hr>
                             <p>
                                 <?= $des; ?>
+                            </p>
+                            <h5>Alamat</h5>
+                            <hr>
+                            <p>
+                                <?= $alamat; ?>
                             </p>
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.42355736385!2d113.72099831436081!3d-8.160010184012863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695b617d8f623%3A0xf6c4437632474338!2sPoliteknik%20Negeri%20Jember!5e0!3m2!1sid!2sid!4v1668518560066!5m2!1sid!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
