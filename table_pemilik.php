@@ -17,6 +17,9 @@ if (isset($_SESSION['id_user'])) {
     $sesNo = $_SESSION['no_hp'];
     $sesGender = $_SESSION['jenis_kelamin'];
 }
+if ($_SESSION['level'] != "3") {
+    header('Location: dashboard.php');
+}
 
 // view data pemilik
 $API_url = 'http://localhost:8080/jkos/api/api.php?function=get_pemilik';
@@ -114,6 +117,7 @@ $user_data = $response_data->data;
                                                             <th>No hp</th>
                                                             <th>Jenis Kelamin</th>
                                                             <th>Foto</th>
+                                                            <th>Bukti Kontrak</th>
                                                             <th>Aksi</th>
                                                         </tr>
                                                     </thead>
@@ -131,6 +135,7 @@ $user_data = $response_data->data;
                                                                 <td><?= $user->no_hp; ?></td>
                                                                 <td><?= $user->jenis_kelamin; ?></td>
                                                                 <td><img src="img/<?= $user->foto;  ?>" alt="" width="50px"></td>
+                                                                <td><?= $user->bukti_kontrak; ?></td>
                                                                 <td>
                                                                     <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#detail"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
                                                                 </td>

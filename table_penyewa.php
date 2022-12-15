@@ -18,6 +18,9 @@ if (isset($_SESSION['id_user'])) {
     $sesGender = $_SESSION['jenis_kelamin'];
 }
 
+if ($_SESSION['level'] != "3") {
+    header('Location: dashboard.php');
+}
 $API_url = 'http://localhost:8080/jkos/api/api.php?function=get_penyewa';
 $json_data = file_get_contents($API_url);
 $response_data = json_decode($json_data);

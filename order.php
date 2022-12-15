@@ -139,7 +139,6 @@ if (isset($_SESSION['id_user'])) {
     </div>
     <!-- Nav Bar End -->
 
-
     <!-- Page Header Start -->
     <div class="page-header">
         <div class="container">
@@ -195,7 +194,7 @@ if (isset($_SESSION['id_user'])) {
                 $queryKost = "SELECT kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar_pertama,kamar_kost.status_kamar
                         FROM kamar_kost
                         INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
-                        WHERE kamar_kost.status_kamar = 'Tersedia'";
+                        WHERE kamar_kost.status_kamar = 'Tersedia' AND data_kost.status = 'APPROVED'";
                 $result = mysqli_query($koneksi, $queryKost);
                 while ($row = mysqli_fetch_array($result)) {
                     $idKamar = $row['id_kamar'];
