@@ -141,7 +141,7 @@ $user_data = $response_data->data;
                                                                 <td>
                                                                     <a href="" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#edit<?= $user->id_user; ?>"><i class="fas fa-pen"></i></a>
 
-                                                                    <a href="table_pemilik.php?id_user=<?= $user->id_user ?>" class="btn btn-danger btn-circle m-1" onclick="return confirm('Yakin ingin menghapus data ini?');"><i class="fas fa-trash"></i></a>
+                                                                    <a href="table_pemilik.php?id_user=<?= $user->id_user ?>" name="hapus" class="btn btn-danger btn-circle m-1" onclick="return confirm('Yakin ingin menghapus data ini?');"><i class="fas fa-trash"></i></a>
                                                                 </td>
                                                             </tr>
                                                             <?php $no++; ?>
@@ -157,37 +157,46 @@ $user_data = $response_data->data;
                                                                         <div class="modal-body">
                                                                             <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $user->id_user; ?>">
                                                                             <div class="form-group">
-                                                                                <input type="text" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_nama" value="<?= $user->user_nama; ?>">
+                                                                                <label for="name">Nama</label>
+                                                                                <input type="text" class="form-control form-control-user" id="name" placeholder="Name" name="txt_nama" value="<?= $user->user_nama; ?>">
                                                                             </div>
                                                                             <div class="form-group">
+                                                                                <label for="name">Nama</label>
                                                                                 <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address" name="txt_email" value="<?= $user->user_email; ?>">
                                                                             </div>
                                                                             <div class="form-group">
+                                                                                <label for="name">Nama</label>
                                                                                 <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="Username" name="txt_username" value="<?= $user->username; ?>">
                                                                             </div>
                                                                             <div class="form-group">
+                                                                                <label for="name">Nama</label>
                                                                                 <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="NIK" name="txt_nik" value="<?= $user->nik; ?>">
                                                                             </div>
                                                                             <div class="form-group">
+                                                                                <label for="name">Nama</label>
                                                                                 <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="Alamat" name="txt_alamat" value="<?= $user->alamat; ?>">
                                                                             </div>
                                                                             <div class="form-group">
+                                                                                <label for="name">Nama</label>
                                                                                 <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="No.Handphone" name="txt_nohp" value="<?= $user->no_hp; ?>">
                                                                             </div>
                                                                             <div class="form-group">
+                                                                                <label for="name">Nama</label>
                                                                                 <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="Jenis Kelamin" name="txt_jk" value="<?= $user->jenis_kelamin; ?>">
                                                                             </div>
                                                                             <div class="form-group">
+                                                                                <label for="name">Nama</label>
                                                                                 <div class="row">
                                                                                     <div class="col-8">
                                                                                         <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="Bukti kontrak" name="txt_bukti" value="<?= $user->bukti_kontrak; ?>">
                                                                                     </div>
                                                                                     <div class="col-3">
-                                                                                        <button type="button" class="btn btn-circle">View Bukti</button>
+                                                                                        <button name="view" type="button" class="btn btn-circle">View Bukti</button>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group">
+                                                                                <label for="name">Nama</label>
                                                                                 <select name="txt_status" id="" class="form-control form-control-user">
                                                                                     <option value="<?= $user->status_user;  ?>"><?= $user->status_user;  ?></option>
                                                                                     <option value="">------</option>
