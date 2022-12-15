@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 14, 2022 at 03:37 AM
+-- Generation Time: Dec 15, 2022 at 02:07 PM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -72,8 +72,9 @@ CREATE TABLE `kamar_kost` (
 --
 
 INSERT INTO `kamar_kost` (`id_kamar`, `id_kost`, `jenis_kamar`, `no_kamar`, `harga`, `status_kamar`, `foto_kamar_pertama`, `foto_kamar_kedua`, `foto_kamar_ketiga`, `foto_kamar_keempat`, `deskripsi`) VALUES
-(1, 11, 'laki laki', '12', '   350000', 'Tersedia', '6396cf75c399d.png', '', '', '', ' Apa nih'),
-(3, 11, 'Laki-Laki', '  12A', '  450000', 'Tersedia', '63987f41e18de.png', '', '', '', '  kamar mandi dalam , dilarang membawa pasangan');
+(1, 11, 'laki laki', '  12', '     350000', 'Tersedia', '6396cf75c399d.png', '', '', '', '   Apa nih'),
+(3, 11, 'Laki-Laki', '  12A', '  450000', 'Tersedia', '63987f41e18de.png', '', '', '', '  kamar mandi dalam , dilarang membawa pasangan'),
+(4, 11, 'Laki-Laki', '10A', '450000', 'Tersedia', '6399cf777e39b.jpg', '6399cf777eb7f.jpg', '6399cf777f56d.jpg', '6399cf777f129.jpg', 'Terdapat perabotan dan kamar mandi dalam');
 
 -- --------------------------------------------------------
 
@@ -121,13 +122,6 @@ CREATE TABLE `pemesanan` (
   `bukti_pembayaran` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `pemesanan`
---
-
-INSERT INTO `pemesanan` (`id_pemesanan`, `id_user`, `id_kamar`, `id_rek`, `kode_pemesanan`, `nama_pemesan`, `nik`, `tgl_pemesanan`, `durasi_sewa`, `harga`, `tgl_pembayaran`, `total_pembayaran`, `status_pembayaran`, `no_rek_pemilik`, `nama_rek_pemilik`, `nama_bank`, `bukti_pembayaran`) VALUES
-(2, 12, 1, 10, 'fgfg', 'qq', '0', '2022-12-13 05:09:24', '30', '3500000', '2022-12-12', '350000', 'SUKSES', 323232, 'ggg', 'ggg', 'gg');
-
 -- --------------------------------------------------------
 
 --
@@ -147,8 +141,7 @@ CREATE TABLE `rekening` (
 --
 
 INSERT INTO `rekening` (`id_rek`, `id_user`, `Nama_bank`, `Nama_rek`, `no_rek`) VALUES
-(9, 3, 'BCA', 'AJISAKA SIDDIQ', '345678987654'),
-(10, 12, 'BCA', 'tes', '43432333');
+(11, 12, 'BCA', 'ahay', '43432333');
 
 -- --------------------------------------------------------
 
@@ -168,23 +161,20 @@ CREATE TABLE `user_detail` (
   `foto` varchar(255) DEFAULT NULL,
   `no_hp` varchar(225) DEFAULT NULL,
   `jenis_kelamin` varchar(255) DEFAULT NULL,
-  `bukti_kontrak` varchar(225) DEFAULT NULL
+  `bukti_kontrak` varchar(225) DEFAULT NULL,
+  `status_user` varchar(225) DEFAULT 'NOT VERIFIED'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user_detail`
 --
 
-INSERT INTO `user_detail` (`id_user`, `user_nama`, `username`, `user_email`, `user_pass`, `level`, `nik`, `alamat`, `foto`, `no_hp`, `jenis_kelamin`, `bukti_kontrak`) VALUES
-(3, 'ajisakasiddiq', 'ajisaka03', 'ajisakasiddiq@gmail.com', 'ajisaka12345', 1, '3509109108020001', 'Jl. ambulu NO.73B Balung', '638de1be13f77.jpg', '085156091837', 'Laki-laki', ''),
-(4, 'admin', 'adminiboss', 'admin@gmail.com', 'admin', 3, '65789876543233', 'Jl. ambulu NO.73B', 'profil.jpg', '085156091837', 'Laki-laki', ''),
-(5, 'ahmad hidayar', 'ahmad22', 'ahmad@gmail.com', 'ahmad123', 2, NULL, NULL, 'profil.jpg', NULL, NULL, ''),
-(6, 'agus mantap', 'agus12', 'agus@gmail.com', 'agus12345', 3, NULL, NULL, 'profil.jpg', NULL, NULL, ''),
-(11, 'masa', 'masa45', 'masa@gmail.com', 'masa123', 1, NULL, NULL, 'profil.jpg', NULL, NULL, ''),
-(12, 'a', 'a33', 'a@gmail.com', 'a12345', 2, '54354343', 'ambulu street', '63988cc352e89.jpeg', '085156091837', 'Laki-laki', ''),
-(13, 'ehem', 'ehem33', 'ehem@gmail.com', 'ehem123', 1, NULL, NULL, 'profil.jpg', NULL, NULL, ''),
-(14, 'b', 'bb', 'b@gmail.com', 'b123', 2, NULL, NULL, 'profil.jpg', NULL, NULL, ''),
-(15, 'agus', 'agus45', 'agus@gmail.com', 'agus12345', 2, NULL, NULL, 'profil.jpg', NULL, NULL, NULL);
+INSERT INTO `user_detail` (`id_user`, `user_nama`, `username`, `user_email`, `user_pass`, `level`, `nik`, `alamat`, `foto`, `no_hp`, `jenis_kelamin`, `bukti_kontrak`, `status_user`) VALUES
+(3, 'ajisakasiddiq', 'ajisaka03', 'ajisakasiddiq@gmail.com', 'ajisaka12345', 1, '3509109108020001', 'Jl. ambulu NO.73B Balung', '638de1be13f77.jpg', '085156091837', 'Laki-laki', 'Bukti Belum Di Upload', 'NOT VERIFIED'),
+(4, 'admin', 'adminiboss', 'admin@gmail.com', 'admin', 3, '65789876543233', 'Jl. ambulu NO.73B', 'profil.jpg', '085156091837', 'Laki-laki', NULL, ''),
+(5, 'ahmad hidayar', 'ahmad22', 'ahmad@gmail.com', 'ahmad123', 2, NULL, NULL, 'profil.jpg', NULL, NULL, NULL, ''),
+(6, 'agus mantap', 'agus12', 'agus@gmail.com', 'agus12345', 3, '5565644343322', '', 'profil.jpg', '', '', NULL, ''),
+(12, 'a', 'a33', 'a@gmail.com', 'a12345', 2, '54354343', 'ambulu street', '63988cc352e89.jpeg', '085156091837', 'Laki-laki', NULL, '');
 
 --
 -- Indexes for dumped tables
@@ -247,7 +237,7 @@ ALTER TABLE `data_kost`
 -- AUTO_INCREMENT for table `kamar_kost`
 --
 ALTER TABLE `kamar_kost`
-  MODIFY `id_kamar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kamar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `level_detail`
@@ -259,13 +249,13 @@ ALTER TABLE `level_detail`
 -- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `rekening`
 --
 ALTER TABLE `rekening`
-  MODIFY `id_rek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_rek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user_detail`
@@ -281,7 +271,7 @@ ALTER TABLE `user_detail`
 -- Constraints for table `data_kost`
 --
 ALTER TABLE `data_kost`
-  ADD CONSTRAINT `data_kost_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user_detail` (`id_user`);
+  ADD CONSTRAINT `data_kost_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user_detail` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `kamar_kost`
@@ -293,9 +283,9 @@ ALTER TABLE `kamar_kost`
 -- Constraints for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  ADD CONSTRAINT `pemesanan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user_detail` (`id_user`),
-  ADD CONSTRAINT `pemesanan_ibfk_2` FOREIGN KEY (`id_kamar`) REFERENCES `kamar_kost` (`id_kamar`),
-  ADD CONSTRAINT `pemesanan_ibfk_3` FOREIGN KEY (`id_rek`) REFERENCES `rekening` (`id_rek`);
+  ADD CONSTRAINT `pemesanan_ibfk_1` FOREIGN KEY (`id_kamar`) REFERENCES `kamar_kost` (`id_kamar`),
+  ADD CONSTRAINT `pemesanan_ibfk_2` FOREIGN KEY (`id_rek`) REFERENCES `rekening` (`id_rek`),
+  ADD CONSTRAINT `pemesanan_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `user_detail` (`id_user`);
 
 --
 -- Constraints for table `rekening`
