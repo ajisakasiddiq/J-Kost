@@ -126,6 +126,9 @@ if (isset($_SESSION['id_user'])) {
                                                             while ($row = mysqli_fetch_array($result)) {
                                                                 $id = $row['id_kamar'];
                                                                 $img = $row['foto_kamar_pertama'];
+                                                                $img1 = $row['foto_kamar_kedua'];
+                                                                $img2 = $row['foto_kamar_ketiga'];
+                                                                $img3 = $row['foto_kamar_keempat'];
                                                                 $Name = $row['nama_kost'];
                                                                 $Jenis = $row['jenis_kamar'];
                                                                 $No = $row['no_kamar'];
@@ -159,8 +162,26 @@ if (isset($_SESSION['id_user'])) {
                                                                                 <form role="form" action="" method="post" enctype="multipart/form-data">
                                                                                     <input type="hidden" name="txt_id" value="<?= $id; ?>">
                                                                                     <div class="modal-body">
-                                                                                        <div class="img">
-                                                                                            <img src="img/<?= $Img; ?>" alt="" width="100%" height="300px">
+                                                                                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                                                                            <div class="carousel-inner">
+                                                                                                <div class="carousel-item active">
+                                                                                                    <img src="img/ <?= $; ?>" class="d-block w-100" alt="...">
+                                                                                                </div>
+                                                                                                <div class="carousel-item">
+                                                                                                    <img src="..." class="d-block w-100" alt="...">
+                                                                                                </div>
+                                                                                                <div class="carousel-item">
+                                                                                                    <img src="..." class="d-block w-100" alt="...">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                                                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                                                <span class="visually-hidden">Previous</span>
+                                                                                            </button>
+                                                                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                                                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                                                <span class="visually-hidden">Next</span>
+                                                                                            </button>
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="img">Foto Kamar kost</label>
