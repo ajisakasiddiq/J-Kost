@@ -105,7 +105,10 @@ if (isset($_SESSION['id_user'])) {
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
-                                                                <th>Foto</th>
+                                                                <th>Foto depan kamar</th>
+                                                                <th>Foto dalam kamar</th>
+                                                                <th>Foto kamar mandi</th>
+                                                                <th>Foto dapur</th>
                                                                 <th>Nama Kost</th>
                                                                 <th>No. Kamar</th>
                                                                 <th>Jenis Kamar</th>
@@ -139,6 +142,9 @@ if (isset($_SESSION['id_user'])) {
                                                                 <tr>
                                                                     <td><?= $no; ?></td>
                                                                     <td><img src="img/<?= $img; ?>" alt="" width="80px"></td>
+                                                                    <td><img src="img/<?= $img1; ?>" alt="" width="80px"></td>
+                                                                    <td><img src="img/<?= $img2; ?>" alt="" width="80px"></td>
+                                                                    <td><img src="img/<?= $img3; ?>" alt="" width="80px"></td>
                                                                     <td><?= $Name; ?></td>
                                                                     <td><?= $No; ?></td>
                                                                     <td><?= $Jenis; ?></td>
@@ -162,31 +168,16 @@ if (isset($_SESSION['id_user'])) {
                                                                                 <form role="form" action="" method="post" enctype="multipart/form-data">
                                                                                     <input type="hidden" name="txt_id" value="<?= $id; ?>">
                                                                                     <div class="modal-body">
-                                                                                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                                                                                            <div class="carousel-inner">
-                                                                                                <div class="carousel-item active">
-                                                                                                    <img src="img/ <?= $; ?>" class="d-block w-100" alt="...">
-                                                                                                </div>
-                                                                                                <div class="carousel-item">
-                                                                                                    <img src="..." class="d-block w-100" alt="...">
-                                                                                                </div>
-                                                                                                <div class="carousel-item">
-                                                                                                    <img src="..." class="d-block w-100" alt="...">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                                                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                                                                <span class="visually-hidden">Previous</span>
-                                                                                            </button>
-                                                                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                                                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                                                                <span class="visually-hidden">Next</span>
-                                                                                            </button>
+                                                                                        <div class="img">
+                                                                                            <img src="img/<?= $Img; ?>" alt="" width="100%" height="300px">
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="img">Foto Kamar kost</label>
                                                                                             <input id="img" type="file" class="form-control" name="gambar">
                                                                                             <input id="img" type="hidden" class="form-control" name="gambarLama" value="<?= $img; ?>">
+                                                                                            <input id="img" type="hidden" class="form-control" name="gambarLama1" value="<?= $img1; ?>">
+                                                                                            <input id="img" type="hidden" class="form-control" name="gambarLama2" value="<?= $img2; ?>">
+                                                                                            <input id="img" type="hidden" class="form-control" name="gambarLama3" value="<?= $img3; ?>">
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="inputName">No kamar</label>

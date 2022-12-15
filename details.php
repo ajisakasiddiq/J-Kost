@@ -322,7 +322,7 @@ if (isset($_SESSION['id_user'])) {
                 AOS.init();
             },
             data: {
-                activePhoto: 1,
+                activePhoto: 0,
                 photos: [{
                     id: 1,
                     url: "img/<?= $foto; ?>",
