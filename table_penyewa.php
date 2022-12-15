@@ -134,7 +134,7 @@ $user_data = $response_data->data;
                                                                 <td><?= $user->jenis_kelamin; ?></td>
                                                                 <td><img src="img/<?= $user->foto;  ?>" alt="" width="50px"></td>
                                                                 <td>
-                                                                    <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#detail"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
+                                                                    <a href="table_penyewa.php?id_user=<?= $user->id_user ?>" class="btn btn-danger btn-circle" onclick="return confirm('Yakin ingin menghapus data ini?');"><i class="fas fa-trash"></i></a>
                                                                 </td>
                                                             </tr>
                                                             <?php $no++; ?>
@@ -216,4 +216,13 @@ $user_data = $response_data->data;
     </script>
 </body>
 
+
 </html>
+
+<?php
+$id = $_GET['id_user'];
+$query =  "DELETE FROM user_detail WHERE id_user='$id'";
+mysqli_query($koneksi, $query);
+
+
+?>

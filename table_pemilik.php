@@ -118,6 +118,7 @@ $user_data = $response_data->data;
                                                             <th>Jenis Kelamin</th>
                                                             <th>Foto</th>
                                                             <th>Bukti Kontrak</th>
+                                                            <th>Status</th>
                                                             <th>Aksi</th>
                                                         </tr>
                                                     </thead>
@@ -136,12 +137,64 @@ $user_data = $response_data->data;
                                                                 <td><?= $user->jenis_kelamin; ?></td>
                                                                 <td><img src="img/<?= $user->foto;  ?>" alt="" width="50px"></td>
                                                                 <td><?= $user->bukti_kontrak; ?></td>
+                                                                <td><?= $user->status_user; ?></td>
                                                                 <td>
-                                                                    <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#detail"><i class="fa-solid fa-pen mr-1"></i></a>
+                                                                    <a href="" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#edit<?= $user->id_user; ?>"><i class="fas fa-pen"></i></a>
+
+                                                                    <a href="table_pemilik.php?id_user=<?= $user->id_user ?>" class="btn btn-danger btn-circle m-1" onclick="return confirm('Yakin ingin menghapus data ini?');"><i class="fas fa-trash"></i></a>
                                                                 </td>
                                                             </tr>
                                                             <?php $no++; ?>
                                                         <?php endforeach ?>
+                                                        <div class="modal fade" id="edit<?= $user->id_user; ?>" tabindex="-1" aria-labelledby="EditadminLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-md">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h1 class="modal-title fs-5" id="EditadminLabel">Edit Admin</h1>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <form class="user" action="" method="POST">
+                                                                        <div class="modal-body">
+                                                                            <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $user->id_user; ?>">
+                                                                            <div class="form-group">
+                                                                                <input type="text" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_nama" value="<?= $user->user_nama; ?>">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address" name="txt_email" value="<?= $user->user_email; ?>">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="Username" name="txt_username" value="<?= $user->username; ?>">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="NIK" name="txt_nik" value="<?= $user->nik; ?>">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="Alamat" name="txt_alamat" value="<?= $user->alamat; ?>">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="No.Handphone" name="txt_nohp" value="<?= $user->no_hp; ?>">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="Jenis Kelamin" name="txt_jk" value="<?= $user->jenis_kelamin; ?>">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <select name="txt_status" id="" class="form-control form-control-user">
+                                                                                    <option value="<?= $user->status_user;  ?>"><?= $user->status_user;  ?></option>
+                                                                                    <option value="">------</option>
+                                                                                    <option value="VERIFIED">VERIFIED</option>
+                                                                                    <option value="NOT VERIFIED">NOT VERIFIED</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                            <button type="submit" name="update" class="btn btn-primary">Tambah</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- end model popup -->
                                                     </tbody>
                                                 </table>
 
@@ -165,27 +218,7 @@ $user_data = $response_data->data;
         </div>
     </div>
 
-    <!-- The Modal -->
-    <div class="modal fade" id="detail">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Modal body..
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end model popup -->
+
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -214,9 +247,17 @@ $user_data = $response_data->data;
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#pemilik').DataTable();
+            $('#pemilik').DataTable({
+                scrollX: true,
+            });
         });
     </script>
 </body>
 
 </html>
+
+<?php
+$id = $_GET['id_user'];
+$query =  "DELETE FROM user_detail WHERE id_user='$id'";
+mysqli_query($koneksi, $query);
+?>
