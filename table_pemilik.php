@@ -178,6 +178,16 @@ $user_data = $response_data->data;
                                                                                 <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="Jenis Kelamin" name="txt_jk" value="<?= $user->jenis_kelamin; ?>">
                                                                             </div>
                                                                             <div class="form-group">
+                                                                                <div class="row">
+                                                                                    <div class="col-8">
+                                                                                        <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="Bukti kontrak" name="txt_bukti" value="<?= $user->bukti_kontrak; ?>">
+                                                                                    </div>
+                                                                                    <div class="col-3">
+                                                                                        <button type="button" class="btn btn-circle">View Bukti</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
                                                                                 <select name="txt_status" id="" class="form-control form-control-user">
                                                                                     <option value="<?= $user->status_user;  ?>"><?= $user->status_user;  ?></option>
                                                                                     <option value="">------</option>
@@ -255,6 +265,39 @@ $user_data = $response_data->data;
 </body>
 
 </html>
+<?php
+if (isset($_POST['update'])) {
+    $Id     = $_POST['txt_id'];
+    $Status    = $_POST['txt_status'];
+
+    $query = "UPDATE user_detail SET status_user='$Status' WHERE id_user='$Id'";
+    $result = mysqli_query($koneksi, $query);
+    if ($result) {
+        $success = "data telah terupdate!";
+    } else {
+        $error =  "data gagal update";
+    }
+}
+
+?>
+<?php if (isset($success)) { ?>
+    <script>
+        swal({
+            title: "<?= $success; ?>",
+            icon: "success",
+            button: "OKE!",
+        });
+    </script>
+<?php } ?>
+<?php if (isset($error)) { ?>
+    <script>
+        swal({
+            title: "<?= $error; ?>",
+            icon: "success",
+            button: "OKE!",
+        });
+    </script>
+<?php } ?>
 
 <?php
 $id = $_GET['id_user'];
