@@ -137,7 +137,7 @@ $user_data = $response_data->data;
                                                                 <td><img src="img/<?= $user->foto;  ?>" alt="" width="50px"></td>
                                                                 <td><?= $user->bukti_kontrak; ?></td>
                                                                 <td>
-                                                                    <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#detail"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
+                                                                    <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#detail"><i class="fa-solid fa-pen mr-1"></i></a>
                                                                 </td>
                                                             </tr>
                                                             <?php $no++; ?>

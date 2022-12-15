@@ -7,7 +7,7 @@ if (isset($_POST['register'])) {
     $Name = $_POST['txt_nama'];
     $Lvl = $_POST['txt_level'];
 
-    $query = "INSERT INTO user_detail VALUES (null,'$Name','$userName','$Mail','$Pass','$Lvl',null,null,'profil.jpg',null,null,null)";
+    $query = "INSERT INTO user_detail VALUES (null,'$Name','$userName','$Mail','$Pass','$Lvl',null,null,'profil.jpg',null,null,null'NOT VERIFIED')";
     mysqli_query($koneksi, $query);
 
 

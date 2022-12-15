@@ -102,12 +102,12 @@ if (isset($_SESSION['id_user'])) {
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
+                                                                <th>Foto</th>
                                                                 <th>Nama Kost</th>
                                                                 <th>Pemilik</th>
                                                                 <th>Alamat</th>
                                                                 <th>Jumlah</th>
                                                                 <th>Deskripsi</th>
-                                                                <th>Foto</th>
                                                                 <th>Status</th>
                                                                 <th>Aksi</th>
                                                             </tr>
@@ -131,12 +131,12 @@ if (isset($_SESSION['id_user'])) {
                                                             ?>
                                                                 <tr>
                                                                     <td><?= $no; ?></td>
+                                                                    <td><img src="img/<?= $Img; ?>" alt="" width="50px"></td>
                                                                     <td><?= $Namakost; ?></td>
                                                                     <td><?= $Pemilik; ?></td>
                                                                     <td><?= $Alamat; ?></td>
                                                                     <td>22</td>
                                                                     <td><?= $Deskripsi; ?></td>
-                                                                    <td><img src="img/<?= $Img; ?>" alt="" width="50px"></td>
                                                                     <td><?= $Status; ?></td>
                                                                     <td>
                                                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#validate<?= $id; ?>"><i class="fas fa-pen"></i></button>
