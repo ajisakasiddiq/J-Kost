@@ -4,6 +4,7 @@ $result = mysqli_query($koneksi, $queryUser);
 while ($row = mysqli_fetch_array($result)) {
     $img = $row['foto'];
     $NameUser = $row['user_nama'];
+    $status = $row['status_user'];
 }
 ?>
 
@@ -65,8 +66,6 @@ while ($row = mysqli_fetch_array($result)) {
 
         <?php  } else { ?>
 
-
-
             <!-- pemilik kos start -->
             <ul class="list-unstyled components">
                 <li class="active">
@@ -79,9 +78,10 @@ while ($row = mysqli_fetch_array($result)) {
             </ul>
             <!-- pemilik kos end -->
 
-
-
         <?php } ?>
 
+
+
     </div>
+
 </nav>

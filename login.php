@@ -27,6 +27,7 @@ if (isset($_POST['submit'])) {
             $noHp = $row['no_hp'];
             $gender = $row['jenis_kelamin'];
             $Kontrak = $row['bukti_kontrak'];
+            $status = $row['status_user'];
         }
 
         if ($num != 0) {
@@ -42,6 +43,7 @@ if (isset($_POST['submit'])) {
                 $_SESSION['no_hp'] = $noHp;
                 $_SESSION['jenis_kelamin'] = $gender;
                 $_SESSION['bukti_kontrak'] = $Kontrak;
+                $_SESSION['status_user'] = $status;
                 header('Location: index.php');
             } else {
                 $error = 'user atau password salah!!';;
