@@ -152,9 +152,9 @@ if (isset($_SESSION['id_user'])) {
                                                                     <td><?= $harga; ?></td>
                                                                     <td><?= $status; ?></td>
                                                                     <td>
-                                                                        <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editKamar<?= $id; ?>"><i class="fas fa-pen"></i></a>
+                                                                        <a href="" class="btn btn-primary btn-circle m-1" data-bs-toggle="modal" data-bs-target="#editKamar<?= $id; ?>"><i class="fas fa-pen"></i></a>
 
-                                                                        <a href="datakamar.php?id_kamar=<?= $row['id_kamar']; ?>" class="btn btn-danger btn-circle" onclick="return confirm('Yakin ingin menghapus data ini?');"><i class="fas fa-trash"></i></a>
+                                                                        <a href="datakamar.php?id_kamar=<?= $row['id_kamar']; ?>" class="btn btn-danger btn-circle m-1" onclick="return confirm('Yakin ingin menghapus data ini?');"><i class="fas fa-trash"></i></a>
                                                                     </td>
 
                                                                     <!-- edit kamar -->

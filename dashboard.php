@@ -150,7 +150,11 @@ if (isset($_SESSION['id_user'])) {
                                                     $harga = $row['harga'];
                                                 }
                                                 ?>
-                                                <p class="total_no">Rp.<?= $harga; ?></p>
+                                                <?php if ($harga == null) { ?>
+                                                    <p class="total_no">Rp.0</p>
+                                                <?php } else { ?>
+                                                    <p class="total_no">Rp.<?= $harga; ?></p>
+                                                <?php } ?>
                                                 <p class="head_couter">Total Pemasukan</p>
                                             </div>
                                         </div>
