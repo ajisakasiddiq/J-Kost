@@ -124,7 +124,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
                                                                     INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
                                                                     INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user
-                                                                    WHERE user_detail.id_user = '$sesID'";
+                                                                    WHERE data_kost.id_user = '$sesID'";
                                                                 $result = mysqli_query($koneksi, $query);
                                                                 $no = 1;
                                                                 while ($row = mysqli_fetch_array($result)) {
@@ -154,7 +154,7 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><img src="img/<?= $bukti; ?>" alt="" width="50px"></td>
                                                                         <td>
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#cek<?= $idPesan; ?>"><i class="fa-solid mr-1 fa-check"></i>Check</a>
-                                                                            <a href="" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
+                                                                            <a href="print.php?id_pemesanan=<?= $idPesan; ?>" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
                                                                     </tr>
                                                                     <?php $no++; ?>
@@ -258,7 +258,7 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><img src="img/<?= $bukti; ?>" alt="" width="50px"></td>
                                                                         <td>
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar<?= $idPesan; ?>"><i class="fa-sharp fa-solid mr-1 fa-money-bill"></i>Bayar</a>
-                                                                            <a href="" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
+                                                                            <a href="print.php?id_pemesanan=<?= $idPesan; ?>" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
                                                                     </tr>
                                                                     <div class="modal fade" id="bayar<?= $idPesan; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -320,7 +320,7 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><img src="img/<?= $bukti; ?>" alt="" width="50px"></td>
                                                                         <td>
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
-                                                                            <a href="" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
+                                                                            <a href="print.php?id_pemesanan=<?= $idPesan; ?>" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
                                                                     </tr>
                                                                     <?php $no++; ?>

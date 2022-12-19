@@ -266,6 +266,7 @@ $user_data = $response_data->data;
             })
         });
     </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>

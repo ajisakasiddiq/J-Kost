@@ -180,7 +180,18 @@ if (isset($_SESSION['id_user'])) {
                                         </div>
                                         <div class="counter_no">
                                             <div>
-                                                <p class="total_no">1000</p>
+                                                <?php
+                                                $queryKamar = "SELECT COUNT(kamar_kost.id_kamar) AS 'Total'
+                                                FROM data_kost
+                                                JOIN user_detail ON user_detail.id_user = data_kost.id_user
+                                                JOIN kamar_kost ON data_kost.id_kost = kamar_kost.id_kost
+                                                WHERE data_kost.id_user = '$sesID'";
+                                                $resultKamar = mysqli_query($koneksi, $queryKamar);
+                                                if ($row = mysqli_fetch_array($resultKamar)) {
+                                                    $count = $row['Total'];
+                                                }
+                                                ?>
+                                                <p class="total_no"><?= $count; ?></p>
                                                 <p class="head_couter">Total Kamar Kos</p>
                                             </div>
                                         </div>
@@ -197,10 +208,15 @@ if (isset($_SESSION['id_user'])) {
                                             <div>
                                                 <?php
 
-                                                $query = "SELECT COUNT(id_pemesanan) as sewa FROM pemesanan WHERE id_user = '$sesID'";
+                                                $query = "SELECT COUNT(pemesanan.id_pemesanan) AS 'sewa' , SUM(pemesanan.total_pembayaran) AS 'harga' FROM pemesanan 
+                                                INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
+                                                INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
+                                                INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user
+                                                WHERE data_kost.id_user = '$sesID'";
                                                 $result = mysqli_query($koneksi, $query);
                                                 while ($row = mysqli_fetch_array($result)) {
                                                     $sewa = $row['sewa'];
+                                                    $harga = $row['harga'];
                                                 }
                                                 ?>
                                                 <p class="total_no"><?= $sewa; ?></p>
@@ -213,19 +229,11 @@ if (isset($_SESSION['id_user'])) {
                                     <div class="full counter_section margin_bottom_30">
                                         <div class="couter_icon">
                                             <div>
-                                                <i class="fa fa-cloud-download green_color"></i>
+                                                <i class="fa fa-money green_color"></i>
                                             </div>
                                         </div>
                                         <div class="counter_no">
                                             <div>
-                                                <?php
-
-                                                $query = "SELECT SUM(total_pembayaran) as harga FROM pemesanan WHERE id_user = '$sesID'";
-                                                $result = mysqli_query($koneksi, $query);
-                                                while ($row = mysqli_fetch_array($result)) {
-                                                    $harga = $row['harga'];
-                                                }
-                                                ?>
                                                 <?php if ($harga == null) { ?>
                                                     <p class="total_no">Rp.0</p>
                                                 <?php } else { ?>
