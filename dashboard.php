@@ -6,6 +6,9 @@ session_start();
 if (!isset($_SESSION['id_user'])) {
     header('Location: login.php');
 }
+if ($_SESSION['level'] = "2") {
+    header('Location: index.php');
+}
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
     // header('Location: login.php');
