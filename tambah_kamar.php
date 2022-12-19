@@ -125,7 +125,6 @@ if ($_SESSION['level'] != "1") {
                               <input type="file" class="form-control" id="inputName" name="gambarDapur" required />
                             </div>
                           </div>
-
                         </div>
                         <div class="form-group">
                           <?php
