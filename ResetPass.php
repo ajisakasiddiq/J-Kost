@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
     $userId     = $_POST['txt_id'];
     $Pass     = $_POST['txt_pass'];
     if ($_POST['txt_pass'] == $_POST['txt_pass2']) {
-        $query = "UPDATE user_detail SET user_pass='$Pass'WHERE id_user='$userId'";
+        $query = "UPDATE user_detail SET user_pass='$Pass' WHERE id_user='$userId'";
         $result = mysqli_query($koneksi, $query);
         if ($result) {
             $success = "User data telah terupdate!";
