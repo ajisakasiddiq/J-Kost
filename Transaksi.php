@@ -282,11 +282,12 @@ if (isset($_SESSION['id_user'])) {
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="NamaPemilik">No Rekening</label>
-                                                                                            <h5>Ajisaka siddiq</h5>
+                                                                                            <h5>5454678765</h5>
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <input type="file" class="form-control form-control-user" name="bukti">
-                                                                                            <small>Upload Bukti Pembayaran disini*</small>
+                                                                                            <label for="bukti">Bukti Pembayaran</label>
+                                                                                            <input type="file" id="bukti" class="form-control form-control-user" name="bukti">
+                                                                                            <small>Upload Dalam bentuk PDF*</small>
                                                                                         </div>
                                                                                     </form>
                                                                                 </div>
