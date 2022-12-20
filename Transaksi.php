@@ -273,7 +273,7 @@ if (isset($_SESSION['id_user'])) {
                                                                                 <div class="modal-body">
                                                                                     <form action="" enctype="multipart/form-data">
                                                                                         <div class="form-group">
-                                                                                            <label for="bank">Bank</label>
+                                                                                            <label for="bank">Nama Bank</label>
                                                                                             <h5>BCA</h5>
                                                                                         </div>
                                                                                         <div class="form-group">
