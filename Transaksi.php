@@ -271,7 +271,24 @@ if (isset($_SESSION['id_user'])) {
                                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                                 </div>
                                                                                 <div class="modal-body">
-                                                                                    <h2></h2>
+                                                                                    <form action="" enctype="multipart/form-data">
+                                                                                        <div class="form-group">
+                                                                                            <label for="bank">Bank</label>
+                                                                                            <h5>BCA</h5>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="NamaPemilik">Atas Nama</label>
+                                                                                            <h5>Ajisaka siddiq</h5>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="NamaPemilik">No Rekening</label>
+                                                                                            <h5>Ajisaka siddiq</h5>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <input type="file" class="form-control form-control-user" name="bukti">
+                                                                                            <small>Upload Bukti Pembayaran disini*</small>
+                                                                                        </div>
+                                                                                    </form>
                                                                                 </div>
                                                                                 <div class="modal-footer">
                                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
