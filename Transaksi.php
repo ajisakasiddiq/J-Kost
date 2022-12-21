@@ -57,6 +57,7 @@ if (isset($_SESSION['id_user'])) {
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
     <link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -153,7 +154,7 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $tgl; ?></td>
                                                                         <td>Rp.<?= $total; ?></td>
                                                                         <td><?= $status; ?></td>
-                                                                        <td><img src="img/<?= $bukti; ?>" alt="" width="50px"></td>
+                                                                        <td><img src="file/<?= $bukti; ?>" alt="" width="100px"></td>
                                                                         <td>
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#cek<?= $idPesan; ?>"><i class="fa-solid mr-1 fa-check"></i>Check</a>
                                                                             <a href="print.php?id_pemesanan=<?= $idPesan; ?>" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
@@ -257,46 +258,50 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $tgl; ?></td>
                                                                         <td>Rp.<?= $total; ?></td>
                                                                         <td><?= $status; ?></td>
-                                                                        <td><img src="img/<?= $bukti; ?>" alt="" width="50px"></td>
+                                                                        <td><img src="file/<?= $bukti; ?>" alt="" width="100px"></td>
                                                                         <td>
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar<?= $idPesan; ?>"><i class="fa-sharp fa-solid mr-1 fa-money-bill"></i>Bayar</a>
                                                                             <a href="print.php?id_pemesanan=<?= $idPesan; ?>" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
-                                                                    </tr>
-                                                                    <div class="modal fade" id="bayar<?= $idPesan; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header">
-                                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Pembayaran</h1>
-                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    <form action="" enctype="multipart/form-data">
-                                                                                        <div class="form-group">
-                                                                                            <label for="bank">Nama Bank</label>
-                                                                                            <h5>BCA</h5>
+                                                                        <div class="modal fade" id="bayar<?= $idPesan; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Pembayaran</h1>
+                                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                    </div>
+
+                                                                                    <form action="" method="post" enctype="multipart/form-data">
+                                                                                        <div class="modal-body">
+                                                                                            <input type="text" value="<?= $idPesan; ?>" name="txt_id">
+                                                                                            <div class="form-group">
+                                                                                                <label for="bank">Nama Bank</label>
+                                                                                                <h5>BCA</h5>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="NamaPemilik">Atas Nama</label>
+                                                                                                <h5>Ajisaka siddiq</h5>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="NamaPemilik">No Rekening</label>
+                                                                                                <h5>5454678765</h5>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="bukti">Bukti Pembayaran</label>
+                                                                                                <input type="file" id="bukti" class="form-control form-control-user" name="gambar">
+                                                                                            </div>
+
                                                                                         </div>
-                                                                                        <div class="form-group">
-                                                                                            <label for="NamaPemilik">Atas Nama</label>
-                                                                                            <h5>Ajisaka siddiq</h5>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label for="NamaPemilik">No Rekening</label>
-                                                                                            <h5>5454678765</h5>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label for="bukti">Bukti Pembayaran</label>
-                                                                                            <input type="file" id="bukti" class="form-control form-control-user" name="bukti">
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                            <button name="tambah" type="submit" class="btn btn-primary">Simpan</button>
                                                                                         </div>
                                                                                     </form>
                                                                                 </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
+                                                                    </tr>
+
                                                                     <?php $no++; ?>
                                                                 <?php } ?>
 
@@ -336,7 +341,7 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $tgl; ?></td>
                                                                         <td>Rp.<?= $total; ?></td>
                                                                         <td><?= $status; ?></td>
-                                                                        <td><img src="img/<?= $bukti; ?>" alt="" width="50px"></td>
+                                                                        <td><img src="file/<?= $bukti; ?>" alt="" width="100px"></td>
                                                                         <td>
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
                                                                             <a href="print.php?id_pemesanan=<?= $idPesan; ?>" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
@@ -377,6 +382,7 @@ if (isset($_SESSION['id_user'])) {
 
     </div>
     <!-- jQuery -->
+
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -439,6 +445,81 @@ if (isset($_POST['edit'])) {
         $error =  "User data gagal update";
     }
 }
+if (isset($_POST['tambah'])) {
+    $Id     = $_POST['txt_id'];
+    $img = upload();
+
+    $query = "UPDATE pemesanan SET bukti_pembayaran='$img' WHERE id_pemesanan='$Id'";
+    $result = mysqli_query($koneksi, $query);
+    if ($result) {
+        $succes = "Pembayaran Sukses!";
+    } else {
+        $errorr =  "Pembayaran Gagal!";
+    }
+}
+function upload()
+{
+
+    $file = $_FILES['gambar']['name'];
+    $size = $_FILES['gambar']['size'];
+    $error = $_FILES['gambar']['error'];
+    $tmpName = $_FILES['gambar']['tmp_name'];
+
+    //cek file apakah diupload atau tidak
+    if ($error === 4) {
+        echo "<script> 
+        alert('Pilih gambar terlebih dahulu');
+      </script>";
+        return false;
+    }
+
+    //cek apakah benar gambar
+    $extensGambarValid = ['jpg', 'jpeg', 'png'];
+    $extensGambar = explode('.', $file);
+    $extensGambar = strtolower(end($extensGambar));
+    if (!in_array($extensGambar, $extensGambarValid)) {
+        echo "<script> 
+      alert('Yang anda upload bukan berupa file gambar');
+    </script>";
+        return false;
+    }
+
+    //cek jika ukuran nya terlalu besar 
+    if ($size > 1000000) {
+
+        echo "<script> 
+        alert('Ukuran gambar terlalu besar');
+      </script>";
+    }
+
+
+
+
+    //lolos cek 
+    move_uploaded_file($tmpName, 'file/' . $extensGambar);
+    return $extensGambar;
+}
+
+
+
 ?>
+<?php if (isset($success)) { ?>
+    <script>
+        swal({
+            title: "<?= $success; ?>",
+            icon: "success",
+            button: "OKE!",
+        });
+    </script>
+<?php } ?>
+<?php if (isset($error)) { ?>
+    <script>
+        swal({
+            title: "<?= $error; ?>",
+            icon: "success",
+            button: "OKE!",
+        });
+    </script>
+<?php } ?>
 
 </html>
