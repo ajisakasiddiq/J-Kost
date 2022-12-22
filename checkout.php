@@ -189,6 +189,7 @@ if (isset($_SESSION['id_user'])) {
                   <th scope="col">Image</th>
                   <th scope="col">Name &amp; Owner</th>
                   <th scope="col">Price</th>
+                  <th scope="col">Duration</th>
                   <th scope="col">Address</th>
                 </tr>
               </thead>
@@ -197,15 +198,17 @@ if (isset($_SESSION['id_user'])) {
                   <td style="width: 25%;">
                     <img src="img/<?= $foto; ?>" alt="" width="100px" />
                   </td>
-                  <td style="width: 35%;">
+                  <td style="width: 25%;">
                     <div class="product-title">Kamar Kost No.Kamar <?= $noKamar; ?></div>
                     <div class="product-subtitle">By <?= $namaKost; ?></div>
                   </td>
-                  <td style="width: 35%;">
+                  <td style="width: 25%;">
                     <div class="product-title">Rp. <?= $harga; ?></div>
-                    <div class="product-subtitle">/Bulan</div>
                   </td>
-                  <td style="width: 20%;">
+                  <td style="width: 25%;">
+                    <div class="product-title"><span id="selected">1</span> Bulan</div>
+                  </td>
+                  <td style="width: 25%;">
                     <div class="product-title">Jember</div>
                   </td>
                 </tr>
@@ -225,35 +228,31 @@ if (isset($_SESSION['id_user'])) {
           <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
             <div class="col-md-6">
               <div class="form-group">
-                <label for="addressOne">Alamat</label>
-                <input type="text" class="form-control" id="addressOne" aria-describedby="emailHelp" name="addressOne" value="Setra Duta Cemara" />
+                <label for="addressOne">Nama</label>
+                <input type="text" class="form-control" id="addressOne" aria-describedby="emailHelp" name="addressOne" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="postalCode">Nomor Induk Kependudukan(NIK) </label>
+                <input type="text" class="form-control" id="postalCode" name="postalCode" />
               </div>
             </div>
 
             <div class="col-md-4">
               <div class="form-group">
-                <label for="province">Provinsi</label>
-                <select name="province" id="province" class="form-control">
-                  <option value="West Java">Jawa Timur</option>
+                <label for="province">Durasi</label>
+                <select name="province" id="package" class="form-control">
+                  <option value="1">1 Bulan</option>
+                  <option value="6">6 Bulan</option>
+                  <option value="12">12 Bulan</option>
                 </select>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="city">kelurahan</label>
-                <select name="city" id="city" class="form-control">
-                  <option value="Sumbersari">Ambulu</option>
-                  <option value="Sumbersari">Ajung</option>
-                  <option value="Sumbersari">Arjasa</option>
-                  <option value="Sumbersari">Kalisat</option>
-                  <option value="Sumbersari">Sumbersari</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <label for="postalCode">Postal Code</label>
-                <input type="text" class="form-control" id="postalCode" name="postalCode" value="40512" />
+                <label for="kota">Harga</label>
+                <input type="text" class="form-control" id="kota" name="kota" />
               </div>
             </div>
             <div class="col-md-6">
@@ -279,13 +278,23 @@ if (isset($_SESSION['id_user'])) {
           </div>
         </div>
         <div class="row" data-aos="fade-up" data-aos-delay="200">
-          <div class="col-4 col-md-2">
-            <div class="product-title">M. Zidan P. </div>
-
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="kota">Nama Bank</label>
+              <input type="text" class="form-control" id="kota" name="kota" value="Jember" readonly />
+            </div>
           </div>
-          <div class="col-4 col-md-3">
-            <div class="product-title">Telepon :+62 331 333533</div>
-            <div class="product-subtitle">Email : zidan@gmail.com</div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="mobile">Atas Nama</label>
+              <input type="text" class="form-control" id="mobile" name="mobile" value="+628 2020 11111" readonly />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="mobile">No Rekening</label>
+              <input type="text" class="form-control" id="mobile" name="mobile" value="+628 2020 11111" readonly />
+            </div>
           </div>
 
           <div class="col-8 col-md-3">
@@ -374,6 +383,27 @@ if (isset($_SESSION['id_user'])) {
   <!-- Contact Javascript File -->
   <script src="mail/jqBootstrapValidation.min.js"></script>
   <script src="mail/contact.js"></script>
+  <script>
+    $('#package').on('change', function() {
+      const selectedPackage = $('#package').val();
+      $('#selected').text(selectedPackage);
+    });
+
+    $('#package').on('change', function() {
+      // ambil data dari elemen option yang dipilih
+      const price = $('#package option:selected').val();
+
+      // kalkulasi total harga
+      const totalDiscount = (price * discount / 100)
+      const total = price - totalDiscount;
+
+      // tampilkan data ke element
+      $('[name=price]').val(price);
+      $('[name=discount]').val(totalDiscount);
+
+      $('#total').text(`Rp ${total}`);
+    });
+  </script>
 
   <!-- Template Javascript -->
   <script src="js/main.js"></script>
