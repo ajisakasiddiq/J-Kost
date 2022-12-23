@@ -249,6 +249,14 @@ if (isset($_SESSION['id_user'])) {
                                 </div>
                                 <!-- footer -->
                                 <div class="container-fluid">
+                                    <div class="white_shd full margin_bottom_30">
+                                        <div class="full graph_head">
+                                            <p>Copyright © 2022 Designed by A2.<br><br> Distributed By: Team ruweet</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container-fluid">
                                     <div class="footer">
                                         <p>Copyright © 2022 Designed by A2.<br><br> Distributed By: Team ruweet</a>
                                         </p>
