@@ -309,10 +309,6 @@ if (isset($_SESSION['id_user'])) {
                                                                             </div>
                                                                         </div>
                                                                     </tr>
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of 8a8e4b7 (Merge branch 'master' of https://github.com/ajisakasiddiq/J-Kost)
                                                                     <?php $no++; ?>
                                                                 <?php } ?>
 
