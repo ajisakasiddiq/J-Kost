@@ -59,8 +59,7 @@ if (isset($_SESSION['id_user'])) {
     //     $Bukti = $row['bukti_kontrak'];
     ?>
 
-    <embed src="file/639e489acfcb0.pdf
-" height="900" width="100%">
+    <embed src="file/639e489acfcb0.pdf" height="900" width="100%">
 
     <!-- <?php  ?> -->
 
