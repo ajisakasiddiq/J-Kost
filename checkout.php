@@ -252,7 +252,7 @@ if (isset($_SESSION['id_user'])) {
             <div class="col-md-4">
               <div class="form-group">
                 <label for="kota">Harga</label>
-                <input type="text" class="form-control" id="kota" name="kota" />
+                <input type="text" class="form-control" id="kota" name="kota" value="<?= $harga; ?>ss" />
               </div>
             </div>
             <div class="col-md-6">
