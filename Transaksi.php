@@ -111,7 +111,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 <th>Nama Penyewa</th>
                                                                 <th>No Hp Penyewa</th>
                                                                 <th>Durasi Sewa</th>
-                                                                <th>Tanggal Pemesanan</th>
+                                                                <th>Tanggal Mulai Ngekos</th>
                                                                 <th>Total Harga</th>
                                                                 <th>Status Pembayaran</th>
                                                                 <th>Bukti Pembayaran</th>
@@ -126,7 +126,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' , user_detail.no_hp FROM pemesanan 
                                                                     INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
                                                                     INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
-                                                                    INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user
+                                                                    INNER JOIN user_detail ON  user_detail.id_user = pemesanan.id_user
                                                                     WHERE data_kost.id_user = '$sesID'";
                                                                 $result = mysqli_query($koneksi, $query);
                                                                 $no = 1;
@@ -231,7 +231,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     , pemesanan.bukti_pembayaran as 'Bukti Pembayaran',user_detail.no_hp FROM pemesanan 
                                                                     INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
                                                                     INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
-                                                                    INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user";
+                                                                    INNER JOIN user_detail ON  user_detail.id_user = pemesanan.id_user";
                                                                 $hasil = mysqli_query($koneksi, $queryPenyewa);
                                                                 $no = 1;
                                                                 while ($row = mysqli_fetch_array($hasil)) {
@@ -316,7 +316,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     , pemesanan.bukti_pembayaran as 'Bukti Pembayaran', user_detail.no_hp FROM pemesanan 
                                                                     INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
                                                                     INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
-                                                                    INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user";
+                                                                    INNER JOIN user_detail ON  user_detail.id_user = pemesanan.id_user";
                                                                 $result = mysqli_query($koneksi, $query);
                                                                 while ($row = mysqli_fetch_array($result)) {
                                                                     $kode = $row['Kode Pemesanan'];

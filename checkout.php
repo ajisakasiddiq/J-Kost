@@ -232,7 +232,7 @@ if (isset($_SESSION['id_user'])) {
                 <input type="text" class="form-control" id="addressOne" aria-describedby="emailHelp" name="addressOne" />
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="form-group">
                 <label for="postalCode">Nomor Induk Kependudukan(NIK) </label>
                 <input type="text" class="form-control" id="postalCode" name="postalCode" />
@@ -249,22 +249,17 @@ if (isset($_SESSION['id_user'])) {
                 </select>
               </div>
             </div>
+
             <div class="col-md-4">
               <div class="form-group">
-                <label for="kota">Harga</label>
-                <input value="<?= $harga; ?>" type="text" class="form-control" id="kota" name="kota" />
+                <label for="kota">Tanggal Mulai Ngekos</label>
+                <input type="date" class="form-control" id="kota" name="kota" />
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="form-group">
-                <label for="kota">Kota</label>
-                <input type="text" class="form-control" id="kota" name="kota" value="Jember" />
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="mobile">Telepon</label>
-                <input type="text" class="form-control" id="mobile" name="mobile" value="+628 2020 11111" />
+                <label for="kota">Harga Kos Perbulan</label>
+                <input value="<?= $harga; ?>" type="text" class="form-control" id="kota" name="kota" readonly />
               </div>
             </div>
           </div>
@@ -278,22 +273,28 @@ if (isset($_SESSION['id_user'])) {
           </div>
         </div>
         <div class="row" data-aos="fade-up" data-aos-delay="200">
-          <div class="col-md-4">
+          <div class="col-md-3">
             <div class="form-group">
               <label for="kota">Nama Bank</label>
-              <input type="text" class="form-control" id="kota" name="kota" value="Jember" readonly />
+              <input type="text" class="form-control" id="kota" name="kota" value="" readonly />
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <div class="form-group">
               <label for="mobile">Atas Nama</label>
-              <input type="text" class="form-control" id="mobile" name="mobile" value="+628 2020 11111" readonly />
+              <input type="text" class="form-control" id="mobile" name="mobile" value="" readonly />
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <div class="form-group">
               <label for="mobile">No Rekening</label>
-              <input type="text" class="form-control" id="mobile" name="mobile" value="+628 2020 11111" readonly />
+              <input type="text" class="form-control" id="mobile" name="mobile" value="" readonly />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="mobile">Total Pembayaran</label>
+              <input type="text" class="form-control" id="mobile" name="mobile" value="" readonly />
             </div>
           </div>
 
