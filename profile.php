@@ -2,6 +2,9 @@
 require("koneksi.php");
 
 session_start();
+if (!isset($_SESSION['id_user'])) {
+    header('Location: login.php');
+}
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
@@ -98,9 +101,6 @@ if (isset($_SESSION['id_user'])) {
                                                         <i class="fa fa-coffee"></i> Pastikan <strong>Data diri</strong> anda terinput dengan benar!
                                                     </div>
                                                     <h3>Personal info</h3>
-                                                    <div class="d-flex">
-                                                        <img src="img/<?= $userImg ?>" alt="" class="avatar img-circle" alt="avatar" width="100px">
-                                                    </div>
                                                     <form role="form" action="" method="post" enctype="multipart/form-data">
                                                         <?php
                                                         $query  = "SELECT * FROM user_detail WHERE id_user = '$sesID'";
@@ -120,8 +120,7 @@ if (isset($_SESSION['id_user'])) {
                                                         ?>
                                                             <input value="<?= $sesID ?>" class="form-control" type="hidden" name="txt_id" id="id_user">
                                                             <div class="form-group">
-                                                                <img src="img/<?= $userImg; ?>" class="avatar img-circle" alt="avatar" width="100px">
-                                                                <h6>Upload a different photo...</h6>
+                                                                <label>Upload a profile photo...</label>
                                                                 <div class="col-lg-8">
                                                                     <input type="file" class="form-control" name="gambar">
                                                                     <input type="hidden" class="form-control" name="gambarLama" value="<?= $userImg; ?>">
@@ -131,7 +130,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 <div class="form-group">
                                                                     <label for="kontrak" class="col-lg-3 control-label">Bukti Kontrak :</label>
                                                                     <div class="col-lg-8">
-                                                                        <input value="<?= $kontrak; ?>" class="form-control" type="file" name="txt_kontrak" id="kontrak">
+                                                                        <input value="<?= $kontrak; ?>" class="form-control" type="file" name="kontrak" id="kontrak">
                                                                         <small>Periksa sebelum mengupload bukti kontrak anda*</small>
                                                                     </div>
                                                                 </div>
@@ -237,6 +236,7 @@ if (isset($_SESSION['id_user'])) {
                                     $Gender   = $_POST['txt_gender'];
                                     $Nohp   = $_POST['txt_nohp'];
                                     $Address   = $_POST['txt_alamat'];
+                                    $buktiKontrak  = uploadKontrak();
                                     $gambarLama = $_POST['gambarLama'];
 
                                     if ($_FILES['gambar']['error'] === 4) {
@@ -303,6 +303,52 @@ if (isset($_SESSION['id_user'])) {
                                     return $namaFIlebaru;
                                 }
 
+
+
+
+
+                                function uploadKontrak()
+                                {
+
+                                    $file = $_FILES['kontrak']['name'];
+                                    $size = $_FILES['kontrak']['size'];
+                                    $error = $_FILES['kontrak']['error'];
+                                    $tmpName = $_FILES['kontrak']['tmp_name'];
+
+                                    //cek file apakah diupload atau tidak
+                                    if ($error === 4) {
+                                        echo "<script> 
+        alert('Pilih gambar terlebih dahulu');
+      </script>";
+                                        return false;
+                                    }
+
+                                    //cek apakah benar gambar
+                                    $extensFileValid = ['pdf'];
+                                    $extensFile = explode('.', $file);
+                                    $extensFile = strtolower(end($extensFile));
+                                    if (!in_array($extensFile, $extensFileValid)) {
+                                        echo "<script>alert('Yang anda upload bukan berupa file pdf');</script>";
+                                        return false;
+                                    }
+
+                                    //cek jika ukuran nya terlalu besar 
+                                    if ($size > 5000000) {
+
+                                        echo "<script>alert('Ukuran gambar terlalu besar');</script>";
+                                    }
+
+                                    //generate nama gambar baru
+                                    $namaFIlebaru = uniqid();
+                                    $namaFIlebaru .= '.';
+                                    $namaFIlebaru .= $extensFile;
+
+
+
+                                    //lolos cek 
+                                    move_uploaded_file($tmpName, 'file/' . $namaFIlebaru);
+                                    return $namaFIlebaru;
+                                }
                                 ?>
                                 <?php if (isset($success)) { ?>
                                     <script>

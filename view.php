@@ -19,14 +19,13 @@ if (isset($_SESSION['id_user'])) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
     <meta charset="utf-8">
-    <title>J-KOS</title>
+    <title>J KOST</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free Website Template" name="keywords">
     <meta content="Free Website Template" name="description">
@@ -43,50 +42,40 @@ if (isset($_SESSION['id_user'])) {
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="page-content page-success">
-        <div class="section-success" data-aos="zoom-in">
-            <div class="container">
-                <div class="row align-items-center row-login justify-content-center">
-                    <div class="col-lg-6 text-center">
-                        <img src="img/logo-kost.png" alt="" class="mb-4" />
-                        <h2>
-                            Transaction Processed!
-                        </h2>
-                        <p>
-                            Silahkan Melakukan pembayaran dengan menuju <br />
-                            dashboard dan mngecek di bagian transaksi!
-                        </p>
-                        <div>
-                            <a class="btn btn-custom w-50 mt-4" href="transaksi">
-                                My Dashboard
-                            </a>
-                            <a class="btn btn-signup w-50 mt-2" href="order">
-                                Cari Kos
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <p class="pt-4 pb-2">
-                        2019 Copyright J'Kost. All Rights Reserved.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
+
+    <?php
+    $id = $_GET['id_user'];
+    $query = "SELECT * FROM user_detail WHERE id_user = '$id'";
+    $result = mysqli_query($koneksi, $query);
+    while ($row = mysqli_fetch_array($result)) {
+        $Bukti = $row['bukti_kontrak'];
+    ?>
+
+        <embed src="file/<?= $Bukti; ?>" height="900" width="100%">
+
+    <?php } ?>
+
+
+
+
+
+
+
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- Pre Loader -->
+    <div id="loader" class="show">
+        <div class="loader"></div>
+    </div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

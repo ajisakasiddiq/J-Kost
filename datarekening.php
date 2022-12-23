@@ -3,6 +3,9 @@ require("koneksi.php");
 
 session_start();
 
+if (!isset($_SESSION['id_user'])) {
+    header('Location: login.php');
+}
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
     // header('Location: login.php');
@@ -125,17 +128,48 @@ if (isset($_SESSION['id_user'])) {
 
                                                             ?>
                                                                 <tr>
-                                                                    <td><?php echo $no; ?></td>
-                                                                    <td><?php echo $Namebank; ?></td>
-                                                                    <td><?php echo $userName; ?></td>
-                                                                    <td><?php echo $userNo; ?></td>
+                                                                    <td><?= $no; ?></td>
+                                                                    <td><?= $Namebank; ?></td>
+                                                                    <td><?= $userName; ?></td>
+                                                                    <td><?= $userNo; ?></td>
                                                                     <td>
-                                                                        <a href="edit.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
+                                                                        <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editRek<?= $id; ?>"><i class="fas fa-pen"></i></a>
                                                                         <a name="delete" href="datarekening.php?id_rek=<?php echo $row['id_rek']; ?>" type="button" onclick="return confirm('Yakin ingin menghapus data ini?');" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
 
                                                                     </td>
 
                                                                 </tr>
+                                                                <div class="modal fade" id="editRek<?= $id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-lg">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Rekening</h1>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                            <form class="user" action="" method="POST">
+                                                                                <div class="modal-body">
+                                                                                    <div class="form-group">
+                                                                                        <input type="hidden" class="form-control form-control-user" id="idUser" aria-describedby="emailHelp" placeholder="NAMA BANK" name="txt_userId" value="<?= $id; ?>">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <input type="text" class="form-control form-control-user" id="Bank" aria-describedby="emailHelp" placeholder="NAMA BANK" name="txt_bank" value="<?= $Namebank; ?>">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <input type="text" class="form-control form-control-user" id="Nama" placeholder="Atas Nama ....." name="txt_nama" value="<?= $userName; ?>">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <input type="text" class="form-control form-control-user" id="noRek" placeholder="No Rekening" name="txt_rek" value="<?= $userNo; ?>">
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                    <button type="submit" name="update" class="btn btn-primary">Ubah</button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                                 <?php $no++; ?>
                                                             <?php } ?>
                                                         </tbody>
@@ -229,14 +263,15 @@ if (isset($_SESSION['id_user'])) {
             $('#pemilik').DataTable();
         });
     </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 <?php
 if (isset($_POST['tambah'])) {
-    $user = $_POST['txt_user'];
+    $user = $_POST['txt_userId'];
     $bank = $_POST['txt_bank'];
     $name = $_POST['txt_nama'];
-    $noRek = $_POST['txt_rek'];;
+    $noRek = $_POST['txt_rek'];
 
     $query = "INSERT INTO rekening VALUES (null,'$user','$bank','$name','$noRek')";
     mysqli_query($koneksi, $query);
@@ -249,6 +284,20 @@ if (isset($_POST['tambah'])) {
     }
 }
 
+if (isset($_POST['update'])) {
+    $Id     = $_POST['txt_userId'];
+    $NamaBank   = $_POST['txt_bank'];
+    $NamaUser   = $_POST['txt_nama'];
+    $NorekUser    = $_POST['txt_rek'];
+
+    $query = "UPDATE rekening SET Nama_bank='$NamaBank',Nama_rek = '$NamaUser',no_rek = '$NorekUser' WHERE id_user='$Id'";
+    $result = mysqli_query($koneksi, $query);
+    if ($result) {
+        $success = "data telah terupdate!";
+    } else {
+        $error =  "data gagal update";
+    }
+}
 
 
 $id = $_GET['id_rek'];
@@ -256,5 +305,24 @@ $query =  "DELETE FROM rekening WHERE id_rek='$id'";
 mysqli_query($koneksi, $query);
 
 ?>
+
+<?php if (isset($success)) { ?>
+    <script>
+        swal({
+            title: "<?= $success; ?>",
+            icon: "success",
+            button: "OKE!",
+        });
+    </script>
+<?php } ?>
+<?php if (isset($error)) { ?>
+    <script>
+        swal({
+            title: "<?= $error; ?>",
+            icon: "success",
+            button: "OKE!",
+        });
+    </script>
+<?php } ?>
 
 </html>

@@ -2,7 +2,9 @@
 require("koneksi.php");
 
 session_start();
-
+if (!isset($_SESSION['id_user'])) {
+    header('Location: login.php');
+}
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
     // header('Location: login.php');
@@ -102,12 +104,12 @@ if (isset($_SESSION['id_user'])) {
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
+                                                                <th>Foto</th>
                                                                 <th>Nama Kost</th>
                                                                 <th>Pemilik</th>
                                                                 <th>Alamat</th>
                                                                 <th>Jumlah</th>
                                                                 <th>Deskripsi</th>
-                                                                <th>Foto</th>
                                                                 <th>Status</th>
                                                                 <th>Aksi</th>
                                                             </tr>
@@ -131,16 +133,15 @@ if (isset($_SESSION['id_user'])) {
                                                             ?>
                                                                 <tr>
                                                                     <td><?= $no; ?></td>
+                                                                    <td><img src="img/<?= $Img; ?>" alt="" width="50px"></td>
                                                                     <td><?= $Namakost; ?></td>
                                                                     <td><?= $Pemilik; ?></td>
                                                                     <td><?= $Alamat; ?></td>
                                                                     <td>22</td>
                                                                     <td><?= $Deskripsi; ?></td>
-                                                                    <td><img src="img/<?= $Img; ?>" alt="" width="50px"></td>
                                                                     <td><?= $Status; ?></td>
                                                                     <td>
                                                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#validate<?= $id; ?>"><i class="fas fa-pen"></i></button>
-                                                                        <a href="data_kost.php?id_kost" onclick="return confirm('yakin ?');" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                                                                     </td>
 
                                                                     <!-- Modal start -->
@@ -173,7 +174,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     </div>
                                                                     <!-- Modal end -->
                                                                 </tr>
-                                                                <?= $no++; ?>
+                                                                <?php $no++; ?>
                                                             <?php } ?>
                                                         </tbody>
                                                     </table>

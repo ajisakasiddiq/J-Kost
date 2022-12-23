@@ -2,6 +2,9 @@
 require("koneksi.php");
 
 session_start();
+if (!isset($_SESSION['id_user'])) {
+    header('Location: login.php');
+}s
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
     // header('Location: login.php');
@@ -16,7 +19,9 @@ if (isset($_SESSION['id_user'])) {
     $sesNo = $_SESSION['no_hp'];
     $sesGender = $_SESSION['jenis_kelamin'];
 }
-
+if ($_SESSION['level'] != "3") {
+    header('Location: dashboard.php');
+}
 // view data admin
 $API_url = 'http://localhost:8080/jkos/api/api.php?function=get_admin';
 $json_data = file_get_contents($API_url);
