@@ -52,16 +52,17 @@ if (isset($_SESSION['id_user'])) {
 
 
     <?php
-    $id = $_GET['id_user'];
-    $query = "SELECT * FROM user_detail WHERE id_user = '$id'";
-    $result = mysqli_query($koneksi, $query);
-    while ($row = mysqli_fetch_array($result)) {
-        $Bukti = $row['bukti_kontrak'];
+    // $id = $_GET['id_user'];
+    // $query = "SELECT * FROM user_detail WHERE id_user = '$id'";
+    // $result = mysqli_query($koneksi, $query);
+    // while ($row = mysqli_fetch_array($result)) {
+    //     $Bukti = $row['bukti_kontrak'];
     ?>
 
-        <embed src="file/<?= $Bukti; ?>" height="900" width="100%">
+    <embed src="file/639e489acfcb0.pdf
+" height="900" width="100%">
 
-    <?php } ?>
+    <!-- <?php  ?> -->
 
 
 
