@@ -273,7 +273,7 @@ if (isset($_SESSION['id_user'])) {
 
                                                                                     <form action="" method="post" enctype="multipart/form-data">
                                                                                         <div class="modal-body">
-                                                                                            <input type="text" value="<?= $idPesan; ?>" name="txt_id">
+                                                                                            <input type="hidden" value="<?= $idPesan; ?>" name="txt_id">
                                                                                             <div class="form-group">
                                                                                                 <label for="bank">Nama Bank</label>
                                                                                                 <h5>BCA</h5>
