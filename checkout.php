@@ -158,7 +158,7 @@ if (isset($_SESSION['id_user'])) {
   <!-- Page Header End -->
   <?php
   $id = $_GET['id_kamar'];
-  $queryKost = "SELECT data_kost.longtitude,data_kost.latitude,data_kost.alamat,kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar_pertama,kamar_kost.foto_kamar_kedua,kamar_kost.foto_kamar_ketiga,kamar_kost.foto_kamar_keempat,kamar_kost.status_kamar,kamar_kost.deskripsi,rekening.Nama_rek,rekening.Nama_bank,rekening.no_rek
+  $queryKost = "SELECT data_kost.longtitude,data_kost.latitude,data_kost.alamat,kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar_pertama,kamar_kost.foto_kamar_kedua,kamar_kost.foto_kamar_ketiga,kamar_kost.foto_kamar_keempat,kamar_kost.status_kamar,kamar_kost.deskripsi,rekening.Nama_rek,rekening.Nama_bank,rekening.no_rek,rekening.id_rek
   FROM kamar_kost
   INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
   INNER JOIN user_detail ON data_kost.id_user=data_kost.id_user
@@ -167,6 +167,7 @@ if (isset($_SESSION['id_user'])) {
   $result = mysqli_query($koneksi, $queryKost);
   while ($row = mysqli_fetch_array($result)) {
     $idKamar = $row['id_kamar'];
+    $idrek = $row['id_rek'];
     $noKamar = $row['no_kamar'];
     $namaKost = $row['nama_kost'];
     $harga = $row['harga'];
@@ -282,6 +283,8 @@ if (isset($_SESSION['id_user'])) {
               <div class="form-group">
                 <label for="namabank">Nama Bank</label>
                 <input type="text" class="form-control" id="namabank" name="bank_pemilik" value="<?= $naBank; ?>" readonly />
+                <input type="hidden" class="form-control" id="namabank" name="txt_idkamar" value="<?= $idKamar; ?>" readonly />
+                <input type="hidden" class="form-control" id="namabank" name="txt_idrek" value="<?= $idrek; ?>" readonly />
               </div>
             </div>
             <div class="col-md-3">
@@ -414,26 +417,25 @@ if (isset($_SESSION['id_user'])) {
   <script src="js/main.js"></script>
 </body>
 <?php if (isset($_POST['sewa'])) {
-  $id = $_POST['id_kost'];
-  $Jenis = $_POST['txt_jenis'];
-  $Deskripsi = $_POST['deskripsi'];
-  $No = $_POST['no'];
-  $Harga = $_POST['harga'];
-  $Img = upload();
-  $ImgDalam = uploadDalam();
-  $ImgDapur = uploadDapur();
-  $ImgMandi = uploadMandi();
-  // $Img   = $_POST['img'];
-  if (!$Img) {
-    return false;
-  }
+  $kamarId = $_POST['txt_idkamar'];
+  $rekId = $_POST['txt_idrek'];
+  $Nama = $_POST['txt_nama'];
+  $Nik = $_POST['txt_nik'];
+  $durasi = $_POST['txt_durasi'];
+  $tglMulai = $_POST['tgl_kos'];
+  $hargaKos = $_POST['hargakos'];
+  $namabank = $_POST['bank_pemilik'];
+  $namarekening = $_POST['nama_rek'];
+  $nomerekening = $_POST['no_rek'];
+  $total = $_POST['bayar'];
 
-  $query = "INSERT INTO pemesanan VALUES (null,'$id','$Jenis','$No','$Harga','Tersedia','$Img','$ImgDalam','$ImgMandi','$ImgDapur','$Deskripsi')";
+
+  $query = "INSERT INTO pemesanan VALUES (null,'$sesID','$kamarId','$rekId','jkos44343','$Nama','$Nik','$tglMulai','$durasi','$hargaKos','2022-12-13','$total','PENDING','$nomerekening','$namarekening','$namabank','Menunggu Pembayaran')";
   $result = mysqli_query($koneksi, $query);
   if ($result) {
-    $succes = "Data berhasil terinput!";
+    header("Location: success.php");
   } else {
-    $errorr =  $query . "Error " . mysqli_error($koneksi);
+    echo mysqli_error($koneksi);
   }
 }
 ?>
