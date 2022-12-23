@@ -154,11 +154,7 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $tgl; ?></td>
                                                                         <td>Rp.<?= $total; ?></td>
                                                                         <td><?= $status; ?></td>
-                                                                        <?php if ($bukti == 'Menunggu Pembayaran') { ?>
-                                                                            <td><?= $bukti; ?></td>
-                                                                        <?php  } else { ?>
-                                                                            <td><img src="file/<?= $bukti; ?>" alt="" width="100px"></td>
-                                                                        <?php     } ?>
+                                                                        <td><img src="file/<?= $bukti; ?>" alt="" width="100px"></td>
                                                                         <td>
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#cek<?= $idPesan; ?>"><i class="fa-solid mr-1 fa-check"></i>Check</a>
                                                                             <a href="print.php?id_pemesanan=<?= $idPesan; ?>" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
@@ -263,11 +259,7 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $tgl; ?></td>
                                                                         <td>Rp.<?= $total; ?></td>
                                                                         <td><?= $status; ?></td>
-                                                                        <?php if ($bukti == 'Menunggu Pembayaran') { ?>
-                                                                            <td><?= $bukti; ?></td>
-                                                                        <?php  } else { ?>
-                                                                            <td><img src="file/<?= $bukti; ?>" alt="" width="100px"></td>
-                                                                        <?php     } ?>
+                                                                        <td><img src="file/<?= $bukti; ?>" alt="" width="100px"></td>
                                                                         <td>
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar<?= $idPesan; ?>"><i class="fa-sharp fa-solid mr-1 fa-money-bill"></i>Bayar</a>
                                                                             <a href="print.php?id_pemesanan=<?= $idPesan; ?>" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
@@ -350,11 +342,7 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $tgl; ?></td>
                                                                         <td>Rp.<?= $total; ?></td>
                                                                         <td><?= $status; ?></td>
-                                                                        <?php if ($bukti == 'Menunggu Pembayaran') { ?>
-                                                                            <td><?= $bukti; ?></td>
-                                                                        <?php  } else { ?>
-                                                                            <td><img src="file/<?= $bukti; ?>" alt="" width="100px"></td>
-                                                                        <?php     } ?>
+                                                                        <td><img src="file/<?= $bukti; ?>" alt="" width="100px"></td>
                                                                         <td>
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
                                                                             <a href="print.php?id_pemesanan=<?= $idPesan; ?>" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
