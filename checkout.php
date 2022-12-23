@@ -158,9 +158,11 @@ if (isset($_SESSION['id_user'])) {
   <!-- Page Header End -->
   <?php
   $id = $_GET['id_kamar'];
-  $queryKost = "SELECT data_kost.longtitude,data_kost.latitude,data_kost.alamat,kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar_pertama,kamar_kost.foto_kamar_kedua,kamar_kost.foto_kamar_ketiga,kamar_kost.foto_kamar_keempat,kamar_kost.status_kamar,kamar_kost.deskripsi
-                FROM kamar_kost
-                INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
+  $queryKost = "SELECT data_kost.longtitude,data_kost.latitude,data_kost.alamat,kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar_pertama,kamar_kost.foto_kamar_kedua,kamar_kost.foto_kamar_ketiga,kamar_kost.foto_kamar_keempat,kamar_kost.status_kamar,kamar_kost.deskripsi,rekening.Nama_rek,rekening.Nama_bank,rekening.no_rek
+  FROM kamar_kost
+  INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
+  INNER JOIN user_detail ON data_kost.id_user=data_kost.id_user
+  INNER JOIN rekening ON rekening.id_user=user_detail.id_user
                 WHERE kamar_kost.status_kamar = 'Tersedia' and kamar_kost.id_kamar = '$id'";
   $result = mysqli_query($koneksi, $queryKost);
   while ($row = mysqli_fetch_array($result)) {
@@ -173,6 +175,9 @@ if (isset($_SESSION['id_user'])) {
     $long = $row['longtitude'];
     $lat = $row['latitude'];
     $des = $row['deskripsi'];
+    $naRek = $row['Nama_rek'];
+    $naBank = $row['Nama_bank'];
+    $noRek = $row['no_rek'];
   }
   ?>
 
@@ -224,25 +229,25 @@ if (isset($_SESSION['id_user'])) {
             <h2 class="mb-4">Detail Pemesanan</h2>
           </div>
         </div>
-        <form action="">
+        <form action="" method="post">
           <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
             <div class="col-md-6">
               <div class="form-group">
-                <label for="addressOne">Nama</label>
-                <input type="text" class="form-control" id="addressOne" aria-describedby="emailHelp" name="addressOne" />
+                <label for="nama">Nama</label>
+                <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" name="txt_nama" />
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for="postalCode">Nomor Induk Kependudukan(NIK) </label>
-                <input type="text" class="form-control" id="postalCode" name="postalCode" />
+                <label for="nik">Nomor Induk Kependudukan(NIK) </label>
+                <input type="text" class="form-control" id="nik" name="txt_nik" />
               </div>
             </div>
 
             <div class="col-md-4">
               <div class="form-group">
-                <label for="province">Durasi</label>
-                <select name="province" id="package" class="form-control">
+                <label for="">Durasi</label>
+                <select name="txt_durasi" id="package" class="form-control">
                   <option value="1">1 Bulan</option>
                   <option value="6">6 Bulan</option>
                   <option value="12">12 Bulan</option>
@@ -252,14 +257,14 @@ if (isset($_SESSION['id_user'])) {
 
             <div class="col-md-4">
               <div class="form-group">
-                <label for="kota">Tanggal Mulai Ngekos</label>
-                <input type="date" class="form-control" id="kota" name="kota" />
+                <label for="tgl">Tanggal Mulai Ngekos</label>
+                <input type="date" class="form-control" id="tgl" name="tgl_kos" />
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label for="kota">Harga Kos Perbulan</label>
-                <input value="<?= $harga; ?>" type="text" class="form-control" id="price" name="kota" readonly />
+                <label for="harga_kos">Harga Kos Perbulan</label>
+                <input value="<?= $harga; ?>" type="text" class="form-control" name="hargakos" id="price" readonly />
               </div>
             </div>
           </div>
@@ -275,26 +280,26 @@ if (isset($_SESSION['id_user'])) {
           <div class="row" data-aos="fade-up" data-aos-delay="200">
             <div class="col-md-3">
               <div class="form-group">
-                <label for="kota">Nama Bank</label>
-                <input type="text" class="form-control" id="kota" name="kota" value="" readonly />
+                <label for="namabank">Nama Bank</label>
+                <input type="text" class="form-control" id="namabank" name="bank_pemilik" value="<?= $naBank; ?>" readonly />
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
-                <label for="mobile">Atas Nama</label>
-                <input type="text" class="form-control" id="mobile" name="mobile" value="" readonly />
+                <label for="atasnama">Atas Nama</label>
+                <input type="text" class="form-control" id="atasnama" name="nama_rek" value="<?= $naRek; ?>" readonly />
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
-                <label for="mobile">No Rekening</label>
-                <input type="text" class="form-control" id="mobile" name="mobile" value="" readonly />
+                <label for="norek">No Rekening</label>
+                <input type="text" class="form-control" id="norek" name="no_rek" value="<?= $noRek; ?>" readonly />
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
                 <label for="mobile">Total Pembayaran</label>
-                <input id="total" type="text" class="form-control" id="mobile" name="bayar" value="" readonly />
+                <input id="total" type="text" class="form-control" id="mobile" name="bayar" value="<?= $harga; ?>" readonly />
               </div>
             </div>
 
@@ -408,5 +413,29 @@ if (isset($_SESSION['id_user'])) {
   <!-- Template Javascript -->
   <script src="js/main.js"></script>
 </body>
+<?php if (isset($_POST['sewa'])) {
+  $id = $_POST['id_kost'];
+  $Jenis = $_POST['txt_jenis'];
+  $Deskripsi = $_POST['deskripsi'];
+  $No = $_POST['no'];
+  $Harga = $_POST['harga'];
+  $Img = upload();
+  $ImgDalam = uploadDalam();
+  $ImgDapur = uploadDapur();
+  $ImgMandi = uploadMandi();
+  // $Img   = $_POST['img'];
+  if (!$Img) {
+    return false;
+  }
+
+  $query = "INSERT INTO pemesanan VALUES (null,'$id','$Jenis','$No','$Harga','Tersedia','$Img','$ImgDalam','$ImgMandi','$ImgDapur','$Deskripsi')";
+  $result = mysqli_query($koneksi, $query);
+  if ($result) {
+    $succes = "Data berhasil terinput!";
+  } else {
+    $errorr =  $query . "Error " . mysqli_error($koneksi);
+  }
+}
+?>
 
 </html>
