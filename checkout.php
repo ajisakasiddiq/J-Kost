@@ -25,11 +25,12 @@ $querykode = "SELECT max(id_pemesanan) FROM pemesanan";
 $result = mysqli_query($koneksi, $querykode);
 while ($row = mysqli_fetch_array($result)) {
   $kode = $row['id_pemesanan'];
-}
-$urutan_kode = (int)substr($kode, 1, 3);
-$urutan_kode++;
-$kodeunik = "Jkost" . sprintf("%03s", $urutan_kode);
 
+  $urutan_kode = (int)substr($kode, 1, 3);
+  $urutan_kode++;
+  $kodeunik = "Jkost" . sprintf("%03s", $urutan_kode);
+}
+echo  $kodeunik;
 ?>
 
 <!DOCTYPE html>
@@ -295,7 +296,6 @@ $kodeunik = "Jkost" . sprintf("%03s", $urutan_kode);
                 <input type="text" class="form-control" id="namabank" name="bank_pemilik" value="<?= $naBank; ?>" readonly />
                 <input type="hidden" class="form-control" id="namabank" name="txt_idkamar" value="<?= $idKamar; ?>" readonly />
                 <input type="hidden" class="form-control" id="namabank" name="txt_idrek" value="<?= $idrek; ?>" readonly />
-                <input type="hidden" class="form-control" id="namabank" name="txt_kode" value="<?= $kodeunik; ?>" />
               </div>
             </div>
             <div class="col-md-3">
@@ -430,7 +430,6 @@ $kodeunik = "Jkost" . sprintf("%03s", $urutan_kode);
 <?php if (isset($_POST['sewa'])) {
   $kamarId = $_POST['txt_idkamar'];
   $rekId = $_POST['txt_idrek'];
-  $kodepesan = $_POST['txt_kode'];
   $Nama = $_POST['txt_nama'];
   $Nik = $_POST['txt_nik'];
   $durasi = $_POST['txt_durasi'];
@@ -442,7 +441,7 @@ $kodeunik = "Jkost" . sprintf("%03s", $urutan_kode);
   $total = $_POST['bayar'];
 
 
-  $query = "INSERT INTO pemesanan VALUES (null,'$sesID','$kamarId','$rekId','$kodepesan','$Nama','$Nik','$tglMulai','$durasi','$hargaKos','2022-12-13','$total','PENDING','$nomerekening','$namarekening','$namabank','Menunggu Pembayaran')";
+  $query = "INSERT INTO pemesanan VALUES (null,'$sesID','$kamarId','$rekId','jkos44343','$Nama','$Nik','$tglMulai','$durasi','$hargaKos','2022-12-13','$total','PENDING','$nomerekening','$namarekening','$namabank','Menunggu Pembayaran')";
   $result = mysqli_query($koneksi, $query);
   if ($result) {
     header("Location: success.php");
