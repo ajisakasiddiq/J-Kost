@@ -2,9 +2,6 @@
 require("koneksi.php");
 
 session_start();
-if (!isset($_SESSION['id_user'])) {
-    header('Location: login.php');
-}
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
@@ -108,10 +105,7 @@ if (isset($_SESSION['id_user'])) {
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
-                                                                <th>Foto depan kamar</th>
-                                                                <th>Foto dalam kamar</th>
-                                                                <th>Foto kamar mandi</th>
-                                                                <th>Foto dapur</th>
+                                                                <th>Foto</th>
                                                                 <th>Nama Kost</th>
                                                                 <th>No. Kamar</th>
                                                                 <th>Jenis Kamar</th>
@@ -123,7 +117,7 @@ if (isset($_SESSION['id_user'])) {
                                                         </thead>
                                                         <tbody>
                                                             <?php
-                                                            $query = "SELECT kamar_kost.id_kamar,kamar_kost.foto_kamar_pertama,kamar_kost.foto_kamar_kedua,kamar_kost.foto_kamar_ketiga,kamar_kost.foto_kamar_keempat , data_kost.nama_kost,kamar_kost.jenis_kamar,kamar_kost.no_kamar,kamar_kost.deskripsi,kamar_kost.status_kamar,kamar_kost.harga
+                                                            $query = "SELECT kamar_kost.id_kamar,kamar_kost.foto_kamar , data_kost.nama_kost,kamar_kost.jenis_kamar,kamar_kost.no_kamar,kamar_kost.deskripsi,kamar_kost.status_kamar,kamar_kost.harga
                                                                 FROM kamar_kost
                                                                 INNER JOIN data_kost ON data_kost.id_kost=kamar_kost.id_kost
                                                                 WHERE data_kost.id_user='$sesID'";
@@ -131,10 +125,7 @@ if (isset($_SESSION['id_user'])) {
                                                             $no = 1;
                                                             while ($row = mysqli_fetch_array($result)) {
                                                                 $id = $row['id_kamar'];
-                                                                $img = $row['foto_kamar_pertama'];
-                                                                $img1 = $row['foto_kamar_kedua'];
-                                                                $img2 = $row['foto_kamar_ketiga'];
-                                                                $img3 = $row['foto_kamar_keempat'];
+                                                                $img = $row['foto_kamar'];
                                                                 $Name = $row['nama_kost'];
                                                                 $Jenis = $row['jenis_kamar'];
                                                                 $No = $row['no_kamar'];
@@ -145,9 +136,6 @@ if (isset($_SESSION['id_user'])) {
                                                                 <tr>
                                                                     <td><?= $no; ?></td>
                                                                     <td><img src="img/<?= $img; ?>" alt="" width="80px"></td>
-                                                                    <td><img src="img/<?= $img1; ?>" alt="" width="80px"></td>
-                                                                    <td><img src="img/<?= $img2; ?>" alt="" width="80px"></td>
-                                                                    <td><img src="img/<?= $img3; ?>" alt="" width="80px"></td>
                                                                     <td><?= $Name; ?></td>
                                                                     <td><?= $No; ?></td>
                                                                     <td><?= $Jenis; ?></td>
@@ -155,14 +143,14 @@ if (isset($_SESSION['id_user'])) {
                                                                     <td><?= $harga; ?></td>
                                                                     <td><?= $status; ?></td>
                                                                     <td>
-                                                                        <a href="" class="btn btn-primary btn-circle m-1" data-bs-toggle="modal" data-bs-target="#editKamar<?= $id; ?>"><i class="fas fa-pen"></i></a>
+                                                                        <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#editKamar<?= $id; ?>"><i class="fas fa-pen"></i></a>
 
-                                                                        <a href="datakamar.php?id_kamar=<?= $row['id_kamar']; ?>" class="btn btn-danger btn-circle m-1" onclick="return confirm('Yakin ingin menghapus data ini?');"><i class="fas fa-trash"></i></a>
+                                                                        <a href="datakamar.php?id_kamar=<?= $row['id_kamar']; ?>" class="btn btn-danger btn-circle" onclick="return confirm('Yakin ingin menghapus data ini?');"><i class="fas fa-trash"></i></a>
                                                                     </td>
 
                                                                     <!-- edit kamar -->
                                                                     <div class="modal fade" id="editKamar<?= $id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog modal-dialog-scrollable">
+                                                                        <div class="modal-dialog">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
                                                                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
@@ -171,54 +159,13 @@ if (isset($_SESSION['id_user'])) {
                                                                                 <form role="form" action="" method="post" enctype="multipart/form-data">
                                                                                     <input type="hidden" name="txt_id" value="<?= $id; ?>">
                                                                                     <div class="modal-body">
+                                                                                        <div class="img">
+                                                                                            <img src="img/<?= $Img; ?>" alt="" width="100%" height="300px">
+                                                                                        </div>
                                                                                         <div class="form-group">
-                                                                                            <div class="row">
-                                                                                                <div class="col-4">
-                                                                                                    <img src="img/<?= $img; ?>" alt="" width="150px" style="max-height:100px;">
-                                                                                                </div>
-                                                                                                <div class="col-6">
-                                                                                                    <label for="img">Foto Depan Kamar kost</label>
-                                                                                                    <input id="img" type="file" class="form-control" name="gambar">
-                                                                                                </div>
-                                                                                            </div>
-
+                                                                                            <label for="img">Foto Kamar kost</label>
+                                                                                            <input id="img" type="file" class="form-control" name="gambar">
                                                                                             <input id="img" type="hidden" class="form-control" name="gambarLama" value="<?= $img; ?>">
-                                                                                            <input id="img" type="hidden" class="form-control" name="gambarLama1" value="<?= $img1; ?>">
-                                                                                            <input id="img" type="hidden" class="form-control" name="gambarLama2" value="<?= $img2; ?>">
-                                                                                            <input id="img" type="hidden" class="form-control" name="gambarLama3" value="<?= $img3; ?>">
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <div class="row">
-                                                                                                <div class="col-4">
-                                                                                                    <img src="img/<?= $img1; ?>" alt="" width="150px" style="max-height:100px;">
-                                                                                                </div>
-                                                                                                <div class="col-6">
-                                                                                                    <label for="img">Foto Dalam kamar kost</label>
-                                                                                                    <input id="img" type="file" class="form-control" name="gambarDalam">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <div class="row">
-                                                                                                <div class="col-4">
-                                                                                                    <img src="img/<?= $img2; ?>" alt="" width="150px" style="max-height:100px;">
-                                                                                                </div>
-                                                                                                <div class="col-6">
-                                                                                                    <label for="img">Foto kamar mandi kost</label>
-                                                                                                    <input id="img" type="file" class="form-control" name="gambarMandi">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <div class="row">
-                                                                                                <div class="col-4">
-                                                                                                    <img src="img/<?= $img3; ?>" alt="" width="150px" style="max-height:100px;">
-                                                                                                </div>
-                                                                                                <div class="col-6">
-                                                                                                    <label for="img">Foto dapur kost</label>
-                                                                                                    <input id="img" type="file" class="form-control" name="gambarDapur">
-                                                                                                </div>
-                                                                                            </div>
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="inputName">No kamar</label>
@@ -262,7 +209,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     </div>
 
                                                                 </tr>
-                                                                <?php $no++; ?>
+                                                                <?php echo $no++; ?>
                                                             <?php  } ?>
                                                         </tbody>
                                                     </table>
@@ -359,34 +306,13 @@ if (isset($_POST['edit'])) {
     $Status  = $_POST['txt_status'];
     $Harga  = $_POST['txt_harga'];
     $gambarLama   = $_POST['gambarLama'];
-    $gambarLama1   = $_POST['gambarLama1'];
-    $gambarLama2  = $_POST['gambarLama2'];
-    $gambarLama3   = $_POST['gambarLama3'];
     if ($_FILES['gambar']['error'] === 4) {
         $Img = $gambarLama;
     } else {
         $Img = upload();
     }
 
-    if ($_FILES['gambarDalam']['error'] === 4) {
-        $ImgDalam = $gambarLama1;
-    } else {
-        $ImgDalam = uploadDalam();
-    }
-
-    if ($_FILES['gambarMandi']['error'] === 4) {
-        $ImgMandi = $gambarLama2;
-    } else {
-        $ImgMandi = uploadMandi();
-    }
-
-    if ($_FILES['gambarDapur']['error'] === 4) {
-        $ImgDapur = $gambarLama3;
-    } else {
-        $ImgDapur = uploadDapur();
-    }
-
-    $query = "UPDATE kamar_kost SET jenis_kamar='$jenis', no_kamar='$Nokamar', harga='$Harga',status_kamar='$Status',foto_kamar_pertama='$Img',foto_kamar_kedua='$ImgDalam',foto_kamar_ketiga='$ImgMandi',foto_kamar_keempat='$ImgDapur',deskripsi='$deskripsi' WHERE id_kamar='$Id'";
+    $query = "UPDATE kamar_kost SET jenis_kamar='$jenis', no_kamar='$Nokamar', harga='$Harga',status_kamar='$Status',foto_kamar='$Img',deskripsi='$deskripsi' WHERE id_kamar='$Id'";
     $result = mysqli_query($koneksi, $query);
     if ($result) {
         $success = "User data telah terupdate!";
@@ -441,99 +367,7 @@ function upload()
     move_uploaded_file($tmpName, 'img/' . $namaFIlebaru);
     return $namaFIlebaru;
 }
-function uploadDalam()
-{
-    $fileDalam = $_FILES['gambarDalam']['name'];
-    $size = $_FILES['gambarDalam']['size'];
-    $error = $_FILES['gambarDalam']['error'];
-    $tmpName = $_FILES['gambarDalam']['tmp_name'];
-    //cek file apakah diupload atau tidak
-    if ($error === 4) {
-        echo "<script>alert('Pilih gambar terlebih dahulu');</script>";
-        return false;
-    }
-    //cek apakah benar gambar
-    $extensGambarValid = ['jpg', 'jpeg', 'png'];
-    $extensGambar = explode('.', $fileDalam);
-    $extensGambar = strtolower(end($extensGambar));
-    if (!in_array($extensGambar, $extensGambarValid)) {
-        echo "<script>alert('Yang anda upload bukan berupa file gambar');</script>";
-        return false;
-    }
-    //cek jika ukuran nya terlalu besar 
-    if ($size > 1000000) {
-        echo "<script>alert('Ukuran gambar terlalu besar');</script>";
-    }
-    //generate nama gambar baru
-    $namaFIlebaruDalam = uniqid();
-    $namaFIlebaruDalam .= '.';
-    $namaFIlebaruDalam .= $extensGambar;
-    //lolos cek 
-    move_uploaded_file($tmpName, 'img/' . $namaFIlebaruDalam);
-    return $namaFIlebaruDalam;
-}
-function uploadMandi()
-{
-    $fileMandi = $_FILES['gambarMandi']['name'];
-    $size = $_FILES['gambarMandi']['size'];
-    $error = $_FILES['gambarMandi']['error'];
-    $tmpName = $_FILES['gambarMandi']['tmp_name'];
-    //cek file apakah diupload atau tidak
-    if ($error === 4) {
-        echo "<script>alert('Pilih gambar terlebih dahulu');</script>";
-        return false;
-    }
-    //cek apakah benar gambar
-    $extensGambarValid = ['jpg', 'jpeg', 'png'];
-    $extensGambar = explode('.', $fileMandi);
-    $extensGambar = strtolower(end($extensGambar));
-    if (!in_array($extensGambar, $extensGambarValid)) {
-        echo "<script>alert('Yang anda upload bukan berupa file gambar');</script>";
-        return false;
-    }
-    //cek jika ukuran nya terlalu besar 
-    if ($size > 1000000) {
-        echo "<script>alert('Ukuran gambar terlalu besar');</script>";
-    }
-    //generate nama gambar baru
-    $namaFIlebaruMandi = uniqid();
-    $namaFIlebaruMandi .= '.';
-    $namaFIlebaruMandi .= $extensGambar;
-    //lolos cek 
-    move_uploaded_file($tmpName, 'img/' . $namaFIlebaruMandi);
-    return $namaFIlebaruMandi;
-}
-function uploadDapur()
-{
-    $fileDapur = $_FILES['gambarDapur']['name'];
-    $size = $_FILES['gambarDapur']['size'];
-    $error = $_FILES['gambarDapur']['error'];
-    $tmpName = $_FILES['gambarDapur']['tmp_name'];
-    //cek file apakah diupload atau tidak
-    if ($error === 4) {
-        echo "<script>alert('Pilih gambar terlebih dahulu');</script>";
-        return false;
-    }
-    //cek apakah benar gambar
-    $extensGambarValid = ['jpg', 'jpeg', 'png'];
-    $extensGambar = explode('.', $fileDapur);
-    $extensGambar = strtolower(end($extensGambar));
-    if (!in_array($extensGambar, $extensGambarValid)) {
-        echo "<script>alert('Yang anda upload bukan berupa file gambar');</script>";
-        return false;
-    }
-    //cek jika ukuran nya terlalu besar 
-    if ($size > 1000000) {
-        echo "<script>alert('Ukuran gambar terlalu besar');</script>";
-    }
-    //generate nama gambar baru
-    $namaFIlebaruDapur = uniqid();
-    $namaFIlebaruDapur .= '.';
-    $namaFIlebaruDapur .= $extensGambar;
-    //lolos cek 
-    move_uploaded_file($tmpName, 'img/' . $namaFIlebaruDapur);
-    return $namaFIlebaruDapur;
-}
+
 
 
 

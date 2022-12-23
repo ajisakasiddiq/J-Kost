@@ -1,26 +1,16 @@
-<?php
-$queryUser = "SELECT * FROM user_detail WHERE id_user = '$sesID'";
-$result = mysqli_query($koneksi, $queryUser);
-while ($row = mysqli_fetch_array($result)) {
-    $img = $row['foto'];
-    $NameUser = $row['user_nama'];
-    $status = $row['status_user'];
-}
-?>
-
 <nav id="sidebar">
     <div class="sidebar_blog_1">
         <div class="sidebar-header">
             <div class="logo_section">
-                <a href="dashboard.php"><img class="logo_icon img-responsive" src="img/<?= $img;  ?>" alt="logo" /></a>
+                <a href="dashboard.php"><img class="logo_icon img-responsive" src="img/<?= $sesImg;  ?>" alt="logo" /></a>
             </div>
         </div>
         <div class="sidebar_user_info">
             <div class="icon_setting"></div>
             <div class="user_profle_side">
-                <div class="user_img"><img class="img-responsive" src="img/<?= $img;  ?>" alt="profil" /></div>
+                <div class="user_img"><img class="img-responsive" src="img/<?= $sesImg;  ?>" alt="profil" /></div>
                 <div class="user_info">
-                    <h6><?= $NameUser; ?></h6>
+                    <h6><?php echo $name; ?></h6>
                     <p><span class="online_animation"></span> Online</p>
                 </div>
             </div>
@@ -66,6 +56,8 @@ while ($row = mysqli_fetch_array($result)) {
 
         <?php  } else { ?>
 
+
+
             <!-- pemilik kos start -->
             <ul class="list-unstyled components">
                 <li class="active">
@@ -78,10 +70,9 @@ while ($row = mysqli_fetch_array($result)) {
             </ul>
             <!-- pemilik kos end -->
 
+
+
         <?php } ?>
 
-
-
     </div>
-
 </nav>

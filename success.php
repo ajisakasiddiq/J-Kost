@@ -63,11 +63,11 @@ if (isset($_SESSION['id_user'])) {
                             dashboard dan mngecek di bagian transaksi!
                         </p>
                         <div>
-                            <a class="btn btn-custom w-50 mt-4" href="transaksi">
+                            <a class="btn btn-custom w-50 mt-4" href="transaksi_user">
                                 My Dashboard
                             </a>
                             <a class="btn btn-signup w-50 mt-2" href="order">
-                                Cari Kos
+                                Go To Shopping
                             </a>
                         </div>
                     </div>

@@ -2,9 +2,6 @@
 require("koneksi.php");
 
 session_start();
-if (!isset($_SESSION['id_user'])) {
-    header('Location: login.php');
-}
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
@@ -20,10 +17,6 @@ if (isset($_SESSION['id_user'])) {
     $sesNo = $_SESSION['no_hp'];
     $sesGender = $_SESSION['jenis_kelamin'];
 }
-if ($_SESSION['level'] != "1") {
-    header('Location: dashboard.php');
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

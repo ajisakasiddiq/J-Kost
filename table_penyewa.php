@@ -2,9 +2,6 @@
 require("koneksi.php");
 
 session_start();
-if (!isset($_SESSION['id_user'])) {
-    header('Location: login.php');
-}
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
@@ -21,9 +18,6 @@ if (isset($_SESSION['id_user'])) {
     $sesGender = $_SESSION['jenis_kelamin'];
 }
 
-if ($_SESSION['level'] != "3") {
-    header('Location: dashboard.php');
-}
 $API_url = 'http://localhost:8080/jkos/api/api.php?function=get_penyewa';
 $json_data = file_get_contents($API_url);
 $response_data = json_decode($json_data);
@@ -137,7 +131,7 @@ $user_data = $response_data->data;
                                                                 <td><?= $user->jenis_kelamin; ?></td>
                                                                 <td><img src="img/<?= $user->foto;  ?>" alt="" width="50px"></td>
                                                                 <td>
-                                                                    <a href="table_penyewa.php?id_user=<?= $user->id_user ?>" class="btn btn-danger btn-circle" onclick="return confirm('Yakin ingin menghapus data ini?');"><i class="fas fa-trash"></i></a>
+                                                                    <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#detail"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
                                                                 </td>
                                                             </tr>
                                                             <?php $no++; ?>
@@ -219,13 +213,4 @@ $user_data = $response_data->data;
     </script>
 </body>
 
-
 </html>
-
-<?php
-$id = $_GET['id_user'];
-$query =  "DELETE FROM user_detail WHERE id_user='$id'";
-mysqli_query($koneksi, $query);
-
-
-?>
