@@ -109,7 +109,6 @@ if (isset($_SESSION['id_user'])) {
                         <a href="about" class="nav-item nav-link">Tentang Kami</a>
                         <a href="service" class="nav-item nav-link">Pelayanan</a>
                         <a href="order" class="nav-item nav-link active">Pemesanan</a>
-                        <a href="contact" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="ml-auto">
                         <?php if (isset($_SESSION['id_user'])) { ?>

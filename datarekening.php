@@ -210,7 +210,7 @@ if (isset($_SESSION['id_user'])) {
                 <form class="user" action="" method="POST">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="hidden" class="form-control form-control-user" id="idUser" aria-describedby="emailHelp" placeholder="NAMA BANK" name="txt_user" value="<?php echo $sesID; ?>">
+                            <input type="hidden" class="form-control form-control-user" id="idUser" aria-describedby="emailHelp" placeholder="NAMA BANK" name="txt_user" value="<?= $sesID; ?>">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control form-control-user" id="Bank" aria-describedby="emailHelp" placeholder="NAMA BANK" name="txt_bank">
@@ -268,7 +268,7 @@ if (isset($_SESSION['id_user'])) {
 
 <?php
 if (isset($_POST['tambah'])) {
-    $user = $_POST['txt_userId'];
+    $user = $_POST['txt_user'];
     $bank = $_POST['txt_bank'];
     $name = $_POST['txt_nama'];
     $noRek = $_POST['txt_rek'];

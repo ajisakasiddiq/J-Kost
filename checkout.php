@@ -419,6 +419,7 @@ if (isset($_SESSION['id_user'])) {
 <?php if (isset($_POST['sewa'])) {
   $kamarId = $_POST['txt_idkamar'];
   $rekId = $_POST['txt_idrek'];
+  $r = $_POST['txt_idrek'];
   $Nama = $_POST['txt_nama'];
   $Nik = $_POST['txt_nik'];
   $durasi = $_POST['txt_durasi'];
