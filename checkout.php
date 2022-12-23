@@ -203,7 +203,7 @@ if (isset($_SESSION['id_user'])) {
                     <div class="product-subtitle">By <?= $namaKost; ?></div>
                   </td>
                   <td style="width: 25%;">
-                    <div class="product-title">Rp. <?= $harga; ?></div>
+                    <div id="total" class="product-title">Rp. <?= $harga; ?></div>
                   </td>
                   <td style="width: 25%;">
                     <div class="product-title"><span id="selected">1</span> Bulan</div>
@@ -259,53 +259,54 @@ if (isset($_SESSION['id_user'])) {
             <div class="col-md-4">
               <div class="form-group">
                 <label for="kota">Harga Kos Perbulan</label>
-                <input value="<?= $harga; ?>" type="text" class="form-control" id="kota" name="kota" readonly />
+                <input value="<?= $harga; ?>" type="text" class="form-control" id="price" name="kota" readonly />
               </div>
             </div>
           </div>
-        </form>
-        <div class="row" data-aos="fade-up" data-aos-delay="150">
-          <div class="col-12">
-            <hr />
-          </div>
-          <div class="col-12">
-            <h2>Informasi Pembayaran </h2>
-          </div>
-        </div>
-        <div class="row" data-aos="fade-up" data-aos-delay="200">
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="kota">Nama Bank</label>
-              <input type="text" class="form-control" id="kota" name="kota" value="" readonly />
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="mobile">Atas Nama</label>
-              <input type="text" class="form-control" id="mobile" name="mobile" value="" readonly />
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="mobile">No Rekening</label>
-              <input type="text" class="form-control" id="mobile" name="mobile" value="" readonly />
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="mobile">Total Pembayaran</label>
-              <input type="text" class="form-control" id="mobile" name="mobile" value="" readonly />
-            </div>
-          </div>
 
-          <div class="col-8 col-md-3">
-            <a href="success.php" class="btn btn-custom mt-4 px-4 btn-block">
-              Checkout Now
-            </a>
+          <div class="row" data-aos="fade-up" data-aos-delay="150">
+            <div class="col-12">
+              <hr />
+            </div>
+            <div class="col-12">
+              <h2>Informasi Pembayaran </h2>
+            </div>
           </div>
-        </div>
+          <div class="row" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="kota">Nama Bank</label>
+                <input type="text" class="form-control" id="kota" name="kota" value="" readonly />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="mobile">Atas Nama</label>
+                <input type="text" class="form-control" id="mobile" name="mobile" value="" readonly />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="mobile">No Rekening</label>
+                <input type="text" class="form-control" id="mobile" name="mobile" value="" readonly />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="mobile">Total Pembayaran</label>
+                <input id="total" type="text" class="form-control" id="mobile" name="bayar" value="" readonly />
+              </div>
+            </div>
+
+            <div class="col-8 col-md-3">
+              <button type="submit" name="sewa" class="btn btn-custom mt-4 px-4 btn-block">
+                Checkout Now
+              </button>
+            </div>
+        </form>
       </div>
-    </section>
+  </div>
+  </section>
   </div>
 
 
@@ -390,18 +391,16 @@ if (isset($_SESSION['id_user'])) {
       $('#selected').text(selectedPackage);
     });
 
+
+
     $('#package').on('change', function() {
       // ambil data dari elemen option yang dipilih
-      const price = $('#package option:selected').val();
+      const duration = $('#package option:selected').val();
+      const price = $('#price').val();
 
       // kalkulasi total harga
-      const totalDiscount = (price * discount / 100)
-      const total = price - totalDiscount;
-
-      // tampilkan data ke element
-      $('[name=price]').val(price);
-      $('[name=discount]').val(totalDiscount);
-
+      const total = price * duration;
+      $('[name=bayar]').val(total);
       $('#total').text(`Rp ${total}`);
     });
   </script>
