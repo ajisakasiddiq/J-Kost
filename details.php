@@ -117,7 +117,7 @@ if (isset($_SESSION['id_user'])) {
                                 <li class="nav-item dropdown">
                                     <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
                                         Hi, <?php echo $name; ?>
-                                        <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture" height="50px">
+                                        <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
                                     </a>
                                     <div class="dropdown-menu bg-dark">
                                         <a href="dashboard" class="dropdown-item text-danger">Dashboard</a>
@@ -141,29 +141,7 @@ if (isset($_SESSION['id_user'])) {
         </div>
     </div>
     <!-- Nav Bar End -->
-    <?php
-    $id = $_GET['id_kamar'];
-    $queryKost = "SELECT data_kost.alamat, data_kost.longtitude,data_kost.latitude,data_kost.alamat,kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar_pertama,kamar_kost.foto_kamar_kedua,kamar_kost.foto_kamar_ketiga,kamar_kost.foto_kamar_keempat,kamar_kost.status_kamar,kamar_kost.deskripsi
-                FROM kamar_kost
-                INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
-                WHERE kamar_kost.status_kamar = 'Tersedia' and kamar_kost.id_kamar = '$id'";
-    $result = mysqli_query($koneksi, $queryKost);
-    while ($row = mysqli_fetch_array($result)) {
-        $idKamar = $row['id_kamar'];
-        $noKamar = $row['no_kamar'];
-        $namaKost = $row['nama_kost'];
-        $harga = $row['harga'];
-        $foto = $row['foto_kamar_pertama'];
-        $fotoKedua = $row['foto_kamar_kedua'];
-        $fotoKetiga = $row['foto_kamar_ketiga'];
-        $fotoKeempat = $row['foto_kamar_keempat'];
-        $statKamar = $row['status_kamar'];
-        $long = $row['longtitude'];
-        $lat = $row['latitude'];
-        $des = $row['deskripsi'];
-        $alamat = $row['alamat'];
-    }
-    ?>
+
 
     <div class="page-content page-details">
         <section class="store-gallery mt-5" id="gallery">
@@ -171,20 +149,14 @@ if (isset($_SESSION['id_user'])) {
                 <div class="row">
                     <div class="col-lg-8" data-aos="zoom-in">
                         <transition name="slide-fade" mode="out-in">
-                            <img :key="photos[activePhoto].id" :src="photos[activePhoto].url" class="w-100 main-image" alt="" style="
-                            max-height: 460px; 
-                            min-height: 460px; 
-                            border-radius: 40px;
-                            
-                            
-                            " />
+                            <img :key="photos[activePhoto].id" :src="photos[activePhoto].url" class="w-100 main-image" alt="" />
                         </transition>
                     </div>
                     <div class="col-lg-2">
                         <div class="row">
-                            <div class="col-3 col-lg-12 mt-lg-2 mt-2 mt-md-3" v-for="(photo, index) in photos" :key="photo.id" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="col-3 col-lg-12 mt-lg-2 mt-lg-2 mt-md-3" v-for="(photo, index) in photos" :key="photo.id" data-aos="zoom-in" data-aos-delay="100">
                                 <a href="#" @click="changeActive(index)">
-                                    <img :src="photo.url" class="w-100 thumbnail-image" :class="{ active: index == activePhoto }" alt="" style="max-height: 110px;" />
+                                    <img :src="photo.url" class="w-100 thumbnail-image" :class="{ active: index == activePhoto }" alt="" />
                                 </a>
                             </div>
                         </div>
@@ -197,15 +169,15 @@ if (isset($_SESSION['id_user'])) {
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8">
-                            <h1 class="kost-name">Kamar Kost No.Kamar <?= $noKamar; ?></h1>
-                            <p class="kost-owner">By <?= $namaKost; ?></p>
-                            <p><span class="kost-price">Rp. <?= $harga; ?> </span>/ Bulan</p>
+                            <h1 class="kost-name">Bara Kost</h1>
+                            <p class="kost-owner">By Dayat</p>
+                            <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
 
                             <!-- <div class="owner">By Dayat</div>
                             <div class="price">Rp.350.000</div> -->
                         </div>
                         <div class="col-lg-2" data-aos="zoom-in">
-                            <a class="btn btn-custom px-4 btn-block mt-2 mb-3" href="checkout?id_kamar=<?= $idKamar; ?>">Sewa</a>
+                            <a class="btn btn-custom px-4 btn-block mb-3" href="checkout">Sewa</a>
                         </div>
                     </div>
                 </div>
@@ -214,17 +186,21 @@ if (isset($_SESSION['id_user'])) {
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-lg-8">
-                            <h5>Deskripsi Kamar Kost</h5>
-                            <hr>
                             <p>
-                                <?= $des; ?>
+                                The Nike Air Max 720 SE goes bigger than ever before with
+                                Nike's tallest Air unit yet for unimaginable, all-day comfort.
+                                There's super breathable fabrics on the upper, while colours
+                                add a modern edge.
                             </p>
-                            <h5>Alamat</h5>
-                            <hr>
                             <p>
-                                <?= $alamat; ?>
+                                Bring the past into the future with the Nike Air Max 2090, a
+                                bold look inspired by the DNA of the iconic Air Max 90.
+                                Brand-new Nike Air cushioning underfoot adds unparalleled
+                                comfort while transparent mesh and vibrantly coloured details
+                                on the upper are blended with timeless OG features for an
+                                edgy, modernised look.
                             </p>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.42355736385!2d113.72099831436081!3d-8.160010184012863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695b617d8f623%3A0xf6c4437632474338!2sPoliteknik%20Negeri%20Jember!5e0!3m2!1sid!2sid!4v1668518560066!5m2!1sid!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.42355736385!2d113.72099831436081!3d-8.160010184012863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695b617d8f623%3A0xf6c4437632474338!2sPoliteknik%20Negeri%20Jember!5e0!3m2!1sid!2sid!4v1668518560066!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
@@ -322,19 +298,19 @@ if (isset($_SESSION['id_user'])) {
                 AOS.init();
             },
             data: {
-                activePhoto: 0,
+                activePhoto: 3,
                 photos: [{
                     id: 1,
-                    url: "img/<?= $foto; ?>",
+                    url: "img/product-details-1.jpg",
                 }, {
                     id: 2,
-                    url: "img/<?= $fotoKedua; ?>",
+                    url: "img/product-details-2.jpg",
                 }, {
                     id: 3,
-                    url: "img/<?= $fotoKetiga; ?>",
+                    url: "img/product-details-3.jpg",
                 }, {
                     id: 4,
-                    url: "img/<?= $fotoKeempat; ?>",
+                    url: "img/product-details-4.jpg",
                 }, ],
             },
             methods: {

@@ -3,9 +3,6 @@ require("koneksi.php");
 
 session_start();
 
-if (!isset($_SESSION['id_user'])) {
-    header('Location: login.php');
-}
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
     // header('Location: login.php');
@@ -19,7 +16,6 @@ if (isset($_SESSION['id_user'])) {
     $sesAddress = $_SESSION['alamat'];
     $sesNo = $_SESSION['no_hp'];
     $sesGender = $_SESSION['jenis_kelamin'];
-    $sesKontrak = $_SESSION['bukti_kontrak'];
 }
 ?>
 
@@ -59,9 +55,6 @@ if (isset($_SESSION['id_user'])) {
     <link rel="stylesheet" href="js/semantic.min.css" />
     <!-- font awesome -->
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
-
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -153,11 +146,7 @@ if (isset($_SESSION['id_user'])) {
                                                     $harga = $row['harga'];
                                                 }
                                                 ?>
-                                                <?php if ($harga == null) { ?>
-                                                    <p class="total_no">Rp.0</p>
-                                                <?php } else { ?>
-                                                    <p class="total_no">Rp.<?= $harga; ?></p>
-                                                <?php } ?>
+                                                <p class="total_no">Rp.<?= $harga; ?></p>
                                                 <p class="head_couter">Total Pemasukan</p>
                                             </div>
                                         </div>
@@ -183,18 +172,7 @@ if (isset($_SESSION['id_user'])) {
                                         </div>
                                         <div class="counter_no">
                                             <div>
-                                                <?php
-                                                $queryKamar = "SELECT COUNT(kamar_kost.id_kamar) AS 'Total'
-                                                FROM data_kost
-                                                JOIN user_detail ON user_detail.id_user = data_kost.id_user
-                                                JOIN kamar_kost ON data_kost.id_kost = kamar_kost.id_kost
-                                                WHERE data_kost.id_user = '$sesID'";
-                                                $resultKamar = mysqli_query($koneksi, $queryKamar);
-                                                if ($row = mysqli_fetch_array($resultKamar)) {
-                                                    $count = $row['Total'];
-                                                }
-                                                ?>
-                                                <p class="total_no"><?= $count; ?></p>
+                                                <p class="total_no">1000</p>
                                                 <p class="head_couter">Total Kamar Kos</p>
                                             </div>
                                         </div>
@@ -211,15 +189,10 @@ if (isset($_SESSION['id_user'])) {
                                             <div>
                                                 <?php
 
-                                                $query = "SELECT COUNT(pemesanan.id_pemesanan) AS 'sewa' , SUM(pemesanan.total_pembayaran) AS 'harga' FROM pemesanan 
-                                                INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
-                                                INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
-                                                INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user
-                                                WHERE data_kost.id_user = '$sesID'";
+                                                $query = "SELECT COUNT(id_pemesanan) as sewa FROM pemesanan WHERE id_user = '$sesID'";
                                                 $result = mysqli_query($koneksi, $query);
                                                 while ($row = mysqli_fetch_array($result)) {
                                                     $sewa = $row['sewa'];
-                                                    $harga = $row['harga'];
                                                 }
                                                 ?>
                                                 <p class="total_no"><?= $sewa; ?></p>
@@ -232,21 +205,26 @@ if (isset($_SESSION['id_user'])) {
                                     <div class="full counter_section margin_bottom_30">
                                         <div class="couter_icon">
                                             <div>
-                                                <i class="fa fa-money green_color"></i>
+                                                <i class="fa fa-cloud-download green_color"></i>
                                             </div>
                                         </div>
                                         <div class="counter_no">
                                             <div>
-                                                <?php if ($harga == null) { ?>
-                                                    <p class="total_no">Rp.0</p>
-                                                <?php } else { ?>
-                                                    <p class="total_no">Rp.<?= $harga; ?></p>
-                                                <?php } ?>
+                                                <?php
+
+                                                $query = "SELECT SUM(total_pembayaran) as harga FROM pemesanan WHERE id_user = '$sesID'";
+                                                $result = mysqli_query($koneksi, $query);
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    $harga = $row['harga'];
+                                                }
+                                                ?>
+                                                <p class="total_no">Rp.<?= $harga; ?></p>
                                                 <p class="head_couter">Total Pemasukan</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <!-- footer -->
                                 <div class="container-fluid">
                                     <div class="white_shd full margin_bottom_30">

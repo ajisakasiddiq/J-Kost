@@ -20,14 +20,6 @@ if (isset($_SESSION['id_user'])) {
   $sesNo = $_SESSION['no_hp'];
   $sesGender = $_SESSION['jenis_kelamin'];
 }
-$querykode = "SELECT max(id_pemesanan)FROM pemesanan";
-$result = mysqli_query($koneksi, $querykode);
-while ($row = mysqli_fetch_array($result)) {
-  $kode = $row['kode_pemesanan'];
-}
-$urutan_kode = (int)substr($kode, 1, 3);
-$urutan_kode++;
-$kodeunik = "Jkost" . sprintf("%03s", $urutan_kode);
 ?>
 
 <!DOCTYPE html>
@@ -122,7 +114,7 @@ $kodeunik = "Jkost" . sprintf("%03s", $urutan_kode);
                 <li class="nav-item dropdown">
                   <a href="" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
                     Hi, <?php echo $name; ?>
-                    <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture" height="50px">
+                    <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture " height="50px">
                   </a>
                   <div class="dropdown-menu bg-dark">
                     <a href="dashboard" class="dropdown-item text-danger">Dashboard</a>
@@ -164,31 +156,7 @@ $kodeunik = "Jkost" . sprintf("%03s", $urutan_kode);
     </div>
   </div>
   <!-- Page Header End -->
-  <?php
-  $id = $_GET['id_kamar'];
-  $queryKost = "SELECT data_kost.longtitude,data_kost.latitude,data_kost.alamat,kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar_pertama,kamar_kost.foto_kamar_kedua,kamar_kost.foto_kamar_ketiga,kamar_kost.foto_kamar_keempat,kamar_kost.status_kamar,kamar_kost.deskripsi,rekening.Nama_rek,rekening.Nama_bank,rekening.no_rek,rekening.id_rek
-  FROM kamar_kost
-  INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
-  INNER JOIN user_detail ON data_kost.id_user=data_kost.id_user
-  INNER JOIN rekening ON rekening.id_user=user_detail.id_user
-                WHERE kamar_kost.status_kamar = 'Tersedia' and kamar_kost.id_kamar = '$id'";
-  $result = mysqli_query($koneksi, $queryKost);
-  while ($row = mysqli_fetch_array($result)) {
-    $idKamar = $row['id_kamar'];
-    $idrek = $row['id_rek'];
-    $noKamar = $row['no_kamar'];
-    $namaKost = $row['nama_kost'];
-    $harga = $row['harga'];
-    $foto = $row['foto_kamar_pertama'];
-    $statKamar = $row['status_kamar'];
-    $long = $row['longtitude'];
-    $lat = $row['latitude'];
-    $des = $row['deskripsi'];
-    $naRek = $row['Nama_rek'];
-    $naBank = $row['Nama_bank'];
-    $noRek = $row['no_rek'];
-  }
-  ?>
+
 
   <div class="page-content page-cart">
     <section class="store-breadcrumbs" data-aos="fade-down" data-aos-delay="100">
@@ -203,27 +171,26 @@ $kodeunik = "Jkost" . sprintf("%03s", $urutan_kode);
                   <th scope="col">Image</th>
                   <th scope="col">Name &amp; Owner</th>
                   <th scope="col">Price</th>
-                  <th scope="col">Duration</th>
                   <th scope="col">Address</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td style="width: 25%;">
-                    <img src="img/<?= $foto; ?>" alt="" width="100px" />
+                    <img src="img/638de345c2f56.jpeg" alt="" width="100px" />
                   </td>
-                  <td style="width: 25%;">
-                    <div class="product-title">Kamar Kost No.Kamar <?= $noKamar; ?></div>
-                    <div class="product-subtitle">By <?= $namaKost; ?></div>
+                  <td style="width: 35%;">
+                    <div class="product-title">Kos bara</div>
+                    <div class="product-subtitle">by Dayat</div>
                   </td>
-                  <td style="width: 25%;">
-                    <div id="total" class="product-title">Rp. <?= $harga; ?></div>
+                  <td style="width: 35%;">
+                    <div class="product-title">350.000</div>
+                    <div class="product-subtitle">/Bulan</div>
                   </td>
-                  <td style="width: 25%;">
-                    <div class="product-title"><span id="selected">1</span> Bulan</div>
-                  </td>
-                  <td style="width: 25%;">
-                    <div class="product-title">Jember</div>
+                  <td style="width: 20%;">
+                    <a href="#" class="btn btn-remove-cart">
+                      Jember
+                    </a>
                   </td>
                 </tr>
               </tbody>
@@ -238,92 +205,79 @@ $kodeunik = "Jkost" . sprintf("%03s", $urutan_kode);
             <h2 class="mb-4">Detail Pemesanan</h2>
           </div>
         </div>
-        <form action="" method="post">
-          <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="nama">Nama</label>
-                <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" name="txt_nama" />
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="nik">Nomor Induk Kependudukan(NIK) </label>
-                <input type="text" class="form-control" id="nik" name="txt_nik" />
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label for="">Durasi</label>
-                <select name="txt_durasi" id="package" class="form-control">
-                  <option value="1">1 Bulan</option>
-                  <option value="6">6 Bulan</option>
-                  <option value="12">12 Bulan</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label for="tgl">Tanggal Mulai Ngekos</label>
-                <input type="date" class="form-control" id="tgl" name="tgl_kos" />
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <label for="harga_kos">Harga Kos Perbulan</label>
-                <input value="<?= $harga; ?>" type="text" class="form-control" name="hargakos" id="price" readonly />
-              </div>
+        <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="addressOne">Alamat</label>
+              <input type="text" class="form-control" id="addressOne" aria-describedby="emailHelp" name="addressOne" value="Setra Duta Cemara" />
             </div>
           </div>
 
-          <div class="row" data-aos="fade-up" data-aos-delay="150">
-            <div class="col-12">
-              <hr />
-            </div>
-            <div class="col-12">
-              <h2>Informasi Pembayaran </h2>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="province">Provinsi</label>
+              <select name="province" id="province" class="form-control">
+                <option value="West Java">Jawa Timur</option>
+              </select>
             </div>
           </div>
-          <div class="row" data-aos="fade-up" data-aos-delay="200">
-            <div class="col-md-3">
-              <div class="form-group">
-                <label for="namabank">Nama Bank</label>
-                <input type="text" class="form-control" id="namabank" name="bank_pemilik" value="<?= $naBank; ?>" readonly />
-                <input type="hidden" class="form-control" id="namabank" name="txt_idkamar" value="<?= $idKamar; ?>" readonly />
-                <input type="hidden" class="form-control" id="namabank" name="txt_idrek" value="<?= $idrek; ?>" readonly />
-                <input type="hidden" class="form-control" id="namabank" name="txt_kode" value="<?= $kodeunik; ?>" />
-              </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="city">kelurahan</label>
+              <select name="city" id="city" class="form-control">
+                <option value="Sumbersari">Ambulu</option>
+                <option value="Sumbersari">Ajung</option>
+                <option value="Sumbersari">Arjasa</option>
+                <option value="Sumbersari">Kalisat</option>
+                <option value="Sumbersari">Sumbersari</option>
+              </select>
             </div>
-            <div class="col-md-3">
-              <div class="form-group">
-                <label for="atasnama">Atas Nama</label>
-                <input type="text" class="form-control" id="atasnama" name="nama_rek" value="<?= $naRek; ?>" readonly />
-              </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="postalCode">Postal Code</label>
+              <input type="text" class="form-control" id="postalCode" name="postalCode" value="40512" />
             </div>
-            <div class="col-md-3">
-              <div class="form-group">
-                <label for="norek">No Rekening</label>
-                <input type="text" class="form-control" id="norek" name="no_rek" value="<?= $noRek; ?>" readonly />
-              </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="kota">Kota</label>
+              <input type="text" class="form-control" id="kota" name="kota" value="Jember" />
             </div>
-            <div class="col-md-3">
-              <div class="form-group">
-                <label for="mobile">Total Pembayaran</label>
-                <input id="total" type="text" class="form-control" id="mobile" name="bayar" value="<?= $harga; ?>" readonly />
-              </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="mobile">Telepon</label>
+              <input type="text" class="form-control" id="mobile" name="mobile" value="+628 2020 11111" />
             </div>
+          </div>
+        </div>
+        <div class="row" data-aos="fade-up" data-aos-delay="150">
+          <div class="col-12">
+            <hr />
+          </div>
+          <div class="col-12">
+            <h2>Informasi Pembayaran </h2>
+          </div>
+        </div>
+        <div class="row" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-4 col-md-2">
+            <div class="product-title">M. Zidan P. </div>
 
-            <div class="col-8 col-md-3">
-              <button type="submit" name="sewa" class="btn btn-custom mt-4 px-4 btn-block">
-                Checkout Now
-              </button>
-            </div>
-        </form>
+          </div>
+          <div class="col-4 col-md-3">
+            <div class="product-title">Telepon :+62 331 333533</div>
+            <div class="product-subtitle">Email : zidan@gmail.com</div>
+          </div>
+
+          <div class="col-8 col-md-3">
+            <a href="success.php" class="btn btn-custom mt-4 px-4 btn-block">
+              Checkout Now
+            </a>
+          </div>
+        </div>
       </div>
-  </div>
-  </section>
+    </section>
   </div>
 
 
@@ -402,57 +356,9 @@ $kodeunik = "Jkost" . sprintf("%03s", $urutan_kode);
   <!-- Contact Javascript File -->
   <script src="mail/jqBootstrapValidation.min.js"></script>
   <script src="mail/contact.js"></script>
-  <script>
-    $('#package').on('change', function() {
-      const selectedPackage = $('#package').val();
-      $('#selected').text(selectedPackage);
-    });
-
-
-
-    $('#package').on('change', function() {
-      // ambil data dari elemen option yang dipilih
-      const duration = $('#package option:selected').val();
-      const price = $('#price').val();
-
-      // kalkulasi total harga
-      const total = price * duration;
-      $('[name=bayar]').val(total);
-      $('#total').text(`Rp ${total}`);
-    });
-  </script>
 
   <!-- Template Javascript -->
   <script src="js/main.js"></script>
 </body>
-<?php
-
-
-
-
-if (isset($_POST['sewa'])) {
-  $kamarId = $_POST['txt_idkamar'];
-  $rekId = $_POST['txt_idrek'];
-  $kodepesan = $_POST['txt_kode'];
-  $Nama = $_POST['txt_nama'];
-  $Nik = $_POST['txt_nik'];
-  $durasi = $_POST['txt_durasi'];
-  $tglMulai = $_POST['tgl_kos'];
-  $hargaKos = $_POST['hargakos'];
-  $namabank = $_POST['bank_pemilik'];
-  $namarekening = $_POST['nama_rek'];
-  $nomerekening = $_POST['no_rek'];
-  $total = $_POST['bayar'];
-
-
-  $query = "INSERT INTO pemesanan VALUES (null,'$sesID','$kamarId','$rekId','$kodepesan','$Nama','$Nik','$tglMulai','$durasi','$hargaKos','2022-12-13','$total','PENDING','$nomerekening','$namarekening','$namabank','Menunggu Pembayaran')";
-  $result = mysqli_query($koneksi, $query);
-  if ($result) {
-    header("Location: success.php");
-  } else {
-    echo mysqli_error($koneksi);
-  }
-}
-?>
 
 </html>

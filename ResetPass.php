@@ -2,9 +2,6 @@
 require("koneksi.php");
 
 session_start();
-if (!isset($_SESSION['id_user'])) {
-    header('Location: login.php');
-}
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
@@ -26,7 +23,7 @@ if (isset($_POST['submit'])) {
     $userId     = $_POST['txt_id'];
     $Pass     = $_POST['txt_pass'];
     if ($_POST['txt_pass'] == $_POST['txt_pass2']) {
-        $query = "UPDATE user_detail SET user_pass='$Pass' WHERE id_user='$userId'";
+        $query = "UPDATE user_detail SET user_pass='$Pass'WHERE id_user='$userId'";
         $result = mysqli_query($koneksi, $query);
         if ($result) {
             $success = "User data telah terupdate!";

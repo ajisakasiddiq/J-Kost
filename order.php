@@ -17,7 +17,6 @@ if (isset($_SESSION['id_user'])) {
     $sesNo = $_SESSION['no_hp'];
     $sesGender = $_SESSION['jenis_kelamin'];
 }
-
 ?>
 
 
@@ -139,6 +138,7 @@ if (isset($_SESSION['id_user'])) {
     </div>
     <!-- Nav Bar End -->
 
+
     <!-- Page Header Start -->
     <div class="page-header">
         <div class="container">
@@ -162,84 +162,131 @@ if (isset($_SESSION['id_user'])) {
                 <p>Kos Kosan</p>
                 <h2>Pilih Kos Sesuai Keinginan Anda</h2>
             </div>
-            <form action="" method="get">
-                <div class="row mb-3 justify-content-between">
-                    <div class="col-lg-3">
-                        <select class="form-control  form-select" aria-label="Default select example">
-                            <option selected><i class="fa-regular fa-people"></i>Semua Tipe Kost</option>
-                            <option value="1">Cewek</option>
-                            <option value="2">Cowok</option>
-                            <option value="3">Campur</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-3">
-                        <select class="form-control  form-select" aria-label="Default select example">
-                            <option selected><i class="fa-regular fa-people"></i>Bulanan</option>
-                            <option value="1">Per 3 Bulan</option>
-                            <option value="2">Per 6 Bulan</option>
-                            <option value="3">Tahunan </option>
-                        </select>
-                    </div>
-                    <div class="col-lg-6 input-group mb-3">
-                        <input type="text" name="keyword" class="form-control" placeholder="Cari nama kos/alamat/tempat " aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="input-group-text  btn" id="basic-addon2">Cari</button>
-                        </div>
+            <div class="row mb-3 justify-content-between">
+                <div class="col-lg-3">
+                    <select class="form-control  form-select" aria-label="Default select example">
+                        <option selected><i class="fa-regular fa-people"></i>Semua Tipe Kost</option>
+                        <option value="1">Cewek</option>
+                        <option value="2">Cowok</option>
+                        <option value="3">Campur</option>
+                    </select>
+                </div>
+                <div class="col-lg-3">
+                    <select class="form-control  form-select" aria-label="Default select example">
+                        <option selected><i class="fa-regular fa-people"></i>Bulanan</option>
+                        <option value="1">Per 3 Bulan</option>
+                        <option value="2">Per 6 Bulan</option>
+                        <option value="3">Tahunan </option>
+                    </select>
+                </div>
+                <div class="col-lg-6 input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Cari nama kos/alamat/tempat " aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="input-group-text  btn" id="basic-addon2">Cari</button>
                     </div>
                 </div>
-            </form>
+            </div>
             <div class="row">
-
-                <?php
-                $queryKost = "SELECT kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar_pertama,kamar_kost.status_kamar
-                        FROM kamar_kost
-                        INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
-                        WHERE kamar_kost.status_kamar = 'Tersedia' AND data_kost.status = 'APPROVED'";
-                $result = mysqli_query($koneksi, $queryKost);
-                while ($row = mysqli_fetch_array($result)) {
-                    $idKamar = $row['id_kamar'];
-                    $noKamar = $row['no_kamar'];
-                    $namaKost = $row['nama_kost'];
-                    $harga = $row['harga'];
-                    $foto = $row['foto_kamar_pertama'];
-                    $statKamar = $row['status_kamar']
-                ?>
-                    <div class="col-lg-3 mb-3">
-                        <a href="details.php?id_kamar=<?= $idKamar; ?>">
-                            <div class="card">
-                                <img src="img/<?= $foto; ?>" class="card-img-top" alt="..." style="max-height: 140px;">
-                                <div class="card-body">
-                                    <h2 class="card-text">Kamar Kost No.Kamar <?= $noKamar; ?></h2>
-                                    <p>By <?= $namaKost; ?></p>
-                                    <p><span class="kost-price">Rp. <?= $harga; ?> </span>/ Bulan</p>
-                                    <p><?= $statKamar; ?></p>
-                                </div>
+                <div class="col-lg-3 mb-3">
+                    <a href="details.php">
+                        <div class="card">
+                            <img src="img/product-details-1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-text">Bara Kost</h3>
+                                <p>By Bara kost</p>
+                                <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
                             </div>
-                        </a>
-                    </div>
-                <?php } ?>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <a href="details.php">
+                        <div class="card">
+                            <img src="img/product-details-2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-text">Kost Putri Sakinah</h3>
+                                <p>By Putri Sakinah kost</p>
+                                <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <a href="details.php">
+                        <div class="card">
+                            <img src="img/product-details-3.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-text">Kost Cantik</h3>
+                                <p>By Cantik kost</p>
+                                <p><span class="kost-price">Rp. 800.000 </span>/ Bulan</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <a href="details.php">
+                        <div class="card">
+                            <img src="img/product-details-4.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-text">Fatimah Kost</h3>
+                                <p>By Fatimah kost</p>
+                                <p><span class="kost-price">Rp. 700.000 </span>/ Bulan</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <a href="details.php">
+                        <div class="card">
+                            <img src="img/product-details-1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-text">Bara Kost</h3>
+                                <p>By Bara kost</p>
+                                <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <a href="details.php">
+                        <div class="card">
+                            <img src="img/product-details-2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-text">Bara Kost</h3>
+                                <p>By Bara kost</p>
+                                <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <a href="details.php">
+                        <div class="card">
+                            <img src="img/product-details-3.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-text">Bara Kost</h3>
+                                <p>By Bara kost</p>
+                                <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 mb-3">
+                    <a href="details.php">
+                        <div class="card">
+                            <img src="img/product-details-4.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-text">Bara Kost</h3>
+                                <p>By Bara kost</p>
+                                <p><span class="kost-price">Rp. 500.000 </span>/ Bulan</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
             </div>
         </div>
     </div>
-    <nav aria-label="Page navigation example position-absolute top-0 start-50 translate-middle ">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
     <!-- Price End -->
 
 

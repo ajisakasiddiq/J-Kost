@@ -2,9 +2,7 @@
 require("koneksi.php");
 
 session_start();
-if (!isset($_SESSION['id_user'])) {
-    header('Location: login.php');
-}
+
 
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
@@ -57,7 +55,6 @@ if (isset($_SESSION['id_user'])) {
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
     <link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -109,9 +106,8 @@ if (isset($_SESSION['id_user'])) {
                                                                 <th>Nama Kost</th>
                                                                 <th>No.kamar</th>
                                                                 <th>Nama Penyewa</th>
-                                                                <th>No Hp Penyewa</th>
                                                                 <th>Durasi Sewa</th>
-                                                                <th>Tanggal Mulai Ngekos</th>
+                                                                <th>Tanggal Pemesanan</th>
                                                                 <th>Total Harga</th>
                                                                 <th>Status Pembayaran</th>
                                                                 <th>Bukti Pembayaran</th>
@@ -123,11 +119,11 @@ if (isset($_SESSION['id_user'])) {
                                                                 <?php
                                                                 $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
                                                                     ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa AS 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
-                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' , user_detail.no_hp FROM pemesanan 
+                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' FROM pemesanan 
                                                                     INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
                                                                     INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
-                                                                    INNER JOIN user_detail ON  user_detail.id_user = pemesanan.id_user
-                                                                    WHERE data_kost.id_user = '$sesID'";
+                                                                    INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user
+                                                                    WHERE user_detail.id_user = '$sesID'";
                                                                 $result = mysqli_query($koneksi, $query);
                                                                 $no = 1;
                                                                 while ($row = mysqli_fetch_array($result)) {
@@ -137,7 +133,6 @@ if (isset($_SESSION['id_user'])) {
                                                                     $No = $row['No Kamar'];
                                                                     $NamaPenyewa = $row['Nama Penyewa'];
                                                                     $durasi = $row['Durasi Sewa'];
-                                                                    $No_hp = $row['no_hp'];
                                                                     $tgl = $row['Tanggal Pemesanan'];
                                                                     $total = $row['Total'];
                                                                     $status = $row['Status Pembayaran'];
@@ -149,19 +144,14 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $namaKost; ?></td>
                                                                         <td><?= $No; ?></td>
                                                                         <td><?= $NamaPenyewa; ?></td>
-                                                                        <td><?= $No_hp; ?></td>
                                                                         <td><?= $durasi; ?></td>
                                                                         <td><?= $tgl; ?></td>
                                                                         <td>Rp.<?= $total; ?></td>
                                                                         <td><?= $status; ?></td>
-                                                                        <?php if ($bukti == 'Menunggu Pembayaran') { ?>
-                                                                            <td><?= $bukti; ?></td>
-                                                                        <?php  } else { ?>
-                                                                            <td><img src="file/<?= $bukti; ?>" alt="" width="100px"></td>
-                                                                        <?php     } ?>
+                                                                        <td><img src="img/<?= $bukti; ?>" alt="" width="50px"></td>
                                                                         <td>
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#cek<?= $idPesan; ?>"><i class="fa-solid mr-1 fa-check"></i>Check</a>
-                                                                            <a href="print.php?id_pemesanan=<?= $idPesan; ?>" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
+                                                                            <a href="" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
                                                                     </tr>
                                                                     <?php $no++; ?>
@@ -230,29 +220,24 @@ if (isset($_SESSION['id_user'])) {
                                                             <tbody>
 
                                                                 <?php
-                                                                $queryPenyewa = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
-                                                                    ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran',pemesanan.no_rek_pemilik,pemesanan.nama_rek_pemilik,pemesanan.nama_bank
-                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran',user_detail.no_hp FROM pemesanan 
+                                                                $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
+                                                                    ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
+                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' FROM pemesanan 
                                                                     INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
                                                                     INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
-                                                                    INNER JOIN user_detail ON  user_detail.id_user = pemesanan.id_user";
-                                                                $hasil = mysqli_query($koneksi, $queryPenyewa);
+                                                                    INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user";
+                                                                $result = mysqli_query($koneksi, $query);
                                                                 $no = 1;
-                                                                while ($row = mysqli_fetch_array($hasil)) {
-                                                                    $idPesan = $row['id_pemesanan'];
+                                                                while ($row = mysqli_fetch_array($result)) {
                                                                     $kode = $row['Kode Pemesanan'];
                                                                     $namaKost = $row['Nama Kost'];
                                                                     $No = $row['No Kamar'];
                                                                     $NamaPenyewa = $row['Nama Penyewa'];
-                                                                    $No_hp = $row['no_hp'];
                                                                     $durasi = $row['Durasi Sewa'];
                                                                     $tgl = $row['Tanggal Pemesanan'];
                                                                     $total = $row['Total'];
                                                                     $status = $row['Status Pembayaran'];
                                                                     $bukti = $row['Bukti Pembayaran'];
-                                                                    $norekening = $row['no_rek_pemilik'];
-                                                                    $namarekening = $row['nama_rek_pemilik'];
-                                                                    $namabank = $row['nama_bank'];
                                                                 ?>
                                                                     <tr>
                                                                         <td><?= $no; ?></td>
@@ -260,59 +245,16 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $namaKost; ?></td>
                                                                         <td><?= $No; ?></td>
                                                                         <td><?= $NamaPenyewa; ?></td>
-                                                                        <td><?= $No_hp; ?></td>
                                                                         <td><?= $durasi; ?></td>
                                                                         <td><?= $tgl; ?></td>
                                                                         <td>Rp.<?= $total; ?></td>
                                                                         <td><?= $status; ?></td>
-                                                                        <?php if ($bukti == 'Menunggu Pembayaran') { ?>
-                                                                            <td><?= $bukti; ?></td>
-                                                                        <?php  } else { ?>
-                                                                            <td><img src="file/<?= $bukti; ?>" alt="" width="100px"></td>
-                                                                        <?php     } ?>
+                                                                        <td><img src="img/<?= $bukti; ?>" alt="" width="50px"></td>
                                                                         <td>
-                                                                            <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar<?= $idPesan; ?>"><i class="fa-sharp fa-solid mr-1 fa-money-bill"></i>Bayar</a>
-                                                                            <a href="print.php?id_pemesanan=<?= $idPesan; ?>" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
+                                                                            <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar"><i class="fa-sharp fa-solid mr-1 fa-money-bill"></i>Bayar</a>
+                                                                            <a href="" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
-                                                                        <div class="modal fade" id="bayar<?= $idPesan; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                            <div class="modal-dialog">
-                                                                                <div class="modal-content">
-                                                                                    <div class="modal-header">
-                                                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Pembayaran</h1>
-                                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                                    </div>
-
-                                                                                    <form action="" method="post" enctype="multipart/form-data">
-                                                                                        <div class="modal-body">
-                                                                                            <input type="hidden" value="<?= $idPesan; ?>" name="txt_id">
-                                                                                            <div class="form-group">
-                                                                                                <label for="bank">Nama Bank</label>
-                                                                                                <h5><?= $namabank; ?></h5>
-                                                                                            </div>
-                                                                                            <div class="form-group">
-                                                                                                <label for="NamaPemilik">Atas Nama</label>
-                                                                                                <h5><?= $namarekening; ?></h5>
-                                                                                            </div>
-                                                                                            <div class="form-group">
-                                                                                                <label for="NamaPemilik">No Rekening</label>
-                                                                                                <h5><?= $norekening; ?></h5>
-                                                                                            </div>
-                                                                                            <div class="form-group">
-                                                                                                <label for="bukti">Bukti Pembayaran</label>
-                                                                                                <input type="file" id="bukti" class="form-control form-control-user" name="gambar">
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                        <div class="modal-footer">
-                                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                                            <button name="tambah" type="submit" class="btn btn-primary">Simpan</button>
-                                                                                        </div>
-                                                                                    </form>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
                                                                     </tr>
-
                                                                     <?php $no++; ?>
                                                                 <?php } ?>
 
@@ -321,20 +263,19 @@ if (isset($_SESSION['id_user'])) {
                                                             <tbody>
 
                                                                 <?php
-                                                                $no = 1;
                                                                 $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
                                                                     ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
-                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran', user_detail.no_hp FROM pemesanan 
+                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' FROM pemesanan 
                                                                     INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
                                                                     INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
-                                                                    INNER JOIN user_detail ON  user_detail.id_user = pemesanan.id_user";
+                                                                    INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user";
                                                                 $result = mysqli_query($koneksi, $query);
+                                                                $no = 1;
                                                                 while ($row = mysqli_fetch_array($result)) {
                                                                     $kode = $row['Kode Pemesanan'];
                                                                     $namaKost = $row['Nama Kost'];
                                                                     $No = $row['No Kamar'];
                                                                     $NamaPenyewa = $row['Nama Penyewa'];
-                                                                    $No_hp = $row['no_hp'];
                                                                     $durasi = $row['Durasi Sewa'];
                                                                     $tgl = $row['Tanggal Pemesanan'];
                                                                     $total = $row['Total'];
@@ -347,19 +288,14 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $namaKost; ?></td>
                                                                         <td><?= $No; ?></td>
                                                                         <td><?= $NamaPenyewa; ?></td>
-                                                                        <td><?= $No_hp; ?></td>
                                                                         <td><?= $durasi; ?></td>
                                                                         <td><?= $tgl; ?></td>
                                                                         <td>Rp.<?= $total; ?></td>
                                                                         <td><?= $status; ?></td>
-                                                                        <?php if ($bukti == 'Menunggu Pembayaran') { ?>
-                                                                            <td><?= $bukti; ?></td>
-                                                                        <?php  } else { ?>
-                                                                            <td><img src="file/<?= $bukti; ?>" alt="" width="100px"></td>
-                                                                        <?php     } ?>
+                                                                        <td><img src="img/<?= $bukti; ?>" alt="" width="50px"></td>
                                                                         <td>
-                                                                            <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
-                                                                            <a href="print.php?id_pemesanan=<?= $idPesan; ?>" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
+                                                                            <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar"><i class="fa-sharp fa-solid mr-1 fa-money-bill"></i>Bayar</a>
+                                                                            <a href="" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
                                                                     </tr>
                                                                     <?php $no++; ?>
@@ -397,7 +333,6 @@ if (isset($_SESSION['id_user'])) {
 
     </div>
     <!-- jQuery -->
-
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -460,81 +395,6 @@ if (isset($_POST['edit'])) {
         $error =  "User data gagal update";
     }
 }
-if (isset($_POST['tambah'])) {
-    $Id     = $_POST['txt_id'];
-    $img = upload();
-
-    $query = "UPDATE pemesanan SET bukti_pembayaran='$img' WHERE id_pemesanan='$Id'";
-    $result = mysqli_query($koneksi, $query);
-    if ($result) {
-        $succes = "Pembayaran Sukses!";
-    } else {
-        $errorr =  "Pembayaran Gagal!";
-    }
-}
-function upload()
-{
-
-    $file = $_FILES['gambar']['name'];
-    $size = $_FILES['gambar']['size'];
-    $error = $_FILES['gambar']['error'];
-    $tmpName = $_FILES['gambar']['tmp_name'];
-
-    //cek file apakah diupload atau tidak
-    if ($error === 4) {
-        echo "<script> 
-        alert('Pilih gambar terlebih dahulu');
-      </script>";
-        return false;
-    }
-
-    //cek apakah benar gambar
-    $extensGambarValid = ['jpg', 'jpeg', 'png'];
-    $extensGambar = explode('.', $file);
-    $extensGambar = strtolower(end($extensGambar));
-    if (!in_array($extensGambar, $extensGambarValid)) {
-        echo "<script> 
-      alert('Yang anda upload bukan berupa file gambar');
-    </script>";
-        return false;
-    }
-
-    //cek jika ukuran nya terlalu besar 
-    if ($size > 1000000) {
-
-        echo "<script> 
-        alert('Ukuran gambar terlalu besar');
-      </script>";
-    }
-
-
-
-
-    //lolos cek 
-    move_uploaded_file($tmpName, 'file/' . $extensGambar);
-    return $extensGambar;
-}
-
-
-
 ?>
-<?php if (isset($success)) { ?>
-    <script>
-        swal({
-            title: "<?= $success; ?>",
-            icon: "success",
-            button: "OKE!",
-        });
-    </script>
-<?php } ?>
-<?php if (isset($error)) { ?>
-    <script>
-        swal({
-            title: "<?= $error; ?>",
-            icon: "success",
-            button: "OKE!",
-        });
-    </script>
-<?php } ?>
 
 </html>
