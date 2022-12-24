@@ -131,7 +131,7 @@ if ($_SESSION['level'] != "1") {
                         </div>
                         <div class="form-group">
                           <?php
-                          $query = "SELECT * FROM data_kost
+                          $query = "SELECT id_kost FROM data_kost
                              WHERE id_user = '$sesID' AND status = 'APPROVED';";
                           $result = mysqli_query($koneksi, $query);
                           while ($row = mysqli_fetch_array($result)) {
@@ -218,7 +218,9 @@ if ($_SESSION['level'] != "1") {
                     if ($result) {
                       $succes = "Data berhasil terinput!";
                     } else {
-                      $errorr =  $query . "Error " . mysqli_error($koneksi);
+                      echo "                  <script>
+                      alert('Tunggu kost anda di approve oleh admin');
+                    </script>";
                     }
                   }
 

@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 require("koneksi.php");
 
 session_start();
@@ -17,7 +18,6 @@ if (isset($_SESSION['id_user'])) {
     $sesNo = $_SESSION['no_hp'];
     $sesGender = $_SESSION['jenis_kelamin'];
 }
-
 ?>
 
 
@@ -163,21 +163,13 @@ if (isset($_SESSION['id_user'])) {
                 <h2>Pilih Kos Sesuai Keinginan Anda</h2>
             </div>
             <form action="" method="get">
-                <div class="row mb-3 justify-content-between">
+                <div class="row mb-3 justify-content-lg-end">
                     <div class="col-lg-3">
-                        <select class="form-control  form-select" aria-label="Default select example">
-                            <option selected><i class="fa-regular fa-people"></i>Semua Tipe Kost</option>
-                            <option value="1">Cewek</option>
-                            <option value="2">Cowok</option>
-                            <option value="3">Campur</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-3">
-                        <select class="form-control  form-select" aria-label="Default select example">
-                            <option selected><i class="fa-regular fa-people"></i>Bulanan</option>
-                            <option value="1">Per 3 Bulan</option>
-                            <option value="2">Per 6 Bulan</option>
-                            <option value="3">Tahunan </option>
+                        <select name="option2" class="form-control  form-select" aria-label="Default select example">
+                            <option><i class="fa-regular fa-people"></i>Semua Tipe Kost</option>
+                            <option value="cewek">Cewek</option>
+                            <option value="cowok">Cowok</option>
+                            <option value="campur">Campur</option>
                         </select>
                     </div>
                     <div class="col-lg-6 input-group mb-3">
@@ -191,10 +183,13 @@ if (isset($_SESSION['id_user'])) {
             <div class="row">
 
                 <?php
+                $getCari = $_GET['keyword'];
+                $getoption1 = $_GET['option1'];
+                $getoption2 = $_GET['option2'];
                 $queryKost = "SELECT kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar_pertama,kamar_kost.status_kamar
                         FROM kamar_kost
                         INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
-                        WHERE kamar_kost.status_kamar = 'Tersedia' AND data_kost.status = 'APPROVED'";
+                        WHERE kamar_kost.status_kamar = 'Tersedia' AND data_kost.status = 'APPROVED' AND data_kost.nama_kost LIKE '%" . $getCari . "%'";
                 $result = mysqli_query($koneksi, $queryKost);
                 while ($row = mysqli_fetch_array($result)) {
                     $idKamar = $row['id_kamar'];
@@ -204,7 +199,9 @@ if (isset($_SESSION['id_user'])) {
                     $foto = $row['foto_kamar_pertama'];
                     $statKamar = $row['status_kamar']
                 ?>
+
                     <div class="col-lg-3 mb-3">
+
                         <a href="details.php?id_kamar=<?= $idKamar; ?>">
                             <div class="card">
                                 <img src="img/<?= $foto; ?>" class="card-img-top" alt="..." style="max-height: 140px;">
