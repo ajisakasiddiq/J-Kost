@@ -4,7 +4,7 @@ require("koneksi.php");
 session_start();
 if (!isset($_SESSION['id_user'])) {
     header('Location: login.php');
-}s
+}
 if (isset($_SESSION['id_user'])) {
     //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
     // header('Location: login.php');
