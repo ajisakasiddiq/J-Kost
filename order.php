@@ -172,7 +172,7 @@ if (isset($_SESSION['id_user'])) {
                             <option value="campur">Campur</option>
                         </select>
                     </div>
-                    <div class="col-lg-6 input-group mb-3">
+                    <div class="col-lg-4 input-group mb-3">
                         <input type="text" name="keyword" class="form-control" placeholder="Cari nama kos " aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="input-group-text  btn" id="basic-addon2">Cari</button>
