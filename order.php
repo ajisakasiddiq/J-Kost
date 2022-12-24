@@ -180,6 +180,7 @@ if (isset($_SESSION['id_user'])) {
                     </div>
                 </div>
             </form>
+
             <div class="row">
 
                 <?php
