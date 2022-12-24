@@ -21,15 +21,15 @@ if (isset($_SESSION['id_user'])) {
   $sesGender = $_SESSION['jenis_kelamin'];
 }
 
-$querykode = "SELECT max(id_pemesanan) FROM pemesanan";
+$querykode = "SELECT max(id_pemesanan) as kode FROM pemesanan";
 $result = mysqli_query($koneksi, $querykode);
-while ($row = mysqli_fetch_array($result)) {
-  $kode = $row['id_pemesanan'];
+$row = mysqli_fetch_array($result);
+$kode = $row['kode'];
 
-  $urutan_kode = (int)substr($kode, 1, 3);
-  $urutan_kode++;
-  $kodeunik = "Jkost" . sprintf("%03s", $urutan_kode);
-}
+$urutan_kode = (int) substr($kode, 3, 3);
+$urutan_kode++;
+$kodeunik = "Jkost" . sprintf("%04s", $urutan_kode);
+
 echo  $kodeunik;
 ?>
 

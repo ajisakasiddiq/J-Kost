@@ -152,7 +152,7 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $No_hp; ?></td>
                                                                         <td><?= $durasi; ?></td>
                                                                         <td><?= $tgl; ?></td>
-                                                                        <td>Rp.<?= $total; ?></td>
+                                                                        <td>Rp.<?= number_format($total); ?></td>
                                                                         <td><?= $status; ?></td>
                                                                         <?php if ($bukti == 'Menunggu Pembayaran') { ?>
                                                                             <td><?= $bukti; ?></td>
@@ -261,7 +261,7 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $No_hp; ?></td>
                                                                         <td><?= $durasi; ?></td>
                                                                         <td><?= $tgl; ?></td>
-                                                                        <td>Rp.<?= $total; ?></td>
+                                                                        <td>Rp.<?= number_format($total); ?></td>
                                                                         <td><?= $status; ?></td>
                                                                         <?php if ($bukti == 'Menunggu Pembayaran') { ?>
                                                                             <td><?= $bukti; ?></td>
@@ -348,7 +348,7 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $No_hp; ?></td>
                                                                         <td><?= $durasi; ?></td>
                                                                         <td><?= $tgl; ?></td>
-                                                                        <td>Rp.<?= $total; ?></td>
+                                                                        <td>Rp.<?= number_format($total); ?></td>
                                                                         <td><?= $status; ?></td>
                                                                         <?php if ($bukti == 'Menunggu Pembayaran') { ?>
                                                                             <td><?= $bukti; ?></td>

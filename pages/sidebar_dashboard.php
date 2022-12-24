@@ -71,8 +71,10 @@ while ($row = mysqli_fetch_array($result)) {
                 <li class="active">
                     <a href="dashboard"><i class="fa fa-house-user yellow_color"></i> <span>Home</span></a>
                 </li>
-                <li><a href="datakost"><i class="fa-solid fa-house red_color"></i> <span>Data Kost</span></a></li>
-                <li><a href="datakamar"><i class="fa fa-university "></i> <span>Data Kamar</span></a></li>
+                <?php if ($status == 'VERIFIED') { ?>
+                    <li><a href="datakost"><i class="fa-solid fa-house red_color"></i> <span>Data Kost</span></a></li>
+                    <li><a href="datakamar"><i class="fa fa-university "></i> <span>Data Kamar</span></a></li>
+                <?php } ?>
                 <li><a href="datarekening"><i class="fa-solid fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
                 <li><a href="Transaksi"><i class="f-sharp fa-solid fa-money-bill-transfer purple_color2"></i> <span>Transaksi</span></a></li>
             </ul>

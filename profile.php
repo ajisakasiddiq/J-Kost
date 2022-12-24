@@ -131,7 +131,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     <label for="kontrak" class="col-lg-3 control-label">Bukti Kontrak :</label>
                                                                     <div class="col-lg-8">
                                                                         <input value="<?= $kontrak; ?>" class="form-control" type="file" name="kontrak" id="kontrak">
-                                                                        <small>Periksa sebelum mengupload bukti kontrak anda*</small>
+                                                                        <small>Upload file pdf,contoh <a href="" download="file/Surat Perjanjian Kerjasama.pdf" style="color: red;">bukti kontrak anda* </a></small>
                                                                     </div>
                                                                 </div>
                                                             <?php } ?>

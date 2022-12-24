@@ -156,7 +156,7 @@ if (isset($_SESSION['id_user'])) {
                                                 <?php if ($harga == null) { ?>
                                                     <p class="total_no">Rp.0</p>
                                                 <?php } else { ?>
-                                                    <p class="total_no">Rp.<?= $harga; ?></p>
+                                                    <p class="total_no">Rp.<?= number_format($harga); ?></p>
                                                 <?php } ?>
                                                 <p class="head_couter">Total Pemasukan</p>
                                             </div>
@@ -215,7 +215,7 @@ if (isset($_SESSION['id_user'])) {
                                                 INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
                                                 INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
                                                 INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user
-                                                WHERE data_kost.id_user = '$sesID'";
+                                                WHERE data_kost.id_user = '$sesID' and pemesanan.status_pembayaran = 'SUKSES'";
                                                 $result = mysqli_query($koneksi, $query);
                                                 while ($row = mysqli_fetch_array($result)) {
                                                     $sewa = $row['sewa'];
@@ -240,7 +240,7 @@ if (isset($_SESSION['id_user'])) {
                                                 <?php if ($harga == null) { ?>
                                                     <p class="total_no">Rp.0</p>
                                                 <?php } else { ?>
-                                                    <p class="total_no">Rp.<?= $harga; ?></p>
+                                                    <p class="total_no">Rp.<?= number_format($harga); ?></p>
                                                 <?php } ?>
                                                 <p class="head_couter">Total Pemasukan</p>
                                             </div>
@@ -251,8 +251,14 @@ if (isset($_SESSION['id_user'])) {
                                 <div class="container-fluid">
                                     <div class="white_shd full margin_bottom_30">
                                         <div class="full graph_head">
-                                            <p>Copyright © 2022 Designed by A2.<br><br> Distributed By: Team ruweet</a>
-                                            </p>
+                                            <div class="content ">
+                                                <h1 class="text-center">Syarat dan Ketentuan</h1>
+                                                <p>1. Telah menyerahkan surat kontrak kerjasama dengan <strong>J'Kost</strong> bermatrai. <a href="" download="file/Surat Perjanjian Kerjasama.pdf" style="color: red;"> template surat perjanjian</a> </p>
+                                                <p>2. Fitur untuk pendaftaran kost akan muncul apabila telah mengupload bukti kerja sama dan telah kami terima dalam 2x24jam dan anda dapat mendafarkan kost anda.</p>
+                                                <p>3. Data anda harus lengkap apabila ingin mendaftarkan kost anda.</p>
+                                                <p>4. Apabila ada pelanggaran kami dapat menghapus akun anda.</p>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
