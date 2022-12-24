@@ -165,15 +165,15 @@ if (isset($_SESSION['id_user'])) {
             <form action="" method="get">
                 <div class="row mb-3 justify-content-lg-end">
                     <div class="col-lg-3">
-                        <select name="option2" class="form-control  form-select" aria-label="Default select example">
-                            <option><i class="fa-regular fa-people"></i>Semua Tipe Kost</option>
-                            <option value="cewek">Cewek</option>
-                            <option value="cowok">Cowok</option>
+                        <select name="option" class="form-control  form-select" aria-label="Default select example">
+                            <option value=""><i class="fa-regular fa-people"></i>Semua Tipe Kost</option>
+                            <option value="Perempuan">Cewek</option>
+                            <option value="Laki-Laki">Cowok</option>
                             <option value="campur">Campur</option>
                         </select>
                     </div>
                     <div class="col-lg-6 input-group mb-3">
-                        <input type="text" name="keyword" class="form-control" placeholder="Cari nama kos/alamat/tempat " aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <input type="text" name="keyword" class="form-control" placeholder="Cari nama kos " aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="input-group-text  btn" id="basic-addon2">Cari</button>
                         </div>
@@ -184,12 +184,11 @@ if (isset($_SESSION['id_user'])) {
 
                 <?php
                 $getCari = $_GET['keyword'];
-                $getoption1 = $_GET['option1'];
-                $getoption2 = $_GET['option2'];
+                $getoption = $_GET['option'];
                 $queryKost = "SELECT kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar_pertama,kamar_kost.status_kamar
                         FROM kamar_kost
                         INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
-                        WHERE kamar_kost.status_kamar = 'Tersedia' AND data_kost.status = 'APPROVED' AND data_kost.nama_kost LIKE '%" . $getCari . "%'";
+                        WHERE kamar_kost.status_kamar = 'Tersedia' AND data_kost.status = 'APPROVED' AND data_kost.nama_kost LIKE '%" . $getCari . "%' AND kamar_kost.jenis_kamar LIKE '%" . $getoption . "%'";
                 $result = mysqli_query($koneksi, $queryKost);
                 while ($row = mysqli_fetch_array($result)) {
                     $idKamar = $row['id_kamar'];

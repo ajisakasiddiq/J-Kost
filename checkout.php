@@ -261,6 +261,7 @@ echo  $kodeunik;
                 <label for="">Durasi</label>
                 <select name="txt_durasi" id="package" class="form-control">
                   <option value="1">1 Bulan</option>
+                  <option value="3">3 Bulan</option>
                   <option value="6">6 Bulan</option>
                   <option value="12">12 Bulan</option>
                 </select>
