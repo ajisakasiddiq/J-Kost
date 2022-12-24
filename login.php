@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
                 $_SESSION['status_user'] = $status;
                 header('Location: index.php');
             } else {
-                $error = 'user atau password salah!!';;
+                $error = 'user atau password salah!!';
                 header('Location: login.php');
             }
         } else {
