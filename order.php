@@ -227,7 +227,7 @@ if (isset($_SESSION['id_user'])) {
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item "><a class="page-link" href="#">1</a></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>
                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                 <li class="page-item">
@@ -319,6 +319,10 @@ if (isset($_SESSION['id_user'])) {
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        const galleryItems = document.querySelector(".card").children;
+        const
+    </script>
 </body>
 
 </html>
