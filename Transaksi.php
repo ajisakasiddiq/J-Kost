@@ -163,67 +163,68 @@ if (isset($_SESSION['id_user'])) {
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#cek<?= $idPesan; ?>"><i class="fa-solid mr-1 fa-check"></i>Check</a>
                                                                             <a href="print.php?id_pemesanan=<?= $idPesan; ?>" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
+                                                                        <div class="modal fade" id="cek<?= $idPesan; ?>" tabindex="-1" aria-labelledby="EditadminLabel" aria-hidden="true">
+                                                                            <div class="modal-dialog modal-md">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h1 class="modal-title fs-5" id="EditadminLabel">Bukti Pembayaran</h1>
+                                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                    </div>
+                                                                                    <form class="user" action="" method="POST">
+                                                                                        <div class="modal-body">
+                                                                                            <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $idPesan; ?>">
+                                                                                            <div class="form-group text-center">
+                                                                                                <label for="kode">Bukti Pembayaran</label> <br>
+                                                                                                <img src="img/<?= $bukti; ?>" alt="" width="90px" height="120px">
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="kode">Kode Pemesanan</label>
+                                                                                                <input type="disabled" class="form-control form-control-user " id="kode" placeholder="Kode Transaksi" name="txt_kode" value="<?= $kode; ?>">
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="namaKost">Nama Kost</label>
+                                                                                                <input type="text" class="form-control form-control-user" id="namaKost" placeholder="Nama Kost" name="txt_Namakost" value="<?= $namaKost; ?>">
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="penyewa">Nama Penyewa</label>
+                                                                                                <input type="text" class="form-control form-control-user" id="penyewa" placeholder="Nama Penyewa" name="txt_Namapenyewa" value="<?= $NamaPenyewa; ?>">
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="lama">Lama Sewa</label>
+                                                                                                <input type="text" class="form-control form-control-user" id="lama" placeholder="Lama sewa" name="txt_durasi" value="<?= $durasi; ?>">
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="bayar">Tanggal Pembayaran</label>
+                                                                                                <input type="text" class="form-control form-control-user" id="bayar" placeholder="Tanggal Pembayaran" name="txt_tgl" value="<?= $tgl; ?>">
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="total">Total Pembayaran</label>
+                                                                                                <input type="text" class="form-control form-control-user" id="total" placeholder="Total Pembayaran" name="txt_jk" value="<?= $total; ?>">
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="status">Status pembayaran</label>
+                                                                                                <select name="txt_status" id="status" class="form-control form-control-user">
+                                                                                                    <option value="<?= $status;  ?>"><?= $status; ?></option>
+                                                                                                    <option value="">------</option>
+                                                                                                    <option value="SUKSES">Sukses</option>
+                                                                                                    <option value="DITOLAK">Di Tolak</option>
+                                                                                                </select>
+                                                                                                <small>Periksa terlebih dahulu bukti pembayaran sebelum approve pembayaran*</small>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                            <button type="submit" name="edit" class="btn btn-primary">Tambah</button>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </tr>
                                                                     <?php $no++; ?>
                                                                 <?php } ?>
                                                                 <!-- pembayaran pemilik start -->
-                                                                <div class="modal fade" id="cek<?= $idPesan; ?>" tabindex="-1" aria-labelledby="EditadminLabel" aria-hidden="true">
-                                                                    <div class="modal-dialog modal-md">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h1 class="modal-title fs-5" id="EditadminLabel">Bukti Pembayaran</h1>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                            </div>
-                                                                            <form class="user" action="" method="POST">
-                                                                                <div class="modal-body">
-                                                                                    <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $idPesan; ?>">
-                                                                                    <div class="form-group text-center">
-                                                                                        <label for="kode">Bukti Pembayaran</label> <br>
-                                                                                        <img src="img/<?= $bukti; ?>" alt="" width="90px" height="120px">
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="kode">Kode Pemesanan</label>
-                                                                                        <input type="disabled" class="form-control form-control-user " id="kode" placeholder="Kode Transaksi" name="txt_kode" value="<?= $kode; ?>">
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="namaKost">Nama Kost</label>
-                                                                                        <input type="text" class="form-control form-control-user" id="namaKost" placeholder="Nama Kost" name="txt_Namakost" value="<?= $namaKost; ?>">
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="penyewa">Nama Penyewa</label>
-                                                                                        <input type="text" class="form-control form-control-user" id="penyewa" placeholder="Nama Penyewa" name="txt_Namapenyewa" value="<?= $NamaPenyewa; ?>">
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="lama">Lama Sewa</label>
-                                                                                        <input type="text" class="form-control form-control-user" id="lama" placeholder="Lama sewa" name="txt_durasi" value="<?= $durasi; ?>">
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="bayar">Tanggal Pembayaran</label>
-                                                                                        <input type="text" class="form-control form-control-user" id="bayar" placeholder="Tanggal Pembayaran" name="txt_tgl" value="<?= $tgl; ?>">
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="total">Total Pembayaran</label>
-                                                                                        <input type="text" class="form-control form-control-user" id="total" placeholder="Total Pembayaran" name="txt_jk" value="<?= $total; ?>">
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="status">Status pembayaran</label>
-                                                                                        <select name="txt_status" id="status" class="form-control form-control-user">
-                                                                                            <option value="<?= $status;  ?>"><?= $status; ?></option>
-                                                                                            <option value="">------</option>
-                                                                                            <option value="SUKSES">Sukses</option>
-                                                                                            <option value="DITOLAK">Di Tolak</option>
-                                                                                        </select>
-                                                                                        <small>Periksa terlebih dahulu bukti pembayaran sebelum approve pembayaran*</small>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                                    <button type="submit" name="edit" class="btn btn-primary">Tambah</button>
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+
                                                                 <!-- modal pembayaran pemilik end -->
                                                             </tbody>
                                                         <?php    } else if ($sesLvl == 2) { ?>
@@ -357,12 +358,62 @@ if (isset($_SESSION['id_user'])) {
                                                                             <td><img src="file/<?= $bukti; ?>" alt="" width="100px"></td>
                                                                         <?php     } ?>
                                                                         <td>
-                                                                            <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
+                                                                            <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#detail<?= $idPesan; ?>"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
                                                                             <a href="print.php?id_pemesanan=<?= $idPesan; ?>" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
                                                                         </td>
+                                                                        <div class="modal fade" id="detail<?= $idPesan; ?>" tabindex="-1" aria-labelledby="EditadminLabel" aria-hidden="true">
+                                                                            <div class="modal-dialog modal-md">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h1 class="modal-title fs-5" id="EditadminLabel">Bukti Pembayaran</h1>
+                                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                    </div>
+                                                                                    <form class="user" action="" method="POST">
+                                                                                        <div class="modal-body">
+                                                                                            <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $idPesan; ?>" readonly>
+
+                                                                                            <div class="form-group">
+                                                                                                <label for="kode">Kode Pemesanan</label>
+                                                                                                <input type="disabled" class="form-control form-control-user " id="kode" placeholder="Kode Transaksi" name="txt_kode" value="<?= $kode; ?>" readonly>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="namaKost">Nama Kost</label>
+                                                                                                <input type="text" class="form-control form-control-user" id="namaKost" placeholder="Nama Kost" name="txt_Namakost" value="<?= $namaKost; ?>" readonly>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="penyewa">Nama Penyewa</label>
+                                                                                                <input type="text" class="form-control form-control-user" id="penyewa" placeholder="Nama Penyewa" name="txt_Namapenyewa" value="<?= $NamaPenyewa; ?>" readonly>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="lama">Lama Sewa</label>
+                                                                                                <input type="text" class="form-control form-control-user" id="lama" placeholder="Lama sewa" name="txt_durasi" value="<?= $durasi; ?>" readonly>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="bayar">Tanggal Pembayaran</label>
+                                                                                                <input type="text" class="form-control form-control-user" id="bayar" placeholder="Tanggal Pembayaran" name="txt_tgl" value="<?= $tgl; ?>" readonly>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="total">Total Pembayaran</label>
+                                                                                                <input type="text" class="form-control form-control-user" id="total" placeholder="Total Pembayaran" name="txt_jk" value="<?= $total; ?>" readonly>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label for="total">Status Pembayaran</label>
+                                                                                                <input type="text" class="form-control form-control-user" id="total" placeholder="Total Pembayaran" name="txt_status" value="<?= $status; ?>" readonly>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                            <button type="submit" name="edit" class="btn btn-primary">Tambah</button>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </tr>
                                                                     <?php $no++; ?>
                                                                 <?php } ?>
+
                                                             </tbody>
                                                         <?php } ?>
                                                     </table>
@@ -468,7 +519,7 @@ if (isset($_POST['tambah'])) {
     if ($result) {
         $succes = "Pembayaran Sukses!";
     } else {
-        $errorr =  "Pembayaran Gagal!";
+        echo mysqli_error($koneksi);
     }
 }
 function upload()

@@ -312,7 +312,7 @@ if (isset($_POST['tambah'])) {
     $userName = $_POST['txt_username'];
     $Name = $_POST['txt_nama'];
 
-    $query = "INSERT INTO user_detail VALUES (null,'$Name','$userName','$Mail','$Pass',3,null,null,null,null,null)";
+    $query = "INSERT INTO user_detail VALUES (null,'$Name','$userName','$Mail','$Pass',3,null,null,null,null,null,null,null)";
     $result = mysqli_query($koneksi, $query);
     if ($result) {
         $succes = "Data berhasil terinput!";

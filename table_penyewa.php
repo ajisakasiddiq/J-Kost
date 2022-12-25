@@ -226,6 +226,4 @@ $user_data = $response_data->data;
 $id = $_GET['id_user'];
 $query =  "DELETE FROM user_detail WHERE id_user='$id'";
 mysqli_query($koneksi, $query);
-
-
 ?>
