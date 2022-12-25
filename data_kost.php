@@ -294,9 +294,9 @@ if (isset($_POST['update'])) {
 
         $send = $mail->send();
         if ($send) {
-            echo "<script>alert('email berhasil dikirim')</script>";
+            echo "<script>alert('Notifikasi telah dikirim dikirim')</script>";
         } else {
-            echo $mail->ErrorInfo;
+            echo "<script>alert('Notifikasi gagal dikirim dikirim')</script>";
         }
     } else {
         $error =  "data gagal update";
