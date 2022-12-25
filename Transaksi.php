@@ -328,6 +328,7 @@ if (isset($_SESSION['id_user'])) {
                                                                     ";
                                                                 $result = mysqli_query($koneksi, $query);
                                                                 while ($row = mysqli_fetch_array($result)) {
+                                                                    $idPesan = $row['id_pemesanan'];
                                                                     $kode = $row['Kode Pemesanan'];
                                                                     $namaKost = $row['Nama Kost'];
                                                                     $No = $row['No Kamar'];
