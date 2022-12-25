@@ -119,7 +119,11 @@ if (isset($_SESSION['id_user'])) {
                                         <img src="img/<?= $sesImg;  ?>" alt="" class="rounded-circle m-0 p-0 profile-picture" height="50px">
                                     </a>
                                     <div class="dropdown-menu bg-dark">
-                                        <a href="dashboard" class="dropdown-item text-danger">Dashboard</a>
+                                        <?php if ($sesLvl == 2) { ?>
+                                            <a href="kamarAktif" class="dropdown-item text-danger">Dashboard</a>
+                                        <?php   } else { ?>
+                                            <a href="dashboard" class="dropdown-item text-danger">Dashboard</a>
+                                        <?php } ?>
                                         <a href="ResetPass" class="dropdown-item text-danger">Setting</a>
                                         <div class="dropdown-divider"></div>
                                         <a href="logout" class="dropdown-item text-danger">Logout</a>
