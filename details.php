@@ -231,14 +231,14 @@ if (isset($_SESSION['id_user'])) {
                             </p>
                             <div class="mt-2 mb-2" id="map" style="width: 100%; height: 400px;"></div>
                             <script>
-                                var map = L.map('map').setView([113.69920589124717, -8.172405053026914], 13);
+                                var map = L.map('map').setView([-8.172405053026914, 113.69920589124717], 13);
 
                                 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                 }).addTo(map);
 
-                                L.marker([51.5, -0.09]).addTo(map)
-                                    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+                                L.marker([<?= $lat; ?>, <?= $long; ?>]).addTo(map)
+                                    .bindPopup('<?= $namaKost; ?>')
                                     .openPopup();
                             </script>
                         </div>

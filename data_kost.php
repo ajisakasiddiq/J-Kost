@@ -116,7 +116,7 @@ if (isset($_SESSION['id_user'])) {
                                                         </thead>
                                                         <tbody>
                                                             <?php
-                                                            $query = "SELECT user_detail.user_nama AS 'NAMA PEMILIK',user_detail.no_hp AS 'NO HP PEMILIK',data_kost.id_kost,data_kost.nama_kost,data_kost.alamat,data_kost.deskripsi,data_kost.foto,data_kost.status
+                                                            $query = "SELECT user_detail.user_nama AS 'NAMA PEMILIK',user_detail.no_hp AS 'NO HP PEMILIK',user_detail.user_email,data_kost.id_kost,data_kost.nama_kost,data_kost.alamat,data_kost.deskripsi,data_kost.foto,data_kost.status
                                                             FROM data_kost
                                                             INNER JOIN user_detail ON data_kost.id_user= user_detail.id_user;";
                                                             $result = mysqli_query($koneksi, $query);
@@ -124,6 +124,7 @@ if (isset($_SESSION['id_user'])) {
                                                             while ($row = mysqli_fetch_array($result)) {
                                                                 $id = $row['id_kost'];
                                                                 $Pemilik = $row['NAMA PEMILIK'];
+                                                                $email = $row['user_email'];
                                                                 $Nop = $row['NO HP PEMILIK'];
                                                                 $Namakost = $row['nama_kost'];
                                                                 $Alamat = $row['alamat'];
@@ -155,6 +156,7 @@ if (isset($_SESSION['id_user'])) {
                                                                                 <form class="user" action="" method="POST">
                                                                                     <div class="modal-body">
                                                                                         <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $id; ?>">
+                                                                                        <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_email" value="<?= $email; ?>">
                                                                                         <div class="form-group">
                                                                                             <select name="txt_status" id="" class="form-control form-control-user">
                                                                                                 <option value="<?= $Status;  ?>"><?= $Status; ?></option>
@@ -241,6 +243,7 @@ if (isset($_SESSION['id_user'])) {
                 $('#datakost').DataTable();
             });
         </script>
+
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
@@ -248,14 +251,53 @@ if (isset($_SESSION['id_user'])) {
 
 
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+//include library phpmailer
+include("PHPMailer-master/src/Exception.php");
+include("PHPMailer-master/src/PHPMailer.php");
+include("PHPMailer-master/src/SMTP.php");
+
+
 if (isset($_POST['update'])) {
     $kostId     = $_POST['txt_id'];
+    $kostEmail     = $_POST['txt_email'];
     $Status    = $_POST['txt_status'];
 
     $query = "UPDATE data_kost SET status='$Status' WHERE id_kost='$kostId'";
     $result = mysqli_query($koneksi, $query);
     if ($result) {
         $success = "data telah terupdate!";
+        $email_pengirim = 'jemberkost@gmail.com';
+        $nama_pengirim = 'PT. JKost';
+        $email_penerima = $kostEmail;
+        $subject = 'Registrasi Kost PT. JKost';
+        $pesan = 'Selamat Kost anda telah kami terima,silahkan masukkan detail kamar anda pada table datakamar,terima kasih!';
+        $mail = new PHPMailer;
+        $mail->isSMTP();
+
+        $mail->Host = 'smtp.gmail.com';
+        $mail->Username = $email_pengirim;
+        $mail->Password = 'nilzjaqzhtyrsywa';
+        $mail->Port = 465;
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = 'ssl';
+        $mail->SMTPDebug = 2;
+
+        $mail->setFrom($email_pengirim, $nama_pengirim);
+        $mail->addAddress($email_penerima);
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body = $pesan;
+
+        $send = $mail->send();
+        if ($send) {
+            echo "<script>alert('email berhasil dikirim')</script>";
+        } else {
+            echo $mail->ErrorInfo;
+        }
     } else {
         $error =  "data gagal update";
     }
