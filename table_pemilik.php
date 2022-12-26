@@ -291,33 +291,64 @@ if (isset($_POST['update'])) {
     $result = mysqli_query($koneksi, $query);
     if ($result) {
         $success = "data telah terupdate!";
-        $email_pengirim = 'jemberkost@gmail.com';
-        $nama_pengirim = 'PT. JKost';
-        $email_penerima = $email;
-        $subject = 'Registrasi Kost PT. JKost';
-        $pesan = 'Selamat akun anda telah ter veirifikasi,silahkan Daftarkan data kost anda untuk tahap yang selanjutnya,terima kasih!';
-        $mail = new PHPMailer;
-        $mail->isSMTP();
+        if ($user->status_user == 'VERIFIED') {
+            $email_pengirim = 'jemberkost@gmail.com';
+            $nama_pengirim = 'PT. JKost';
+            $email_penerima = $email;
+            $subject = 'Registrasi Kost PT. JKost';
+            $pesan = 'Selamat akun anda telah ter veirifikasi,silahkan Daftarkan data kost anda untuk tahap yang selanjutnya,terima kasih!';
+            $mail = new PHPMailer;
+            $mail->isSMTP();
 
-        $mail->Host = 'smtp.gmail.com';
-        $mail->Username = $email_pengirim;
-        $mail->Password = 'nilzjaqzhtyrsywa';
-        $mail->Port = 465;
-        $mail->SMTPAuth = true;
-        $mail->SMTPSecure = 'ssl';
-        $mail->SMTPDebug = 2;
+            $mail->Host = 'smtp.gmail.com';
+            $mail->Username = $email_pengirim;
+            $mail->Password = 'nilzjaqzhtyrsywa';
+            $mail->Port = 465;
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = 'ssl';
+            $mail->SMTPDebug = 2;
 
-        $mail->setFrom($email_pengirim, $nama_pengirim);
-        $mail->addAddress($email_penerima);
-        $mail->isHTML(true);
-        $mail->Subject = $subject;
-        $mail->Body = $pesan;
+            $mail->setFrom($email_pengirim, $nama_pengirim);
+            $mail->addAddress($email_penerima);
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body = $pesan;
 
-        $send = $mail->send();
-        if ($send) {
-            echo "<script>alert('Notifikasi telah dikirim dikirim')</script>";
+            $send = $mail->send();
+            if ($send) {
+                echo "<script>alert('Notifikasi telah dikirim dikirim')</script>";
+            } else {
+                echo "<script>alert('Notifikasi gagal dikirim dikirim')</script>";
+            } # code...
         } else {
-            echo "<script>alert('Notifikasi gagal dikirim dikirim')</script>";
+            $email_pengirim = 'jemberkost@gmail.com';
+            $nama_pengirim = 'PT. JKost';
+            $email_penerima = $email;
+            $subject = 'Registrasi Kost PT. JKost';
+            $pesan = 'Mohon maaf akun anda belom kami verifikasi,periksa kembali data anda dan lakukan verifikasi kembali,terima kasih!';
+            $mail = new PHPMailer;
+            $mail->isSMTP();
+
+            $mail->Host = 'smtp.gmail.com';
+            $mail->Username = $email_pengirim;
+            $mail->Password = 'nilzjaqzhtyrsywa';
+            $mail->Port = 465;
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = 'ssl';
+            $mail->SMTPDebug = 2;
+
+            $mail->setFrom($email_pengirim, $nama_pengirim);
+            $mail->addAddress($email_penerima);
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body = $pesan;
+
+            $send = $mail->send();
+            if ($send) {
+                echo "<script>alert('Notifikasi telah dikirim dikirim')</script>";
+            } else {
+                echo "<script>alert('Notifikasi gagal dikirim dikirim')</script>";
+            }
         }
     } else {
         $error =  "data gagal update";
