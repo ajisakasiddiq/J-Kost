@@ -202,7 +202,7 @@ $user_data = $response_data->data;
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                                <button type="submit" name="update" class="btn btn-primary">Tambah</button>
+                                                                                <button type="submit" name="update" class="btn btn-primary">Edit</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
