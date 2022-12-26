@@ -49,14 +49,32 @@ if (isset($_SESSION['id_user'])) {
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="text-center">-----Bukti Pemesanan-----</h1>
-        <ul>
-            <li>Kode Pemesanan</li>
-            <li>Kode Pemesanan</li>
-            <li>Kode Pemesanan</li>
-            <li>Kode Pemesanan</li>
-        </ul>
+    <h1 class="text-center">------------------Bukti Pemesanan------------------</h1>
+    <div class="row text-center">
+        <div class="col-4">
+            <h3>Nama Kost :</h3>
+        </div>
+        <div class="col-8 text-left">
+            <h3>sdsdsds</h3>
+        </div>
+        <div class="col-4">
+            <h3>Nama Kost :</h3>
+        </div>
+        <div class="col-8 text-left">
+            <h3>sdsdsds</h3>
+        </div>
+        <div class="col-4">
+            <h3>Nama Kost :</h3>
+        </div>
+        <div class="col-8 text-left">
+            <h3>sdsdsds</h3>
+        </div>
+        <div class="col-4">
+            <h3>Nama Kost :</h3>
+        </div>
+        <div class="col-8 text-left">
+            <h3>sdsdsds</h3>
+        </div>
     </div>
 
     <script>
