@@ -113,7 +113,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 <th>Durasi Sewa</th>
                                                                 <th>Tanggal Mulai Ngekos</th>
                                                                 <th>Total Harga</th>
-                                                                <th>Status Pembayaran</th>
+                                                                <th>Status</th>
                                                                 <th>Bukti Pembayaran</th>
                                                                 <th>action</th>
                                                             </tr>
@@ -272,7 +272,9 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td>
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar<?= $idPesan; ?>"><i class="fa-sharp fa-solid mr-1 fa-money-bill"></i>Bayar</a>
                                                                             <a href="print.php?id_pemesanan=<?= $idPesan; ?>" class="btn btn-warning btn-circle mt-2"><i class="fa-solid mr-1 fa-print"></i>Cetak</a>
+                                                                            <a type="submit" name="batal" data-bs-toggle="modal" data-bs-target="#batal<?= $idPesan; ?>" class="btn btn-danger btn-circle mt-2"><i class="fa-solid fa-ban mr-1"></i>Batalkan Sewa</a>
                                                                         </td>
+                                                                        <!-- modal bayar -->
                                                                         <div class="modal fade" id="bayar<?= $idPesan; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                             <div class="modal-dialog">
                                                                                 <div class="modal-content">
@@ -305,6 +307,29 @@ if (isset($_SESSION['id_user'])) {
                                                                                         <div class="modal-footer">
                                                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                                                             <button name="tambah" type="submit" class="btn btn-primary">Simpan</button>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <!-- modal batal pemesanan -->
+                                                                        <div class="modal fade" id="batal<?= $idPesan; ?>" tabindex="-1" aria-labelledby="EditadminLabel" aria-hidden="true">
+                                                                            <div class="modal-dialog modal-md">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h1 class="modal-title fs-5" id="EditadminLabel">Pembatalan Sewa</h1>
+                                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                    </div>
+                                                                                    <form class="user" action="" method="POST">
+                                                                                        <div class="modal-body">
+                                                                                            <input type="hidden" class="form-control form-control-user" id="exampleInputName" placeholder="Name" name="txt_id" value="<?= $idPesan; ?>">
+
+                                                                                            <p>ANDA YAKIN INGIN MEMBATALKAN SEWA?</p>
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                            <button type="submit" name="batal" class="btn btn-danger">Batalkan</button>
                                                                                         </div>
                                                                                     </form>
                                                                                 </div>
@@ -508,6 +533,16 @@ if (isset($_POST['edit'])) {
         $success = "User data telah terupdate!";
     } else {
         $error =  "User data gagal update";
+    }
+}
+if (isset($_POST['batal'])) {
+    $Id     = $_POST['txt_id'];
+    $query = "UPDATE pemesanan SET status_pembayaran='Dibatalkan' WHERE id_pemesanan='$Id'";
+    $result = mysqli_query($koneksi, $query);
+    if ($result) {
+        $success = "Penyewaan dibatalkan!";
+    } else {
+        $error =  "Gagal";
     }
 }
 if (isset($_POST['tambah'])) {
