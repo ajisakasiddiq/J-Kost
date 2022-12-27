@@ -177,7 +177,7 @@ echo  $kodeunik;
   FROM kamar_kost
   INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
   INNER JOIN user_detail ON data_kost.id_user=data_kost.id_user
-  INNER JOIN rekening ON rekening.id_user=user_detail.id_user
+  INNER JOIN rekening ON rekening.id_user=data_kost.id_user
                 WHERE kamar_kost.status_kamar = 'Tersedia' and kamar_kost.id_kamar = '$id'";
   $result = mysqli_query($koneksi, $queryKost);
   while ($row = mysqli_fetch_array($result)) {
