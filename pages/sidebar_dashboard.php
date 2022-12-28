@@ -56,7 +56,6 @@ while ($row = mysqli_fetch_array($result)) {
 
             <!-- pencari kos start -->
             <ul class="list-unstyled components">
-                <li><a href="kamarAktif"><i class="fa fa-university "></i> <span>Kost ku</span></a></li>
                 <li><a href="datarekening"><i class="fa-solid fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
                 <li><a href="Transaksi"><i class="f-sharp fa-solid fa-money-bill-transfer purple_color2"></i> <span>Transaksi</span></a></li>
             </ul>
