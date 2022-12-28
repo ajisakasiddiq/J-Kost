@@ -20,7 +20,37 @@ if (isset($_SESSION['id_user'])) {
     $sesNo = $_SESSION['no_hp'];
     $sesGender = $_SESSION['jenis_kelamin'];
 }
+
+
+
+
+$queryPenyewa = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost', data_kost.foto  , kamar_kost.no_kamar as 'No Kamar', kamar_kost.id_kamar , pemesanan.nama_pemesan as 'Nama Penyewa' 
+   ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
+   , pemesanan.bukti_pembayaran as 'Bukti Pembayaran',user_detail.no_hp FROM pemesanan 
+   INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
+   INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
+   INNER JOIN user_detail ON  user_detail.id_user = pemesanan.id_user
+   WHERE pemesanan.id_user = '$sesID'";
+$hasil = mysqli_query($koneksi, $queryPenyewa);
+while ($row = mysqli_fetch_array($hasil)) {
+    $idPesan = $row['id_pemesanan'];
+    $idkamar = $row['id_kamar'];
+    $kode = $row['Kode Pemesanan'];
+    $namaKost = $row['Nama Kost'];
+    $No = $row['No Kamar'];
+    $NamaPenyewa = $row['Nama Penyewa'];
+    $No_hp = $row['no_hp'];
+    $foto = $row['foto'];
+    $durasi = $row['Durasi Sewa'];
+    $tgl = $row['Tanggal Pemesanan'];
+    $total = $row['Total'];
+    $status = $row['Status Pembayaran'];
+    $bukti = $row['Bukti Pembayaran'];
+}
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,40 +124,27 @@ if (isset($_SESSION['id_user'])) {
                                     <div class="full graph_head">
                                         <div class="table_section padding_infor_info">
                                             <!-- table section -->
-                                            <div class="card-body">
-                                                <div class="table-responsive">
-                                                    <div class="mb-2">
-                                                        <h4>Data Kamar</h4>
-                                                    </div>
-                                                    <table id="kamar" class="table table-bordered" style="width:100%">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th>Gambar</th>
-                                                                <th>Nama Kost</th>
-                                                                <th>No. Kamar</th>
-                                                                <th>Deskripsi</th>
-                                                                <th>Disetujui</th>
-                                                                <th>Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>-</td>
-                                                                <td>Bara Kost</td>
-                                                                <td>2A</td>
-                                                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum accusamus repudiandae facere distinctio ut omnis laboriosam, corrupti ea cumque deleniti, aperiam iusto pariatur. Itaque ut, eveniet
-                                                                    iste praesentium exercitationem at</td>
-                                                                <td>Disetujui</td>
-                                                                <td>
-                                                                    <a href="edit.php" class="btn btn-primary btn-circle"><i class="fas fa-pen"></i></a>
+                                            <div class="card" style="width: 18rem;">
+                                                <img src="img/<?= $foto; ?>" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><?= $No; ?> By <?= $namaKost; ?></h5>
+                                                    <?php if ($status == 'SUKSES') { ?>
+                                                        <p><span class="online_animation"></span> Aktif</p>
+                                                    <?php  } else { ?>
+                                                        <p><span class="offline_animation"></span> Berhenti Sewa</p>
+                                                    <?php } ?>
 
-                                                                    <a href="hapus.php" class="btn btn-danger btn-circle" onClick="confirmModal('hapus.php');"><i class="fas fa-trash"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <a href="checkout.php?id_kamar=<?= $idkamar; ?>" class=" btn btn-primary">Lanjut Sewa</a>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <a href="#" class="btn btn-danger">Stop Sewa</a>
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
                                             </div>
                                         </div>

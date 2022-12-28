@@ -20,53 +20,8 @@ if (isset($_SESSION['id_user'])) {
     $sesNo = $_SESSION['no_hp'];
     $sesGender = $_SESSION['jenis_kelamin'];
 }
-
-// update data
-if (isset($_POST['submit'])) {
-    $userId     = $_POST['txt_id'];
-    $Pass     = $_POST['txt_pass'];
-    if ($_POST['txt_pass'] == $_POST['txt_pass2']) {
-        $query = "UPDATE user_detail SET user_pass='$Pass' WHERE id_user='$userId'";
-        $result = mysqli_query($koneksi, $query);
-        if ($result) {
-            $success = "User data telah terupdate!";
-        } else {
-            $error =  "User data gagal update";
-        }
-    } else {
-        echo "<script>alert('Password yang Anda Masukan Tidak Sama');history.go(-1)</script>";
-    }
-
-
-
-
-    //header('Location: ResetPass.php');
-
-}
-
-
-
 ?>
 
-
-<?php if (isset($success)) { ?>
-    <script>
-        swal({
-            title: "<?= $success; ?>",
-            icon: "success",
-            button: "OKE!",
-        });
-    </script>
-<?php } ?>
-<?php if (isset($error)) { ?>
-    <script>
-        swal({
-            title: "<?= $error; ?>",
-            icon: "success",
-            button: "OKE!",
-        });
-    </script>
-<?php } ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -191,6 +146,49 @@ if (isset($_POST['submit'])) {
                                 <!-- calendar file css -->
                                 <script src="js/semantic.min.js"></script>
                                 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+                                <?php
+                                // update data
+                                if (isset($_POST['submit'])) {
+                                    $userId     = $_POST['txt_id'];
+                                    $Pass     = $_POST['txt_pass'];
+                                    var_dump($_POST);
+                                    $query = "UPDATE user_detail SET user_pass='$Pass' WHERE id_user='$userId'";
+                                    $result = mysqli_query($koneksi, $query);
+                                    if ($result) {
+                                        $success = "User data telah terupdate!";
+                                    } else {
+                                        echo mysqli_error($koneksi);
+                                    }
+
+
+
+
+
+                                    //header('Location: ResetPass.php');
+
+                                }
+                                ?>
+
+                                <?php if (isset($success)) { ?>
+                                    <script>
+                                        swal({
+                                            title: "<?= $success; ?>",
+                                            icon: "success",
+                                            button: "OKE!",
+                                        });
+                                    </script>
+                                <?php } ?>
+                                <?php if (isset($error)) { ?>
+                                    <script>
+                                        swal({
+                                            title: "<?= $error; ?>",
+                                            icon: "success",
+                                            button: "OKE!",
+                                        });
+                                    </script>
+                                <?php } ?>
+
 </body>
 
 </html>
