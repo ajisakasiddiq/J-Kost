@@ -331,7 +331,6 @@ function upload()
 $id = $_GET['id_kost'];
 $query =  "DELETE FROM data_kost WHERE id_kost='$id'";
 mysqli_query($koneksi, $query);
-unlink($Img);
 ?>
 
 

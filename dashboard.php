@@ -253,7 +253,7 @@ if (isset($_SESSION['id_user'])) {
                                         <div class="full graph_head">
                                             <div class="content ">
                                                 <h1 class="text-center">Syarat dan Ketentuan</h1>
-                                                <p>1. Telah menyerahkan surat kontrak kerjasama dengan <strong>J'Kost</strong> bermatrai. <a href="" download="file/Surat Perjanjian Kerjasama.pdf" style="color: red;"> template surat perjanjian</a> </p>
+                                                <p>1. Telah menyerahkan surat kontrak kerjasama dengan <strong>J'Kost</strong> bermatrai. <a href="file/Surat Perjanjian Kerjasama.pdf" style="color: red;"> template surat perjanjian</a> </p>
                                                 <p>2. Fitur untuk pendaftaran kost akan muncul apabila telah mengupload bukti kerja sama dan telah kami terima dalam 2x24jam dan anda dapat mendafarkan kost anda.</p>
                                                 <p>3. Data anda harus lengkap apabila ingin mendaftarkan kost anda.</p>
                                                 <p>4. Apabila ada pelanggaran kami dapat menghapus akun anda.</p>

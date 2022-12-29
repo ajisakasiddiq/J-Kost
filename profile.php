@@ -132,7 +132,8 @@ if (isset($_SESSION['id_user'])) {
                                                                     <label for="kontrak" class="col-lg-3 control-label">Bukti Kontrak :</label>
                                                                     <div class="col-lg-8">
                                                                         <input class="form-control" type="file" name="kontrak" id="kontrak">
-                                                                        <small>Upload file pdf,contoh <a href="" download="file/Surat Perjanjian Kerjasama.pdf" style="color: red;">bukti kontrak anda* </a></small>
+                                                                        <input class="form-control" type="hidden" name="kontrak2" id="kontrak" value="<?= $kontrak; ?>">
+                                                                        <small>Upload file pdf,contoh <a href="file/Surat Perjanjian Kerjasama.pdf" style="color: red;">bukti kontrak anda* </a></small>
                                                                     </div>
                                                                 </div>
                                                             <?php } ?>
@@ -237,8 +238,19 @@ if (isset($_SESSION['id_user'])) {
                                     $Gender   = $_POST['txt_gender'];
                                     $Nohp   = $_POST['txt_nohp'];
                                     $Address   = $_POST['txt_alamat'];
-                                    $buktiKontrak  = uploadKontrak();
                                     $gambarLama = $_POST['gambarLama'];
+
+                                    if ($sesLvl == 1) {
+                                        $kontrakNoupload   = $_POST['kontrak2'];
+                                        if ($_FILES['kontrak']['error'] === 4) {
+                                            $buktiKontrak = $kontrakNoupload;
+                                        } else {
+                                            $buktiKontrak  = uploadKontrak();
+                                        }
+                                    }
+
+
+
 
                                     if ($_FILES['gambar']['error'] === 4) {
                                         $Img = $gambarLama;
@@ -248,7 +260,7 @@ if (isset($_SESSION['id_user'])) {
 
                                     // $Img   = $_POST['img'];
 
-                                    $query = "UPDATE user_detail SET user_nama='$Name', username='$userName', user_email='$Mail',nik='$Nik',alamat='$Address',foto='$Img',no_hp='$Nohp',jenis_kelamin='$Gender' WHERE id_user='$userId'";
+                                    $query = "UPDATE user_detail SET user_nama='$Name', username='$userName', user_email='$Mail',nik='$Nik',alamat='$Address',foto='$Img',no_hp='$Nohp',jenis_kelamin='$Gender',bukti_kontrak='$buktiKontrak' WHERE id_user='$userId'";
                                     $result = mysqli_query($koneksi, $query);
                                     if ($result) {
                                         $success = "User data telah terupdate!";
@@ -305,35 +317,35 @@ if (isset($_SESSION['id_user'])) {
                                 function uploadKontrak()
                                 {
 
-                                    $file = $_FILES['kontrak']['name'];
-                                    $size = $_FILES['kontrak']['size'];
-                                    $error = $_FILES['kontrak']['error'];
-                                    $tmpName = $_FILES['kontrak']['tmp_name'];
+                                    $kontrak = $_FILES['kontrak']['name'];
+                                    $sizeKontrak = $_FILES['kontrak']['size'];
+                                    $errorKontrak = $_FILES['kontrak']['error'];
+                                    $tmpNameKontrak = $_FILES['kontrak']['tmp_name'];
 
                                     //cek file apakah diupload atau tidak
-                                    if ($error === 4) {
+                                    if ($errorKontrak === 4) {
                                         echo "<script> alert('Upload Bukti kontrak Anda');</script>";
                                         return false;
                                     }
 
                                     //cek apakah benar gambar
                                     $extensFileValid = ['pdf'];
-                                    $extensFile = explode('.', $file);
-                                    $extensFile = strtolower(end($extensFile));
-                                    if (!in_array($extensFile, $extensFileValid)) {
+                                    $extensFileKontrak = explode('.', $kontrak);
+                                    $extensFileKontrak = strtolower(end($extensFileKontrak));
+                                    if (!in_array($extensFileKontrak, $extensFileValid)) {
                                         echo "<script>alert('Yang anda upload bukan berupa file pdf');</script>";
                                         return false;
                                     }
 
                                     //cek jika ukuran nya terlalu besar 
-                                    if ($size > 5000000) {
+                                    if ($sizeKontrak > 10000000) {
 
                                         echo "<script>alert('Ukuran gambar terlalu besar');</script>";
                                     }
 
                                     //lolos cek 
-                                    move_uploaded_file($tmpName, 'file/' . $extensFile);
-                                    return $extensFile;
+                                    move_uploaded_file($tmpNameKontrak, 'file/' . $extensFileKontrak);
+                                    return $extensFileKontrak;
                                 }
                                 ?>
                                 <?php if (isset($success)) { ?>
