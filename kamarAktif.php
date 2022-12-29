@@ -119,30 +119,36 @@ while ($row = mysqli_fetch_array($hasil)) {
                                 <div class="white_shd full margin_bottom_30">
                                     <div class="full graph_head">
                                         <div class="table_section padding_infor_info">
-                                            <!-- table section -->
-                                            <div class="card" style="width: 18rem;">
-                                                <img src="img/<?= $foto; ?>" class="card-img-top" alt="...">
-                                                <div class="card-body">
-                                                    <h5 class="card-title"><?= $No; ?> By <?= $namaKost; ?></h5>
-                                                    <?php if ($status == 'SUKSES') { ?>
-                                                        <p><span class="online_animation"></span> Aktif</p>
-                                                    <?php  } else { ?>
-                                                        <p><span class="offline_animation"></span> Berhenti Sewa</p>
-                                                    <?php } ?>
 
-                                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <a href="checkout.php?id_kamar=<?= $idkamar; ?>" class=" btn btn-primary">Lanjut Sewa</a>
+                                            <?php if (empty($idPesan)) { ?>
+                                                <div class="alert alert-danger">Tidak ada kamar kost yang disewa</div>
+                                            <?php } else { ?>
+                                                <div class="card" style="width: 18rem;">
+                                                    <img src="img/<?= $foto; ?>" class="card-img-top" alt="...">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title"><?= $No; ?> By <?= $namaKost; ?></h5>
+                                                        <?php if ($status == 'SUKSES') { ?>
+                                                            <p><span class="online_animation"></span> Aktif</p>
+                                                        <?php  } else { ?>
+                                                            <p><span class="offline_animation"></span> Berhenti Sewa</p>
+                                                        <?php } ?>
+
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <a href="checkout.php?id_kamar=<?= $idkamar; ?>" class=" btn btn-primary">Lanjut Sewa</a>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <a href="#" class="btn btn-danger">Stop Sewa</a>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-6">
-                                                            <a href="#" class="btn btn-danger">Stop Sewa</a>
-                                                        </div>
+
+
                                                     </div>
-
-
                                                 </div>
-                                            </div>
+                                            <?php } ?>
+                                            <!-- table section -->
+
                                         </div>
                                     </div>
                                 </div>
