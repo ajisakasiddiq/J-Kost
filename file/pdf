@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>J-KOST</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
+    <!-- site icon -->
+    <link rel="icon" href="images/fevicon.png" type="image/png" />
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- site css -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- responsive css -->
+    <link rel="stylesheet" href="css/responsive.css" />
+    <!-- color css -->
+    <link rel="stylesheet" href="css/colors.css" />
+    <!-- select bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap-select.css" />
+    <!-- scrollbar css -->
+    <link rel="stylesheet" href="css/perfect-scrollbar.css" />
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/custom.css" />
+    <!-- calendar file css -->
+    <link rel="stylesheet" href="js/semantic.min.css" />
+    <!-- font awesome -->
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+</head>
+
+<body class="inner_page widgets">
+    <div class="full_container">
+        <div class="inner_container">
+            <!-- Sidebar  -->
+            
+<nav id="sidebar">
+    <div class="sidebar_blog_1">
+        <div class="sidebar-header">
+            <div class="logo_section">
+                <a href="dashboard.php"><img class="logo_icon img-responsive" src="img/639e48df96177.png" alt="logo" /></a>
+            </div>
+        </div>
+        <div class="sidebar_user_info">
+            <div class="icon_setting"></div>
+            <div class="user_profle_side">
+                <div class="user_img"><img class="img-responsive" src="img/639e48df96177.png" alt="profil" /></div>
+                <div class="user_info">
+                    <h6>ajisakasiddiq</h6>
+                    <p><span class="online_animation"></span> Online</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar_blog_2">
+        <h4>General</h4>
+        
+            <!-- pemilik kos start -->
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="dashboard"><i class="fa fa-house-user yellow_color"></i> <span>Home</span></a>
+                </li>
+                                    <li><a href="datakost"><i class="fa-solid fa-house red_color"></i> <span>Data Kost</span></a></li>
+                    <li><a href="datakamar"><i class="fa fa-university "></i> <span>Data Kamar</span></a></li>
+                                <li><a href="datarekening"><i class="fa-solid fa-money purple_color2"></i> <span>Data Rekening</span></a></li>
+                <li><a href="Transaksi"><i class="f-sharp fa-solid fa-money-bill-transfer purple_color2"></i> <span>Transaksi</span></a></li>
+            </ul>
+            <!-- pemilik kos end -->
+
+        
+
+
+    </div>
+
+</nav>            <!-- end sidebar -->
+            <!-- right content -->
+            <div id="content">
+                <!-- topbar -->
+                <!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger" href="logout">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="topbar">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="full">
+            <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
+            <div class="logo_section">
+                <a href="index.php">
+                    <img class="img-responsive rounded-circle" src="img/kost.png" alt="Home" />
+                    Kembali ke Home
+                </a>
+            </div>
+            <div class="right_topbar">
+                <div class="icon_info">
+                    <ul>
+
+                        <ul class="user_profile_dd">
+                            <li>
+                                <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="img/639e48df96177.png" alt="#" /><span class="name_user">ajisakasiddiq</span></a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="profile">My Profile</a>
+                                    <a class="dropdown-item" href="ResetPass">Setting</a>
+                                    <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>                <!-- end topbar -->
+                <!-- dashboard inner -->
+                <div class="midde_cont">
+                    <div class="container-fluid">
+                        <div class="row column_title">
+                            <div class="col-md-12">
+                                <div class="page_title">
+                                    <h2>Dashboard</h2>
+                                </div>
+                            </div>
+                        </div>
+                                                    <div class="row column1">
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="full counter_section margin_bottom_30">
+                                        <div class="couter_icon">
+                                            <div>
+                                                <i class="fa fa-user yellow_color"></i>
+                                            </div>
+                                        </div>
+                                        <div class="counter_no">
+                                            <div>
+                                                                                                <p class="total_no">1</p>
+                                                <p class="head_couter">Total Kamar Kos</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="full counter_section margin_bottom_30">
+                                        <div class="couter_icon">
+                                            <div>
+                                                <i class="fa fa-group yellow_color"></i>
+                                            </div>
+                                        </div>
+                                        <div class="counter_no">
+                                            <div>
+                                                                                                <p class="total_no">0</p>
+                                                <p class="head_couter">Total Sewa</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="full counter_section margin_bottom_30">
+                                        <div class="couter_icon">
+                                            <div>
+                                                <i class="fa fa-money green_color"></i>
+                                            </div>
+                                        </div>
+                                        <div class="counter_no">
+                                            <div>
+                                                                                                    <p class="total_no">Rp.0</p>
+                                                                                                <p class="head_couter">Total Pemasukan</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- footer -->
+                                <div class="container-fluid">
+                                    <div class="white_shd full margin_bottom_30">
+                                        <div class="full graph_head">
+                                            <div class="content ">
+                                                <h1 class="text-center">Syarat dan Ketentuan</h1>
+                                                <p>1. Telah menyerahkan surat kontrak kerjasama dengan <strong>J'Kost</strong> bermatrai. <a href="" download="file/Surat Perjanjian Kerjasama.pdf" style="color: red;"> template surat perjanjian</a> </p>
+                                                <p>2. Fitur untuk pendaftaran kost akan muncul apabila telah mengupload bukti kerja sama dan telah kami terima dalam 2x24jam dan anda dapat mendafarkan kost anda.</p>
+                                                <p>3. Data anda harus lengkap apabila ingin mendaftarkan kost anda.</p>
+                                                <p>4. Apabila ada pelanggaran kami dapat menghapus akun anda.</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container-fluid">
+                                    <div class="footer">
+                                        <p>Copyright © 2022 Designed by A2.<br><br> Distributed By: Team ruweet</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                                                <!-- end dashboard inner -->
+                    </div>
+                </div>
+            </div>
+            <!-- jQuery -->
+            <script src="js/jquery.min.js"></script>
+            <script src="js/popper.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <!-- wow animation -->
+            <script src="js/animate.js"></script>
+            <!-- select country -->
+            <script src="js/bootstrap-select.js"></script>
+            <!-- owl carousel -->
+            <script src="js/owl.carousel.js"></script>
+            <!-- chart js -->
+            <script src="js/Chart.min.js"></script>
+            <script src="js/Chart.bundle.min.js"></script>
+            <script src="js/utils.js"></script>
+            <script src="js/analyser.js"></script>
+            <!-- nice scrollbar -->
+            <script src="js/perfect-scrollbar.min.js"></script>
+            <script>
+                var ps = new PerfectScrollbar('#sidebar');
+            </script>
+            <!-- custom js -->
+            <script src="js/chart_custom_style1.js"></script>
+            <script src="js/custom.js"></script>
+</body>
+
+</html>
