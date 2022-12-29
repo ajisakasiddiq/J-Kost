@@ -127,10 +127,11 @@ if (isset($_SESSION['id_user'])) {
                                                                 </div>
                                                             </div>
                                                             <?php if ($sesLvl == 1) { ?>
+
                                                                 <div class="form-group">
                                                                     <label for="kontrak" class="col-lg-3 control-label">Bukti Kontrak :</label>
                                                                     <div class="col-lg-8">
-                                                                        <input value="<?= $kontrak; ?>" class="form-control" type="file" name="kontrak" id="kontrak">
+                                                                        <input class="form-control" type="file" name="kontrak" id="kontrak">
                                                                         <small>Upload file pdf,contoh <a href="" download="file/Surat Perjanjian Kerjasama.pdf" style="color: red;">bukti kontrak anda* </a></small>
                                                                     </div>
                                                                 </div>
@@ -266,9 +267,7 @@ if (isset($_SESSION['id_user'])) {
 
                                     //cek file apakah diupload atau tidak
                                     if ($error === 4) {
-                                        echo "<script> 
-        alert('Pilih gambar terlebih dahulu');
-      </script>";
+                                        echo "<script> alert('Pilih gambar terlebih dahulu'); </script>";
                                         return false;
                                     }
 
@@ -277,18 +276,14 @@ if (isset($_SESSION['id_user'])) {
                                     $extensGambar = explode('.', $file);
                                     $extensGambar = strtolower(end($extensGambar));
                                     if (!in_array($extensGambar, $extensGambarValid)) {
-                                        echo "<script> 
-      alert('Yang anda upload bukan berupa file gambar');
-    </script>";
+                                        echo "<script> alert('Yang anda upload bukan berupa file gambar'); </script>";
                                         return false;
                                     }
 
                                     //cek jika ukuran nya terlalu besar 
                                     if ($size > 1000000) {
 
-                                        echo "<script> 
-        alert('Ukuran gambar terlalu besar');
-      </script>";
+                                        echo "<script>  alert('Ukuran gambar terlalu besar');</script>";
                                     }
 
                                     //generate nama gambar baru
@@ -317,9 +312,7 @@ if (isset($_SESSION['id_user'])) {
 
                                     //cek file apakah diupload atau tidak
                                     if ($error === 4) {
-                                        echo "<script> 
-        alert('Pilih gambar terlebih dahulu');
-      </script>";
+                                        echo "<script> alert('Upload Bukti kontrak Anda');</script>";
                                         return false;
                                     }
 
@@ -338,16 +331,9 @@ if (isset($_SESSION['id_user'])) {
                                         echo "<script>alert('Ukuran gambar terlalu besar');</script>";
                                     }
 
-                                    //generate nama gambar baru
-                                    $namaFIlebaru = uniqid();
-                                    $namaFIlebaru .= '.';
-                                    $namaFIlebaru .= $extensFile;
-
-
-
                                     //lolos cek 
-                                    move_uploaded_file($tmpName, 'file/' . $namaFIlebaru);
-                                    return $namaFIlebaru;
+                                    move_uploaded_file($tmpName, 'file/' . $extensFile);
+                                    return $extensFile;
                                 }
                                 ?>
                                 <?php if (isset($success)) { ?>
