@@ -119,7 +119,7 @@ while ($row = mysqli_fetch_array($hasil)) {
                                 <div class="white_shd full margin_bottom_30">
                                     <div class="full graph_head">
                                         <div class="table_section padding_infor_info">
-
+                                            <h2 class="m-2 text-center text-primary">Kost Anda</h2>
                                             <div class="row">
                                                 <?php $queryPenyewa = "SELECT kamar_kost.no_kamar,kamar_kost.deskripsi,data_kost.nama_kost,data_kost.foto,kamar_kost.status_kamar,kamar_kost.id_kamar,pemesanan.id_pemesanan,data_kost.id_kost,pemesanan.status_pembayaran
 FROM pemesanan
@@ -155,7 +155,7 @@ WHERE pemesanan.id_user = '$sesID' AND kamar_kost.status_kamar = 'Berpenghuni' A
                                                                         <a href="checkout.php?id_kamar=<?= $idkamar; ?>" class=" btn btn-primary">Lanjut Sewa</a>
                                                                     </div>
                                                                     <div class="col-6">
-                                                                        <a href="#" class="btn btn-danger">Stop Sewa</a>
+                                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#Stopsewa" class="btn btn-danger">Stop Sewa</a>
                                                                     </div>
                                                                 </div>
 
@@ -191,7 +191,7 @@ WHERE pemesanan.id_user = '$sesID' AND kamar_kost.status_kamar = 'Berpenghuni' A
     </div>
     <!-- model popup -->
     <!-- The Modal -->
-    <div class="modal fade" id="myModal">
+    <div class="modal fade" id="Stopsewa">
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Modal Header -->
@@ -201,11 +201,12 @@ WHERE pemesanan.id_user = '$sesID' AND kamar_kost.status_kamar = 'Berpenghuni' A
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body">
-                    Modal body..
+                    Anda yakin untuk menghentikan penyewaan?
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger">Stop Sewa</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                 </div>
             </div>
         </div>
