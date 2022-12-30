@@ -121,7 +121,7 @@ while ($row = mysqli_fetch_array($hasil)) {
                                         <div class="table_section padding_infor_info">
 
                                             <div class="row">
-                                                <?php $queryPenyewa = "SELECT kamar_kost.no_kamar,kamar_kost.deskripsi,data_kost.nama_kost,data_kost.foto,kamar_kost.status_kamar,kamar_kost.id_kamar,pemesanan.id_pemesanan,data_kost.id_kost
+                                                <?php $queryPenyewa = "SELECT kamar_kost.no_kamar,kamar_kost.deskripsi,data_kost.nama_kost,data_kost.foto,kamar_kost.status_kamar,kamar_kost.id_kamar,pemesanan.id_pemesanan,data_kost.id_kost,pemesanan.status_pembayaran
 FROM pemesanan
 INNER JOIN kamar_kost ON pemesanan.id_kamar=kamar_kost.id_kamar
 INNER JOIN data_kost ON data_kost.id_kost=kamar_kost.id_kost
@@ -139,36 +139,33 @@ WHERE pemesanan.id_user = '$sesID' AND kamar_kost.status_kamar = 'Berpenghuni' A
 
                                                     <div class="col-3">
 
-                                                        <?php if (!$status == 'SUKSES') { ?>
-                                                            <div class="alert alert-danger">Tidak ada kamar kost yang disewa</div>
-                                                        <?php } else { ?>
-                                                            <div class="card" style="width: 18rem; max-width: 250px;">
-                                                                <img src="img/<?= $foto; ?>" class="card-img-top" alt="...">
-                                                                <div class="card-body">
-                                                                    <h5 class="card-title"><?= $No; ?> By <?= $namaKost; ?></h5>
-                                                                    <?php if ($status == 'SUKSES') { ?>
-                                                                        <p><span class="online_animation"></span> Aktif</p>
-                                                                    <?php  } else { ?>
-                                                                        <p><span class="offline_animation"></span> Berhenti Sewa</p>
-                                                                    <?php } ?>
+                                                        <div class="card" style="width: 18rem; max-width: 250px;">
+                                                            <img src="img/<?= $foto; ?>" class="card-img-top" alt="...">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title"><?= $No; ?> By <?= $namaKost; ?></h5>
+                                                                <?php if ($status == 'SUKSES') { ?>
+                                                                    <p><span class="online_animation"></span> Aktif</p>
+                                                                <?php  } else { ?>
+                                                                    <p><span class="offline_animation"></span> Berhenti Sewa</p>
+                                                                <?php } ?>
 
-                                                                    <p class="card-text"><?= $deskripsi; ?></p>
-                                                                    <div class="row">
-                                                                        <div class="col-6">
-                                                                            <a href="checkout.php?id_kamar=<?= $idkamar; ?>" class=" btn btn-primary">Lanjut Sewa</a>
-                                                                        </div>
-                                                                        <div class="col-6">
-                                                                            <a href="#" class="btn btn-danger">Stop Sewa</a>
-                                                                        </div>
+                                                                <p class="card-text"><?= $deskripsi; ?></p>
+                                                                <div class="row">
+                                                                    <div class="col-6">
+                                                                        <a href="checkout.php?id_kamar=<?= $idkamar; ?>" class=" btn btn-primary">Lanjut Sewa</a>
                                                                     </div>
-
-
+                                                                    <div class="col-6">
+                                                                        <a href="#" class="btn btn-danger">Stop Sewa</a>
+                                                                    </div>
                                                                 </div>
+
+
                                                             </div>
-                                                        <?php } ?>
-                                                        <!-- table section -->
+                                                        </div>
+                                                    <?php } ?>
+                                                    <!-- table section -->
                                                     </div>
-                                                <?php    } ?>
+
                                             </div>
                                         </div>
                                     </div>
