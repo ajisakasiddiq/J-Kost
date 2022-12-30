@@ -109,7 +109,7 @@ if (isset($_SESSION['id_user'])) {
             <h3>Harga Kost Per-bulan</h3>
         </div>
         <div class="col-8">
-            <h3>:<?= $harga; ?></h3>
+            <h3>:<?= number_format($harga); ?></h3>
         </div>
         <p>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
         <div class="col-4">
@@ -122,7 +122,7 @@ if (isset($_SESSION['id_user'])) {
             <h3>Total</h3>
         </div>
         <div class="col-8">
-            <h3>:<?= $total; ?></h3>
+            <h3>:<?= number_format($total); ?></h3>
         </div>
     </div>
 

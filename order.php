@@ -201,7 +201,7 @@ if (isset($_SESSION['id_user'])) {
                     $namaKost = $row['nama_kost'];
                     $harga = $row['harga'];
                     $foto = $row['foto_kamar_pertama'];
-                    $statKamar = $row['status_kamar']
+                    $statKamar = $row['status_kamar'];
                 ?>
                     <div class="col-lg-3 mb-3">
 
