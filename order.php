@@ -203,8 +203,9 @@ if (isset($_SESSION['id_user'])) {
                     $foto = $row['foto_kamar_pertama'];
                     $statKamar = $row['status_kamar'];
                 ?>
-                    <div class="col-lg-3 mb-3">
 
+
+                    <div class="col-lg-3 mb-3">
                         <a href="details.php?id_kamar=<?= $idKamar; ?>">
                             <div class="card">
                                 <img src="img/<?= $foto; ?>" class="card-img-top" alt="..." style="max-height: 140px;">

@@ -215,7 +215,7 @@ if (isset($_SESSION['id_user'])) {
                                                 INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
                                                 INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
                                                 INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user
-                                                WHERE data_kost.id_user = '$sesID' and pemesanan.status_pembayaran = 'SUKSES'";
+                                                WHERE data_kost.id_user = '$sesID' and pemesanan.status_penyewaan = 'SUKSES'";
                                                 $result = mysqli_query($koneksi, $query);
                                                 while ($row = mysqli_fetch_array($result)) {
                                                     $sewa = $row['sewa'];

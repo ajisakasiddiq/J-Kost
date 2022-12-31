@@ -20,29 +20,6 @@ if (isset($_SESSION['id_user'])) {
     $sesNo = $_SESSION['no_hp'];
     $sesGender = $_SESSION['jenis_kelamin'];
 }
-$queryPenyewa = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost', data_kost.foto  , kamar_kost.no_kamar as 'No Kamar', kamar_kost.id_kamar , pemesanan.nama_pemesan as 'Nama Penyewa' 
-   ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
-   , pemesanan.bukti_pembayaran as 'Bukti Pembayaran',user_detail.no_hp FROM pemesanan 
-   INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
-   INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
-   INNER JOIN user_detail ON  user_detail.id_user = pemesanan.id_user
-   WHERE pemesanan.id_user = '$sesID'";
-$hasil = mysqli_query($koneksi, $queryPenyewa);
-while ($row = mysqli_fetch_array($hasil)) {
-    $idPesan = $row['id_pemesanan'];
-    $idkamar = $row['id_kamar'];
-    $kode = $row['Kode Pemesanan'];
-    $namaKost = $row['Nama Kost'];
-    $No = $row['No Kamar'];
-    $NamaPenyewa = $row['Nama Penyewa'];
-    $No_hp = $row['no_hp'];
-    $foto = $row['foto'];
-    $durasi = $row['Durasi Sewa'];
-    $tgl = $row['Tanggal Pemesanan'];
-    $total = $row['Total'];
-    $status = $row['Status Pembayaran'];
-    $bukti = $row['Bukti Pembayaran'];
-}
 ?>
 
 
@@ -120,51 +97,65 @@ while ($row = mysqli_fetch_array($hasil)) {
                                     <div class="full graph_head">
                                         <div class="table_section padding_infor_info">
                                             <h2 class="m-2 text-center text-primary">Kost Anda</h2>
+
                                             <div class="row">
-                                                <?php $queryPenyewa = "SELECT kamar_kost.no_kamar,kamar_kost.deskripsi,data_kost.nama_kost,data_kost.foto,kamar_kost.status_kamar,kamar_kost.id_kamar,pemesanan.id_pemesanan,data_kost.id_kost,pemesanan.status_pembayaran
+                                                <?php $queryPenyewa = "SELECT kamar_kost.no_kamar,kamar_kost.deskripsi,data_kost.nama_kost,data_kost.foto,kamar_kost.status_kamar,kamar_kost.id_kamar,pemesanan.id_pemesanan,data_kost.id_kost,pemesanan.status_penyewaan
 FROM pemesanan
 INNER JOIN kamar_kost ON pemesanan.id_kamar=kamar_kost.id_kamar
 INNER JOIN data_kost ON data_kost.id_kost=kamar_kost.id_kost
-WHERE pemesanan.id_user = '$sesID' AND kamar_kost.status_kamar = 'Berpenghuni' AND pemesanan.status_pembayaran = 'SUKSES';";
+WHERE pemesanan.id_user = '$sesID' AND kamar_kost.status_kamar = 'Berpenghuni' AND pemesanan.status_penyewaan = 'SUKSES';";
                                                 $hasil = mysqli_query($koneksi, $queryPenyewa);
                                                 while ($row = mysqli_fetch_array($hasil)) {
                                                     $idPesan = $row['id_pemesanan'];
                                                     $idkamar = $row['id_kamar'];
                                                     $namaKost = $row['nama_kost'];
                                                     $No = $row['no_kamar'];
-                                                    $status = $row['status_pembayaran'];
+                                                    $status = $row['status_penyewaan'];
                                                     $deskripsi = $row['deskripsi'];
                                                     $foto = $row['foto'];
                                                 ?>
 
-                                                    <div class="col-3">
-
-                                                        <div class="card" style="width: 18rem; max-width: 250px;">
-                                                            <img src="img/<?= $foto; ?>" class="card-img-top" alt="...">
-                                                            <div class="card-body">
-                                                                <h5 class="card-title"><?= $No; ?> By <?= $namaKost; ?></h5>
-                                                                <?php if ($status == 'SUKSES') { ?>
-                                                                    <p><span class="online_animation"></span> Aktif</p>
-                                                                <?php  } else { ?>
-                                                                    <p><span class="offline_animation"></span> Berhenti Sewa</p>
-                                                                <?php } ?>
-
-                                                                <p class="card-text"><?= $deskripsi; ?></p>
-                                                                <div class="row">
-                                                                    <div class="col-6">
-                                                                        <a href="checkout.php?id_kamar=<?= $idkamar; ?>" class=" btn btn-primary">Lanjut Sewa</a>
-                                                                    </div>
-                                                                    <div class="col-6">
-                                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#Stopsewa" class="btn btn-danger">Stop Sewa</a>
-                                                                    </div>
-                                                                </div>
-
-
+                                                    <?php if ($status == 'Berhenti Sewa Kamar') { ?>
+                                                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                                                                <use xlink:href="#exclamation-triangle-fill" />
+                                                            </svg>
+                                                            <div>
+                                                                Tidak Ada kost yang di sewa
                                                             </div>
                                                         </div>
-                                                    <?php } ?>
-                                                    <!-- table section -->
-                                                    </div>
+                                                    <?php } else { ?>
+
+                                                        <div class="col-3">
+                                                            <div class="card" style="width: 18rem; max-width: 250px;">
+                                                                <img src="img/<?= $foto; ?>" class="card-img-top" alt="...">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title"><?= $No; ?> By <?= $namaKost; ?></h5>
+                                                                    <?php if ($status == 'SUKSES') { ?>
+                                                                        <p><span class="online_animation"></span> Aktif</p>
+                                                                    <?php  } else { ?>
+                                                                        <p><span class="offline_animation"></span> Berhenti Sewa</p>
+                                                                    <?php } ?>
+
+                                                                    <p class="card-text"><?= $deskripsi; ?></p>
+                                                                    <div class="row">
+                                                                        <div class="col-6">
+                                                                            <a href="checkout.php?id_kamar=<?= $idkamar; ?>" class=" btn btn-primary">Lanjut Sewa</a>
+                                                                        </div>
+                                                                        <div class="col-6">
+                                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#Stopsewa<?= $idPesan; ?>" class="btn btn-danger">Stop Sewa</a>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </div>
+                                                            </div>
+
+                                                        <?php } ?>
+                                                        <!-- table section -->
+                                                        </div>
+                                                    <?php    } ?>
+
 
                                             </div>
                                         </div>
@@ -189,29 +180,6 @@ WHERE pemesanan.id_user = '$sesID' AND kamar_kost.status_kamar = 'Berpenghuni' A
             <!-- end dashboard inner -->
         </div>
     </div>
-    <!-- model popup -->
-    <!-- The Modal -->
-    <div class="modal fade" id="Stopsewa">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Anda yakin untuk menghentikan penyewaan?
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger">Stop Sewa</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end model popup -->
     </div>
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>
@@ -247,6 +215,46 @@ WHERE pemesanan.id_user = '$sesID' AND kamar_kost.status_kamar = 'Berpenghuni' A
             $('#kamar').DataTable();
         });
     </script>
+
+    <div class="modal fade" id="Stopsewa<?= $idPesan; ?>">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <form action="" method="post">
+                    <div class="modal-body">
+                        Anda yakin untuk menghentikan penyewaan?
+                        <input type="text" name="id_pesan" id="" value="<?= $idPesan; ?>">
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="submit" name="stop" class="btn btn-danger">Stop Sewa</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 
 </html>
+
+<?php
+
+if (isset($_POST['stop'])) {
+    $Id     = $_POST['id_pesan'];
+    $query = "UPDATE pemesanan SET status_penyewaan='Berhenti Sewa Kamar' WHERE id_pemesanan='$Id'";
+    $result = mysqli_query($koneksi, $query);
+    if ($result) {
+        $success = "Penyewaan dihentikan!";
+    } else {
+        $error =  "Gagal";
+    }
+}
+?>
