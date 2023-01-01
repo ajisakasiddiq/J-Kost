@@ -232,11 +232,13 @@ if (isset($_SESSION['id_user'])) {
 
                                                                 <?php
                                                                 $queryPenyewa = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
-                                                                    ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_penyewaan as 'Status Pembayaran'
-                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran',user_detail.no_hp FROM pemesanan 
-                                                                    INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
-                                                                    INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
-                                                                    INNER JOIN user_detail ON  user_detail.id_user = pemesanan.id_user
+                                                                ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_penyewaan as 'Status Pembayaran'
+                                                                , pemesanan.bukti_pembayaran as 'Bukti Pembayaran',user_detail.no_hp ,rekening.Nama_bank,rekening.Nama_rek,rekening.no_rek
+                                                                FROM pemesanan 
+                                                                INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
+                                                                INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
+                                                                INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user
+                                                                INNER JOIN rekening ON  rekening.id_rek = pemesanan.id_rek
                                                                     WHERE pemesanan.id_user = '$sesID'";
                                                                 $hasil = mysqli_query($koneksi, $queryPenyewa);
                                                                 $no = 1;
@@ -252,6 +254,9 @@ if (isset($_SESSION['id_user'])) {
                                                                     $total = $row['Total'];
                                                                     $status = $row['Status Pembayaran'];
                                                                     $bukti = $row['Bukti Pembayaran'];
+                                                                    $Norek = $row['no_rek'];
+                                                                    $Namarek = $row['Nama_rek'];
+                                                                    $Namabank = $row['Nama_bank'];
                                                                 ?>
                                                                     <tr>
                                                                         <td><?= $no; ?></td>
@@ -288,15 +293,15 @@ if (isset($_SESSION['id_user'])) {
                                                                                             <input type="hidden" value="<?= $idPesan; ?>" name="txt_id">
                                                                                             <div class="form-group">
                                                                                                 <label for="bank">Nama Bank</label>
-                                                                                                <h5>BCA</h5>
+                                                                                                <h5><?= $Namabank; ?></h5>
                                                                                             </div>
                                                                                             <div class="form-group">
                                                                                                 <label for="NamaPemilik">Atas Nama</label>
-                                                                                                <h5>Ajisaka siddiq</h5>
+                                                                                                <h5><?= $Namarek; ?></h5>
                                                                                             </div>
                                                                                             <div class="form-group">
                                                                                                 <label for="NamaPemilik">No Rekening</label>
-                                                                                                <h5>5454678765</h5>
+                                                                                                <h5><?= $Norek; ?></h5>
                                                                                             </div>
                                                                                             <div class="form-group">
                                                                                                 <label for="bukti">Bukti Pembayaran</label>
