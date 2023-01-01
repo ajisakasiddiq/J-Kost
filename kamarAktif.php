@@ -7,8 +7,6 @@ if (!isset($_SESSION['id_user'])) {
 }
 
 if (isset($_SESSION['id_user'])) {
-    //$_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
-    // header('Location: login.php');
     $sesID = $_SESSION['id_user'];
     $sesName = $_SESSION['username'];
     $name = $_SESSION['user_nama'];
