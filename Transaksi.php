@@ -157,7 +157,7 @@ if (isset($_SESSION['id_user'])) {
                                                                         <?php if ($bukti == 'Menunggu Pembayaran') { ?>
                                                                             <td><?= $bukti; ?></td>
                                                                         <?php  } else { ?>
-                                                                            <td><img src="file/<?= $bukti; ?>" alt="" width="100px"></td>
+                                                                            <td><img src="img/<?= $bukti; ?>" alt="" width="100px"></td>
                                                                         <?php     } ?>
                                                                         <td>
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#cek<?= $idPesan; ?>"><i class="fa-solid mr-1 fa-check"></i>Check</a>
@@ -272,7 +272,7 @@ if (isset($_SESSION['id_user'])) {
                                                                         <?php if ($bukti == 'Menunggu Pembayaran') { ?>
                                                                             <td><?= $bukti; ?></td>
                                                                         <?php  } else { ?>
-                                                                            <td><img src="file/<?= $bukti; ?>" alt="" width="100px"></td>
+                                                                            <td><img src="img/<?= $bukti; ?>" alt="" width="100px"></td>
                                                                         <?php     } ?>
                                                                         <td>
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#bayar<?= $idPesan; ?>"><i class="fa-sharp fa-solid mr-1 fa-money-bill"></i>Bayar</a>
@@ -385,7 +385,7 @@ if (isset($_SESSION['id_user'])) {
                                                                         <?php if ($bukti == 'Menunggu Pembayaran') { ?>
                                                                             <td><?= $bukti; ?></td>
                                                                         <?php  } else { ?>
-                                                                            <td><img src="file/<?= $bukti; ?>" alt="" width="100px"></td>
+                                                                            <td><img src="img/<?= $bukti; ?>" alt="" width="100px"></td>
                                                                         <?php     } ?>
                                                                         <td>
                                                                             <a href="" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#detail<?= $idPesan; ?>"><i class="fa-solid fa-circle-info mr-1"></i>Detail</a>
@@ -564,45 +564,34 @@ if (isset($_POST['tambah'])) {
 }
 function upload()
 {
-
     $file = $_FILES['gambar']['name'];
     $size = $_FILES['gambar']['size'];
     $error = $_FILES['gambar']['error'];
     $tmpName = $_FILES['gambar']['tmp_name'];
-
     //cek file apakah diupload atau tidak
     if ($error === 4) {
-        echo "<script> 
-        alert('Pilih gambar terlebih dahulu');
-      </script>";
+        echo "<script>alert('Pilih gambar terlebih dahulu');</script>";
         return false;
     }
-
     //cek apakah benar gambar
     $extensGambarValid = ['jpg', 'jpeg', 'png'];
     $extensGambar = explode('.', $file);
     $extensGambar = strtolower(end($extensGambar));
     if (!in_array($extensGambar, $extensGambarValid)) {
-        echo "<script> 
-      alert('Yang anda upload bukan berupa file gambar');
-    </script>";
+        echo "<script>alert('Yang anda upload bukan berupa file gambar');</script>";
         return false;
     }
-
     //cek jika ukuran nya terlalu besar 
     if ($size > 1000000) {
-
-        echo "<script> 
-        alert('Ukuran gambar terlalu besar');
-      </script>";
+        echo "<script>alert('Ukuran gambar terlalu besar');</script>";
     }
-
-
-
-
+    //generate nama gambar baru
+    $namaFIlebaru = uniqid();
+    $namaFIlebaru .= '.';
+    $namaFIlebaru .= $extensGambar;
     //lolos cek 
-    move_uploaded_file($tmpName, 'file/' . $extensGambar);
-    return $extensGambar;
+    move_uploaded_file($tmpName, 'img/' . $namaFIlebaru);
+    return $namaFIlebaru;
 }
 
 

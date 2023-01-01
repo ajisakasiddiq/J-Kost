@@ -343,9 +343,12 @@ if (isset($_SESSION['id_user'])) {
                                         echo "<script>alert('Ukuran gambar terlalu besar');</script>";
                                     }
 
+                                    $namaFIlebaru = uniqid();
+                                    $namaFIlebaru .= '.';
+                                    $namaFIlebaru .= $extensFileKontrak;
                                     //lolos cek 
-                                    move_uploaded_file($tmpNameKontrak, 'file/' . $extensFileKontrak);
-                                    return $extensFileKontrak;
+                                    move_uploaded_file($tmpNameKontrak, 'img/' . $namaFIlebaru);
+                                    return $namaFIlebaru;
                                 }
                                 ?>
                                 <?php if (isset($success)) { ?>
