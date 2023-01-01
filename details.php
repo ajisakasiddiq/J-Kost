@@ -229,9 +229,9 @@ if (isset($_SESSION['id_user'])) {
                             <p>
                                 <?= $alamat; ?>
                             </p>
-                            <div class="mt-2 mb-2" id="map" style="width: 100%; height: 400px;"></div>
+                            <div id="map" style="width: 100%; height: 400px;"></div>
                             <script>
-                                var map = L.map('map').setView([-8.172405053026914, 113.69920589124717], 13);
+                                var map = L.map('map').setView([-8.172405053026914, 113.69920589124717], 20);
 
                                 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
