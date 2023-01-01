@@ -532,7 +532,7 @@ if (isset($_POST['edit'])) {
     $Id     = $_POST['txt_id'];
     $Stat  = $_POST['txt_status'];
 
-    $query = "UPDATE pemesanan SET status_pembayaran='$Stat' WHERE id_pemesanan='$Id'";
+    $query = "UPDATE pemesanan SET status_penyewaan='$Stat' WHERE id_pemesanan='$Id'";
     $result = mysqli_query($koneksi, $query);
     if ($result) {
         $success = "User data telah terupdate!";
