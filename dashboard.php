@@ -162,50 +162,7 @@ if (isset($_SESSION['id_user'])) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="container-fluid">
-                                    <div class="white_shd full margin_bottom_30">
-                                        <div class="full graph_head">
-                                            <div class="content ">
-                                                <h2 class="text-center text-primary mb-4">Kost Jember</h2>
-                                                <div class="mt-2 mb-2" id="map" style="width: 100%; height: 400px;"></div>
-                                                <script>
-                                                    var map = L.map('map').setView([-8.172405053026914, 113.69920589124717], 13);
 
-                                                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                                    }).addTo(map);
-                                                    <?php
-                                                    $queryKost = "SELECT data_kost.alamat, data_kost.longtitude,data_kost.latitude,data_kost.alamat,kamar_kost.id_kamar,data_kost.nama_kost,data_kost.foto, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar_pertama,kamar_kost.foto_kamar_kedua,kamar_kost.foto_kamar_ketiga,kamar_kost.foto_kamar_keempat,kamar_kost.status_kamar,kamar_kost.deskripsi
-                                                    FROM kamar_kost
-                                                    INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
-                                                    WHERE data_kost.status = 'APPROVED'";
-                                                    $result = mysqli_query($koneksi, $queryKost);
-                                                    while ($row = mysqli_fetch_array($result)) {
-                                                        $idKamar = $row['id_kamar'];
-                                                        $noKamar = $row['no_kamar'];
-                                                        $namaKost = $row['nama_kost'];
-                                                        $harga = $row['harga'];
-                                                        $fotoKost = $row['foto'];
-                                                        $foto = $row['foto_kamar_pertama'];
-                                                        $fotoKedua = $row['foto_kamar_kedua'];
-                                                        $fotoKetiga = $row['foto_kamar_ketiga'];
-                                                        $fotoKeempat = $row['foto_kamar_keempat'];
-                                                        $statKamar = $row['status_kamar'];
-                                                        $long = $row['longtitude'];
-                                                        $lat = $row['latitude'];
-                                                        $des = $row['deskripsi'];
-                                                        $alamat = $row['alamat'];
-
-                                                    ?>
-                                                        L.marker([<?= $lat; ?>, <?= $long; ?>]).addTo(map)
-                                                            .bindPopup('<?= $namaKost; ?> <br> <hr>' + '<?= $alamat; ?>' + '<img src="img/<?= $fotoKost; ?>" alt="">')
-                                                            .openPopup();
-                                                    <?php } ?>
-                                                </script>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <!-- footer -->
                                 <div class="container-fluid">
