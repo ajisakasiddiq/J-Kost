@@ -295,9 +295,9 @@ if (isset($_POST['update'])) {
 
             $send = $mail->send();
             if ($send) {
-                echo "<script>alert('Notifikasi telah dikirim dikirim')</script>";
+                echo "<script>alert('Notifikasi telah dikirim')</script>";
             } else {
-                echo "<script>alert('Notifikasi gagal dikirim dikirim')</script>";
+                echo "<script>alert('Notifikasi gagal dikirim')</script>";
             }
         } else {
             $email_pengirim = 'jemberkost@gmail.com';
@@ -324,9 +324,9 @@ if (isset($_POST['update'])) {
 
             $send = $mail->send();
             if ($send) {
-                echo "<script>alert('Notifikasi telah dikirim dikirim')</script>";
+                echo "<script>alert('Notifikasi telah dikirim')</script>";
             } else {
-                echo "<script>alert('Notifikasi gagal dikirim dikirim')</script>";
+                echo "<script>alert('Notifikasi gagal dikirim')</script>";
             }
         }
     } else {
