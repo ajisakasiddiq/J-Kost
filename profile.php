@@ -347,7 +347,7 @@ if (isset($_SESSION['id_user'])) {
                                     $namaFIlebaru .= '.';
                                     $namaFIlebaru .= $extensFileKontrak;
                                     //lolos cek 
-                                    move_uploaded_file($tmpNameKontrak, 'img/' . $namaFIlebaru);
+                                    move_uploaded_file($tmpNameKontrak, 'file/' . $namaFIlebaru);
                                     return $namaFIlebaru;
                                 }
                                 ?>

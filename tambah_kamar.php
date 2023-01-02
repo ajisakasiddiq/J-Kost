@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require("koneksi.php");
 
 session_start();
@@ -217,6 +218,7 @@ if ($_SESSION['level'] != "1") {
                     $result = mysqli_query($koneksi, $query);
                     if ($result) {
                       $succes = "Data berhasil terinput!";
+                      header("Location: datakamar.php");
                     } else {
                       echo "                  <script>
                       alert('Tunggu kost anda di approve oleh admin');
