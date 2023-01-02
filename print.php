@@ -25,7 +25,7 @@ if (isset($_SESSION['id_user'])) {
 
     $id = $_GET['id_pemesanan'];
     $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' ,kamar_kost.harga, kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
-        ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_pembayaran as 'Status Pembayaran'
+        ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_penyewaan as 'Status Pembayaran'
         , pemesanan.bukti_pembayaran as 'Bukti Pembayaran', user_detail.no_hp FROM pemesanan 
         INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
         INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost

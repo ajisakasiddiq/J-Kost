@@ -542,7 +542,7 @@ if (isset($_POST['edit'])) {
 }
 if (isset($_POST['batal'])) {
     $Id     = $_POST['txt_id'];
-    $query = "UPDATE pemesanan SET status_pembayaran='Dibatalkan' WHERE id_pemesanan='$Id'";
+    $query = "UPDATE pemesanan SET status_penyewaan='Dibatalkan' WHERE id_pemesanan='$Id'";
     $result = mysqli_query($koneksi, $query);
     if ($result) {
         $success = "Penyewaan dibatalkan!";
