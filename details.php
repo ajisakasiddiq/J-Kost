@@ -210,7 +210,11 @@ if (isset($_SESSION['id_user'])) {
                             <div class="price">Rp.350.000</div> -->
                         </div>
                         <div class="col-lg-2" data-aos="zoom-in">
-                            <a class="btn btn-custom px-4 btn-block mt-2 mb-3" href="checkout?id_kamar=<?= $idKamar; ?>">Sewa</a>
+                            <?php if ($sesLvl == 2) { ?>
+                                <a class="btn btn-custom px-4 btn-block mt-2 mb-3" href="checkout?id_kamar=<?= $idKamar; ?>">Sewa</a>
+                            <?php } else { ?>
+                                <a class="btn btn-custom px-4 btn-block mt-2 mb-3" href="" onclick="alert('Akses hanya untuk akun penyewa')">Sewa</a>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
