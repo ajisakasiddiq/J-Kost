@@ -44,7 +44,11 @@ if (isset($_POST['submit'])) {
                 $_SESSION['jenis_kelamin'] = $gender;
                 $_SESSION['bukti_kontrak'] = $Kontrak;
                 $_SESSION['status_user'] = $status;
-                header('Location: index.php');
+                if ($_SESSION['level'] == 2) {
+                    header('Location: index.php');
+                } else {
+                    header('Location: dashboard.php');
+                }
             } else {
                 $error = 'user atau password salah!!';
                 header('Location: login.php');

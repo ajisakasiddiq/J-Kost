@@ -219,14 +219,14 @@ WHERE pemesanan.id_user = '$sesID' AND kamar_kost.status_kamar = 'Berpenghuni' A
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
+                    <h4 class="modal-title">Berhenti Sewa</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- Modal body -->
                 <form action="" method="post">
                     <div class="modal-body">
                         Anda yakin untuk menghentikan penyewaan?
-                        <input type="text" name="id_pesan" id="" value="<?= $idPesan; ?>">
+                        <input type="hidden" name="id_pesan" id="" value="<?= $idPesan; ?>">
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
