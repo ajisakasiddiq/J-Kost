@@ -213,7 +213,7 @@ if (isset($_SESSION['id_user'])) {
                                     <h2 class="card-text">Kamar Kost No.Kamar <?= $noKamar; ?></h2>
                                     <p>By <?= $namaKost; ?></p>
                                     <p><span class="kost-price">Rp. <?= $harga; ?> </span>/ Bulan</p>
-                                    <?php if ($statKamar == 0) { ?>
+                                    <?php if ($statKamar == 2) { ?>
                                         <p style="color: red;">Berpenghuni</p>
                                     <?php  } elseif ($statKamar == 1) { ?>
                                         <p style="color: orange;">Dibooking</p>

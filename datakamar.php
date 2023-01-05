@@ -251,10 +251,18 @@ if (isset($_SESSION['id_user'])) {
                                                                                         <div class="form-group">
                                                                                             <label for="inputName">Status Kamar</label>
                                                                                             <select name="txt_status" id="" class="form-control form-control-user" required>
-                                                                                                <option value="<?= $status; ?>"><?= $status; ?></option>
+                                                                                                <option value="<?= $status; ?>">
+                                                                                                    <?php if ($status == 0) { ?>
+                                                                                                        <p>Tersedia</p>
+                                                                                                    <?php  } else if ($status == 1) { ?>
+                                                                                                        <p>Booking</p>
+                                                                                                    <?php } else { ?>
+                                                                                                        <p>Berpenghuni</p>
+                                                                                                    <?php } ?>
+                                                                                                </option>
                                                                                                 <option value="">----</option>
-                                                                                                <option value="Tersedia">Tersedia</option>
-                                                                                                <option value="Berpenghuni">Berpenghuni</option>
+                                                                                                <option value="0">Tersedia</option>
+                                                                                                <option value="2">Berpenghuni</option>
                                                                                             </select>
                                                                                         </div>
                                                                                     </div>
