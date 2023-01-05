@@ -153,7 +153,13 @@ if (isset($_SESSION['id_user'])) {
                                                                     <td><?= $Jenis; ?></td>
                                                                     <td><?= $Dess; ?></td>
                                                                     <td><?= $harga; ?></td>
-                                                                    <td><?= $status; ?></td>
+                                                                    <?php if ($status == 0) { ?>
+                                                                        <td>Tersedia</td>
+                                                                    <?php  } else if ($status == 1) { ?>
+                                                                        <td>BOOKING</td>
+                                                                    <?php } else { ?>
+                                                                        <td>Berpenghuni</td>
+                                                                    <?php } ?>
                                                                     <td>
                                                                         <a href="" class="btn btn-primary btn-circle m-1" data-bs-toggle="modal" data-bs-target="#editKamar<?= $id; ?>"><i class="fas fa-pen"></i></a>
 

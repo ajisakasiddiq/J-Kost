@@ -153,7 +153,13 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $durasi; ?></td>
                                                                         <td><?= $tgl; ?></td>
                                                                         <td>Rp.<?= number_format($total); ?></td>
-                                                                        <td><?= $status; ?></td>
+                                                                        <?php if ($status == 0) { ?>
+                                                                            <td>DIBATALKAN</td>
+                                                                        <?php  } else if ($status == 1) { ?>
+                                                                            <td>PENDING</td>
+                                                                        <?php } else { ?>
+                                                                            <td>SUKSES</td>
+                                                                        <?php } ?>
                                                                         <?php if ($bukti == 'Menunggu Pembayaran') { ?>
                                                                             <td><?= $bukti; ?></td>
                                                                         <?php  } else { ?>
@@ -204,10 +210,18 @@ if (isset($_SESSION['id_user'])) {
                                                                                             <div class="form-group">
                                                                                                 <label for="status">Status pembayaran</label>
                                                                                                 <select name="txt_status" id="status" class="form-control form-control-user">
-                                                                                                    <option value="<?= $status;  ?>"><?= $status; ?></option>
+                                                                                                    <option value="<?= $status;  ?>">
+                                                                                                        <?php if ($status == 0) { ?>
+                                                                                                            DIBATALKAN
+                                                                                                        <?php  } else if ($status == 1) { ?>
+                                                                                                            PENDING
+                                                                                                        <?php } else { ?>
+                                                                                                            SUKSES
+                                                                                                        <?php } ?>
+                                                                                                    </option>
                                                                                                     <option value="">------</option>
-                                                                                                    <option value="SUKSES">Sukses</option>
-                                                                                                    <option value="DITOLAK">Di Tolak</option>
+                                                                                                    <option value="2">Sukses</option>
+                                                                                                    <option value="0">Di Tolak</option>
                                                                                                 </select>
                                                                                                 <small>Periksa terlebih dahulu bukti pembayaran sebelum approve pembayaran*</small>
                                                                                             </div>
@@ -268,7 +282,13 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $durasi; ?></td>
                                                                         <td><?= $tgl; ?></td>
                                                                         <td>Rp.<?= number_format($total); ?></td>
-                                                                        <td><?= $status; ?></td>
+                                                                        <?php if ($status == 0) { ?>
+                                                                            <td>DIBATALKAN</td>
+                                                                        <?php  } else if ($status == 1) { ?>
+                                                                            <td>PENDING</td>
+                                                                        <?php } else { ?>
+                                                                            <td>SUKSES</td>
+                                                                        <?php } ?>
                                                                         <?php if ($bukti == 'Menunggu Pembayaran') { ?>
                                                                             <td><?= $bukti; ?></td>
                                                                         <?php  } else { ?>
@@ -381,7 +401,14 @@ if (isset($_SESSION['id_user'])) {
                                                                         <td><?= $durasi; ?></td>
                                                                         <td><?= $tgl; ?></td>
                                                                         <td>Rp.<?= number_format($total); ?></td>
-                                                                        <td><?= $status; ?></td>
+                                                                        <?php if ($status == 0) { ?>
+                                                                            <td>DIBATALKAN</td>
+                                                                        <?php  } else if ($status == 1) { ?>
+                                                                            <td>PENDING</td>
+                                                                        <?php } else { ?>
+                                                                            <td>SUKSES</td>
+                                                                        <?php } ?>
+
                                                                         <?php if ($bukti == 'Menunggu Pembayaran') { ?>
                                                                             <td><?= $bukti; ?></td>
                                                                         <?php  } else { ?>
@@ -542,7 +569,7 @@ if (isset($_POST['edit'])) {
 }
 if (isset($_POST['batal'])) {
     $Id     = $_POST['txt_id'];
-    $query = "UPDATE pemesanan SET status_penyewaan='Dibatalkan' WHERE id_pemesanan='$Id'";
+    $query = "UPDATE pemesanan SET status_penyewaan= 0 WHERE id_pemesanan='$Id'";
     $result = mysqli_query($koneksi, $query);
     if ($result) {
         $success = "Penyewaan dibatalkan!";

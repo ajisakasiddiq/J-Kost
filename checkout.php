@@ -445,7 +445,7 @@ echo  $kodeunik;
   $total = $_POST['bayar'];
 
 
-  $query = "INSERT INTO pemesanan VALUES (null,'$sesID','$kamarId','$rekId','$kodeunik','$Nama','$Nik','$tglMulai','$durasi','$hargaKos','2022-12-13','$total','PENDING','$nomerekening','$namarekening','$namabank','Menunggu Pembayaran')";
+  $query = "INSERT INTO pemesanan VALUES (null,'$sesID','$kamarId','$rekId','$kodeunik','$Nama','$Nik','$tglMulai','$durasi','$hargaKos','2022-12-13','$total',1,'$nomerekening','$namarekening','$namabank','Menunggu Pembayaran')";
   $result = mysqli_query($koneksi, $query);
   if ($result) {
     header("Location: success.php");

@@ -193,7 +193,7 @@ if (isset($_SESSION['id_user'])) {
                 $queryKost = "SELECT kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar_pertama,kamar_kost.status_kamar
                         FROM kamar_kost
                         INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
-                        WHERE kamar_kost.status_kamar = 'Tersedia' AND data_kost.status = 'APPROVED' AND data_kost.nama_kost LIKE '%" . $getCari . "%' AND kamar_kost.jenis_kamar LIKE '%" . $getoption . "%'";
+                        WHERE data_kost.status = 'APPROVED' AND data_kost.nama_kost LIKE '%" . $getCari . "%' AND kamar_kost.jenis_kamar LIKE '%" . $getoption . "%'";
                 $result = mysqli_query($koneksi, $queryKost);
                 while ($row = mysqli_fetch_array($result)) {
                     $idKamar = $row['id_kamar'];
@@ -213,7 +213,14 @@ if (isset($_SESSION['id_user'])) {
                                     <h2 class="card-text">Kamar Kost No.Kamar <?= $noKamar; ?></h2>
                                     <p>By <?= $namaKost; ?></p>
                                     <p><span class="kost-price">Rp. <?= $harga; ?> </span>/ Bulan</p>
-                                    <p><?= $statKamar; ?></p>
+                                    <?php if ($statKamar == 0) { ?>
+                                        <p style="color: red;">Berpenghuni</p>
+                                    <?php  } elseif ($statKamar == 1) { ?>
+                                        <p style="color: orange;">Dibooking</p>
+                                    <?php } else { ?>
+                                        <p style="color: green;">Tersedia</p>
+                                    <?php } ?>
+
                                 </div>
                             </div>
                         </a>

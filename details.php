@@ -151,7 +151,7 @@ if (isset($_SESSION['id_user'])) {
     $queryKost = "SELECT data_kost.alamat, data_kost.longtitude,data_kost.latitude,data_kost.alamat,kamar_kost.id_kamar,data_kost.nama_kost, kamar_kost.no_kamar,kamar_kost.harga,kamar_kost.foto_kamar_pertama,kamar_kost.foto_kamar_kedua,kamar_kost.foto_kamar_ketiga,kamar_kost.foto_kamar_keempat,kamar_kost.status_kamar,kamar_kost.deskripsi
                 FROM kamar_kost
                 INNER JOIN data_kost ON kamar_kost.id_kost=data_kost.id_kost
-                WHERE kamar_kost.status_kamar = 'Tersedia' and kamar_kost.id_kamar = '$id'";
+                WHERE kamar_kost.id_kamar = '$id'";
     $result = mysqli_query($koneksi, $queryKost);
     while ($row = mysqli_fetch_array($result)) {
         $idKamar = $row['id_kamar'];
@@ -211,7 +211,13 @@ if (isset($_SESSION['id_user'])) {
                         </div>
                         <div class="col-lg-2" data-aos="zoom-in">
                             <?php if ($sesLvl == 2) { ?>
-                                <a class="btn btn-custom px-4 btn-block mt-2 mb-3" href="checkout?id_kamar=<?= $idKamar; ?>">Sewa</a>
+                                <?php if ($statKamar == 0) { ?>
+                                    <a class="btn btn-custom px-4 btn-block mt-2 mb-3" href="" onclick="alert('Kamar kost Telah Disewakan')">Sewa</a>
+                                <?php } elseif ($statKamar == 1) { ?>
+                                    <a class="btn btn-custom px-4 btn-block mt-2 mb-3" href="" onclick="alert('Kamar kost Telah Dibooking')">Sewa</a>
+                                <?php } else { ?>
+                                    <a class="btn btn-custom px-4 btn-block mt-2 mb-3" href="checkout?id_kamar=<?= $idKamar; ?>">Sewa</a>
+                                <?php } ?>
                             <?php } else { ?>
                                 <a class="btn btn-custom px-4 btn-block mt-2 mb-3" href="" onclick="alert('Akses hanya untuk akun penyewa')">Sewa</a>
                             <?php } ?>
