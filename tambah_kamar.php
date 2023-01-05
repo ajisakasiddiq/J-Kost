@@ -214,7 +214,7 @@ if ($_SESSION['level'] != "1") {
                       return false;
                     }
 
-                    $query = "INSERT INTO kamar_kost VALUES (null,'$id','$Jenis','$No','$Harga','Tersedia','$Img','$ImgDalam','$ImgMandi','$ImgDapur','$Deskripsi')";
+                    $query = "INSERT INTO kamar_kost VALUES (null,'$id','$Jenis','$No','$Harga',0,'$Img','$ImgDalam','$ImgMandi','$ImgDapur','$Deskripsi')";
                     $result = mysqli_query($koneksi, $query);
                     if ($result) {
                       $succes = "Data berhasil terinput!";
