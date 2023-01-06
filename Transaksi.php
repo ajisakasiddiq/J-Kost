@@ -122,11 +122,13 @@ if (isset($_SESSION['id_user'])) {
                                                             <tbody>
                                                                 <?php
                                                                 $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
-                                                                    ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa AS 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_penyewaan as 'Status Pembayaran'
-                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran' , user_detail.no_hp FROM pemesanan 
-                                                                    INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
-                                                                    INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
-                                                                    INNER JOIN user_detail ON  user_detail.id_user = pemesanan.id_user
+                                                                ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_penyewaan as 'Status Pembayaran'
+                                                                , pemesanan.bukti_pembayaran as 'Bukti Pembayaran',user_detail.no_hp ,rekening.Nama_bank,rekening.Nama_rek,rekening.no_rek,DATE_ADD(pemesanan.tgl_pembayaran, INTERVAL 1 DAY ) as 'Batas_Pembayaran',pemesanan.tgl_pembayaran
+                                                                FROM pemesanan 
+                                                                INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
+                                                                INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
+                                                                INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user
+                                                                INNER JOIN rekening ON  rekening.id_rek = pemesanan.id_rek
                                                                     WHERE data_kost.id_user = '$sesID'";
                                                                 $result = mysqli_query($koneksi, $query);
                                                                 $no = 1;
@@ -142,6 +144,8 @@ if (isset($_SESSION['id_user'])) {
                                                                     $total = $row['Total'];
                                                                     $status = $row['Status Pembayaran'];
                                                                     $bukti = $row['Bukti Pembayaran'];
+                                                                    $batas = $row['Batas_Pembayaran'];
+                                                                    $tglBayar = $row['tgl_pembayaran'];
                                                                 ?>
                                                                     <tr>
                                                                         <td><?= $no; ?></td>
@@ -247,7 +251,7 @@ if (isset($_SESSION['id_user'])) {
                                                                 <?php
                                                                 $queryPenyewa = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
                                                                 ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_penyewaan as 'Status Pembayaran'
-                                                                , pemesanan.bukti_pembayaran as 'Bukti Pembayaran',user_detail.no_hp ,rekening.Nama_bank,rekening.Nama_rek,rekening.no_rek
+                                                                , pemesanan.bukti_pembayaran as 'Bukti Pembayaran',user_detail.no_hp ,rekening.Nama_bank,rekening.Nama_rek,rekening.no_rek,DATE_ADD(pemesanan.tgl_pembayaran, INTERVAL 1 DAY ) as 'Batas_Pembayaran',pemesanan.tgl_pembayaran
                                                                 FROM pemesanan 
                                                                 INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
                                                                 INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
@@ -271,6 +275,8 @@ if (isset($_SESSION['id_user'])) {
                                                                     $Norek = $row['no_rek'];
                                                                     $Namarek = $row['Nama_rek'];
                                                                     $Namabank = $row['Nama_bank'];
+                                                                    $batas = $row['Batas_Pembayaran'];
+                                                                    $tglBayar = $row['tgl_pembayaran'];
                                                                 ?>
                                                                     <tr>
                                                                         <td><?= $no; ?></td>
@@ -326,6 +332,8 @@ if (isset($_SESSION['id_user'])) {
                                                                                             <div class="form-group">
                                                                                                 <label for="bukti">Bukti Pembayaran</label>
                                                                                                 <input type="file" id="bukti" class="form-control form-control-user" name="gambar">
+
+                                                                                                <small>Batas Pembayaran <strong> <?= $batas; ?></strong></small>
                                                                                             </div>
 
                                                                                         </div>
@@ -371,11 +379,13 @@ if (isset($_SESSION['id_user'])) {
                                                                 <?php
                                                                 $no = 1;
                                                                 $query = "SELECT pemesanan.id_pemesanan,pemesanan.kode_pemesanan as 'Kode Pemesanan', data_kost.nama_kost as 'Nama Kost' , kamar_kost.no_kamar as 'No Kamar' , pemesanan.nama_pemesan as 'Nama Penyewa' 
-                                                                    ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_penyewaan as 'Status Pembayaran'
-                                                                    , pemesanan.bukti_pembayaran as 'Bukti Pembayaran', user_detail.no_hp FROM pemesanan 
-                                                                    INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
-                                                                    INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
-                                                                    INNER JOIN user_detail ON  user_detail.id_user = pemesanan.id_user
+                                                                ,pemesanan.tgl_pemesanan AS 'Tanggal Pemesanan',pemesanan.durasi_sewa 'Durasi Sewa',pemesanan.total_pembayaran as 'Total',pemesanan.status_penyewaan as 'Status Pembayaran'
+                                                                , pemesanan.bukti_pembayaran as 'Bukti Pembayaran',user_detail.no_hp ,rekening.Nama_bank,rekening.Nama_rek,rekening.no_rek,DATE_ADD(pemesanan.tgl_pembayaran, INTERVAL 1 DAY ) as 'Batas_Pembayaran',pemesanan.tgl_pembayaran
+                                                                FROM pemesanan 
+                                                                INNER JOIN kamar_kost ON pemesanan.id_kamar = kamar_kost.id_kamar 
+                                                                INNER JOIN data_kost ON  kamar_kost.id_kost = data_kost.id_kost
+                                                                INNER JOIN user_detail ON  user_detail.id_user = data_kost.id_user
+                                                                INNER JOIN rekening ON  rekening.id_rek = pemesanan.id_rek
                                                                     ";
                                                                 $result = mysqli_query($koneksi, $query);
                                                                 while ($row = mysqli_fetch_array($result)) {
@@ -390,6 +400,8 @@ if (isset($_SESSION['id_user'])) {
                                                                     $total = $row['Total'];
                                                                     $status = $row['Status Pembayaran'];
                                                                     $bukti = $row['Bukti Pembayaran'];
+                                                                    $batas = $row['Batas_Pembayaran'];
+                                                                    $tglBayar = $row['tgl_pembayaran'];
                                                                 ?>
                                                                     <tr>
                                                                         <td><?= $no; ?></td>
@@ -549,12 +561,17 @@ if (isset($_SESSION['id_user'])) {
             });
         });
     </script>
+
 </body>
 
 
 
 <!-- pemilik cek pembayaran -->
 <?php
+$tgl_sekarang = mktime();
+if ($batas < $tgl_sekarang) {
+    # code...
+}
 if (isset($_POST['edit'])) {
     $Id     = $_POST['txt_id'];
     $Stat  = $_POST['txt_status'];
