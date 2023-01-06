@@ -211,9 +211,9 @@ if (isset($_SESSION['id_user'])) {
                         </div>
                         <div class="col-lg-2" data-aos="zoom-in">
                             <?php if ($sesLvl == 2) { ?>
-                                <?php if ($statKamar == 0) { ?>
+                                <?php if ($statKamar == 1) { ?>
                                     <a class="btn btn-custom px-4 btn-block mt-2 mb-3" href="" onclick="alert('Kamar kost Telah Disewakan')">Sewa</a>
-                                <?php } elseif ($statKamar == 1) { ?>
+                                <?php } elseif ($statKamar == 2) { ?>
                                     <a class="btn btn-custom px-4 btn-block mt-2 mb-3" href="" onclick="alert('Kamar kost Telah Dibooking')">Sewa</a>
                                 <?php } else { ?>
                                     <a class="btn btn-custom px-4 btn-block mt-2 mb-3" href="checkout?id_kamar=<?= $idKamar; ?>">Sewa</a>
