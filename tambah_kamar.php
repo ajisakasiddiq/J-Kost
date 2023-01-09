@@ -159,7 +159,7 @@ if ($_SESSION['level'] != "1") {
                         </div>
                         <div class="form-group">
                           <label for="textAreaRemark">Deskripsi</label>
-                          <textarea name="deskripsi" class="form-control" name="deskripsi" id="textAreaRemark" rows="5" placeholder="Tambahkan Peraturan dan Deskripsi kamar kost anda...."></textarea>
+                          <textarea name="deskripsi" class="form-control" name="deskripsi" id="editor" placeholder="Tambahkan Peraturan dan Deskripsi kamar kost anda...."></textarea>
                         </div>
 
                         <!-- Start Submit Button -->
@@ -196,8 +196,10 @@ if ($_SESSION['level'] != "1") {
                   <!-- calendar file css -->
                   <script src="js/semantic.min.js"></script>
                   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
+                  <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+                  <script>
+                    CKEDITOR.replace('deskripsi');
+                  </script>
 
                   <?php if (isset($_POST['tambah'])) {
                     $id = $_POST['id_kost'];
