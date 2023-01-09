@@ -162,7 +162,57 @@ if (isset($_SESSION['id_user'])) {
                                         </div>
                                     </div>
                                 </div>
+                                <div class="container-fluid">
+                                    <div class="white_shd full margin_bottom_30">
+                                        <div class="full graph_head">
+                                            <div id="chart-container">
+                                                <canvas id="graphCanvas"></canvas>
+                                            </div>
+                                            <script>
+                                                $(document).ready(function() {
+                                                    showGraph();
+                                                });
 
+                                                function showGraph() {
+                                                    {
+                                                        $.post("bar_encode.php",
+                                                            function(data) {
+                                                                console.log(data);
+                                                                var id = [];
+                                                                var fullname = [];
+                                                                var jual = [];
+
+                                                                for (var i in data) {
+                                                                    id.push(data[i].id_pemesanan);
+                                                                    total.push(data[i].Total);
+                                                                    jual.push(data[i].jml_jual);
+                                                                }
+
+                                                                var chartdata = {
+                                                                    labels: fullname,
+                                                                    datasets: [{
+                                                                            label: 'Nama User',
+                                                                            backgroundColor: '#49e2ff',
+                                                                            borderColor: '#46d5f1',
+                                                                            hoverBackgroundColor: '#CCCCCC',
+                                                                            hoverBorderColor: "#666666",
+                                                                            data: jual
+                                                                        }
+
+                                                                    ]
+                                                                };
+                                                                var graphTarget = $('#graphCanvas');
+                                                                var barGraph = new Chart(graphTarget, {
+                                                                    type: 'bar',
+                                                                    data: chartdata
+                                                                });
+                                                            });
+                                                    }
+                                                }
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <!-- footer -->
                                 <div class="container-fluid">
@@ -286,6 +336,7 @@ if (isset($_SESSION['id_user'])) {
             <script src="js/owl.carousel.js"></script>
             <!-- chart js -->
             <script src="js/Chart.min.js"></script>
+            <script src="js/Chart.js"></script>
             <script src="js/Chart.bundle.min.js"></script>
             <script src="js/utils.js"></script>
             <script src="js/analyser.js"></script>
@@ -297,6 +348,7 @@ if (isset($_SESSION['id_user'])) {
             <!-- custom js -->
             <script src="js/chart_custom_style1.js"></script>
             <script src="js/custom.js"></script>
+
 </body>
 
 </html>
